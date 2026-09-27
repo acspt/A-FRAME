@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Phoenix AR - Image Tracking (AR.js)</title>
+
+    <script src="https://aframe.io/releases/1.3.0/aframe.min.js"></script>
+    <!-- AR.js com suporte para Image Tracking (NFT) -->
+    <script src="https://raw.githack.com/AR-js-org/AR.js/3.4.5/aframe/build/aframe-ar-nft.js"></script>
+    <!-- necessário para animar ficheiros glTF -->
+    <script src="https://cdn.jsdelivr.net/gh/c-frame/aframe-extras@7.2.0/dist/aframe-extras.min.js"></script>
+
+  </head>
+
+  <body style="margin: 0; overflow: hidden;">
+
+    <a-scene
+      embedded
+      vr-mode-ui="enabled: false"
+      renderer="logarithmicDepthBuffer: true; precision: medium;"
+      arjs="trackingMethod: best; sourceType: webcam; debugUIEnabled: false;">
+
+      <!-- url aponta para os descritores assets/anchor.fset, .fset3 e .iset (sem extensão) -->
+      <a-nft
+             type="nft"
+             url="assets/anchor"
+             smooth="true" smoothCount="10" smoothTolerance=".01" smoothThreshold="5">
+        <!-- Só é visível enquanto a imagem é detetada -->
+        <a-gltf-model src="assets/phoenix_bird.glb"
+                      animation-mixer="clip: Take 001"
+                      position="400 0 -150"
+                      scale="0.5 0.5 0.5"></a-gltf-model>
+      </a-nft>
+
+      <a-entity camera></a-entity>
+    </a-scene>
+
+  </body>
+</html>
