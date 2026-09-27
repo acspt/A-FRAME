@@ -8,13 +8,13 @@
     <script src="https://cdn.jsdelivr.net/gh/c-frame/aframe-extras@7.2.0/dist/aframe-extras.min.js"></script>
   </head>
   <body>
-    <a-scene mindar-image="imageTargetSrc: assets/target-spinosaurus.mind;" 
+    <a-scene mindar-image="imageTargetSrc: assets/targets-spinosaurus.glb.mind;" 
              color-space="sRGB" 
              renderer="colorManagement: true, physicallyCorrectLights" 
              vr-mode-ui="enabled: false" 
              device-orientation-permission-ui="enabled: false">
       <!the mindar-image contains link to the image tracking file>
-      <a-assets>
+      <a-assets timeout="60000">
         <a-asset-item id="map" 
                       src = "assets/spinosaurus.glb"></a-asset-item>
       </a-assets>
