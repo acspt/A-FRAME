@@ -2,9 +2,7 @@
   <head>
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <script src="https://aframe.io/releases/1.5.0/aframe.min.js"></script>
-    <!the following script is needed for image tracking>
     <script src="https://cdn.jsdelivr.net/npm/mind-ar@1.2.5/dist/mindar-image-aframe.prod.js"></script>
-    <!the folllowing script is needed to animate gltf files>
     <script src="https://cdn.jsdelivr.net/gh/c-frame/aframe-extras@7.2.0/dist/aframe-extras.min.js"></script>
   </head>
   <body>
@@ -13,7 +11,6 @@
              renderer="colorManagement: true, physicallyCorrectLights" 
              vr-mode-ui="enabled: false" 
              device-orientation-permission-ui="enabled: false">
-      <!the mindar-image contains link to the image tracking file>
       <a-assets timeout="60000">
         <a-asset-item id="map" 
                       src = "assets/spinosaurus.glb"></a-asset-item>
@@ -23,6 +20,7 @@
         
         <a-gltf-model src ="#map" 
                       animation-mixer="clip: Open" 
+                      position="0 -1 0"
                       scale= "0.1 0.1 0.1" 
                       rotation="0 90 0" ></a-gltf-model>
       </a-entity>
