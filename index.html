@@ -8,6 +8,7 @@
       body { margin: 0; padding: 24px 16px; font-family: sans-serif; background: #f4f4f4; color: #222; }
       main { max-width: 640px; margin: 0 auto; }
       h1 { font-size: 1.6em; margin-bottom: 4px; }
+      h2 { font-size: 1.1em; margin: 28px 0 4px; color: #444; }
       p.sub { margin-top: 0; color: #666; }
       a.card { display: block; margin: 12px 0; padding: 16px; border-radius: 8px;
                background: #fff; color: inherit; text-decoration: none;
@@ -15,6 +16,7 @@
       a.card:hover { box-shadow: 0 2px 8px rgba(0, 0, 0, 0.25); }
       a.card strong { display: block; font-size: 1.1em; margin-bottom: 4px; }
       a.card span { color: #555; }
+      a.card.target { background: #fffbe6; }
       .note { margin-top: 24px; font-size: 0.9em; color: #666; }
     </style>
   </head>
@@ -23,27 +25,40 @@
       <h1>Exemplos A-Frame AR</h1>
       <p class="sub">Realidade Estendida II</p>
 
+      <h2>Introdução</h2>
+
       <a class="card" href="basic/index.html">
         <strong>Básico: a minha primeira cena</strong>
         <span>Cena A-Frame simples com cubo, esfera, cilindro, plano e texto (sem AR).</span>
       </a>
 
-      <a class="card" href="aframe-ar-phoenix-bird/index.html">
-        <strong>Phoenix v1 (AR.js)</strong>
-        <span>A phoenix aparece sempre numa posição fixa sobre a imagem da câmara.</span>
+      <h2>AR com câmara</h2>
+
+      <a class="card" href="ar/phoenix-bird/index.html">
+        <strong>Phoenix: AR nativo (WebXR)</strong>
+        <span>Carregar no botão AR para ver a phoenix na câmara (Android/Chrome).</span>
       </a>
 
-      <a class="card" href="aframe-ar-detect-phoenix-bird/index.html">
-        <strong>Phoenix v2: deteção de imagem (MindAR)</strong>
-        <span>A phoenix só aparece quando a câmara deteta a imagem-alvo.</span>
+      <h2>AR com marcador</h2>
+
+      <a class="card" href="ar/makers/makers-hiro/index.html">
+        <strong>Marker HIRO (AR.js)</strong>
+        <span>Ao detetar o marcador HIRO aparece o texto "Arlindo Santos".</span>
       </a>
 
-      <a class="card" href="aframe-ar-detect-phoenix-bird/assets/anchor.png">
-        <strong>Imagem-alvo da Phoenix v2</strong>
+      <a class="card target" href="https://raw.githubusercontent.com/AR-js-org/AR.js/master/data/images/hiro.png">
+        <strong>Imagem do marcador HIRO</strong>
         <span>Abrir noutro ecrã ou imprimir para apontar a câmara.</span>
       </a>
 
-      <a class="card" href="aframe-ar-detect-spinosaurus/index.html">
+      <h2>AR com deteção de imagem</h2>
+
+      <a class="card" href="ar/image/detect-phoenix-bird-arjs/index.html">
+        <strong>Phoenix: deteção de imagem (AR.js NFT)</strong>
+        <span>A phoenix aparece quando a câmara deteta a imagem-alvo (descritores em <code>assets/nft/target</code>).</span>
+      </a>
+
+      <a class="card" href="ar/image/detect-spinosaurus-mindar/index.html">
         <strong>Spinosaurus: deteção de imagem (MindAR)</strong>
         <span>O spinosaurus animado aparece quando a câmara deteta a imagem-alvo.</span>
       </a>
