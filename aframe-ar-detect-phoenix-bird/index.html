@@ -39,15 +39,13 @@
   >
       <a-assets>
         <a-asset-item id="phoenix" src="assets/phoenix_bird.glb"></a-asset-item>
-        <a-asset-item id="target" src="assets/target.iset"></a-asset-item>
-    
     </a-assets>
     <!-- a-nft is the anchor that defines an Image Tracking entity -->
     <!-- on 'url' use the path to the Image Descriptors created before. -->
     <!-- the path should end with the name without the extension e.g. if file is 'pinball.fset' the path should end with 'pinball' -->
     <a-nft
       type="nft"
-      url="#target"
+      url="assets/target"
       smooth="true"
       smoothCount="10"
       smoothTolerance=".01"
