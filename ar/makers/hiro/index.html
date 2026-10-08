@@ -6,13 +6,25 @@
     <title>Marker HIRO</title>
     <script src="https://aframe.io/releases/1.8.0/aframe.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/@ar-js-org/ar.js@3.4.8/aframe/build/aframe-ar.js"></script>
+    <style>
+      /* Mostra a imagem completa da câmara em vez de a cortar (evita o efeito de zoom no telemóvel) */
+      #arjs-video,
+      .a-canvas {
+        top: 0 !important;
+        left: 0 !important;
+        margin: 0 !important;
+        width: 100vw !important;
+        height: 100vh !important;
+        object-fit: contain;
+      }
+    </style>
   </head>
   <body style="margin: 0; overflow: hidden;">
     <a-scene
       embedded
       vr-mode-ui="enabled: false"
       renderer="logarithmicDepthBuffer: true;"
-      arjs="sourceType: webcam; debugUIEnabled: false; sourceWidth: 1280; sourceHeight: 960; displayWidth: 1280; displayHeight: 960;">
+      arjs="sourceType: webcam; debugUIEnabled: false;">
       <a-marker preset="hiro">
         <a-text
           value="Arlindo Santos"
