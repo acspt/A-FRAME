@@ -10,12 +10,11 @@
     <link rel="stylesheet" href="style.css" />
   </head>
   <body>
-    <!-- detectionMode e matrixCodeType permitem usar markers de código de barras (barcode) -->
     <a-scene
       embedded
       vr-mode-ui="enabled: false"
       renderer="logarithmicDepthBuffer: true;"
-      arjs="sourceType: webcam; debugUIEnabled: false; sourceWidth: 1280; sourceHeight: 720; detectionMode: mono_and_matrix; matrixCodeType: 3x3;">
+      arjs="sourceType: webcam; debugUIEnabled: false; sourceWidth: 1280; sourceHeight: 720;">
 
       <!-- 1. Marker HIRO: cubo verde semitransparente -->
       <a-marker preset="hiro">
@@ -29,11 +28,14 @@
         <a-text value="KANJI" color="#FFFFFF" align="center" width="4" position="0 1.2 0" rotation="-90 0 0"></a-text>
       </a-marker>
 
-      <!-- 3. Marker de código de barras 3x3 com o valor 5: cilindro azul -->
+      <!-- 3. Marker de código de barras 3x3 com o valor 5: cilindro azul
+           Desativado: precisa de "detectionMode: mono_and_matrix; matrixCodeType: 3x3;" no arjs da a-scene,
+           e esse modo pode impedir a deteção do HIRO e do KANJI.
       <a-marker type="barcode" value="5">
         <a-cylinder position="0 0.5 0" radius="0.4" height="1" color="blue"></a-cylinder>
         <a-text value="BARCODE 5" color="#FFFFFF" align="center" width="4" position="0 1.2 0" rotation="-90 0 0"></a-text>
       </a-marker>
+      -->
 
       <a-entity camera></a-entity>
     </a-scene>
