@@ -4,21 +4,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <title>Exemplos A-Frame AR</title>
-    <style>
-      body { margin: 0; padding: 24px 16px; font-family: sans-serif; background: #f4f4f4; color: #222; }
-      main { max-width: 640px; margin: 0 auto; }
-      h1 { font-size: 1.6em; margin-bottom: 4px; }
-      h2 { font-size: 1.1em; margin: 28px 0 4px; color: #444; }
-      p.sub { margin-top: 0; color: #666; }
-      a.card { display: block; margin: 12px 0; padding: 16px; border-radius: 8px;
-               background: #fff; color: inherit; text-decoration: none;
-               box-shadow: 0 1px 3px rgba(0, 0, 0, 0.15); }
-      a.card:hover { box-shadow: 0 2px 8px rgba(0, 0, 0, 0.25); }
-      a.card strong { display: block; font-size: 1.1em; margin-bottom: 4px; }
-      a.card span { color: #555; }
-      a.card.target { background: #fffbe6; }
-      .note { margin-top: 24px; font-size: 0.9em; color: #666; }
-    </style>
+    <link rel="stylesheet" href="style.css" />
   </head>
   <body>
     <main>
@@ -46,24 +32,9 @@
         <span>Ao detetar o marcador HIRO aparece o texto "Arlindo Santos".</span>
       </a>
 
-      <a class="card target" href="https://raw.githubusercontent.com/AR-js-org/AR.js/master/data/images/hiro.png">
-        <strong>Imagem do marcador HIRO</strong>
-        <span>Abrir noutro ecrã ou imprimir para apontar a câmara.</span>
-      </a>
-
       <a class="card" href="ar/tutorial/index.html">
-        <strong>Tutorial AR.js: vários markers</strong>
+        <strong>Tutorial AR.js: vários marcadores</strong>
         <span>Baseado em <code>aframe.io/blog/arjs</code>: cubo no HIRO, esfera no KANJI e cilindro no código de barras 5.</span>
-      </a>
-
-      <a class="card target" href="https://raw.githubusercontent.com/AR-js-org/AR.js/master/three.js/examples/marker-training/examples/pattern-images/pattern-kanji.png">
-        <strong>Imagem do marcador KANJI</strong>
-        <span>Para o tutorial AR.js.</span>
-      </a>
-
-      <a class="card target" href="https://raw.githubusercontent.com/artoolkit/artoolkit5/master/doc/patterns/Matrix%20code%203x3%20(72dpi)/5.png">
-        <strong>Imagem do marcador código de barras 5 (3x3)</strong>
-        <span>Para o tutorial AR.js.</span>
       </a>
 
       <h2>AR com deteção de imagem</h2>
@@ -78,7 +49,24 @@
         <span>O spinosaurus animado aparece quando a câmara deteta a imagem-alvo.</span>
       </a>
 
-      <p class="note">A câmara só funciona em <code>https</code> ou <code>localhost</code> (por exemplo, com o Live Server).</p>
+      <h2>Marcadores para imprimir</h2>
+
+      <a class="card target" href="https://raw.githubusercontent.com/AR-js-org/AR.js/master/data/images/hiro.png">
+        <strong>Marcador HIRO</strong>
+        <span>Para o Marker HIRO e o Tutorial AR.js.</span>
+      </a>
+
+      <a class="card target" href="https://raw.githubusercontent.com/AR-js-org/AR.js/master/three.js/examples/marker-training/examples/pattern-images/pattern-kanji.png">
+        <strong>Marcador KANJI</strong>
+        <span>Para o Tutorial AR.js.</span>
+      </a>
+
+      <a class="card target" href="https://raw.githubusercontent.com/artoolkit/artoolkit5/master/doc/patterns/Matrix%20code%203x3%20(72dpi)/5.png">
+        <strong>Marcador código de barras 5 (3x3)</strong>
+        <span>Para o Tutorial AR.js.</span>
+      </a>
+
+      <p class="note">Abrir os marcadores noutro ecrã ou imprimi-los para apontar a câmara. A câmara só funciona em <code>https</code> ou <code>localhost</code> (por exemplo, com o Live Server).</p>
     </main>
   </body>
 </html>
