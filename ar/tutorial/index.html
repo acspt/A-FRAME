@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="pt">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1, maximum-scale=1, user-scalable=no" />
+    <title>Tutorial AR.js</title>
+    <!-- Baseado em https://aframe.io/blog/arjs/ (atualizado para versões recentes do A-Frame e do AR.js) -->
+    <script src="https://aframe.io/releases/1.8.0/aframe.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@ar-js-org/ar.js@3.4.8/aframe/build/aframe-ar.js"></script>
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <!-- detectionMode e matrixCodeType permitem usar markers de código de barras (barcode) -->
+    <a-scene
+      embedded
+      vr-mode-ui="enabled: false"
+      renderer="logarithmicDepthBuffer: true;"
+      arjs="sourceType: webcam; debugUIEnabled: false; sourceWidth: 1280; sourceHeight: 720; detectionMode: mono_and_matrix; matrixCodeType: 3x3;">
+
+      <!-- 1. Marker HIRO: cubo verde semitransparente -->
+      <a-marker preset="hiro">
+        <a-box position="0 0.5 0" material="color: green; opacity: 0.5;"></a-box>
+        <a-text value="HIRO" color="#FFFFFF" align="center" width="4" position="0 1.2 0" rotation="-90 0 0"></a-text>
+      </a-marker>
+
+      <!-- 2. Marker KANJI: esfera vermelha -->
+      <a-marker preset="kanji">
+        <a-sphere position="0 0.5 0" radius="0.5" color="red"></a-sphere>
+        <a-text value="KANJI" color="#FFFFFF" align="center" width="4" position="0 1.2 0" rotation="-90 0 0"></a-text>
+      </a-marker>
+
+      <!-- 3. Marker de código de barras 3x3 com o valor 5: cilindro azul -->
+      <a-marker type="barcode" value="5">
+        <a-cylinder position="0 0.5 0" radius="0.4" height="1" color="blue"></a-cylinder>
+        <a-text value="BARCODE 5" color="#FFFFFF" align="center" width="4" position="0 1.2 0" rotation="-90 0 0"></a-text>
+      </a-marker>
+
+      <a-entity camera></a-entity>
+    </a-scene>
+  </body>
+</html>
