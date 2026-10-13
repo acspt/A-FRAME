@@ -36,13 +36,12 @@
       <div>A carregar, aguarde...</div>
     </div>
 
-    <!-- sourceWidth/sourceHeight: pede à câmara uma resolução 4:3 maior; com o valor por omissão (640x480)
-         alguns telemóveis Android entregam um recorte do sensor, o que parece zoom -->
+    <!-- o AR.js trata o vídeo como 4:3 deitado; com o telemóvel na vertical a imagem é muito cortada (parece zoom) -->
     <a-scene
       vr-mode-ui="enabled: false;"
       renderer="logarithmicDepthBuffer: true;"
       embedded
-      arjs="trackingMethod: best; sourceType: webcam; debugUIEnabled: false; sourceWidth: 1280; sourceHeight: 960;">
+      arjs="trackingMethod: best; sourceType: webcam; debugUIEnabled: false;">
       <!-- a-nft é a âncora da imagem detetada; o url termina no nome dos descritores, sem extensão -->
       <a-nft
         type="nft"
