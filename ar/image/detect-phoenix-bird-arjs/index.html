@@ -7,35 +7,8 @@
     <!-- A-Frame e AR.js (versão com image tracking / NFT) em versões fixas -->
     <script src="https://aframe.io/releases/1.6.0/aframe.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/@ar-js-org/ar.js@3.4.8/aframe/build/aframe-ar-nft.js"></script>
-
-    <!-- estilo do aviso de carregamento -->
-    <style>
-      .arjs-loader {
-        height: 100%;
-        width: 100%;
-        position: absolute;
-        top: 0;
-        left: 0;
-        background-color: rgba(0, 0, 0, 0.8);
-        z-index: 9999;
-        display: flex;
-        justify-content: center;
-        align-items: center;
-      }
-
-      .arjs-loader div {
-        text-align: center;
-        font-size: 1.25em;
-        color: white;
-      }
-    </style>
   </head>
   <body style="margin: 0; overflow: hidden;">
-    <!-- aviso mostrado até os descritores da imagem estarem carregados (pode demorar no telemóvel) -->
-    <div class="arjs-loader">
-      <div>A carregar, aguarde...<br />No telemóvel, use-o na horizontal.</div>
-    </div>
-
     <!-- o AR.js trata o vídeo como 4:3 deitado; com o telemóvel na vertical a imagem é muito cortada (parece zoom) -->
     <a-scene
       vr-mode-ui="enabled: false;"
