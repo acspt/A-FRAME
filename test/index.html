@@ -1,0 +1,307 @@
+<!DOCTYPE html>
+<html lang="pt">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+  <title>Gesto ativa som no espaco</title>
+
+  <!-- A-Frame 1.8.0 (WebXR, assente em three.js) -->
+  <script src="https://aframe.io/releases/1.8.0/aframe.min.js"></script>
+
+  <style>
+    html, body { margin: 0; height: 100%; background: #000; color: #fff;
+      font-family: system-ui, -apple-system, Segoe UI, Roboto, sans-serif; }
+
+    /* Painel de controlo em alto contraste */
+    #painel {
+      position: fixed; top: 0; left: 0; z-index: 20;
+      padding: 14px 16px; display: flex; flex-direction: column; gap: 10px;
+      max-width: 340px;
+    }
+    #painel h1 { font-size: 15px; margin: 0; letter-spacing: .3px; font-weight: 700; }
+    #painel p  { font-size: 12.5px; line-height: 1.45; margin: 0; color: #cfcfcf; }
+    #estado {
+      font-size: 12px; font-weight: 700; letter-spacing: .4px;
+      border: 1px solid #333; border-radius: 6px; padding: 7px 9px;
+      background: #0a0a0a;
+    }
+    #estado b { color: #4de1c1; }
+    #iniciar {
+      appearance: none; border: 2px solid #fff; background: #000; color: #fff;
+      font-size: 14px; font-weight: 700; padding: 11px 14px; border-radius: 8px;
+      cursor: pointer; letter-spacing: .4px;
+    }
+    #iniciar:hover { background: #fff; color: #000; }
+    #iniciar:disabled { opacity: .4; cursor: default; }
+
+    /* Pre-visualizacao da camara + landmarks */
+    #preview {
+      position: fixed; bottom: 12px; right: 12px; z-index: 20;
+      width: 220px; height: 165px; border: 1px solid #333; border-radius: 8px;
+      overflow: hidden; background: #0a0a0a;
+    }
+    #video, #overlay {
+      position: absolute; inset: 0; width: 100%; height: 100%;
+      transform: scaleX(-1); /* espelho, para interacao natural */
+    }
+    #legenda {
+      position: absolute; bottom: 0; left: 0; right: 0; z-index: 21;
+      font-size: 10.5px; text-align: center; padding: 3px 0;
+      background: rgba(0,0,0,.6); color: #9fe;
+    }
+  </style>
+</head>
+
+<body>
+
+  <!-- ====== Interface de controlo (HTML normal, sobreposta a cena) ====== -->
+  <div id="painel">
+    <h1>Gesto ativa som localizado no espaco</h1>
+    <p>Carregue em Iniciar e autorize a camara. Mostre a <b>mao aberta</b> para largar um som na posicao da mao. A altura da mao define a nota. Arraste o rato na cena para olhar a volta: o som fica fixo no ponto onde nasceu e muda de lado conforme a sua orientacao.</p>
+    <button id="iniciar">Iniciar camara e audio</button>
+    <div id="estado">Gesto atual: <b id="gestoAtual">(parado)</b></div>
+  </div>
+
+  <!-- ====== Pre-visualizacao da camara ====== -->
+  <div id="preview">
+    <video id="video" autoplay playsinline muted></video>
+    <canvas id="overlay" width="220" height="165"></canvas>
+    <div id="legenda">deteção de mao</div>
+  </div>
+
+  <!-- ====== Cena A-Frame ====== -->
+  <a-scene spatial-sound-space
+           background="color: #050505"
+           renderer="colorManagement: true; antialias: true"
+           vr-mode-ui="enabled: true"
+           webxr="optionalFeatures: hit-test, local-floor">
+
+    <!-- Referencias visuais para dar nocao do espaco 3D ao olhar a volta -->
+    <a-entity id="grelha" position="0 0 0">
+      <a-plane rotation="-90 0 0" width="12" height="12"
+               material="color: #0d0d0d; wireframe: true; wireframeLinewidth: 1"></a-plane>
+    </a-entity>
+
+    <!-- Quatro postes de referencia, para perceber direcao ao rodar a cabeca -->
+    <a-box position="-3 1 -3" depth="0.15" width="0.15" height="2" color="#1b3a34"></a-box>
+    <a-box position=" 3 1 -3" depth="0.15" width="0.15" height="2" color="#1b3a34"></a-box>
+    <a-box position="-3 1  3" depth="0.15" width="0.15" height="2" color="#1b3a34"></a-box>
+    <a-box position=" 3 1  3" depth="0.15" width="0.15" height="2" color="#1b3a34"></a-box>
+
+    <!-- Camara do utilizador (ouvinte / listener fica aqui) -->
+    <a-entity id="rig" position="0 1.6 0">
+      <a-camera look-controls="pointerLockEnabled: false" wasd-controls="acceleration: 25"></a-camera>
+    </a-entity>
+  </a-scene>
+
+  <!-- ====== Motor de audio espacial (componente A-Frame, script classico) ====== -->
+  <script>
+    // Escala pentatonica (A menor) ao longo de ~2 oitavas: mao em cima = nota aguda
+    var ESCALA = [220.00, 261.63, 293.66, 329.63, 392.00,
+                  440.00, 523.25, 587.33, 659.25, 783.99, 880.00];
+
+    AFRAME.registerComponent('spatial-sound-space', {
+      init: function () {
+        var sceneEl = this.el;
+        var self = this;
+
+        var montar = function () {
+          var cam = sceneEl.camera;              // camara three.js ativa
+          self.listener = new THREE.AudioListener();
+          cam.add(self.listener);                // ouvinte segue a camara
+          self.ctx = self.listener.context;
+          window.spatialEngine = self;           // exposto ao modulo da camara
+          sceneEl.emit('engine-ready');
+        };
+
+        if (sceneEl.camera) { montar(); }
+        else { sceneEl.addEventListener('loaded', montar); }
+      },
+
+      // Gera um sino curto (sintetizado) na frequencia pedida
+      criarBuffer: function (freq, dur) {
+        dur = dur || 1.2;
+        var sr = this.ctx.sampleRate;
+        var n = Math.floor(sr * dur);
+        var buf = this.ctx.createBuffer(1, n, sr);
+        var d = buf.getChannelData(0);
+        for (var i = 0; i < n; i++) {
+          var t = i / sr;
+          var env = Math.exp(-3.4 * t);          // decaimento tipo sino
+          var s = Math.sin(2 * Math.PI * freq * t) * 0.60
+                + Math.sin(2 * Math.PI * 2 * freq * t) * 0.24
+                + Math.sin(2 * Math.PI * 3 * freq * t) * 0.10;
+          d[i] = s * env * 0.8;
+        }
+        return buf;
+      },
+
+      // Cor por frequencia (grave = azul, agudo = ambar)
+      corPorFreq: function (freq) {
+        var min = ESCALA[0], max = ESCALA[ESCALA.length - 1];
+        var k = (freq - min) / (max - min);
+        var hue = 190 - k * 150;                 // 190 (ciano) -> 40 (ambar)
+        return 'hsl(' + hue.toFixed(0) + ', 90%, 60%)';
+      },
+
+      // Coloca som + pulso visual num ponto DEFINIDO EM COORDENADAS DA CAMARA,
+      // convertido para o mundo, para ficar ancorado ao espaco.
+      largarSom: function (localX, localY, localZ, freq) {
+        var sceneEl = this.el;
+        var cam = sceneEl.camera;
+        cam.updateMatrixWorld();
+
+        var p = new THREE.Vector3(localX, localY, localZ);
+        p.applyMatrix4(cam.matrixWorld);         // local da camara -> mundo
+
+        var cor = this.corPorFreq(freq);
+        var buffer = this.criarBuffer(freq);
+        var listener = this.listener;
+
+        // Entidade A-Frame no ponto do mundo (visual + portador do som)
+        var ent = document.createElement('a-entity');
+        ent.setAttribute('position', p.x + ' ' + p.y + ' ' + p.z);
+        ent.setAttribute('geometry', 'primitive: sphere; radius: 0.09');
+        ent.setAttribute('material',
+          'color: ' + cor + '; emissive: ' + cor + '; emissiveIntensity: 1.4; opacity: 0.95; transparent: true');
+        ent.setAttribute('animation__escala',
+          'property: scale; from: 1 1 1; to: 6 6 6; dur: 1200; easing: easeOutQuad');
+        ent.setAttribute('animation__fade',
+          'property: material.opacity; from: 0.95; to: 0; dur: 1200; easing: easeOutQuad');
+
+        ent.addEventListener('loaded', function () {
+          var som = new THREE.PositionalAudio(listener);
+          som.setBuffer(buffer);
+          som.setRefDistance(1.2);
+          som.setRolloffFactor(1.4);
+          som.setDistanceModel('inverse');
+          ent.object3D.add(som);
+          som.play();
+        });
+
+        sceneEl.appendChild(ent);
+        setTimeout(function () { if (ent.parentNode) ent.parentNode.removeChild(ent); }, 1350);
+      }
+    });
+  </script>
+
+  <!-- ====== Deteção de gestos (MediaPipe, modulo ESM) ====== -->
+  <script type="module">
+    import { GestureRecognizer, FilesetResolver }
+      from "https://cdn.jsdelivr.net/npm/@mediapipe/tasks-vision@latest/vision_bundle.mjs";
+
+    const GESTO_DISPARO = "Open_Palm";   // gesto que larga o som
+    const btn    = document.getElementById('iniciar');
+    const video  = document.getElementById('video');
+    const canvas = document.getElementById('overlay');
+    const ctx2d  = canvas.getContext('2d');
+    const estado = document.getElementById('gestoAtual');
+
+    let recognizer = null;
+    let ultimoTempo = -1;
+    let gestoAnterior = "None";
+
+    btn.addEventListener('click', async () => {
+      btn.disabled = true;
+      btn.textContent = "A carregar...";
+
+      try {
+        // Garante o motor de audio pronto e retoma o AudioContext (exige gesto do utilizador)
+        if (!window.spatialEngine) {
+          await new Promise(r => document.querySelector('a-scene')
+            .addEventListener('engine-ready', r, { once: true }));
+        }
+        await window.spatialEngine.ctx.resume();
+
+        // Inicializa o reconhecedor de gestos
+        const vision = await FilesetResolver.forVisionTasks(
+          "https://cdn.jsdelivr.net/npm/@mediapipe/tasks-vision@latest/wasm");
+        recognizer = await GestureRecognizer.createFromOptions(vision, {
+          baseOptions: {
+            modelAssetPath:
+              "https://storage.googleapis.com/mediapipe-tasks/gesture_recognizer/gesture_recognizer.task",
+            delegate: "GPU"
+          },
+          runningMode: "VIDEO",
+          numHands: 1
+        });
+
+        // Abre a camara frontal
+        const stream = await navigator.mediaDevices.getUserMedia({ video: { facingMode: "user" } });
+        video.srcObject = stream;
+        await video.play();
+
+        btn.textContent = "Ativo";
+        laco();
+      } catch (e) {
+        console.error(e);
+        btn.disabled = false;
+        btn.textContent = "Tentar de novo";
+        estado.textContent = "erro: " + e.message;
+      }
+    });
+
+    function laco() {
+      if (recognizer && video.currentTime !== ultimoTempo) {
+        ultimoTempo = video.currentTime;
+        const res = recognizer.recognizeForVideo(video, performance.now());
+        tratar(res);
+      }
+      requestAnimationFrame(laco);
+    }
+
+    function tratar(res) {
+      ctx2d.clearRect(0, 0, canvas.width, canvas.height);
+
+      if (res.landmarks && res.landmarks.length > 0) {
+        const lm = res.landmarks[0];
+        desenhar(lm);
+
+        const centro = lm[9];               // base do dedo medio (~centro da palma)
+        const maoX = 1 - centro.x;          // espelho horizontal
+        const maoY = centro.y;              // 0 em cima, 1 em baixo
+
+        const g = (res.gestures && res.gestures[0] && res.gestures[0][0])
+          ? res.gestures[0][0].categoryName : "None";
+        estado.textContent = g;
+
+        // Disparo por transicao (so uma vez por abertura da mao)
+        if (g === GESTO_DISPARO && gestoAnterior !== GESTO_DISPARO && window.spatialEngine) {
+          const localX = (maoX - 0.5) * 3.2;        // esquerda / direita
+          const localY = (0.5 - maoY) * 2.2;        // cima / baixo
+          const freq   = notaPorAltura(maoY);
+          window.spatialEngine.largarSom(localX, localY, -2.2, freq);
+        }
+        gestoAnterior = g;
+      } else {
+        estado.textContent = "(sem mao)";
+        gestoAnterior = "None";
+      }
+    }
+
+    // Mao em cima (maoY pequeno) = nota mais aguda
+    function notaPorAltura(maoY) {
+      let idx = Math.round((1 - maoY) * (ESCALA.length - 1));
+      idx = Math.max(0, Math.min(ESCALA.length - 1, idx));
+      return ESCALA[idx];
+    }
+
+    // Desenha os 21 pontos da mao na pre-visualizacao
+    function desenhar(lm) {
+      ctx2d.fillStyle = "#4de1c1";
+      for (const p of lm) {
+        ctx2d.beginPath();
+        ctx2d.arc(p.x * canvas.width, p.y * canvas.height, 2.4, 0, Math.PI * 2);
+        ctx2d.fill();
+      }
+      const c = lm[9];
+      ctx2d.strokeStyle = "#ffd24d";
+      ctx2d.lineWidth = 2;
+      ctx2d.beginPath();
+      ctx2d.arc(c.x * canvas.width, c.y * canvas.height, 7, 0, Math.PI * 2);
+      ctx2d.stroke();
+    }
+  </script>
+
+</body>
+</html>
