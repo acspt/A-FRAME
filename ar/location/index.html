@@ -18,9 +18,10 @@
     <!-- cursor com rayOrigin: mouse transforma cliques do rato e toques no ecrã em eventos click nas entidades -->
     <!-- raycaster objects: .clicavel limita os cliques às entidades com essa classe -->
     <!-- sourceWidth/sourceHeight: resolução pedida à câmara; por omissão é 640x480, o que deixa o vídeo desfocado -->
+    <!-- videoTexture: false: o vídeo aparece por trás da cena e mantém a proporção; com true era esticado e ficava deformado -->
     <a-scene
       vr-mode-ui="enabled: false"
-      arjs="sourceType: webcam; videoTexture: true; debugUIEnabled: false; sourceWidth: 1280; sourceHeight: 960;"
+      arjs="sourceType: webcam; videoTexture: false; debugUIEnabled: false; sourceWidth: 1280; sourceHeight: 960;"
       cursor="rayOrigin: mouse"
       raycaster="objects: .clicavel"
     >
