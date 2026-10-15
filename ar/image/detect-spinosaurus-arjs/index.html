@@ -5,7 +5,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1, maximum-scale=1, user-scalable=no" />
     <title>Spinosaurus NFT</title>
     <!-- A-Frame e AR.js (versão com image tracking / NFT) em versões fixas -->
-    <script src="https://aframe.io/releases/1.3.0/aframe.min.js"></script>
+    <!-- A-Frame 1.6.0: é a versão para a qual o AR.js 3.4.8 (o mais recente) foi feito -->
+    <script src="https://aframe.io/releases/1.6.0/aframe.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/@ar-js-org/ar.js@3.4.8/aframe/build/aframe-ar-nft.js"></script>
   </head>
   <body style="margin: 0; overflow: hidden;">
@@ -24,10 +25,11 @@
         smoothTolerance=".01"
         smoothThreshold="5">
         <!-- conteúdo mostrado sobre a imagem: o modelo glTF do spinosaurus -->
+        <!-- no NFT as unidades são milímetros da imagem (1600 x 1019 px a 72 dpi = 564 x 359); o modelo mede ~8, por isso escala 40 -->
         <a-entity
           gltf-model="url(assets/spinosaurus.glb)"
-          scale="5 5 5"
-          position="150 300 -100">
+          scale="40 40 40"
+          position="0 0 0">
         </a-entity>
       </a-nft>
       <!-- câmara estática; o AR.js move o conteúdo de acordo com a imagem detetada -->
