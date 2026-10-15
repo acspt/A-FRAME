@@ -29,15 +29,18 @@
         rotation-reader
       ></a-camera>
       <!-- texto colocado numa latitude/longitude, perto da posição simulada -->
+      <!-- não pode ter as mesmas coordenadas da câmara: ficaria a 0 m, dentro da câmara, e não se via -->
+      <!-- latitude + 0.0001 fica cerca de 11 m para norte da câmara -->
+      <!-- scale 10: a 11 m de distância, o texto fica com um tamanho que cabe no ecrã -->
       <!-- desaparecer-ao-clicar (script.js): o texto desaparece quando o utilizador lhe clica ou toca -->
       <!-- geometry + material invisível: cria uma área de clique do tamanho do texto, mais fácil de acertar do que as letras -->
       <a-text
         class="clicavel"
         value="This will always face the user."
-        scale="75 75 75" color="#ff0000"
+        scale="10 10 10" color="#ff0000"
         geometry="primitive: plane; width: auto; height: auto"
         material="visible: false"
-        gps-entity-place="latitude: 51.049; longitude: -0.723;"
+        gps-entity-place="latitude: 51.0491; longitude: -0.723;"
         desaparecer-ao-clicar
       ></a-text>
     </a-scene>
