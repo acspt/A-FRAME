@@ -43,7 +43,7 @@ function onCollide() {
   //direcao.normalize();
 
   // a esfera tem corpo físico, por isso movemos o corpo (a física move depois a esfera)
-  esfera.body.position.x = esfera.body.position.x + direcao.x;
-  esfera.body.position.y = esfera.body.position.y + direcao.y;
-  esfera.body.position.z = esfera.body.position.z + direcao.z;
+  //esfera.body.position.x = esfera.body.position.x + direcao.x;
+ // esfera.body.position.y = esfera.body.position.y + direcao.y;
+ // esfera.body.position.z = esfera.body.position.z + direcao.z;
 }
