@@ -9,6 +9,8 @@
     <!-- A-Frame e AR.js (versão com localização) em versões fixas -->
     <script src="https://aframe.io/releases/1.6.0/aframe.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/@ar-js-org/ar.js@3.4.8/aframe/build/aframe-ar.js"></script>
+    <!-- biblioteca de física: deteta colisões entre entidades e lança o evento collide -->
+    <script src="https://cdn.jsdelivr.net/npm/@c-frame/aframe-physics-system@4.2.4/dist/aframe-physics-system.min.js"></script>
     <!-- jQuery: usado em script.js, por isso tem de ser carregado antes dele -->
     <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
     <!-- componentes próprios: têm de ser registados antes de a cena ser criada -->
@@ -19,16 +21,20 @@
     <!-- raycaster objects: .clicavel limita os cliques às entidades com essa classe -->
     <!-- sourceWidth/sourceHeight: resolução pedida à câmara; por omissão é 640x480, o que deixa o vídeo desfocado -->
     <!-- videoTexture: false: o vídeo aparece por trás da cena e mantém a proporção; com true era esticado e ficava deformado -->
+    <!-- physics gravity 0: liga a física, sem gravidade (o texto não cai) -->
     <a-scene
+      physics="gravity: 0"
       vr-mode-ui="enabled: false"
       arjs="sourceType: webcam; videoTexture: false; debugUIEnabled: false; sourceWidth: 1280; sourceHeight: 960;"
       cursor="rayOrigin: mouse"
       raycaster="objects: .clicavel"
     >
       <!-- simulateLatitude/simulateLongitude substituem o GPS real: o utilizador fica sempre nesta posição -->
+      <!-- static-body: corpo físico do utilizador, uma esfera com 4 m de raio à volta da câmara -->
       <a-camera
         gps-camera="simulateLatitude:  51.049; simulateLongitude: -0.723"
         rotation-reader
+        static-body="shape: sphere; sphereRadius: 4"
       ></a-camera>
       <!-- texto colocado numa latitude/longitude, perto da posição simulada -->
       <!-- não pode ter as mesmas coordenadas da câmara: ficaria a 0 m, dentro da câmara, e não se via -->
@@ -36,6 +42,8 @@
       <!-- scale 6: a 11 m de distância, o texto fica com um tamanho que cabe no ecrã -->
       <!-- align center: o texto fica centrado no ponto, em vez de começar nele e sair do ecrã pela direita -->
       <!-- desaparecer-ao-clicar (script.js): o texto desaparece quando o utilizador lhe clica ou toca -->
+      <!-- dynamic-body: corpo físico do texto, uma esfera com 1 m de raio -->
+      <!-- aumentar-ao-colidir (script.js): o texto fica maior quando colide com o corpo do utilizador (a menos de 5 m) -->
       <!-- geometry + material invisível: cria uma área de clique do tamanho do texto, mais fácil de acertar do que as letras -->
       <a-text
         class="clicavel"
@@ -45,6 +53,8 @@
         material="visible: false"
         gps-entity-place="latitude: 51.0491; longitude: -0.723;"
         desaparecer-ao-clicar
+        dynamic-body="shape: sphere; sphereRadius: 1"
+        aumentar-ao-colidir
       ></a-text>
     </a-scene>
   </body>
