@@ -40,7 +40,7 @@ function onCollide() {
   direcao.subVectors(esfera.object3D.position, camara.object3D.position);
 
   // normalize deixa o vetor com comprimento 1, ou seja, 1 metro
-  direcao.normalize();
+  //direcao.normalize();
 
   // a esfera tem corpo físico, por isso movemos o corpo (a física move depois a esfera)
   esfera.body.position.x = esfera.body.position.x + direcao.x;
