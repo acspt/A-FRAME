@@ -56,9 +56,24 @@
 
       <h2>AR com localização (GPS)</h2>
 
-      <a class="card" href="ar/location/index.html">
-        <strong>Texto numa localização (AR.js)</strong>
-        <span>Mostra um texto num ponto com latitude e longitude; a posição do utilizador é simulada com <code>simulateLatitude</code> e <code>simulateLongitude</code>.</span>
+      <a class="card" href="ar/location/0/index.html">
+        <strong>Texto numa localização 0 (AR.js)</strong>
+        <span>Mostra um texto num ponto com latitude e longitude; a posição do utilizador é simulada com <code>simulateLatitude</code> e <code>simulateLongitude</code>. O texto desaparece ao clicar; não há colisão.</span>
+      </a>
+
+      <a class="card" href="ar/location/1/index.html">
+        <strong>Texto numa localização 1 (AR.js)</strong>
+        <span>Mostra um texto num ponto com latitude e longitude; a posição do utilizador é simulada com <code>simulateLatitude</code> e <code>simulateLongitude</code>. O texto desaparece ao clicar e aumenta quando o utilizador está a menos de 5 m (distância calculada no <code>tick</code>).</span>
+      </a>
+
+      <a class="card" href="ar/location/2/index.html">
+        <strong>Texto numa localização 2 (AR.js + física)</strong>
+        <span>Igual à versão 1, mas o texto aumenta com o evento <code>collide</code> da biblioteca <code>aframe-physics-system</code>, quando o corpo do utilizador colide com o do texto.</span>
+      </a>
+
+      <a class="card" href="ar/location/3/index.html">
+        <strong>Esfera numa localização 3 (AR.js + física)</strong>
+        <span>Igual à versão 2, mas com uma esfera em vez do texto e sem o evento <code>click</code>: com o evento <code>collide</code>, a esfera afasta-se 1 m na direção do vetor entre a câmara e a esfera.</span>
       </a>
 
       <h2>Marcadores para imprimir</h2>
