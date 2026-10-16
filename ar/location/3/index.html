@@ -25,25 +25,23 @@
       vr-mode-ui="enabled: false"
       arjs="sourceType: webcam; videoTexture: false; debugUIEnabled: false; sourceWidth: 1280; sourceHeight: 960;"
     >
-      <!-- gps-camera sem simulação: usa o GPS real do telemóvel -->
+      <!-- simulateLatitude/simulateLongitude substituem o GPS real (para testar no PC) -->
+      <!-- a posição simulada fica cerca de 24 m a sul da esfera: se ficasse dentro da esfera, não se via -->
+      <!-- no telemóvel, para usar o GPS real, basta escrever só gps-camera -->
       <!-- static-body: corpo físico do utilizador, uma esfera com 4 m de raio à volta da câmara -->
       <a-camera
-       
-         gps-camera="simulateLatitude: 41.478017; simulateLongitude: -7.177743"
-       
+        gps-camera="simulateLatitude: 41.4778; simulateLongitude: -7.177743"
         rotation-reader
         static-body="shape: sphere; sphereRadius: 4"
       ></a-camera>
       <!-- esfera colocada na EsACT (Escola Superior de Comunicação, Administração e Turismo, Mirandela) -->
       <!-- coordenadas retiradas do Google Maps: 41.478017, -7.177743 -->
-      <!-- dynamic-body: corpo físico da esfera, com o mesmo raio da esfera (50 m) -->
-      <!-- afastar-ao-colidir (script.js): quando colide com o corpo do utilizador (a menos de 54 m do centro), a esfera afasta-se na direção câmara → esfera -->
+      <!-- dynamic-body: corpo físico da esfera, com o mesmo raio da esfera (5 m) -->
       <a-sphere
-        radius="5
+        radius="5"
         color="#ff0000"
-        gps-entity-place="latitude: 41.47801; longitude: -7.1778;"
+        gps-entity-place="latitude: 41.478017; longitude: -7.177743;"
         dynamic-body="shape: sphere; sphereRadius: 5"
-  
       ></a-sphere>
     </a-scene>
   </body>
