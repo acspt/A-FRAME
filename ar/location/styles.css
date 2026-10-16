@@ -1,0 +1,5 @@
+/* a página ocupa o ecrã todo, sem margens nem barras de deslocamento */
+body {
+  margin: 0;
+  overflow: hidden;
+}
