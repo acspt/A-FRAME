@@ -74,6 +74,9 @@ function onCollide() {
   var direcao = new THREE.Vector3();
   direcao.subVectors(esfera.object3D.position, camara.object3D.position);
 
+  // a esfera só se afasta na horizontal: sem isto descia 1,6 m (a altura da câmara)
+  direcao.y = 0;
+
   // normalize deixa o vetor com comprimento 1, ou seja, 1 metro
   //direcao.normalize();
 
