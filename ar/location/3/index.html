@@ -25,23 +25,24 @@
       vr-mode-ui="enabled: false"
       arjs="sourceType: webcam; videoTexture: false; debugUIEnabled: false; sourceWidth: 1280; sourceHeight: 960;"
     >
-      <!-- simulateLatitude/simulateLongitude substituem o GPS real: o utilizador fica sempre nesta posição -->
+      <!-- gps-camera sem simulação: usa o GPS real do telemóvel -->
       <!-- static-body: corpo físico do utilizador, uma esfera com 4 m de raio à volta da câmara -->
       <a-camera
-        gps-camera="simulateLatitude:  51.049; simulateLongitude: -0.723"
+       
+         gps-camera="simulateLatitude: 41.478017; simulateLongitude: -7.1777"
+       
         rotation-reader
         static-body="shape: sphere; sphereRadius: 4"
       ></a-camera>
-      <!-- esfera colocada numa latitude/longitude, perto da posição simulada -->
-      <!-- não pode ter as mesmas coordenadas da câmara: ficaria a 0 m, dentro da câmara, e não se via -->
-      <!-- latitude + 0.0001 fica cerca de 11 m para norte da câmara -->
-      <!-- dynamic-body: corpo físico da esfera, com o mesmo raio da esfera (1 m) -->
-      <!-- afastar-ao-colidir (script.js): quando colide com o corpo do utilizador (a menos de 5 m), a esfera afasta-se 1 m na direção câmara → esfera -->
+      <!-- esfera colocada na EsACT (Escola Superior de Comunicação, Administração e Turismo, Mirandela) -->
+      <!-- coordenadas retiradas do Google Maps: 41.478017, -7.177743 -->
+      <!-- dynamic-body: corpo físico da esfera, com o mesmo raio da esfera (50 m) -->
+      <!-- afastar-ao-colidir (script.js): quando colide com o corpo do utilizador (a menos de 54 m do centro), a esfera afasta-se na direção câmara → esfera -->
       <a-sphere
-        radius="1"
+        radius="50"
         color="#ff0000"
-        gps-entity-place="latitude: 51.0491; longitude: -0.723;"
-        dynamic-body="shape: sphere; sphereRadius: 1"
+        gps-entity-place="latitude: 41.478017; longitude: -7.177743;"
+        dynamic-body="shape: sphere; sphereRadius: 50"
         afastar-ao-colidir
       ></a-sphere>
     </a-scene>
