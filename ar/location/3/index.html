@@ -29,7 +29,7 @@
       <!-- (para testar no PC: gps-camera="simulateLatitude: 41.478107; simulateLongitude: -7.177743", 10 m a norte da esfera) -->
       <!-- static-body: corpo físico do utilizador, uma esfera com 4 m de raio à volta da câmara -->
       <a-camera
-      gps-camera="simulateLatitude: 41.478100; simulateLongitude: -7.177655"
+      gps-camera="simulateLatitude: 41.478100; simulateLongitude: -7.177743"
         rotation-reader
         static-body="shape: sphere; sphereRadius: 4"
       >
@@ -52,9 +52,9 @@
       <!-- afastar-ao-colidir (script.js): liga a física (dynamic-body) depois de o GPS colocar a esfera -->
       <!-- e, quando colide com o corpo do utilizador (a menos de 9 m do centro), afasta a esfera na direção câmara → esfera -->
       <a-sphere
-        radius="5"
+        radius="50"
         color="#ff0000"
-        gps-entity-place="latitude: 41.478000; longitude: -7.177655;"
+        gps-entity-place="latitude: 41.477900; longitude: -7.177655;"
         afastar-ao-colidir
       ></a-sphere>
     </a-scene>
