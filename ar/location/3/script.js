@@ -10,6 +10,15 @@ AFRAME.registerComponent('afastar-ao-colidir', {
     // guardamos a entidade (por exemplo, a a-sphere) numa variável
     var entidade = $(this.el);
 
+    // quando um componente da entidade é criado ou muda (por exemplo, a posição), corre a função ligarFisica
+    entidade.on('componentinitialized componentchanged', ligarFisica);
+
+    // com a posição simulada, o GPS coloca a esfera antes de este componente arrancar:
+    // nesse caso a esfera já tem posição e ligamos a física logo
+    if (this.el.components.position) {
+      criarCorpoFisico(this.el);
+    }
+
     // quando o corpo físico da entidade estiver pronto, corre a função semEmpurrar
     entidade.on('body-loaded', semEmpurrar);
 
@@ -17,6 +26,32 @@ AFRAME.registerComponent('afastar-ao-colidir', {
     entidade.on('collide', onCollide);
   }
 });
+
+// Função que liga a física só depois de o GPS colocar a esfera no sítio certo.
+// Se a física fosse ligada logo no HTML, a esfera ficava presa no ponto 0 0 0
+// (com dynamic-body, é a física que manda na posição e ignora o GPS).
+function ligarFisica(evento) {
+
+  // só nos interessa quando muda a posição (é o GPS a colocar a esfera)
+  if (evento.detail.name !== 'position') {
+    return;
+  }
+
+  criarCorpoFisico(this);
+}
+
+// Função que dá um corpo físico à esfera (só uma vez)
+function criarCorpoFisico(esfera) {
+
+  // se a esfera já tem física, não fazemos nada
+  if ($(esfera).is('[dynamic-body]')) {
+    return;
+  }
+
+  // corpo físico com o mesmo raio da esfera
+  var raio = $(esfera).attr('radius');
+  $(esfera).attr('dynamic-body', 'shape: sphere; sphereRadius: ' + raio);
+}
 
 // Função que corre quando o corpo físico da entidade fica pronto
 function semEmpurrar() {
