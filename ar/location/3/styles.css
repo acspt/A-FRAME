@@ -3,3 +3,10 @@ body {
   margin: 0;
   overflow: hidden;
 }
+
+/* o canvas da cena é desenhado com a proporção da câmara (4:3), mas ocupa o ecrã todo */
+/* sem isto fica esticado e a esfera parece uma elipse */
+/* cover: mantém a proporção e corta as sobras, tal como o vídeo da câmara */
+.a-canvas {
+  object-fit: cover;
+}
