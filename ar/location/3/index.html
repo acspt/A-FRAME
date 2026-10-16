@@ -32,7 +32,21 @@
         gps-camera
         rotation-reader
         static-body="shape: sphere; sphereRadius: 4"
-      ></a-camera>
+      >
+        <!-- texto dentro da câmara: anda com ela e fica sempre visível, em baixo no ecrã -->
+        <!-- mostrar-gps (script.js): escreve a latitude, a longitude e a precisão do GPS -->
+        <!-- geometry + material: fundo preto meio transparente, para o texto se ler sobre o vídeo -->
+        <a-text
+          value="A procurar GPS..."
+          position="0 -0.7 -2"
+          width="2"
+          align="center"
+          color="#ffffff"
+          geometry="primitive: plane; width: auto; height: auto"
+          material="color: #000000; opacity: 0.5"
+          mostrar-gps
+        ></a-text>
+      </a-camera>
       <!-- esfera colocada na EsACT (Escola Superior de Comunicação, Administração e Turismo, Mirandela) -->
       <!-- coordenadas retiradas do Google Maps: 41.478017, -7.177743 -->
       <!-- afastar-ao-colidir (script.js): liga a física (dynamic-body) depois de o GPS colocar a esfera -->

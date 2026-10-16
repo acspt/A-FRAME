@@ -27,6 +27,37 @@ AFRAME.registerComponent('afastar-ao-colidir', {
   }
 });
 
+// Criamos outro componente, chamado "mostrar-gps".
+// Usa-se num a-text: o texto passa a mostrar as coordenadas GPS do utilizador.
+AFRAME.registerComponent('mostrar-gps', {
+
+  init: function () {
+
+    // guardamos o texto numa variável
+    var texto = $(this.el);
+
+    // o gps-camera avisa a janela (window) sempre que recebe uma nova posição GPS
+    $(window).on('gps-camera-update-position', function (evento) {
+
+      // a posição vem dentro do evento
+      var posicao = evento.detail.position;
+
+      // toFixed(6): 6 casas decimais (cerca de 10 cm de precisão)
+      var mensagem = 'Latitude: ' + posicao.latitude.toFixed(6) + '\n' +
+                     'Longitude: ' + posicao.longitude.toFixed(6);
+
+      // a precisão só existe com o GPS real (com a posição simulada não há)
+      if (posicao.accuracy) {
+        // sem acentos: a letra por omissão do a-text não tem "ã"
+        mensagem = mensagem + '\n' + 'Precisao: ' + Math.round(posicao.accuracy) + ' m';
+      }
+
+      // mudamos o texto que aparece no ecrã
+      texto.attr('value', mensagem);
+    });
+  }
+});
+
 // Função que liga a física só depois de o GPS colocar a esfera no sítio certo.
 // Se a física fosse ligada logo no HTML, a esfera ficava presa no ponto 0 0 0
 // (com dynamic-body, é a física que manda na posição e ignora o GPS).
