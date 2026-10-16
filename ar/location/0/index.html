@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="pt">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>AR Localização</title>
+    <!-- estilos da página -->
+    <link rel="stylesheet" href="styles.css" />
+    <!-- A-Frame e AR.js (versão com localização) em versões fixas -->
+    <script src="https://aframe.io/releases/1.6.0/aframe.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@ar-js-org/ar.js@3.4.8/aframe/build/aframe-ar.js"></script>
+    <!-- jQuery: usado em script.js, por isso tem de ser carregado antes dele -->
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+    <!-- componentes próprios: têm de ser registados antes de a cena ser criada -->
+    <script src="script.js"></script>
+  </head>
+  <body>
+    <!-- cursor com rayOrigin: mouse transforma cliques do rato e toques no ecrã em eventos click nas entidades -->
+    <!-- raycaster objects: .clicavel limita os cliques às entidades com essa classe -->
+    <!-- sourceWidth/sourceHeight: resolução pedida à câmara; por omissão é 640x480, o que deixa o vídeo desfocado -->
+    <!-- videoTexture: false: o vídeo aparece por trás da cena e mantém a proporção; com true era esticado e ficava deformado -->
+    <a-scene
+      vr-mode-ui="enabled: false"
+      arjs="sourceType: webcam; videoTexture: false; debugUIEnabled: false; sourceWidth: 1280; sourceHeight: 960;"
+      cursor="rayOrigin: mouse"
+      raycaster="objects: .clicavel"
+    >
+      <!-- simulateLatitude/simulateLongitude substituem o GPS real: o utilizador fica sempre nesta posição -->
+      <a-camera
+        gps-camera="simulateLatitude:  51.049; simulateLongitude: -0.723"
+        rotation-reader
+      ></a-camera>
+      <!-- texto colocado numa latitude/longitude, perto da posição simulada -->
+      <!-- não pode ter as mesmas coordenadas da câmara: ficaria a 0 m, dentro da câmara, e não se via -->
+      <!-- latitude + 0.0001 fica cerca de 11 m para norte da câmara -->
+      <!-- scale 6: a 11 m de distância, o texto fica com um tamanho que cabe no ecrã -->
+      <!-- align center: o texto fica centrado no ponto, em vez de começar nele e sair do ecrã pela direita -->
+      <!-- desaparecer-ao-clicar (script.js): o texto desaparece quando o utilizador lhe clica ou toca -->
+      <!-- geometry + material invisível: cria uma área de clique do tamanho do texto, mais fácil de acertar do que as letras -->
+      <a-text
+        class="clicavel"
+        value="This will always face the user."
+        scale="6 6 6" align="center" color="#ff0000"
+        geometry="primitive: plane; width: auto; height: auto"
+        material="visible: false"
+        gps-entity-place="latitude: 51.0491; longitude: -0.723;"
+        desaparecer-ao-clicar
+      ></a-text>
+    </a-scene>
+  </body>
+</html>
