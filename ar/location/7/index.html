@@ -13,15 +13,27 @@
         vr-mode-ui="enabled: false"
 		arjs='sourceType: webcam; videoTexture: true; debugUIEnabled: false;'>
 
+        <!-- a-assets: carrega as imagens da pasta assets antes de a cena começar -->
+        <!-- cada imagem tem um id; as entidades usam-na com src="#id" -->
+        <!-- nas imagens usa-se <img>; o a-asset-item é para outros ficheiros, como modelos 3D (.glb, .gltf) -->
+        <a-assets>
+            <img id="imagem1" src="assets/1.jpg" />
+            <img id="imagem2" src="assets/2.jpg" />
+            <img id="imagem3" src="assets/3.jpg" />
+        </a-assets>
+
         <!-- ~ 400m far -->
-        <a-box material="color: red;" scale="5 5 5" gps-entity-place="latitude: 44.506477; longitude: 11.301524;"></a-box> 
+        <!-- a imagem 3 aparece em todas as faces da caixa -->
+        <a-box material="src: #imagem3;" scale="5 5 5" gps-entity-place="latitude: 44.506477; longitude: 11.301524;"></a-box>
 
         <!-- ~ 20m far -->
-        <a-image src="https://cdn.glitch.global/7c8e8f3b-8c0b-4628-a41b-1cca920f8c1a/place.png?v=1711653505265" gps-entity-place="latitude: 44.504417; longitude: 11.301317;"
-        ></a-image> 
+        <!-- width/height com a proporção da imagem (3024 x 4032 = 3:4), para não ficar deformada -->
+        <a-image src="#imagem1" width="3" height="4" gps-entity-place="latitude: 44.504417; longitude: 11.301317;"
+        ></a-image>
 
         <!-- ~ 0m far -->
-        <a-image src="https://cdn.glitch.global/7c8e8f3b-8c0b-4628-a41b-1cca920f8c1a/place.png?v=1711653505265" gps-entity-place="latitude: 44.504348; longitude: 11.301027;"
+        <!-- width/height com a proporção da imagem (3456 x 5184 = 2:3) -->
+        <a-image src="#imagem2" width="2" height="3" gps-entity-place="latitude: 44.504348; longitude: 11.301027;"
             ></a-image>
 
         <!-- using gpsMinDistance: 5 => update GPS only if user moves by 5 meters or more => avoid shaking for near objects -->
