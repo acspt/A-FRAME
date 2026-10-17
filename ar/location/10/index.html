@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="pt">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>AR Cursor</title>
+    <!-- Clicar num objeto com um cursor no centro do ecrã -->
+    <!-- https://aframe.io/docs/1.8.0/components/cursor.html -->
+
+    <!-- estilos da página -->
+    <link rel="stylesheet" href="styles.css" />
+    <!-- A-Frame e AR.js (versão com localização) em versões fixas -->
+    <script src="https://aframe.io/releases/1.6.0/aframe.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@ar-js-org/ar.js@3.4.8/aframe/build/aframe-ar.js"></script>
+  </head>
+  <body>
+    <!-- sourceWidth/sourceHeight: resolução pedida à câmara; por omissão é 640x480, o que deixa o vídeo desfocado -->
+    <!-- videoTexture: false: o vídeo aparece por trás da cena e mantém a proporção -->
+    <a-scene
+      vr-mode-ui="enabled: false"
+      arjs="sourceType: webcam; videoTexture: false; debugUIEnabled: false; sourceWidth: 1280; sourceHeight: 960;"
+    >
+      <!-- simulateLatitude/simulateLongitude substituem o GPS real: a câmara fica 10 m a sul da caixa -->
+      <!-- para usar o GPS real do telemóvel, basta escrever só gps-camera -->
+      <a-camera
+        gps-camera="simulateLatitude: 41.477810; simulateLongitude: -7.177655"
+        rotation-reader
+      >
+        <!-- cursor: anel dentro da câmara, 1 m à frente, por isso fica sempre no centro do ecrã -->
+        <!-- o cursor lança um raio a partir do centro do ecrã e clica no objeto que o raio apanhar -->
+        <!-- fuse: true: basta olhar para o objeto durante fuseTimeout (1500 ms = 1,5 s) para clicar -->
+        <!-- (tocar no ecrã também clica no objeto que está no centro) -->
+        <!-- raycaster objects: .clicavel: o raio só apanha entidades com a classe clicavel -->
+        <!-- animation__fusing: o anel encolhe enquanto se espera pelo clique -->
+        <!-- animation__click / animation__mouseleave: o anel volta ao tamanho normal -->
+        <a-entity
+          cursor="fuse: true; fuseTimeout: 1500"
+          raycaster="objects: .clicavel"
+          position="0 0 -1"
+          geometry="primitive: ring; radiusInner: 0.02; radiusOuter: 0.03"
+          material="color: #ffffff; shader: flat"
+          animation__fusing="property: scale; from: 1 1 1; to: 0.3 0.3 0.3; dur: 1500; easing: easeInCubic; startEvents: fusing"
+          animation__click="property: scale; to: 1 1 1; dur: 150; startEvents: click"
+          animation__mouseleave="property: scale; to: 1 1 1; dur: 150; startEvents: mouseleave"
+        ></a-entity>
+      </a-camera>
+
+      <!-- caixa vermelha colocada na EsACT, 10 m a norte da posição simulada -->
+      <!-- class="clicavel": o cursor pode clicar nela -->
+      <!-- animation__mouseenter / mouseleave: fica amarela quando o cursor está em cima e volta a vermelho quando sai -->
+      <!-- animation__click: quando é clicada, dá uma volta completa -->
+      <!-- position y 1.6: à altura da câmara (dos olhos), para o cursor a apanhar a olhar em frente -->
+      <!-- rotation 0 0 0: rotação inicial, de onde parte a animação do clique -->
+      <a-box
+        class="clicavel"
+        position="0 1.6 0"
+        rotation="0 0 0"
+        color="#ff0000"
+        width="2"
+        height="2"
+        depth="2"
+        gps-entity-place="latitude: 41.477900; longitude: -7.177655;"
+        animation__mouseenter="property: material.color; type: color; to: #ffff00; dur: 200; startEvents: mouseenter"
+        animation__mouseleave="property: material.color; type: color; to: #ff0000; dur: 200; startEvents: mouseleave"
+        animation__click="property: rotation; from: 0 0 0; to: 0 360 0; dur: 1000; startEvents: click"
+      ></a-box>
+    </a-scene>
+  </body>
+</html>
