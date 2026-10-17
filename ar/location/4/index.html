@@ -1,0 +1,68 @@
+
+  <!-- https://ar-js-org.github.io/AR.js-Docs/location-based/ -->
+   
+!DOCTYPE html>
+<html lang="pt">
+  <head>
+  
+
+
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>AR Localização</title>
+    <!-- estilos da página -->
+    <link rel="stylesheet" href="styles.css" />
+    <!-- A-Frame e AR.js (versão com localização) em versões fixas -->
+    <script src="https://aframe.io/releases/1.6.0/aframe.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@ar-js-org/ar.js@3.4.8/aframe/build/aframe-ar.js"></script>
+    <!-- biblioteca de física: deteta colisões entre entidades e lança o evento collide -->
+    <script src="https://cdn.jsdelivr.net/npm/@c-frame/aframe-physics-system@4.2.4/dist/aframe-physics-system.min.js"></script>
+    <!-- jQuery: usado em script.js, por isso tem de ser carregado antes dele -->
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+    <!-- componentes próprios: têm de ser registados antes de a cena ser criada -->
+    <script src="script.js"></script>
+  </head>
+  <body>
+    <!-- Esta versão usa os componentes novos do AR.js (new-location-based), os recomendados na documentação: -->
+    <!-- https://ar-js-org.github.io/AR.js-Docs/location-based/ -->
+    <!-- gps-new-camera em vez de gps-camera, gps-new-entity-place em vez de gps-entity-place -->
+
+    <!-- caixa de texto HTML por cima da cena, no topo do ecrã (estilo em styles.css) -->
+    <div id="gps">A procurar GPS...</div>
+
+    <!-- sourceWidth/sourceHeight: resolução pedida à câmara; por omissão é 640x480, o que deixa o vídeo desfocado -->
+    <!-- videoTexture: false: o vídeo aparece por trás da cena e mantém a proporção; com true era esticado e ficava deformado -->
+    <!-- physics gravity 0: liga a física, sem gravidade (a esfera não cai) -->
+    <a-scene
+      physics="gravity: 0"
+      vr-mode-ui="enabled: false"
+      arjs="sourceType: webcam; videoTexture: false; debugUIEnabled: false; sourceWidth: 1280; sourceHeight: 960;"
+    >
+      <!-- gps-new-camera: usa o GPS real do telemóvel -->
+      <!-- no telemóvel, desliga sozinho o look-controls e roda a câmara com os sensores (arjs-device-orientation-controls) -->
+      <!-- gpsMinDistance: 5: só atualiza a posição quando o utilizador anda pelo menos 5 m (evita saltos do GPS) -->
+      <!-- (para testar no PC: gps-new-camera="simulateLatitude: 41.477990; simulateLongitude: -7.177655", 10 m a norte da esfera) -->
+      <!-- static-body: corpo físico do utilizador, uma esfera com 4 m de raio à volta da câmara -->
+      <!-- a câmara não pode ter entidades lá dentro (por exemplo, um a-text): -->
+      <!-- o A-Frame só arranca a câmara depois dos filhos e o gps-new-entity-place da esfera arrancava antes dela, dando erro -->
+      <!-- mostrar-gps (script.js): escreve a latitude e a longitude no div #gps -->
+      <a-camera
+        gps-new-camera="gpsMinDistance: 5"
+        rotation-reader
+        static-body="shape: sphere; sphereRadius: 4"
+        mostrar-gps
+      ></a-camera>
+      <!-- esfera colocada na EsACT (Escola Superior de Comunicação, Administração e Turismo, Mirandela) -->
+      <!-- gps-new-entity-place calcula a posição logo no início, por isso a física pode ficar aqui no HTML -->
+      <!-- dynamic-body: corpo físico da esfera, com o mesmo raio da esfera (5 m) -->
+      <!-- afastar-ao-colidir (script.js): quando colide com o corpo do utilizador, a esfera afasta-se na direção câmara → esfera -->
+      <a-sphere
+        radius="5"
+        color="#ff0000"
+        gps-new-entity-place="latitude: 41.477900; longitude: -7.177655"
+        dynamic-body="shape: sphere; sphereRadius: 5"
+        afastar-ao-colidir
+      ></a-sphere>
+    </a-scene>
+  </body>
+</html>

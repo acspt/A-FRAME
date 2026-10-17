@@ -1,0 +1,28 @@
+/* a página ocupa o ecrã todo, sem margens nem barras de deslocamento */
+body {
+  margin: 0;
+  overflow: hidden;
+}
+
+/* o canvas da cena é desenhado com a proporção da câmara (4:3), mas ocupa o ecrã todo */
+/* sem isto fica esticado e a esfera parece uma elipse */
+/* cover: mantém a proporção e corta as sobras, tal como o vídeo da câmara */
+.a-canvas {
+  object-fit: cover;
+}
+
+/* caixa com as coordenadas GPS, no topo do ecrã e por cima da cena */
+#gps {
+  position: fixed;
+  top: 8px;
+  left: 50%;
+  transform: translateX(-50%); /* centra a caixa na horizontal */
+  z-index: 10;                 /* fica à frente do canvas */
+  padding: 4px 10px;
+  background: rgba(0, 0, 0, 0.5);
+  color: #ffffff;
+  font-family: sans-serif;
+  font-size: 14px;
+  text-align: center;
+  border-radius: 6px;
+}

@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="pt">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>AR LocAR</title>
+    <!-- Tutorial de AR por localização com A-Frame, usando a biblioteca LocAR.js (a recomendada pelo AR.js): -->
+    <!-- https://ar-js-org.github.io/AR.js-Docs/location-based-aframe/#locarjs -->
+    <!-- https://github.com/AR-js-org/locar.js -->
+
+    <!-- estilos da página -->
+    <link rel="stylesheet" href="styles.css" />
+    <!-- A-Frame em versão fixa: tem de vir primeiro, porque cria o THREE que a LocAR usa -->
+    <script src="https://aframe.io/releases/1.6.0/aframe.min.js"></script>
+    <!-- LocAR: GPS, sensores do telemóvel e câmara (webcam) -->
+    <script src="https://cdn.jsdelivr.net/npm/locar@0.2.12/dist/locar.umd.js"></script>
+    <!-- a LocAR fica guardada com o nome "locar", mas os componentes A-Frame procuram "LocAR" -->
+    <script>window.LocAR = window.locar;</script>
+    <!-- componentes A-Frame da LocAR: locar-webcam, locar-camera e locar-entity-place -->
+    <script src="https://cdn.jsdelivr.net/npm/locar-aframe@0.2.0/dist/locar-aframe.umd.js"></script>
+    <!-- jQuery: usado em script.js, por isso tem de ser carregado antes dele -->
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+    <!-- código próprio: mostra as coordenadas GPS e cria uma caixa a norte do utilizador -->
+    <script src="script.js"></script>
+  </head>
+  <body>
+    <!-- caixa de texto HTML por cima da cena, no topo do ecrã (estilo em styles.css) -->
+    <div id="gps">A procurar GPS...</div>
+
+    <!-- locar-webcam: mostra o vídeo da câmara do telemóvel como fundo da cena -->
+    <!-- idealWidth/idealHeight: resolução pedida à câmara -->
+    <a-scene
+      vr-mode-ui="enabled: false"
+      locar-webcam="idealWidth: 1280; idealHeight: 960"
+    >
+      <!-- caixa vermelha fixa, colocada numa latitude/longitude (EsACT, Mirandela) -->
+      <!-- locar-entity-place: equivalente ao gps-new-entity-place do AR.js -->
+      <!-- fica antes da câmara: assim espera que a câmara tenha uma posição antes de se colocar -->
+      <a-box
+        color="#ff0000"
+        width="10"
+        height="10"
+        depth="10"
+        locar-entity-place="latitude: 41.477900; longitude: -7.177655"
+      ></a-box>
+
+      <!-- locar-camera: câmara com GPS; equivalente ao gps-new-camera do AR.js -->
+      <!-- no telemóvel roda com os sensores e pede autorização para os usar (iPhone) -->
+      <!-- (para testar no PC: locar-camera="simulateLatitude: 41.477990; simulateLongitude: -7.177655", 10 m a norte da caixa) -->
+      <a-camera locar-camera></a-camera>
+    </a-scene>
+  </body>
+</html>
