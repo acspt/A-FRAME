@@ -1,0 +1,30 @@
+{
+  "name": "A-FrameCourse",
+  "version": "0.0.3",
+  "description": "A-Frame Course materials",
+  "author": "Jorge C. S. Cardoso <jorgecardoso@ieee.org>",
+  "keywords": [
+    "aframe",
+    "virtual reality",
+    "vr"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/jorgecardoso/aframe-course"
+  },
+  "main": "server.js",
+  "scripts": {
+    "start": "node server.js"
+  },
+  "dependencies": {
+    "express": "^4.17.1",
+    "showdown": "^1.9.1",
+    "showdown-highlight": "^2.1.4",
+    "eta": "^1.1.1",
+    "cross-env": "^7.0.2"
+  },
+  "engines": {
+    "node": "12.x"
+  },
+  "license": "MIT"
+}
