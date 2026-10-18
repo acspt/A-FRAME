@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Caixas GPS que mudam de cor</title>
+    <script src="https://aframe.io/releases/1.3.0/aframe.min.js"></script>
+    <script src="https://raw.githack.com/AR-js-org/AR.js/master/aframe/build/aframe-ar-nft.js"></script>
+    <script src="script.js"></script>
+  </head>
+  <body>
+    <a-scene
+      vr-mode-ui="enabled: false"
+      cursor="rayOrigin: mouse"
+
+      raycaster="near: 0; far: 50000; objects: .clickable"
+      arjs="sourceType: webcam; videoTexture: true; debugUIEnabled: false;"
+      renderer="antialias: true; alpha: true"
+    >
+      <a-camera
+        gps-projected-camera="simulateLatitude: 51.049; simulateLongitude: -0.723"
+        rotation-reader
+      ></a-camera>
+      <a-box
+        gps-projected-entity-place="latitude: 51.049; longitude: -0.7170"
+        color="red"
+        scale="200 200 200"
+        clicker
+        class="clickable"
+      ></a-box>
+
+      <a-box
+        gps-projected-entity-place="latitude: 51.05961; longitude: -0.7171"
+        color="blue"
+        scale="200 200 200"
+        position="-200 0 0"
+        clicker
+        class="clickable"
+      ></a-box>
+    </a-scene>
+  </body>
+</html>
