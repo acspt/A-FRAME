@@ -1,0 +1,12 @@
+/* a página ocupa o ecrã todo, sem margens nem barras de deslocamento */
+body {
+  margin: 0;
+  overflow: hidden;
+}
+
+/* o canvas da cena é desenhado com a proporção da câmara (4:3), mas ocupa o ecrã todo */
+/* sem isto fica esticado e os objetos ficam deformados */
+/* cover: mantém a proporção e corta as sobras, tal como o vídeo da câmara */
+.a-canvas {
+  object-fit: cover;
+}
