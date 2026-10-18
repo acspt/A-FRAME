@@ -71,7 +71,7 @@ But for this we must invert how we position sounds: instead of putting a sound i
 ## Exercises
 
 
-Go to: <a href="https://aframe-usj-exercises.glitch.me/sound.html" target="_blank">https://aframe-usj-exercises.glitch.me/sound.html</a>
+Go to: <a href="https://acspt.github.io/A-FRAME/aframe-course-jorge-cardoso/sound.html" target="_blank">https://acspt.github.io/A-FRAME/aframe-course-jorge-cardoso/sound.html</a>
 
 
 ## References

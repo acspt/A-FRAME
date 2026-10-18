@@ -57,19 +57,7 @@ If no position is given, the object will be placed at (0, 0, 0).
 
 It's important to understand that, in A-Frame, the origin (0, 0, 0) is at the user's feet. Also, by default, when vieweing the VE in a mobile or desktop device without positional tracking, the user's eyes will be set at (0, 1.6, 0) &ndash; 1.6 meters above the ground.
 
-<figure>
-    <img src="https://cdn.glitch.com/80978ab7-9db6-45ae-bc43-4fab16bdbb6e%2Faxis.png?1523305221866"
-         alt="3D axes">
-    <figcaption>Figure 1 - Axes in A-Frame.</figcaption>
-</figure>
-
-A nice mnemonic to remember the which axis points in what direction is to use your right hand as shown in Figure 2. If your put your thumb, index, and middle finger as in Figure 2 (your middle finger is pointing directly at you) then the x, y, and z axis are aligned with your thumb, index, and middle fingers. The positive direction of the axis points in the direction your fingers are extended to. Notice how it is easy to see that to place something in front of you in A-Frame you need to give it negative values of z!
-
-<figure>
-    <img src="https://cdn.glitch.com/80978ab7-9db6-45ae-bc43-4fab16bdbb6e%2Faxis-mnemonic.png?v=1589036935916"
-         alt="3D axes mnemonic">
-    <figcaption>Figure 2 - 3D axes mnemonic. Point the middle finger towards you and open up the index and thumb; Your fingers now point in the positive direction of the x, y, and z axes.</figcaption>
-</figure>
+A nice mnemonic to remember the which axis points in what direction is to use your right hand. If your put your thumb, index, and middle finger like this (your middle finger is pointing directly at you) then the x, y, and z axis are aligned with your thumb, index, and middle fingers. The positive direction of the axis points in the direction your fingers are extended to. Notice how it is easy to see that to place something in front of you in A-Frame you need to give it negative values of z!
 
 :::note tryout
 1. Try changing the position so that the box is higher in the screen and further away.
@@ -128,28 +116,7 @@ To learn what attributes a given primitive needs for setting its size, you must 
 
 The `rotation` attribute specifies three values for the rotation around each of the x, y, z axes. In the example, notice how the box is rotated 45º in the x-axis &ndash; towards you.
 
-To know in which direction the object will rotate you can use the mnemonics in Figure 3. Use your thumb to point it in the positive direction of the axis you wish to rotate about. Then close your hand; the direction in which your hand closes is the positive rotation.
-
-<figure>
-<figure>
-    <img  src="https://cdn.glitch.com/80978ab7-9db6-45ae-bc43-4fab16bdbb6e%2Frotation-x.gif?v=1589037826258"
-         alt="X rotation mnemonic">
-    <figcaption>X rotation mnemonic</figcaption>
-</figure>
-
-<figure>
-    <img src="https://cdn.glitch.com/80978ab7-9db6-45ae-bc43-4fab16bdbb6e%2Frotation-y.gif?v=1589037826462"
-         alt="Y rotation mnemonic">
-    <figcaption>Y rotation mnemonic</figcaption>
-</figure>
-  
-  <figure>
-    <img  src="https://cdn.glitch.com/80978ab7-9db6-45ae-bc43-4fab16bdbb6e%2Frotation-z.gif?v=1589037824424"
-         alt="Z rotation mnemonic">
-    <figcaption>Z rotation mnemonic</figcaption>
-</figure>
-  <figcaption>Figure 3 - Rotation mnemonics. Point the thumb in the positive direction of the axis you wish to rotate about; the hand closes in the direction of the positive rotation.</figcaption>
-</figure>
+To know in which direction the object will rotate you can use your right hand. Use your thumb to point it in the positive direction of the axis you wish to rotate about. Then close your hand; the direction in which your hand closes is the positive rotation.
 
 1. Experiment with different rotations in example :::ref 0100-primitives-03-rotation. Try adding another box and rotate it in the z-axis.
 
@@ -206,7 +173,7 @@ Make a copy of example :::ref 0100-primitives-01-position and change it:
 2. Enlarge the floor (`<a-plane>` primitive), and change its color to "brown".
 3. Add a second cylinder, and rotate it
 
-:::exercise https://aframe-usj-exercises.glitch.me/exercises/primitives-01.html
+:::exercise https://acspt.github.io/A-FRAME/aframe-course-jorge-cardoso/exercises/primitives-01.html
 
 ### primitives-02
 
@@ -214,7 +181,7 @@ Make a new file and:
 
 1. Create a scene with 9 colored boxes (each box should be 1m x 1m x 1m) as in the following example:
 
-:::exercise https://aframe-usj-exercises.glitch.me/exercises/primitives-02.html
+:::exercise https://acspt.github.io/A-FRAME/aframe-course-jorge-cardoso/exercises/primitives-02.html
 
 ### primitives-03
 
@@ -222,19 +189,19 @@ Make a new file and:
 1. Create a scene with 4 boxes to represent walls, and a sphere as in the following example.
 1. Add a light blue sky.
 
-:::exercise https://aframe-usj-exercises.glitch.me/exercises/primitives-03.html
+:::exercise https://acspt.github.io/A-FRAME/aframe-course-jorge-cardoso/exercises/primitives-03.html
 
 ### primitives-04
 
 1. Make a scene with a torus, scaled 3x in the x-axis:
 
-:::exercise https://aframe-usj-exercises.glitch.me/exercises/primitives-04.html
+:::exercise https://acspt.github.io/A-FRAME/aframe-course-jorge-cardoso/exercises/primitives-04.html
 
 ### primitives-05
 
 1. Make a scene with a cube with 1 spheres in each corner of the frontal face. Use nesting!
 
-:::exercise https://aframe-usj-exercises.glitch.me/exercises/primitives-05.html
+:::exercise https://acspt.github.io/A-FRAME/aframe-course-jorge-cardoso/exercises/primitives-05.html
 
 ## References
 By default, if no size is specified, the box assumes a size of 1 meter wide, 1 meter tall, and 1 meter in depth.

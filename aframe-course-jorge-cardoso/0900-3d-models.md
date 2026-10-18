@@ -48,9 +48,8 @@ Most 3D models require more than one file to render properly. If you look at the
 <a-asset-item id="centurion" src="https://raw.githubusercontent.com/jorgecardoso/aframe-usj-models/master/centurion/centurion.gltf"> </a-asset-item>
 ```          
 
-You will notice that it has various references to other files such as textures:
+You will notice that it has various references to other files such as textures.
 
-<img src="https://cdn.glitch.com/80978ab7-9db6-45ae-bc43-4fab16bdbb6e%2Fcenturion-model-file-references.PNG?1524173237613" width="600">
 
 These files are located in the same folder as the main model file `centurion.gltf`. 
 
@@ -64,31 +63,21 @@ Follow these steps to create an account, upload a model folder, and use it in yo
 
 2. Create repository
  1. New Repository 
- <img border="1" src="https://cdn.glitch.com/80978ab7-9db6-45ae-bc43-4fab16bdbb6e%2Fgithub-add-repo-1.png?1524174656759" width="800">
  2. Create Repository 
- <img border="1" src="https://cdn.glitch.com/80978ab7-9db6-45ae-bc43-4fab16bdbb6e%2Fgithub-add-repo-2.png?1524174658057" width="800">
  
-3. Open your repository. Although you will see the repository immediately after you create it, follow these steps that will work even you have just logged in:
-  1. <img border="1" src="https://cdn.glitch.com/80978ab7-9db6-45ae-bc43-4fab16bdbb6e%2Fgithub-add-repo-3.png?1524174658398" width="800">
+3. Open your repository. Although you will see the repository immediately after you create it, follow these steps that will work even you have just logged in.
 
 
 4. Upload the model's folder
-  1. Click upload:
-  <img border="1" src="https://cdn.glitch.com/80978ab7-9db6-45ae-bc43-4fab16bdbb6e%2Fgithub-add-repo-4.png?1524174657088" width="800">
-  2. Drag the folder:
-  <img border="1" src="https://cdn.glitch.com/80978ab7-9db6-45ae-bc43-4fab16bdbb6e%2Fgithub-add-repo-5.png?1524174657372" width="800">
- 2. Wait for the upload:
-  <img border="1" src="https://cdn.glitch.com/80978ab7-9db6-45ae-bc43-4fab16bdbb6e%2Fgithub-add-repo-6.png?1524174657663" width="800">
+  1. Click upload.
+  2. Drag the folder.
+ 2. Wait for the upload.
   
 5. Get the URL of the model's main file:
-  1. Click on the model's folder in the repository:
-  <img border="1" src="https://cdn.glitch.com/80978ab7-9db6-45ae-bc43-4fab16bdbb6e%2Fgithub-add-repo-7.png?1524174656112" width="800">
-  1. Click on the model's main file:
-  <img border="1" src="https://cdn.glitch.com/80978ab7-9db6-45ae-bc43-4fab16bdbb6e%2Fgithub-add-repo-8.png?1524174656236" width="800">  
-  1. Click view raw file:
-  <img border="1" src="https://cdn.glitch.com/80978ab7-9db6-45ae-bc43-4fab16bdbb6e%2Fgithub-add-repo-9.png?1524174656638" width="800">     
-  1. Copy the URL:
-  <img border="1" src="https://cdn.glitch.com/80978ab7-9db6-45ae-bc43-4fab16bdbb6e%2Fgithub-add-repo-10.png?1524174656510" width="800">    
+  1. Click on the model's folder in the repository.
+  1. Click on the model's main file.
+  1. Click view raw file.
+  1. Copy the URL.
 
 
 ## OBJ Models
@@ -141,7 +130,7 @@ https://sketchfab.com/models/f3769a474a714ebbbaca0d97f9b0a5a0#download
 ## Exercises
 
 
-Go to: <a href="https://aframe-usj-exercises.glitch.me/3d-models.html" target="_blank">https://aframe-usj-exercises.glitch.me/3d-models.html</a>
+Go to: <a href="https://acspt.github.io/A-FRAME/aframe-course-jorge-cardoso/3d-models.html" target="_blank">https://acspt.github.io/A-FRAME/aframe-course-jorge-cardoso/3d-models.html</a>
 
 ## References
 

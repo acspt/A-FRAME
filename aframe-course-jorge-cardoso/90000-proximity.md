@@ -29,7 +29,6 @@ In the following example, the proximity trigger is defined with a radius of 2 (`
 ```
 
 
-
 ## Doors
 
 :::example 10-proximity-03

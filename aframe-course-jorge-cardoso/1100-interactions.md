@@ -142,7 +142,7 @@ We also add another entity to represent the left hand controller and specify tha
 
 ## Exercises
 
-Go to: <a href="https://aframe-usj-exercises.glitch.me/interactions.html" target="_blank">https://aframe-usj-exercises.glitch.me/interactions.html</a>
+Go to: <a href="https://acspt.github.io/A-FRAME/aframe-course-jorge-cardoso/interactions.html" target="_blank">https://acspt.github.io/A-FRAME/aframe-course-jorge-cardoso/interactions.html</a>
 
 
 ## References

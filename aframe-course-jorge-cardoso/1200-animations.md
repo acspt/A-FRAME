@@ -123,7 +123,7 @@ Note the difference to the previous box, where the animation would *restart* whe
 ## Exercises
 
 
-Go to: <a href="https://aframe-usj-exercises.glitch.me/animations.html" target="_blank">https://aframe-usj-exercises.glitch.me/animations.html</a>
+Go to: <a href="https://acspt.github.io/A-FRAME/aframe-course-jorge-cardoso/animations.html" target="_blank">https://acspt.github.io/A-FRAME/aframe-course-jorge-cardoso/animations.html</a>
 
 ## References
 
