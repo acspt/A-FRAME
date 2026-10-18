@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <title>Porta a rodar com cursor</title>
+    <script src="https://aframe.io/releases/1.3.0/aframe.min.js"></script>
+    <script src="https://unpkg.com/aframe-look-at-component@0.8.0/dist/aframe-look-at-component.min.js"></script>
+    <script src="https://raw.githack.com/AR-js-org/AR.js/master/aframe/build/aframe-ar-nft.js"></script>
+    <script src="https://cdn.jsdelivr.net/gh/c-frame/physx@latest/dist/physx.min.js"></script>
+  </head>
+
+  <body style="margin: 0; overflow: hidden">
+    <a-scene
+      vr-mode-ui="enabled: false"
+      arjs="sourceType: webcam; videoTexture: true; debugUIEnabled: false;"
+    >
+      <a-camera
+        gps-camera="simulateLatitude: 51.049; simulateLongitude: -0.723"
+      >
+        <a-cursor></a-cursor>
+      </a-camera>
+      <a-box
+        id="door"
+        position="0 0 -4"
+        rotation="0 0 0"
+        depth="0.1"
+        height="2.5"
+        width="1.5"
+        color="#654321"
+        animation="property: rotation; to: 0 360 0; loop: true; dur: 10000; easing: linear;"
+      >
+      </a-box>
+    </a-scene>
+  </body>
+</html>
