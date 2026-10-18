@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <script src="https://aframe.io/releases/1.3.0/aframe.min.js"></script>
+    <script
+      type="text/javascript"
+      src="https://raw.githack.com/AR-js-org/AR.js/master/three.js/build/ar-threex-location-only.js"
+    ></script>
+    <script
+      type="text/javascript"
+      src="https://github.com/AR-js-org/AR.js/releases/download/3.4.5/aframe-ar.js"
+    ></script>
+    <script src="https://unpkg.com/aframe-look-at-component@0.8.0/dist/aframe-look-at-component.min.js"></script>
+    <script src="script.js"></script>
+    <script src="clicker.js"></script>
+    <link rel="stylesheet" href="style.css" />
+ <script>
+        document.querySelector('a-scene').enterAR();
+   </script>
+  
+  </head>
+  <body>
+    <a-scene id="scene"
+      vr-mode-ui="enabled: false"
+      arjs="sourceType: webcam; videoTexture: true; debugUIEnabled: false"
+      renderer="antialias: true; alpha: true"
+      cursor="rayOrigin: mouse"
+      raycaster="near: 0; far:10000"
+    >
+      <a-assets>
+        <img
+          id="earth"
+          src="https://cdn.glitch.global/2b3aa66e-1d12-4899-83db-f25503ec6e84/earth-sphere.jpg?v=1717876558042"
+          crossorigin="anonymous"
+        />
+
+        <img
+          id="crate"
+          src="https://cdn.glitch.global/2b3aa66e-1d12-4899-83db-f25503ec6e84/crate.jpg?v=1717877206087
+      "
+          crossorigin="anonymous"
+        />
+        <img
+          id="tree"
+          src="https://cdn.glitch.me/2b3aa66e-1d12-4899-83db-f25503ec6e84/tree_bark_03_disp_4k.png?v=1717878207300"
+          crossorigin="anonymous"
+        />
+        <img
+          id="foto-acs"
+          src="https://cdn.glitch.global/2b3aa66e-1d12-4899-83db-f25503ec6e84/desenho%20pessoal%20do%20Paulo%20ousa.jpg?v=1717880859291"
+          crossorigin="anonymous"
+        />
+        <a-asset-item
+          id="tree-obj"
+          src="https://cdn.glitch.global/2b3aa66e-1d12-4899-83db-f25503ec6e84/forest_nature_set_all_in.obj?v=1717879897930"
+        ></a-asset-item>
+        <a-asset-item
+          id="tree-mtl"
+          src="https://cdn.glitch.global/2b3aa66e-1d12-4899-83db-f25503ec6e84/forest_nature_set_all_in.mtl?v=1717879879042"
+        ></a-asset-item>
+      </a-assets>
+      <a-camera
+        +ositio="0 1.6 0"
+        gps-new-camera="positionMinAccuracy:1000; minDistance:1:maxDistance:100;gpsMinDistance: 5"
+      >
+      </a-camera>
+
+      <a-box
+        clicker
+        color="red"
+        gps-new-entity-place="latitude: 41.477860;
+          longitude: -7.178329"
+        scale="2 2 2"
+        material="src: #crate"
+      ></a-box>
+
+      <a-sphere
+        clicker
+        id="target"
+        radius="10"
+        material="src: #earth;"
+        gps-new-entity-place="latitude: 41.478355;
+          longitude: -7.178230"
+      >
+      </a-sphere>
+
+      <a-cylinder
+        clicker
+        radius="1"
+        height="5"
+        material="src: #tree; color: #696969; roughness: 1; metalness: 0"
+        gps-new-entity-place="latitude: 41.478455;
+          longitude:  -7.178230"
+      ></a-cylinder>
+
+      <a-entity
+        clicker
+        gps-new-entity-place="latitude: 41.478407;
+          longitude: -7.178568"
+        obj-model="obj: #tree-obj; mtl: #tree-mtl"
+      ></a-entity>
+      <a-image
+        clicker
+        src="#foto-acs"
+        scale="5 5 5"
+        gps-new-entity-place="latitude: 41.477902; longitude: -7.177847;"
+      ></a-image>
+    </a-scene>
+    <div id="title">Clica nos objetos e descobre a distância</div>
+    <div id="setloc">
+      Lat:<input id="lat" value="41.477986" /> Lon:
+      <input id="lon" value="-7.178176" /> Min Acc:
+      <input id="minacc" value="1000" />
+      <input type="button" id="go" value="go" />
+    </div>
+  </body>
+ 
+</html>
