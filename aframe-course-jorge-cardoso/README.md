@@ -6,7 +6,6 @@ A-Frame Course materials
 
 | N.º | Lição | Ficheiro |
 |---|---|---|
-| 0010 | Intro Tutorial to Glitch | [0010-intro-glitch.md](0010-intro-glitch.md) |
 | 0020 | Intro to HTML and A-Frame | [0020-intro-html.md](0020-intro-html.md) |
 | 0100 | Primitives and Components | [0100-primitives-components.md](0100-primitives-components.md) |
 | 0200 | A-Frame Website | [0200-aframe-website.md](0200-aframe-website.md) |
@@ -29,3 +28,7 @@ A-Frame Course materials
 - [A-Frame Course](index.md): página inicial do curso
 - [Reference Material](references.md): material de referência
 - [Licença](LICENSE.md)
+
+## Créditos
+
+Materiais do curso de A-Frame de Jorge Cardoso: [github.com/jorgecardoso/aframe-course](https://github.com/jorgecardoso/aframe-course)

@@ -31,8 +31,6 @@ Also, it is good at this point to introduce the A-Frame inspector to manipulate 
 
 Open the example in a new tab and then press `<ctrl> + <alt> + i`.
 
-<a href="https://cdn.glitch.com/80978ab7-9db6-45ae-bc43-4fab16bdbb6e%2Fa-frame-inspector.png?1523376452697" target="_blank">
-<img src="https://cdn.glitch.com/80978ab7-9db6-45ae-bc43-4fab16bdbb6e%2Fa-frame-inspector.png?1523376452697" width="600"></a>
 
 After you adjusted the light, you can copy the values of the attributes back to your code.
 
@@ -51,7 +49,7 @@ After you adjusted the light, you can copy the values of the attributes back to 
 ## Exercises
 
 
-Go to: <a href="https://aframe-usj-exercises.glitch.me/basics-2.html" target="_blank">https://aframe-usj-exercises.glitch.me/basics-2.html</a>
+Go to: <a href="https://acspt.github.io/A-FRAME/aframe-course-jorge-cardoso/basics-2.html" target="_blank">https://acspt.github.io/A-FRAME/aframe-course-jorge-cardoso/basics-2.html</a>
 
 ## References
 

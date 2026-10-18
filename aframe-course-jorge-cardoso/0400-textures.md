@@ -46,13 +46,6 @@ For example, the following code would repeat the texture image twice in the hori
 
 The number of repetions can be lower than 1, in which case the texture image is not completely used and is stretched to fill the object's face.
 
-Notice the image in Figure 1, which has been applied in example :::ref 0400-textures-02-repeat
-<figure>
-    <img src="https://cdn.glitch.com/80978ab7-9db6-45ae-bc43-4fab16bdbb6e%2Fbrick_diffuse.jpg?1523874307941"
-         alt="Brick texture">
-    <figcaption>Figure 1 - Brick texture applied in example :::ref 0400-textures-02-repeat.</figcaption>
-</figure>
-
 Notice how, in the left box only the top/left corner of the texture is used in the box (`repeat 0.5 0.5`), in the middle box the complete texture image is used (`repeat 1 1`), and in the right box the texture image is applied four times (`repeat 2 2`):
 
 :::example 0400-textures-02-repeat
@@ -76,13 +69,7 @@ Videos can be used as textures applied to primitives like `a-box` but we can als
 ## Photospheres
 360º photos can also be used as textures to create a 360º panoramic view.
 
-360º photos are tecnically *equirectangular* images and basically correspond to the a planisphere (a projection of a sphere into a plane). Figure 2 shows a 360º photo, taken with a 360º camera.
-
-<figure>
-    <img src="https://cdn.glitch.com/80978ab7-9db6-45ae-bc43-4fab16bdbb6e%2FR0010059.JPG?1525432731662"
-         alt="Equirectangular photo of a classroom">
-    <figcaption>Figure 2 - Equirectangular photo of a classroom. Used in example :::ref 0400-textures-04-photosphere.</figcaption>
-</figure>
+360º photos are tecnically *equirectangular* images and basically correspond to the a planisphere (a projection of a sphere into a plane).
 
 We can apply these images to spherical primitives in A-Frame. A typical way of creating a photosphere is to use `a-sky`, which creates a very large sphere textured from the inside. With some careful placing, we can even combine a photosphere with other primitives as in example :::ref 0400-textures-04-photosphere where a box is placed on top of a table in the 360º photo - this is only an illusion though because the table is not actually 3D:
 
@@ -112,14 +99,14 @@ We can also use 360º videos to texture `a-sky`;
 ### Textures-01
 1. Adapt exercise `Basics-1-02` so that **9** boxes are textured with the "x" and "o" images (these images are available in the project's assets folder):
 
-:::exercise https://aframe-usj-exercises.glitch.me/exercises/textures-01.html
+:::exercise https://acspt.github.io/A-FRAME/aframe-course-jorge-cardoso/exercises/textures-01.html
 
 
 ### Textures-02
 2. Using texture repetition, create a scene with **2** boxes of (3m x 3m x 1m) textured as in the following example:
 
 
-:::exercise https://aframe-usj-exercises.glitch.me/exercises/textures-02.html
+:::exercise https://acspt.github.io/A-FRAME/aframe-course-jorge-cardoso/exercises/textures-02.html
 
 ### Textures-03
 Using either your phone or a 360º camera, take a 360º photo and use it to create a photosphere with a artificial element (a primitive placed in a strategic location like the box in example :::ref 0400-textures-04-photosphere

@@ -158,7 +158,6 @@ To change the particle's color just add the `color` parameter to its configurati
 :::example 0500-environments-05-particles-color
 
 
-
 #### Making a fountain
 To make a particle system that resembles a fountain we need to control additional parameters like the velocity, and texture applied to the particles:
 
@@ -199,7 +198,7 @@ We can also control the speed and amplitude of the waves with the `speed` and `a
 1. Create a `forest` environment using the Environments component
   1. Add cylinder textured with a tree bark texture
 
-:::exercise https://aframe-usj-exercises.glitch.me/exercises/environments-01.html
+:::exercise https://acspt.github.io/A-FRAME/aframe-course-jorge-cardoso/exercises/environments-01.html
 
 ### Environments 02
 1. Using the Ocean component, create a scene with a "lake" and a boat on it. Use your imagination to create a boat-like object using simple shapes.
@@ -207,7 +206,7 @@ We can also control the speed and amplitude of the waves with the `speed` and `a
 ### Environments 03
 1. Using the Particle System and the Environment components, create a scene with a forest and strong wind that carries particles horizontaly across the screen.
 
-:::exercise https://aframe-usj-exercises.glitch.me/exercises/environments-03.html
+:::exercise https://acspt.github.io/A-FRAME/aframe-course-jorge-cardoso/exercises/environments-03.html
 
 
 ## References

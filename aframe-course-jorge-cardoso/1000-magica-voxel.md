@@ -17,30 +17,8 @@ Magica Voxel is one such editor. If you are used to using a different 3D modelli
 Magica Voxel is free software.
 
 1. Go to: https://ephtracy.github.io/
-2. Download the version latest version for your operating system:
-<img src="https://cdn.glitch.com/80978ab7-9db6-45ae-bc43-4fab16bdbb6e%2Fmagica-voxel-download.png?1524422804408" width="600" height="400">
+2. Download the version latest version for your operating system.
 3. Unpack and run the application
-
-## Basic operation
-
-### Moving around
-<img src="https://cdn.glitch.com/80978ab7-9db6-45ae-bc43-4fab16bdbb6e%2Fmagica-voxel-movearound.gif?1524578553976" width="600" height="400">
-
-
-### Creating a new object
-<img src="https://cdn.glitch.com/80978ab7-9db6-45ae-bc43-4fab16bdbb6e%2Fmagica-voxel-new.gif?1524579506009" width="600" height="400">
-
-
-### Placing and editing voxels
-
-<img src="https://cdn.glitch.com/80978ab7-9db6-45ae-bc43-4fab16bdbb6e%2Fmagica-voxel-attach.gif?1524581254338" width="600" height="400">
-
-<img src="https://cdn.glitch.com/80978ab7-9db6-45ae-bc43-4fab16bdbb6e%2Fmagica-voxel-delete.gif?1524581614491" width="600" height="400">
-
-
-### Exporting
-<img src="https://cdn.glitch.com/80978ab7-9db6-45ae-bc43-4fab16bdbb6e%2Fmagica-voxel-export.gif?1524582432447" width="600" height="400">
-
 
 ## Tutorial
 This tutorial is from the Magica Voxel website:
@@ -50,6 +28,6 @@ This tutorial is from the Magica Voxel website:
 ## Exercises
 
 
-Go to: <a href="https://aframe-usj-exercises.glitch.me/magica-voxel.html" target="_blank">https://aframe-usj-exercises.glitch.me/magica-voxel.html</a>
+Go to: <a href="https://acspt.github.io/A-FRAME/aframe-course-jorge-cardoso/magica-voxel.html" target="_blank">https://acspt.github.io/A-FRAME/aframe-course-jorge-cardoso/magica-voxel.html</a>
 
   

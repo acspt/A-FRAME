@@ -96,4 +96,4 @@ If you don't like the appearance of the portal, you can change it to any other o
 Use `link="visualAspectEnabled:false"` and a `<a-circle>`
 :::
 
-:::exercise https://aframe-usj-exercises.glitch.me/exercises/portals-02.html
+:::exercise https://acspt.github.io/A-FRAME/aframe-course-jorge-cardoso/exercises/portals-02.html
