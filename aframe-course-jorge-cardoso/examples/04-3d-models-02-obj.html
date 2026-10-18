@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>3D Models - OBJ</title>
+    <script src="https://aframe.io/releases/1.0.4/aframe.min.js"></script>
+    <script src="//cdn.rawgit.com/donmccurdy/aframe-extras/v4.0.2/dist/aframe-extras.min.js"></script>
+</head>
+
+<body>
+    <a-scene>
+        <a-assets>
+          <a-asset-item id="monu9-obj" crossorigin="anonymous"  src="https://raw.githubusercontent.com/jorgecardoso/aframe-usj-models/master/monu9/monu9.obj"></a-asset-item>
+          
+          <a-asset-item id="monu9-mtl" crossorigin="anonymous" src="https://raw.githubusercontent.com/jorgecardoso/aframe-usj-models/master/monu9/monu9.mtl"></a-asset-item>
+        </a-assets>
+     
+       <a-obj-model src="#monu9-obj" mtl="#monu9-mtl" scale="0.1 0.1 0.1" rotation="0 0 0" position="0 0 -2"></a-obj-model>
+        
+        
+    </a-scene>
+</body>
+
+</html>

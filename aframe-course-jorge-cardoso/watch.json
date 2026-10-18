@@ -1,0 +1,22 @@
+{
+  "install": {
+    "include": [
+      "^package\\.json$",
+      "^\\.env$"
+    ]
+  },
+  "restart": {
+    "exclude": [
+      "^public/",
+      "^dist/",
+      "\\.md$"
+    ],
+    "include": [
+      "^package\\.json$",
+      "^\\.env$",
+      "\\.js$",
+      "\\.eta.html$"
+    ]
+  },
+  "throttle": 5000
+}
