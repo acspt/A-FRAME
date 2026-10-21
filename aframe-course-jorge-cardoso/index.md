@@ -31,11 +31,6 @@ style: css/index1.css
 1. <a href="1300-sound.html" >Sound</a>
 1. <a href="1400-multi-textures.html" >Multi texture component</a>
 
-### Advanced
-
-17. Creating Components
-1. Augmented Reality
-1. Tangibles
 
 
 ### References
