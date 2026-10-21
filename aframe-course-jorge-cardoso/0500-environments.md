@@ -158,6 +158,16 @@ To change the particle's color just add the `color` parameter to its configurati
 :::example 0500-environments-05-particles-color
 
 
+#### Velocity and acceleration
+We can also control how fast the particles move (`velocityValue`) and how their speed changes over time (`accelerationValue`). The `velocitySpread` and `accelerationSpread` parameters add some randomness, so that not all particles move in exactly the same way:
+
+```html
+<a-entity position="0 2.25 -15" particle-system="preset: rain; size: 1.5; color: red; velocityValue: 0 2 0; velocitySpread: 0 1 0; accelerationValue: 0 1 0; accelerationSpread: 0 1 0"></a-entity>
+```
+
+:::example 0500-environments-06-particles-accel
+
+
 #### Making a fountain
 To make a particle system that resembles a fountain we need to control additional parameters like the velocity, and texture applied to the particles:
 

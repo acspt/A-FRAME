@@ -11,7 +11,7 @@ title: Proximity detection
 The proximity trigger component, allows objects to be informed when another object is in proximity. By default, it tracks the proximity of the camera, i.e., the user, to an object. The `<script>` to include is:
 
 ```html
-<script src="https://aframe-usj.glitch.me/proximity-trigger.js"></script>
+<script src="https://acspt.github.io/A-FRAME/aframe-course-jorge-cardoso/proximity-trigger.js"></script>
 ```
 
 The proximity trigger will send two events:
