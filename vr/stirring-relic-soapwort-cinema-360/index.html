@@ -1,0 +1,651 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <!-- Origem: backup do Glitch, projeto "stirring-relic-soapwort-cinema-360" (cópia de 2025-12-24 19:59) -->
+    <title>Cinema 360</title>
+    <script src="https://aframe.io/releases/1.6.0/aframe.min.js"></script>
+    <script src="https://unpkg.com/aframe-environment-component/dist/aframe-environment-component.min.js"></script>
+  </head>
+  <body>
+    <a-scene>
+      <!-- Mundo/Assets -->
+
+      <a-entity environment="preset: forest; playArea: 20;"></a-entity>
+
+      <a-camera id="rig" class="camera" position="10 1.6 20"
+        ><a-cursor></a-cursor
+      ></a-camera>
+
+      <a-assets>
+        <a-asset-item
+          id="Booth1"
+          src="assets/ticket_booth.glb"
+        ></a-asset-item>
+      </a-assets>
+
+      <a-assets>
+        <a-asset-item
+          id="Board"
+          src="assets/cork_board.glb"
+        ></a-asset-item>
+      </a-assets>
+
+      <a-assets>
+        <a-asset-item
+          id="Btn1"
+          src="assets/button.glb"
+        ></a-asset-item>
+      </a-assets>
+
+      <a-assets>
+        <a-asset-item
+          id="robot1"
+          src="assets/k-vrc.glb"
+        ></a-asset-item>
+      </a-assets>
+
+      <a-assets>
+        <a-asset-item
+          id="robot2"
+          src="assets/robot.glb"
+        ></a-asset-item>
+      </a-assets>
+
+      <a-assets>
+        <a-asset-item
+          id="btn2"
+          src="assets/button_round_flat.glb"
+        ></a-asset-item>
+      </a-assets>
+
+      <a-assets>
+        <a-asset-item
+          id="portal"
+          src="assets/sci-fi_portal_-_asset.glb"
+        ></a-asset-item>
+      </a-assets>
+
+      <a-assets>
+        <a-asset-item
+          id="booth2"
+          src="assets/ticket_booth-1-.glb"
+        ></a-asset-item>
+      </a-assets>
+
+      <a-assets>
+        <audio
+          id="musicbox"
+          src="assets/Joyful-heart--loop----Uplifting-acoustic.wav"
+        ></audio>
+      </a-assets>
+
+      <!-- Objetos -->
+
+      <!-- Guia -->
+
+      <a-entity
+        id="guia"
+        gltf-model="#robot2"
+        position="10 0.3 17"
+        scale="0.19 0.19 0.19"
+        rotation="0 90 0"
+        sound="src: url(assets/Joyful-heart--loop----Uplifting-acoustic.wav); on: click; loop: true"
+      ></a-entity>
+
+      <a-text
+        id="guiatalk"
+        value="Bem vindo ao Simulador de Cinema 360"
+        scale="0.5 0.5 0.5"
+        position="10 3 17"
+        align="center"
+        color="yellow"
+      ></a-text>
+
+      <!-- Localização para onde o objeto guia será movido -->
+      <a-sphere
+        id="destino"
+        position="-7 0 15"
+        color="red"
+        radius="0.05"
+      ></a-sphere>
+
+      <!-- a-box-_- -->
+
+      <a-box position="-14 2 10.23" color="white" height="4" depth="7"></a-box>
+
+      <!-- Barraca1 -->
+
+      <a-entity
+        gltf-model="#Booth1"
+        position="-10 0 10"
+        scale="0.25 0.25 0.25"
+        rotation="0 90 0"
+      ></a-entity>
+
+      <!-- Charada -->
+
+      <a-entity
+        id="charada"
+        gltf-model="#Board"
+        position="-10 2 6"
+        scale="1 1 1"
+        rotation="0 90 0"
+        cursor-listener
+        ><a-text
+          cursor-listener
+          rotation=""
+          value="O que e, o que e? Quanto mais se tira, \n maior ele fica."
+          position="0 0.3 0.3"
+          align="center"
+          visible="false"
+          color="yellow"
+        ></a-text
+      ></a-entity>
+
+      <!-- Respostas -->
+
+      <a-entity
+        id="resposta2"
+        gltf-model="#Btn1"
+        position="-9.7 1 7"
+        scale="2 2 2"
+        rotation="0 90 0"
+        cursor-listener
+      ></a-entity>
+      <a-text
+        value="Uma divida"
+        scale="0.5 0.5 0.5"
+        position="-9.7 1.4 7"
+        align="center"
+        rotation="0 90 0"
+      ></a-text>
+
+      <a-entity
+        id="resposta1"
+        gltf-model="#Btn1"
+        position="-9.7 1 6"
+        scale="2 2 2"
+        rotation="0 90 0"
+        cursor-listener
+      ></a-entity>
+      <a-text
+        value="Um buraco"
+        scale="0.5 0.5 0.5"
+        position="-9.7 1.4 6"
+        align="center"
+        rotation="0 90 0"
+      ></a-text>
+
+      <a-entity
+        id="resposta3"
+        gltf-model="#Btn1"
+        position="-9.7 1 5"
+        scale="2 2 2"
+        rotation="0 90 0"
+        color="white"
+        cursor-listener
+      ></a-entity>
+      <a-text
+        value="Um balao"
+        scale="0.5 0.5 0.5"
+        position="-9.7 1.4 5"
+        align="center"
+        rotation="0 90 0"
+      ></a-text>
+
+      <!-- Texto output-->
+      <a-text
+        id="acertou"
+        value="Conseguiste obter a permissao para ver o filme! Passa pela proxima barraca para validar o teu bilhete "
+        position="-9.8 3 6"
+        align="center"
+        visible="false"
+        color="white"
+        rotation="0 90 0"
+        scale="0.7 0.7 0.7"
+      ></a-text>
+      <a-text
+        id="erro"
+        value="Resposta errada. Tenta de Novo!"
+        position="-9.8 3 6"
+        align="center"
+        visible="false"
+        color="red"
+        rotation="0 90 0"
+        scale="0.7 0.7 0.7"
+      ></a-text>
+
+      <!-- Robo 1 -->
+      <a-entity
+        id="anima"
+        gltf-model="#robot1"
+        position="-10 0 10.23"
+        scale=""
+        rotation="0 90 0"
+      ></a-entity>
+
+      <!-- Sensor de proximidade -->
+
+      <a-box
+        id="sensor"
+        position="-6 0 10.23"
+        color="white"
+        height="2"
+        depth="4"
+      ></a-box>
+
+      <a-text
+        id="talk"
+        value="Ola o meu nome e BIT"
+        position="-9 2 9.5"
+        align="center"
+        rotation="0 90 0"
+        scale="0.9 0.9 0.9"
+        visible="false"
+      ></a-text>
+
+      <!--  -->
+
+      <a-entity
+        gltf-model="#booth2"
+        position="1 0 -3"
+        scale="1 1 1"
+        rotation="0 180 0"
+      ></a-entity>
+
+      <a-entity
+        id="anima2"
+        gltf-model="#robot1"
+        position="1 0 -3"
+        scale=""
+        rotation="0 -90 0"
+      ></a-entity>
+
+      <!-- Sensor de proximidade -->
+
+      <a-box
+        id="sensor2"
+        position="-3 0 -3"
+        color="white"
+        height="2"
+        depth="4"
+      ></a-box>
+
+      <a-text
+        id="talk2"
+        value="Ola o meu nome e BOT"
+        position="-1 2 -3"
+        align="center"
+        rotation="0 -90 0"
+        scale="0.9 0.9 0.9"
+        visible="false"
+      ></a-text>
+
+      <a-box position="-1 0 -3" color="white" height="2" depth="2"></a-box>
+
+      <a-entity
+        id="minha-caixa"
+        gltf-model="#btn2"
+        position="-1 1 -2"
+        scale=""
+        rotation="0 -90 0"
+      ></a-entity>
+
+      <a-text
+        id="val"
+        value="Validado com sucesso"
+        position="-3 2 -3"
+        align="center"
+        rotation="0 -90 0"
+        scale="0.9 0.9 0.9"
+        visible="false"
+        color="green"
+      ></a-text>
+
+      <a-text
+        id="val2"
+        value="Tens que acertar a resposta da charada"
+        position="-3 2 -3"
+        align="center"
+        rotation="0 -90 0"
+        scale="0.9 0.9 0.9"
+        visible="false"
+        color="red"
+      ></a-text>
+
+      <!-- Portal -->
+      <a-entity
+        id="portal1"
+        gltf-model="#portal"
+        position="0 100 0"
+        scale="1 1 1"
+        rotation="0 0 0"
+        visible="false"
+        ><a-link
+          position="0 1 0"
+          scale="0.5 0.5 0.5"
+          href="vid/01.html"
+          title="."
+        ></a-link>
+        <a-text
+          value="Passeio na Zona Verde"
+          position="0 3 0"
+          align="center"
+          scale="0.9 0.9 0.9"
+        ></a-text
+      ></a-entity>
+
+      <a-entity
+        id="portal2"
+        gltf-model="#portal"
+        position="0 100 0"
+        scale="1 1 1"
+        rotation="0 0 0"
+        visible="false"
+        ><a-link
+          position="0 1 0"
+          scale="0.5 0.5 0.5"
+          href="vid/02.html"
+          title="."
+        ></a-link>
+        <a-text
+          value="Passeio de Carro"
+          position="0 3 0"
+          align="center"
+          scale="0.9 0.9 0.9"
+        ></a-text
+      ></a-entity>
+
+      <!-- ##################Scripts###################333 -->
+      <script>
+        const guia = document.querySelector("#guia");
+        const destino = document.querySelector("#destino");
+
+        guia.addEventListener("click", () => {
+          const destinoPosition = destino.getAttribute("position");
+          guiatalk.setAttribute("visible", false);
+          guia.setAttribute("animation", {
+            property: "position",
+            to: destinoPosition,
+            dur: 10000,
+            easing: "linear",
+          });
+
+          guia.setAttribute("rotation", "0 -45 0");
+        });
+      </script>
+
+      <script>
+        AFRAME.registerComponent("cursor-listener", {
+          init: function () {
+            const el = this.el;
+            el.addEventListener("mouseenter", function () {
+              // Exibe a charada quando o cursor aponta para o objeto principal
+              document
+                .querySelector("#charada a-text")
+                .setAttribute("visible", true);
+            });
+            el.addEventListener("mouseleave", function () {
+              // Oculta a charada quando o cursor sai do objeto principal
+              document
+                .querySelector("#charada a-text")
+                .setAttribute("visible", false);
+            });
+            el.addEventListener("click", function () {
+              // Verifica se o objeto clicado é uma resposta
+              if (el.id.startsWith("resposta")) {
+                if (el.id === "resposta1") {
+                  document
+                    .querySelector("#acertou")
+                    .setAttribute("visible", true);
+                } else {
+                  document.querySelector("#erro").setAttribute("visible", true);
+
+                  setTimeout(function () {
+                    document
+                      .querySelector("#erro")
+                      .setAttribute("visible", false);
+                  }, 2000);
+                }
+              }
+            });
+          },
+        });
+      </script>
+
+      <script>
+        const guiatalk = document.querySelector("#guiatalk");
+
+        const distanciaProximidade4 = 6;
+
+        function verificarProximidade4() {
+          const camera4 = document.querySelector("a-camera");
+          const distancia4 = camera4.object3D.position.distanceTo(
+            guiatalk.object3D.position
+          );
+
+          if (distancia4 <= distanciaProximidade4) {
+            setTimeout(() => {
+              guiatalk.setAttribute(
+                "value",
+                "Eu sou o teu guia. \n Vais passar por duas barracas, aconcelho-te a chegares perto do BIT e do BOT para veres o que eles tem a dizer!\n Carrega em mim para eu te mostar o caminho "
+              );
+            }, 4000);
+          }
+        }
+
+        // Verifica a proximidade a cada quadro (frame)
+        setInterval(verificarProximidade4, 100);
+      </script>
+
+      <script>
+        const meuObjeto = document.querySelector("#anima");
+        let subindo = true;
+        let angulo = 0;
+
+        function atualizarAnimacao() {
+          if (subindo) {
+            meuObjeto.object3D.position.y += 0.01;
+            if (meuObjeto.object3D.position.y >= 1.5) {
+              subindo = false;
+            }
+          } else {
+            meuObjeto.object3D.position.y -= 0.01;
+            if (meuObjeto.object3D.position.y <= 1) {
+              subindo = true;
+            }
+          }
+
+          requestAnimationFrame(atualizarAnimacao);
+        }
+
+        atualizarAnimacao();
+      </script>
+
+      <script>
+        const meuObjeto3 = document.querySelector("#guia");
+        let subindo3 = true;
+        let angulo3 = 0;
+
+        function atualizarAnimacao3() {
+          if (subindo3) {
+            meuObjeto3.object3D.position.y += 0.005;
+            if (meuObjeto3.object3D.position.y >= 0.7) {
+              subindo3 = false;
+            }
+          } else {
+            meuObjeto3.object3D.position.y -= 0.005;
+            if (meuObjeto3.object3D.position.y <= 0.3) {
+              subindo3 = true;
+            }
+          }
+
+          requestAnimationFrame(atualizarAnimacao3);
+        }
+
+        atualizarAnimacao3();
+      </script>
+
+      <script>
+        const meuObjeto2 = document.querySelector("#anima2");
+        let subindo2 = true;
+        let angulo2 = 0;
+
+        function atualizarAnimacao2() {
+          if (subindo2) {
+            meuObjeto2.object3D.position.y += 0.01;
+            if (meuObjeto2.object3D.position.y >= 1.5) {
+              subindo2 = false;
+            }
+          } else {
+            meuObjeto2.object3D.position.y -= 0.01;
+            if (meuObjeto2.object3D.position.y <= 1) {
+              subindo2 = true;
+            }
+          }
+
+          requestAnimationFrame(atualizarAnimacao2);
+        }
+
+        atualizarAnimacao2();
+      </script>
+
+      <script>
+        const sensor = document.querySelector("#sensor");
+        const talk = document.querySelector("#talk");
+
+        // Distância de proximidade (ajuste conforme necessário)
+        const distanciaProximidade = 2;
+
+        function verificarProximidade() {
+          const camera = document.querySelector("a-camera");
+          const distancia = camera.object3D.position.distanceTo(
+            sensor.object3D.position
+          );
+
+          if (distancia <= distanciaProximidade) {
+            talk.setAttribute("visible", true); // Exibe o texto
+            setTimeout(() => {
+              talk.setAttribute(
+                "value",
+                "Se olhares para o quadro no teu lado direito tens uma charada. \n Se acertares vais poder ter acesso aos videos 360!\n Boa Sorte! "
+              );
+            }, 4000);
+          } else {
+            talk.setAttribute("visible", false); // Esconde o texto
+          }
+        }
+
+        // Verifica a proximidade a cada quadro (frame)
+        setInterval(verificarProximidade, 100); // Ajuste o intervalo conforme necessário
+      </script>
+
+      <script>
+        const sensor2 = document.querySelector("#sensor2");
+        const talk2 = document.querySelector("#talk2");
+
+        // Distância de proximidade (ajuste conforme necessário)
+        const distanciaProximidade2 = 2;
+
+        function verificarProximidade2() {
+          const camera2 = document.querySelector("a-camera");
+          const distancia2 = camera2.object3D.position.distanceTo(
+            sensor2.object3D.position
+          );
+
+          if (distancia2 <= distanciaProximidade2) {
+            talk2.setAttribute("visible", true); // Exibe o texto
+            setTimeout(() => {
+              talk2.setAttribute(
+                "value",
+                "Carrega no botao para validar o acesso aos videos \n A tua esquerda vao aparecer dois videos 360 \n Para saires do video, da um clique"
+              );
+            }, 4000);
+          } else {
+            talk2.setAttribute("visible", false); // Esconde o texto
+          }
+        }
+
+        // Verifica a proximidade a cada quadro (frame)
+        setInterval(verificarProximidade2, 100); // Ajuste o intervalo conforme necessário
+      </script>
+
+      <script>
+        const minhaCaixa = document.querySelector("#minha-caixa");
+        const acertouTexto = document.querySelector("#acertou");
+        const val = document.querySelector("#val");
+        const val2 = document.querySelector("#val2");
+        const portal1 = document.querySelector("#portal1");
+        const portal2 = document.querySelector("#portal2");
+
+        minhaCaixa.addEventListener("click", () => {
+          if (acertouTexto.getAttribute("visible")) {
+            val2.setAttribute("visible", false);
+            val.setAttribute("visible", true);
+            portal1.setAttribute("visible", true);
+            portal1.setAttribute("position", "-9 0 -7");
+            portal2.setAttribute("visible", true);
+            portal2.setAttribute("position", "-5 0 -7");
+          } else {
+            val2.setAttribute("visible", true);
+          }
+        });
+      </script>
+
+      <script>
+        // Adiciona event listeners para toques na tela
+        document.addEventListener("touchstart", iniciarMovimento);
+        document.addEventListener("touchend", pararMovimento);
+
+        var rig = document.getElementById("rig");
+        var movendo = false;
+        var direcao = "";
+
+        function iniciarMovimento(e) {
+          var larguraTela = window.innerWidth;
+          var alturaTela = window.innerHeight;
+          var toqueX = e.touches[0].clientX;
+          var toqueY = e.touches[0].clientY;
+
+          // Define a direção com base na posição do toque
+          if (toqueX < larguraTela / 2 && toqueY < alturaTela / 2) {
+            direcao = "frente";
+          } else if (toqueX >= larguraTela / 2 && toqueY < alturaTela / 2) {
+            direcao = "direita";
+          } else if (toqueX < larguraTela / 2 && toqueY >= alturaTela / 2) {
+            direcao = "esquerda";
+          } else if (toqueX >= larguraTela / 2 && toqueY >= alturaTela / 2) {
+            direcao = "tras";
+          }
+
+          movendo = true;
+          mover();
+        }
+
+        function pararMovimento(e) {
+          movendo = false;
+        }
+
+        function mover() {
+          if (movendo) {
+            switch (direcao) {
+              case "frente":
+                rig.object3D.position.z -= 0.05;
+                break;
+              case "esquerda":
+                rig.object3D.position.x -= 0.05;
+                break;
+              case "direita":
+                rig.object3D.position.x += 0.05;
+                break;
+              case "tras":
+                rig.object3D.position.z += 0.05;
+                break;
+            }
+            requestAnimationFrame(mover);
+          }
+        }
+      </script>
+    </a-scene>
+  </body>
+</html>

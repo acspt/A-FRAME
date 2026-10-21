@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <!-- Origem: backup do Glitch, projeto "a-frame-textures-repeat" (cópia de 2025-12-24 19:54) -->
+    <title>Textures - 02 - Repeat</title>
+    <script src="https://aframe.io/releases/1.0.4/aframe.min.js"></script>
+  </head>
+  <body>
+    <a-scene>
+      <a-assets>
+        <img
+          id="bricks"
+          src="assets/brick_diffuse.jpg"
+        />
+      </a-assets>
+
+      <a-box src="#bricks" repeat="0 0.5" position="-2 1 -2"></a-box>
+
+      <a-box src="#bricks" repeat="1 1" position="0 1 -2"></a-box>
+
+      <a-box src="#bricks" repeat="20 1" position="2 1 -2"></a-box>
+
+      <a-sky color="#ECECEC"></a-sky>
+    </a-scene>
+  </body>
+</html>

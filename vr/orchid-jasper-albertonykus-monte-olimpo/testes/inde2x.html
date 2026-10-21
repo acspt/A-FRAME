@@ -1,0 +1,212 @@
+<html>
+  <head>
+    <title>Monte Olimpo - TI-LAD</title>
+
+    <!-- A-Frame -->
+    <script src="https://aframe.io/releases/1.5.0/aframe.min.js"></script>
+
+    <!-- Componentes do A-Frame -->
+    <script src="https://unpkg.com/aframe-environment-component/dist/aframe-environment-component.min.js"></script>
+    <script src="https://unpkg.com/aframe-event-set-component@^4.0.0/dist/aframe-event-set-component.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/gh/c-frame/aframe-extras@7.4.0/dist/aframe-extras.min.js"></script>
+    <script src="https://raw.githubusercontent.com/AdaRoseCannon/aframe-xr-boilerplate/glitch/simple-navmesh-constraint.js"></script>
+    
+    <script src="bussola.js"></script>
+    <script src="demeter.js"></script>
+  </head>
+
+  <body>
+    <a-assets>
+      <a-asset-item
+        id="templo"
+        src="https://raw.githubusercontent.com/antoniommav/templo/main/scene.gltf"
+      ></a-asset-item>
+      
+      <a-asset-item
+        id="zeus"
+        src="https://raw.githubusercontent.com/antoniommav/zeus/main/scene.gltf"
+      ></a-asset-item>
+      
+      <a-asset-item
+        id="pedestal"
+        src="https://raw.githubusercontent.com/antoniommav/pedestal/main/scene.gltf"
+      ></a-asset-item>
+    </a-assets>
+
+    <a-scene >
+      <!-- Ambiente da Antiga Grécia-->
+      <a-entity
+        environment="dressing: none; playArea: 1;"
+        shadow="receive: true"
+      >
+        <a-entity
+          rotation="-90 0 0"
+          class="environmentGround environment"
+          visible=""
+          scale="1 1 3"
+          shadow="cast:false;receive:false"
+        >
+        </a-entity>
+
+        <a-sky
+          radius="200"
+          theta-length="110"
+          class="environment"
+          material="shader: gradientshader; topColor: #63f5f5; bottomColor: #fbd9b3; side: back; npot: true; offset: [object Object]; repeat: [object Object]"
+          visible=""
+          geometry="radius: 200; thetaLength: 110; primitive: sphere; segmentsWidth: 64; segmentsHeight: 32"
+        ></a-sky>
+      </a-entity>
+      
+      
+      <!-- Bússola -->
+      <a-entity id="posições">
+        <a-entity id="pos1" position="-25 .5 0"></a-entity>
+        <a-entity id="pos2" position="-25 .5 50"></a-entity>
+        <a-entity id="pos3" position="-25 .5 -50"></a-entity>
+      </a-entity>
+      
+      <a-entity id="bussola"
+                position="41.5 2 0">
+        
+        <a-entity id="pointer"
+                  position="0 2 -1"
+                  rotation="90 0 0">
+          <a-cylinder color="red"
+                      scale=".15 2 .15"
+                      position="0 1 0"></a-cylinder>
+          <a-cone color="red"
+                  scale=".5 1 .5"
+                  position="0 2 0"></a-cone>
+        </a-entity>
+      
+      </a-entity>
+      
+      
+      
+      <!-- Deméter e Colheita -->
+      <a-entity id="colheita"
+                >
+        <a-entity id="demeter"
+                  geometry="primitive: box"
+                  position="-3 0 0"
+                  scale="1 5 1"
+                  ></a-entity>
+        
+        <a-entity>
+          <a-box class="colheita" color="red" position="1.5 .1 1.5" scale="1.5 .15 1.5"></a-box>
+          <a-box class="colheita" color="green" position="1.5 .1 -1.5" scale="1.5 .15 1.5"></a-box>
+          <a-box class="colheita" color="green" position="-1.5 .1 1.5" scale="1.5 .15 1.5"></a-box>
+          <a-box class="colheita" color="red" position="-1.5 .1 -1.5" scale="1.5 .15 1.5"></a-box>
+          <a-box class="colheita" color="red" position="0 .1 0" scale="1.5 .15 1.5"></a-box>
+          <a-box class="colheita" color="red" position="0 .1 1.5" scale="1.5 .15 1.5"></a-box>
+          <a-box class="colheita" color="red" position="1.5 .1 0" scale="1.5 .15 1.5"></a-box>
+          <a-box class="colheita" color="green" position="0 .1 -1.5" scale="1.5 .15 1.5"></a-box>
+          <a-box class="colheita" color="red" position="-1.5 .1 0" scale="1.5 .15 1.5"></a-box>
+        </a-entity>
+      </a-entity>
+      
+      
+      
+      <a-entity id="temple">
+
+        <a-gltf-model src="#templo"
+          position="50 11.5 0"
+          scale="0.01 0.01 0.01"
+        ></a-gltf-model>
+
+        <a-gltf-model src="#zeus"
+          position="55 1 0.2"
+          scale="0.5 0.5 0.5"
+          rotation="0 90 0"
+        >
+        </a-gltf-model>
+        
+        <a-entity id="pedestais"
+                  visible="false">
+
+          <a-gltf-model src="#pedestal"
+            position="55 4 0"
+            scale="3 3 3"
+          ></a-gltf-model>
+          
+          <a-gltf-model src="#pedestal"
+            position="41.5 4 0"
+            scale="3 3 3"
+          ></a-gltf-model>
+          
+          <a-entity >
+          
+            <a-gltf-model src="#pedestal"
+              position="60 4 -10"
+              scale="3 3 3"
+            ></a-gltf-model>
+
+            <a-gltf-model src="#pedestal"
+              position="54 4 -10"
+              scale="3 3 3"
+            ></a-gltf-model>
+
+            <a-gltf-model src="#pedestal"
+              position="48 4 -10"
+              scale="3 3 3"
+            ></a-gltf-model>
+
+            <a-gltf-model src="#pedestal"
+              position="42 4 -10"
+              scale="3 3 3"
+            ></a-gltf-model>
+
+            <a-gltf-model src="#pedestal"
+              position="36 4 -10"
+              scale="3 3 3"
+            ></a-gltf-model>
+
+              <a-gltf-model src="#pedestal"
+              position="60 4 10"
+              scale="3 3 3"
+            ></a-gltf-model>
+
+            <a-gltf-model src="#pedestal"
+              position="54 4 10"
+              scale="3 3 3"
+            ></a-gltf-model>
+
+            <a-gltf-model src="#pedestal"
+              position="48 4 10"
+              scale="3 3 3"
+            ></a-gltf-model>
+
+            <a-gltf-model src="#pedestal"
+              position="42 4 10"
+              scale="3 3 3"
+            ></a-gltf-model>
+
+            <a-gltf-model src="#pedestal"
+              position="36 4 10"
+              scale="3 3 3"
+            ></a-gltf-model>
+            
+          </a-entity>
+        
+        </a-entity>
+      </a-entity>
+      
+      
+      <!-- Câmara, Cursor e Controlos -->
+      <a-entity id="rig"
+          movement-controls
+          speed="0.1"
+          position="95 0 0"
+          rotation="0 90 0">
+          <a-entity camera
+                    position="0 3
+                              0"
+                    look-controls="pointerLockEnabled: true"
+                    >
+              
+        </a-entity>
+      </a-entity>
+    </a-scene>
+  </body>
+</html>

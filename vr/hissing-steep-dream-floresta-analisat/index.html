@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <!-- Origem: backup do Glitch, projeto "hissing-steep-dream-floresta-analisat" (cópia de 2025-12-24 19:56) -->
+    <title>Projeto A-Frame no Glitch</title>
+    <meta name="description" content="A-Frame VR Project" />
+    <script src="https://aframe.io/releases/1.2.0/aframe.min.js"></script>
+    <script src="https://unpkg.com/aframe-portal-component/dist/aframe-portal-component.min.js"></script>
+    <style>
+      body {
+        margin: 0;
+      }
+      canvas {
+        display: block;
+      }
+    </style>
+  </head>
+  <body>
+    <a-scene>
+      <!-- Chão marrom -->
+      <a-plane
+        position="0 -10 0"
+        rotation="-90 0 0"
+        width="200"
+        height="200"
+        color="#8B4513"
+      ></a-plane>
+
+      <!-- Environments and other components -->
+      <a-entity environment="preset: forest; groundColor: #445"></a-entity>
+
+      <!-- Portals -->
+      <a-entity portal="destination: #scene2" position="0 1 -3"></a-entity>
+      <a-scene id="scene2" visible="false">
+        <a-sphere position="0 1 -3" radius="1.25" color="#EF2D5E"></a-sphere>
+      </a-scene>
+
+      <!-- 360º VR -->
+      <a-sky src="#skyTexture"></a-sky>
+
+      <!-- Lights -->
+      <a-light type="ambient" color="#445451"></a-light>
+      <a-light type="point" intensity="2" position="2 4 4"></a-light>
+
+      <!-- 3D Models -->
+      <a-entity id="treeContainer"></a-entity>
+
+      <!-- Animação fornecida -->
+      <a-entity
+        id="animationEntity"
+        gltf-model="#animationModel"
+        position="0 0 -10"
+        scale="2 2 2"
+        rotation="0 180 0"
+      ></a-entity>
+
+      <!-- Sound -->
+      <a-entity
+        sound="src: #soundfile; autoplay: true; loop: true; maxDistance: 200; rolloffFactor: 0.5; positional: true"
+      ></a-entity>
+
+      <!-- Proximity -->
+      <a-entity id="player" position="0 1.6 0"></a-entity>
+      <a-box
+        position="0 1 -5"
+        color="#4CC3D9"
+        proximity="target: #player; margin: 2; event: proximityenter"
+      ></a-box>
+
+      <a-assets>
+        <img
+          id="skyTexture"
+          src="assets/sechelt.jpg"
+        />
+        <a-asset-item
+          id="treeModel"
+          src="assets/for-a-frame.glb"
+        ></a-asset-item>
+        <a-asset-item
+          id="animationModel"
+          src="assets/Animao.glb"
+        ></a-asset-item>
+        <audio
+          id="soundfile"
+          src="assets/123087__itsmrjack__jungle_1.wav"
+        ></audio>
+      </a-assets>
+    </a-scene>
+
+    <script>
+      // Componente de proximidade
+      AFRAME.registerComponent("proximity", {
+        schema: {
+          target: { type: "selector" },
+          margin: { type: "number" },
+          event: { type: "string" },
+        },
+        tick: function () {
+          var targetPos = this.data.target.object3D.position;
+          var thisPos = this.el.object3D.position;
+          var distance = thisPos.distanceTo(targetPos);
+          if (distance < this.data.margin) {
+            this.el.emit(this.data.event);
+          }
+        },
+      });
+
+      // Componente para gerar árvores
+      AFRAME.registerComponent("generate-trees", {
+        init: function () {
+          const treeModel = document.querySelector("#treeModel");
+          const treeContainer = this.el;
+          const treeCount = 50; // Número de árvores a serem geradas
+          const spread = 150; // Área para espalhar as árvores
+
+          for (let i = 0; i < treeCount; i++) {
+            const x = Math.random() * spread - spread / 2;
+            const z = Math.random() * spread - spread / 2;
+            const y = -10; // Ajuste para a altura das árvores
+
+            const tree = document.createElement("a-entity");
+            tree.setAttribute("gltf-model", treeModel.getAttribute("src"));
+            tree.setAttribute("position", `${x} ${y} ${z}`);
+
+            treeContainer.appendChild(tree);
+          }
+        },
+      });
+
+      // Animação da caminhada
+      AFRAME.registerComponent("walk-animation", {
+        init: function () {
+          var el = this.el;
+          var animationDuration = 6000; // Tempo da animação em milissegundos
+          var startPosition = { x: 0, y: 0, z: -10 }; // Posição inicial
+          var endPosition = { x: 20, y: 0, z: -10 }; // Posição final
+
+          // Animação da posição usando a biblioteca tween.js
+          new TWEEN.Tween(startPosition)
+            .to(endPosition, animationDuration)
+            .onUpdate(function () {
+              el.setAttribute("position", `${this.x} ${this.y} ${this.z}`);
+            })
+            .easing(TWEEN.Easing.Quadratic.InOut)
+            .repeat(Infinity)
+            .start();
+        },
+        tick: function (time, timeDelta) {
+          TWEEN.update();
+        },
+      });
+
+      // Aplicar o componente de animação de caminhada à entidade da animação
+      document
+        .querySelector("#animationEntity")
+        .setAttribute("walk-animation", "");
+
+      // Aplicar o componente generate-trees ao treeContainer
+      document
+        .querySelector("#treeContainer")
+        .setAttribute("generate-trees", "");
+    </script>
+    <!-- Incluindo a biblioteca tween.js para animações suaves -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/tween.js/18.6.4/tween.umd.js"></script>
+  </body>
+</html>

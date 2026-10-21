@@ -1,0 +1,50 @@
+<html>
+  <head>
+    <!-- Origem: backup do Glitch, projeto "ajar-noisy-mum" (cópia de 2025-12-24 19:55) -->
+    <script src="https://unpkg.com/aframe-animation-component@^4.1.2/dist/aframe-animation-component.min.js"></script>
+    <script src="https://aframe.io/releases/1.0.0/aframe.min.js"></script>
+    <script src="https://unpkg.com/aframe-particle-system-component@1.0.x/dist/aframe-particle-system-component.min.js"></script>
+  </head>
+  <body>
+    <a-scene>
+      <a-camera>
+        <a-cursor></a-cursor>
+      </a-camera>
+      <a-assets>
+        <img
+          id="boxTexture"
+          src="assets/WhatsApp-Image-2023-11-17-at-22.34.06.jpg"
+        />
+        <audio
+          id="musicbox"
+          src="assets/Super_Mario_64_Soundtrack_-_File_Select.wav"
+        ></audio>
+      </a-assets>
+      <a-entity
+        position="0 2.25 -15"
+        particle-system="preset: snow; particleCount: 3000; velocityValue: 0 -2 0; size: 1"
+      ></a-entity>
+      <a-box
+        src="#boxTexture"
+        position="0 1 -3"
+        animation="property: rotation; to: 0 360 360; dur: 4000; loop: true"
+        ><a-sound autoplay="true" loop="true" src="#musicbox"></a-sound
+      ></a-box>
+      <a-text
+        position="0 1 -1"
+        value="Obra de arte linda e maravilhosa"
+        align="center"
+        width="5"
+      ></a-text>
+
+      <a-link
+        position="4 1.6 0"
+        href="mundo.html"
+        title="Vai para o outro mundo"
+        rotation="0 90 0"
+      ></a-link>
+
+      <a-sky color="#00D1FF"></a-sky>
+    </a-scene>
+  </body>
+</html>

@@ -1,0 +1,281 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+  <head>
+    <!-- Origem: backup do Glitch, projeto "troubled-harvest-outrigger-retiro-de-ioga" (cópia de 2025-12-24 20:00) -->
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Ambiente de Ioga com Mesa de Comida e Bebida</title>
+    <script src="https://aframe.io/releases/1.2.0/aframe.min.js"></script>
+    <script src="https://cdn.rawgit.com/feiss/aframe-environment-component/v1.1.0/dist/aframe-environment-component.min.js"></script>
+    <script src="https://unpkg.com/aframe-extras@6.1.0/dist/aframe-extras.min.js"></script>
+    <style>
+      body {
+        margin: 0;
+        padding: 0;
+        overflow: hidden;
+      }
+    </style>
+  </head>
+  <body>
+    <a-scene>
+      <!-- Ambiente Natural -->
+      <a-entity
+        environment="preset: tron; groundColor: #4CAF50; groundColor2: #8B4513; skyColor: #87CEEB; lightPosition: { x: 0.2, y: 1, z: -0.2 }"
+      ></a-entity>
+
+      <!-- Luzes -->
+      <a-light type="ambient" color="#FFFFFF" intensity="0.7"></a-light>
+      <a-light
+        type="directional"
+        color="#FFFFFF"
+        intensity="0.5"
+        position="-1 1 0"
+      ></a-light>
+      <a-light
+        type="directional"
+        color="#FFFFFF"
+        intensity="0.5"
+        position="1 1 0"
+      ></a-light>
+      <a-light
+        type="directional"
+        color="#FFFFFF"
+        intensity="0.5"
+        position="0 1 -1"
+      ></a-light>
+
+      <!-- Tapete de Ioga -->
+      <a-plane
+        id="tapeteIoga"
+        position="0 -0.5 0"
+        rotation="-90 0 0"
+        width="4"
+        height="6"
+        color="#FFFFE0"
+        sound="src: #somTapete; on: click"
+      ></a-plane>
+
+      <!-- Velas -->
+      <a-cylinder
+        position="1 0.65 -3"
+        radius="0.05"
+        height="0.3"
+        color="#FFD700"
+      ></a-cylinder>
+      <a-cylinder
+        position="1 0.70 -3"
+        radius="0.01"
+        height="0.3"
+        color="#FFF6E9"
+      ></a-cylinder>
+      <a-cylinder
+        position="-1 0.65 -3"
+        radius="0.05"
+        height="0.3"
+        color="#FFD700"
+      ></a-cylinder>
+      <a-cylinder
+        position="-1 0.70 -3"
+        radius="0.01"
+        height="0.3"
+        color="#FFF6E9"
+      ></a-cylinder>
+
+      <!-- Tochas -->
+      <a-entity position="2.75 0 2.75">
+        <a-cylinder
+          radius="0.1"
+          height="2"
+          color="#996633"
+          rotation="0 0 0"
+        ></a-cylinder>
+        <a-cone
+          radius-bottom="0.2"
+          radius-top="0"
+          height="0.5"
+          rotation="180 0 0"
+          color="#ff3300"
+          position="0 1 0"
+        ></a-cone>
+      </a-entity>
+      <a-entity position="-2.75 0 2.75">
+        <a-cylinder
+          radius="0.1"
+          height="2"
+          color="#996633"
+          rotation="0 0 0"
+        ></a-cylinder>
+        <a-cone
+          radius-bottom="0.2"
+          radius-top="0"
+          height="0.5"
+          rotation="180 0 0"
+          color="#ff3300"
+          position="0 1 0"
+        ></a-cone>
+      </a-entity>
+      <a-entity position="2.75 0 -2.75">
+        <a-cylinder
+          radius="0.1"
+          height="2"
+          color="#996633"
+          rotation="0 0 0"
+        ></a-cylinder>
+        <a-cone
+          radius-bottom="0.2"
+          radius-top="0"
+          height="0.5"
+          rotation="180 0 0"
+          color="#ff3300"
+          position="0 1 0"
+        ></a-cone>
+      </a-entity>
+      <a-entity position="-2.75 0 -2.75">
+        <a-cylinder
+          radius="0.1"
+          height="2"
+          color="#996633"
+          rotation="0 0 0"
+        ></a-cylinder>
+        <a-cone
+          radius-bottom="0.2"
+          radius-top="0"
+          height="0.5"
+          rotation="180 0 0"
+          color="#ff3300"
+          position="0 1 0"
+        ></a-cone>
+      </a-entity>
+
+      <!-- Mesa de Comida e Bebida -->
+      <a-box
+        position="0 0.25 -3.05"
+        depth="2"
+        height="0.1"
+        width="3"
+        color="#8B4513"
+      ></a-box>
+      <a-box
+        position="1.45 0 -4"
+        depth="0.1"
+        height="0.5"
+        width="0.1"
+        color="#8B4513"
+      ></a-box>
+      <a-box
+        position="1.45 0 -2.1"
+        depth="0.1"
+        height="0.5"
+        width="0.1"
+        color="#8B4513"
+      ></a-box>
+      <a-box
+        position="-1.45 0 -2.1"
+        depth="0.1"
+        height="0.5"
+        width="0.1"
+        color="#8B4513"
+      ></a-box>
+      <a-box
+        position="-1.45 0 -4"
+        depth="0.1"
+        height="0.5"
+        width="0.1"
+        color="#8B4513"
+      ></a-box>
+
+      <!-- Itens na Mesa -->
+      <a-sphere
+        position="0 0.7 -3"
+        radius="0.2"
+        color="#FFD700"
+        animation="property: position; to: 0 0.8 -3; dir: alternate; dur: 2000; loop: true"
+      ></a-sphere>
+      <a-sphere
+        position="0.5 0.7 -3"
+        radius="0.1"
+        color="#FF4500"
+        animation="property: position; to: 0.5 0.8 -3; dir: alternate; dur: 2000; loop: true"
+      ></a-sphere>
+      <a-sphere
+        position="-0.5 0.7 -3"
+        radius="0.15"
+        color="#32CD32"
+        animation="property: position; to: -0.5 0.8 -3; dir: alternate; dur: 2000; loop: true"
+      ></a-sphere>
+      <a-cylinder
+        position="1.1 0.55 -3.5"
+        radius="0.1"
+        height="0.3"
+        color="#8B0000"
+      ></a-cylinder>
+      <a-torus
+        position="-0.90 0.80 -4"
+        radius="0.15"
+        tube="0.05"
+        color="#FF8C00"
+      ></a-torus>
+      <a-cone
+        position="0.80 0.65 -4"
+        radius-bottom="0.1"
+        rotation="90 90 0"
+        radius-top="0"
+        height="0.50"
+        color="#D2B48C"
+      ></a-cone>
+      <a-sphere position="0.50 0.65 -4" radius="0.1" color="F5F7F8"></a-sphere>
+
+      <!-- Texto -->
+      <a-text
+        value="Espaco de Ioga tranquilo com lanche"
+        position="0 2 -3"
+        align="center"
+        color="#FFFFFF"
+      ></a-text>
+
+      <!-- Textura 360º -->sa
+      <a-assets>
+        <video id="skyTexture" width="1920" height="1080" alt="skyTexture">
+          <source
+            src="assets/flower.mp4"
+            type="video/mp4"
+          />
+        </video>
+        <audio
+          id="backgroundSound"
+          src="assets/Relaxing-yoga-music-Instrumental-music-s.wav"
+        ></audio>
+        <audio
+          id="somTapete"
+          src="assets/2-Minutes-of-Calm-_-Nature-Sounds-2-Mins.wav"
+        ></audio>
+      </a-assets>
+      <a-sky src="#skyTexture"></a-sky>
+
+      <!-- Som -->
+      <a-sound
+        src="#backgroundSound"
+        autoplay="true"
+        loop="true"
+        position="0 5"
+      ></a-sound>
+      <a-sound
+        src="#somTapete"
+        autoplay="true"
+        loop="true"
+        position="0 5"
+      ></a-sound>
+
+      <!-- Interação de Proximidade -->
+      <a-entity
+        id="rig"
+        position="0 1.6 -3"
+        movement-controls="fly: true; touch-controls: true"
+      >
+        <a-camera look-controls>
+          <a-cursor></a-cursor>
+        </a-camera>
+      </a-entity>
+    </a-scene>
+  </body>
+</html>

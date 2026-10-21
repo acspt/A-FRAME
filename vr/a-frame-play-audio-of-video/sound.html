@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>A-Frame AudioContext Example</title>
+    <script src="https://aframe.io/releases/1.2.0/aframe.min.js"></script>
+  </head>
+  <body>
+    <a-scene>
+      <!-- Define the sound asset -->
+      <a-assets>
+        <audio
+          id="sound"
+          src="assets/track.wav"
+          crossorigin="anonymous"
+        ></audio>
+      </a-assets>
+
+      <!-- Create an entity that will play the sound -->
+      <a-entity id="soundEntity" sound="src: #sound; autoplay: false"></a-entity>
+
+      <!-- Add a simple box to interact with -->
+      <a-box
+        position="0 1 -3"
+        rotation="0 45 0"
+        color="#4CC3D9"
+        event-set__click="material.color: red"
+      ></a-box>
+
+      <!-- Add a camera -->
+      <a-camera position="0 1.6 0">
+        <a-cursor></a-cursor>
+      </a-camera>
+    </a-scene>
+
+    <script>
+      // Create an AudioContext
+      const audioContext = new (window.AudioContext ||
+        window.webkitAudioContext)();
+
+      // Get the audio element and create a MediaElementAudioSourceNode
+      const audioElement = document.querySelector("#sound");
+      const track = audioContext.createMediaElementSource(audioElement);
+
+      // Connect the track to the destination (speakers)
+      track.connect(audioContext.destination);
+
+      // Function to play sound when the box is clicked
+      document.querySelector("a-box").addEventListener("click", () => {
+        // Resume the AudioContext if it's suspended (required for some browsers)
+
+        if (audioContext.state === "suspended") {
+          audioContext.resume();
+        }
+        // Play the audio
+        audioElement.play();
+      });
+    </script>
+  </body>
+</html>

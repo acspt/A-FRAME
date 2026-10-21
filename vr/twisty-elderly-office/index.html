@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <!-- Origem: backup do Glitch, projeto "twisty-elderly-office" (cópia de 2025-12-24 20:00) -->
+    <meta charset="UTF-8">
+    <title>A-Frame Collision Detection</title>
+    <script src="https://aframe.io/releases/1.5.0/aframe.min.js"></script>
+  </head>
+  <body>
+    <a-scene>
+      <!-- Camera with aabb-collider component -->
+      <a-entity id="camera" camera look-controls wasd-controls
+                aabb-collider="objects: .collidable"
+                position="0 1.6 0">
+      </a-entity>
+
+      <!-- Collidable entities -->
+      <a-box class="collidable" position="0 1 -5" depth="1" height="1" width="1" color="#4CC3D9"></a-box>
+      <a-sphere class="collidable" position="2 1 -5" radius="1" color="#EF2D5E"></a-sphere>
+      <a-cylinder class="collidable" position="-2 1 -5" radius="0.5" height="1" color="#FFC65D"></a-cylinder>
+      <a-plane position="0 0 -4" rotation="-90 0 0" width="4" height="4" color="#7BC8A4"></a-plane>
+      <a-sky color="#ECECEC"></a-sky>
+    </a-scene>
+
+    <script>
+      // Add event listener for collision detection
+      document.querySelector('#camera').addEventListener('collide', function (e) {
+        console.log('Collision detected with:', e.detail.body.el);
+      });
+    </script>
+  </body>
+</html>

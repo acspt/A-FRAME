@@ -1,0 +1,27 @@
+<html>
+  <head>
+    <script src="https://aframe.io/releases/1.0.0/aframe.min.js"></script>
+    <script src="https://unpkg.com/aframe-particle-system-component@1.0.x/dist/aframe-particle-system-component.min.js"></script>
+    <script src="https://unpkg.com/aframe-physics-system@4.0.1"></script>
+  </head>
+  <body>
+    <a-scene physics="debug: true">
+      <a-camera position="0 1.6 0" wasd-controls="acceleration: 200" look-controls>
+        <a-cursor></a-cursor>
+      </a-camera>
+      <a-assets>
+        <video id="animacao" src="assets/friday.mp4" autoplay loop crossorigin="anonymous"></video>
+      </a-assets>
+      
+      <a-sky color="#333333"></a-sky>
+      
+      <a-video src="#animacao" position="0 1.6 -5" width="16" height="9" autoplay="true" loop="true" crossorigin="anonymous"></a-video>
+      <a-link
+        position="4 1.6 4"
+        href="index.html"
+        title="Voltar para a galeria"
+        rotation="0 90 0"
+      ></a-link>
+    </a-scene>
+  </body>
+</html>

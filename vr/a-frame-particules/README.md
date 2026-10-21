@@ -1,0 +1,1 @@
+[Link](https://github.com/harlyq/aframe-spe-particles-component?tab=readme-ov-file)

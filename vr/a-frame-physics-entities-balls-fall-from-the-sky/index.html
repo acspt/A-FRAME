@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <!-- Origem: backup do Glitch, projeto "a-frame-physics-entities-balls-fall-from-the-sky" (cópia de 2025-12-24 19:53) -->
+    <meta charset="utf-8" />
+    <title>Hello, WebVR! • A-Frame</title>
+    <meta name="description" content="Hello, WebVR! • A-Frame" />
+    <script src="https://aframe.io/releases/1.0.0/aframe.min.js"></script>
+    <script src="https://mixedreality.mozilla.org/ammo.js/builds/ammo.wasm.js"></script>
+    <script src="https://cdn.jsdelivr.net/gh/n5ro/aframe-physics-system@v4.0.1/dist/aframe-physics-system.js"></script>
+    <script src="https://cdn.jsdelivr.net/gh/c-frame/aframe-extras@7.0.0/dist/aframe-extras.min.js"></script>
+    <script src="moving.js" ></script>
+  </head>
+  <body>
+    <a-scene physics="debug: false">
+      <a-assets>
+        <img
+          crossorigin="anonymous"
+          id="green"
+          src="assets/green-watercolor.jpg"
+        />
+        <img
+          crossorigin="anonymous"
+          id="stars"
+          src="assets/stars.jpg"
+        />
+        <img
+          crossorigin="anonymous"
+          id="bricks"
+          src="assets/brick_wall_001_diff_1k.jpg
+"
+        />
+      </a-assets>
+      <a-sky material="src: #stars"> </a-sky>
+      <a-entity id="container"></a-entity>
+      <a-camera wasd-controls position="0 10 15" rotation="45  0 0"> </a-camera>
+      <a-plane
+        material="src:#green;repeat:1 1 1;"
+        static-body
+        position="0 0 0"
+        rotation="-90 0 0"
+        width="300"
+        height="300"
+      ></a-plane
+      >0
+      <a-entity id="container"></a-entity>
+      <!-- Parede Frontal -->
+      <a-box
+        moving="axis: z; speed: 1; delay: 10000"
+        material="src:#bricks;repeat:5 5 1;"
+        position="0 0 -10"
+        width="10"
+        height="4"
+        depth="0.1"
+        static-body
+        color="#4CC3D9"
+      >
+      </a-box>
+
+      <!-- Parede Traseira -->
+      <a-box
+        moving="axis: z; speed: -1; delay: 10000"
+        material="src:#bricks;repeat:5 5 1;"
+        position="0 0 0"
+        static-body
+        width="10"
+        height="4"
+        depth="0.1"
+        color="#4CC3D9"
+      >
+      </a-box>
+
+      <!-- Parede Lateral Esquerda -->
+      <a-box
+        moving="axis: x; speed: 1; delay: 10000"
+        material="src:#bricks;repeat:5 5 1;"
+        position="-5 0 -5"
+        width="0.1"
+        static-body
+        height="4"
+        depth="10"
+        color="#4CC3D9"
+      >
+      </a-box>
+
+      <!-- Parede Lateral Direita -->
+      <a-box
+        moving="axis: x; speed: -1; delay: 10000"
+        material="src:#bricks;repeat:5 5 1;"
+        position="5 0 -5"
+        width="0.1"
+        height="4"
+        depth="10"
+        static-body
+        color="#4CC3D9"
+      >
+      </a-box>
+    </a-scene>
+    <script src="script.js" defer></script>
+  </body>
+</html>

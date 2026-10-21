@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <!-- Origem: backup do Glitch, projeto "curved-economic-turnover" (cópia de 2025-12-24 19:55) -->
+    <title>14islands webvr tutorial</title>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="styles.css">
+    <script src="https://button.glitch.me/button.js"></script>
+    
+    <script src="https://aframe.io/releases/0.6.1/aframe.min.js"></script>
+    <script src="//cdn.rawgit.com/donmccurdy/aframe-extras/v3.8.3/dist/aframe-extras.min.js"></script>
+    <script src="https://rawgit.com/zcanter/aframe-gradient-sky/master/dist/gradientsky.min.js"></script>
+    <script src="https://rawgit.com/etiennepinchon/aframe-glow/master/dist/aframe-glow-component.min.js"></script>
+    <script src="https://wizgrav.github.io/aframe-effects/dist/aframe-effects.min.js"></script>
+    
+  </head>
+  <body>
+    
+    <a-scene fog="color: #3b2e59; near: 1; far: 60" 
+             effects="film"
+             film="sIntensity: 0.02; nIntensity: 0.2">
+      
+      <a-assets>
+        <a-asset-item id="island-obj" src="assets/island5.obj"></a-asset-item>
+        <a-asset-item id="island-mtl" src="assets/island5.mtl"></a-asset-item>
+      </a-assets>
+      
+      <a-entity id="flamingo" animation__a1="property: position; from: 65 6 -25; to: -65 6 -25; dur: 13000; easing: linear; loop: true">
+        <a-entity animation-mixer="duration: .6s;" scale="0.05 0.05 0.05" json-model="src: url(flamingo.js);" rotation="0 -90 0"></a-entity>
+        
+      </a-entity>
+      
+      <a-entity id="sun" glow="side:front; scale:1.1; c: 1; p: 3; color: #0a0006" geometry="primitive: sphere; radius: 30" material="shader: gradient; topColor: 255 249 69; bottomColor: 255, 71, 129; offset: 0" light="color: #ffffff; intensity: 0.1; type: directional; castShadow:true; shadowCameraVisible	: false; shadowCameraNear: 45; shadowCameraFar: 65;shadowCameraLeft:-10; shadowCameraRight:10" position="0 16 -70"></a-entity>
+      <a-gradient-sky material="topColor: 43, 36, 81; bottomColor: 59, 46, 89;"></a-gradient-sky>  
+      <a-entity id="ocean" ocean="density: 30; width: 100; depth: 100; speed: 1" material="color: #152072; opacity: 1; roughness: 1;" rotation="-90 0 0" position="0 -6 0" shadow="receive: true; cast: false;"></a-entity>
+      
+      <a-entity obj-model="obj: #island-obj; mtl: #island-mtl" position="-2 8 -30" scale="38 38 38" rotation="0 100 0" shadow="cast:true"></a-entity>
+      
+    </a-scene>
+    <div class="glitchButton" style="position:fixed;top:20px;right:20px;"></div>
+  </body>
+</html>

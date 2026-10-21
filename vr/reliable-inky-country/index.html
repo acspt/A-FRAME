@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="pt">
+<head>
+    <!-- Origem: backup do Glitch, projeto "reliable-inky-country" (cópia de 2025-12-24 19:58) -->
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Obra de Arte Interativa</title>
+    <style>
+        /* Regras CSS para estilização */
+        body {
+            margin: 0;
+            overflow: hidden;
+            font-family: Arial, sans-serif;
+        }
+        canvas {
+            width: 100vw;
+            height: 100vh;
+        }
+        /* Adicione mais regras CSS conforme necessário */
+    </style>
+</head>
+<body>
+    <a-scene>
+        <!-- Componentes A-Frame para construção do cenário 3D -->
+        <a-sky color="#3498db"></a-sky>
+        <a-box position="-1 0.5 -3" rotation="0 45 0" color="#e74c3c"></a-box>
+        <a-sphere position="0 1.25 -5" radius="1.25" color="#2ecc71"></a-sphere>
+        <a-cylinder position="1 0.75 -3" radius="0.5" height="1.5" color="#f39c12"></a-cylinder>
+        <!-- Adicione mais elementos 3D conforme desejado -->
+        
+        <!-- Componente de som para adicionar áudio -->
+        <a-sound src="url_para_o_arquivo_de_audio.mp3" autoplay="true"></a-sound>
+        
+        <!-- Componente de interação para manipulação do cenário -->
+        <a-entity cursor="rayOrigin: mouse"></a-entity>
+        
+        <!-- Adicione mais componentes conforme necessário -->
+    </a-scene>
+    
+    <script src="https://aframe.io/releases/1.2.0/aframe.min.js"></script>
+</body>
+</html>

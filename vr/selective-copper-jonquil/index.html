@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <!-- Origem: backup do Glitch, projeto "selective-copper-jonquil" (cópia de 2025-12-24 19:58) -->
+    <title>Interactions - Cursor</title>
+   <script src="https://aframe.io/releases/1.0.4/aframe.min.js"></script>
+    <script src="https://unpkg.com/aframe-environment-component/dist/aframe-environment-component.min.js"></script>
+    <script src="https://unpkg.com/aframe-event-set-component@^4.0.0/dist/aframe-event-set-component.min.js"></script>
+     <script src="https://unpkg.com/aframe-animation-component@^4.1.2/dist/aframe-animation-component.min.js"></script>
+     <script src="https://unpkg.com/super-hands@2.1.0/dist/super-hands.min.js"></script> 
+    <!--<script src="https://wmurphyrd.github.io/aframe-super-hands-component/examples/build.js"></script>-->
+  </head>
+  <body>
+   
+     <a-scene>
+      <a-assets>
+        <img
+          id="boxTexture"
+          src="assets/arrow.png"
+        />
+        <img
+          id="treebark"
+          src="assets/bark_brown_02_diff_1k.jpg"
+        />
+        <img
+          id="panorama"
+          src="assets/city.jpg"
+        />
+        <img
+          id="moon"
+          src="assets/moon_1024.jpg"
+        />
+      </a-assets>
+
+    
+
+      <a-sphere src="#moon" position="-2 2 -3" radius="1"></a-sphere>
+
+      <a-cylinder
+        src="#treebark"
+        position="2 1 -3"
+        height="3"
+        radius="0.5"
+      ></a-cylinder>
+
+  
+    <a-scene >
+        <a-assets>
+            <a-asset-item id="wolf" src="https://raw.githubusercontent.com/jorgecardoso/aframe-usj-models/master/wolf_with_animations/scene.gltf"> </a-asset-item>
+        </a-assets>
+
+        <a-gltf-model position="0 0 -3"  scale="3 3 3" src="#wolf" animation-mixer="clip: 04_Idle"></a-gltf-model>
+        <!-- See the animation clips at https://sketchfab.com/models/f3769a474a714ebbbaca0d97f9b0a5a0# -->
+        <a-light type="ambient" intensity="4"></a-light>
+     
+    </a-scene>
+    
+    
+    <a-scene background="color:lightblue">
+      
+      <a-assets>
+        <a-mixin id="box" material="color: red" width="0.5" height="0.5" depth="0.5"  color="red" hoverable grabbable stretchable draggable droppable></a-mixin>
+      </a-assets>
+      
+      <a-box mixin="box" position="-1 1.6 0" color="blue"></a-box>
+      <a-box mixin="box" position="0 1.6 0" color="green"></a-box>
+      <a-box mixin="box" position="1 1.6 0" color="red"></a-box>
+      <a-box mixin="box" position="-1 2.6 0" color="green"></a-box>
+      <a-box mixin="box" position="0 2.6 0" color="red"></a-box>
+      <a-box mixin="box" position="1 2.6 0" color="blue"></a-box>
+      
+  
+      
+     
+    </a-scene>
+  </body>
+</html>

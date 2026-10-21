@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en" >
+<head>
+    <!-- Origem: backup do Glitch, projeto "a-frame-speech-component" (cópia de 2025-12-24 19:53) -->
+  <meta charset="UTF-8">
+  <title>A-Frame Speech Component</title>
+  <script src="//aframe.io/releases/0.8.2/aframe.min.js"></script>
+
+<script src="//cdnjs.cloudflare.com/ajax/libs/annyang/2.5.0/annyang.min.js"></script> 
+
+<script src="//rawgit.com/lmalave/aframe-speech-command-component/master/dist/aframe-speech-command-component.js"></script> 
+
+</head>
+<body>
+<!-- partial:index.partial.html -->
+<!-- See https://www.npmjs.com/package/aframe-speech-command-component for more info -->
+
+<a-scene>
+
+  <a-entity id="annyang" annyang-speech-recognition></a-entity>
+
+  <a-sphere position="0 1.25 -5" radius="1.25" color="#EF2D5E" shadow></a-sphere>
+
+  <a-box position="-1 0.5 -3" rotation="0 45 0" width="1" height="1" depth="1" color="#4CC3D9" shadow visible="false" speech-command__show="command: open box; type: attribute; attribute: visible; value: true;" speech-command__hide="command: close box; type: attribute; attribute: visible; value: false;"></a-box>
+
+  <a-cylinder position="1 0.75 -3" radius="0.5" height="1.5" color="#FFC65D" shadow></a-cylinder>
+
+  <a-plane position="0 0 -4" rotation="-90 0 0" width="4" height="4" color="#7BC8A4" shadow></a-plane>
+
+  <a-sky color="#ECECEC"></a-sky>
+
+  <a-text position="-1 0.5 -2" align="center" value="Say open/close box" color="black"></a-text>
+
+  </a-entity>
+
+</a-scene>
+<!-- partial -->
+  
+</body>
+</html>

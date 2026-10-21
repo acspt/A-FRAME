@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <!-- Origem: backup do Glitch, projeto "a-frame-rotation-object-loop" (cópia de 2025-12-24 19:53) -->
+    <meta charset="utf-8" />
+    <title>Smooth Door Animation in A-Frame</title>
+    <script src="https://aframe.io/releases/1.2.0/aframe.min.js"></script>
+  </head>
+  <body>
+    <a-scene>
+      <!-- Door entity with animation component for smooth rotation -->
+      <a-box
+        id="door"
+        position="0 0 -4"
+        rotation="0 0 0"
+        depth="0.1"
+        height="2.5"
+        width="1.5"
+        color="#654321"
+     animation="property: rotation; to: 0 360 0; loop: true; dur: 10000; easing: linear;"  >
+      </a-box>
+
+      <!-- Invisible plane for detecting clicks to toggle door state -->
+    
+      <!-- Camera with cursor for interaction -->
+      <a-camera>
+        <a-cursor></a-cursor>
+      </a-camera>
+    </a-scene>
+  </body>
+</html>

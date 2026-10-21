@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+
+<!-- Simple physics
+  Using aframe-physics-system.
+
+  The camera does not go though objects in the scene, and is "sustained"
+  by the plane acting as a floor. But if you go beyond the borders of the
+  plane, you fall down (you know, gravity...)
+-->
+
+<html>
+  <head>
+    <!-- Origem: backup do Glitch, projeto "emphasized-tidy-gong" (cópia de 2025-12-24 19:55) -->
+    <script src="//aframe.io/releases/1.5.0/aframe.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/gh/MozillaReality/ammo.js@8bbc0ea/builds/ammo.wasm.js"></script>
+    <script src="https://cdn.jsdelivr.net/gh/c-frame/aframe-physics-system@v4.2.2/dist/aframe-physics-system.js"></script>
+    <script src="//cdn.jsdelivr.net/gh/donmccurdy/aframe-extras@v6.1.1/dist/aframe-extras.min.js"></script>
+
+    <script>
+      AFRAME.registerComponent('collision-wire', {
+        schema: {
+          element: {type: 'string'}
+        },
+        init: function() {
+          let el = this.el;
+          let element = this.data.element;
+
+          el.addEventListener("collidestart", function (event) {
+            if ( event.detail.targetEl.id === element) {
+              el.setAttribute('material', {'wireframe': true});
+            };
+          });
+          el.addEventListener("collideend", function (event) {
+            if ( event.detail.targetEl.id === element) {
+              el.setAttribute('material', {'wireframe': false});
+            };
+          });
+        }
+      });
+    </script>
+  </head>
+  <body>
+    <a-scene physics="driver: ammo; debug: true; debugDrawMode: 1;">
+      <!-- Static floor -->
+      <a-plane ammo-body="type: static" ammo-shape="type: box"
+          position="0 0 -4" rotation="-90 0 0" width="8" height="20"
+          color="yellow"></a-plane>
+      <!-- Static cylinder -->
+      <a-cylinder ammo-body="type: static; emitCollisionEvents: true;"
+          ammo-shape="type: cylinder"
+          collision-wire="element: cam"
+          position="0 1 -1" radius="1" height="3"
+          color="orange"></a-cylinder>
+      <!-- Dynamic box -->
+      <a-box ammo-body="type: dynamic" ammo-shape="type: box"
+          position="0 4 -2" width="3" height="2" depth="1"
+          color="red"></a-box>
+      <!-- Dynamic box -->
+      <a-box ammo-body="type: dynamic" ammo-shape="type: box"
+          position="2 10 0" width="1" height="1" depth="1"
+          color="blue"></a-box>
+
+      <!-- Camera rig, with a cylynder to give an idea of its "size"-->
+      <a-entity movement-controls="fly: false" position="0 0 5"
+          geometry="primitive: cylinder; height: 2; radius: 0.8"
+          material="color: green; wireframe: true"
+          id="cam" ammo-body="type: kinematic;" ammo-shape="type: cylinder">
+        <a-entity wasd-controls camera position="0 1.6 0" ></a-entity>    
+      </a-entity>
+      
+  <a-assets>
+    <a-asset-item id="tree" src="assets/vintage_grandfather_clock_01_1k-v2.glb"></a-asset-item>
+  </a-assets>
+
+  <a-entity gltf-model="#tree" scale="20 2 2 "></a-entity>
+
+
+    </a-scene>
+  </body>
+</html>

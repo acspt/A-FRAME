@@ -1,0 +1,480 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <!-- Origem: backup do Glitch, projeto "brainy-juniper-cockatoo-labirinto-analisat" (cópia de 2025-12-24 19:55) -->
+    <meta charset="UTF-8" />
+    <title>Labirinto VR com Colisões</title>
+    <meta
+      name="description"
+      content="Labirinto VR mais elaborado usando A-Frame com colisões"
+    />
+    <script src="https://cdn.jsdelivr.net/npm/aframe-aabb-collider-component@3.2.0/dist/aframe-aabb-collider-component.min.js"></script>
+    <script src="https://aframe.io/releases/1.5.0/aframe.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/gh/c-frame/aframe-extras@7.4.0/dist/aframe-extras.min.js"></script>
+    <script src="https://unpkg.com/aframe-look-at-component@0.6.0/dist/aframe-look-at-component.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/gh/MozillaReality/ammo.js@8bbc0ea/builds/ammo.wasm.js"></script>
+    <script src="https://cdn.jsdelivr.net/gh/c-frame/aframe-physics-system@v4.2.2/dist/aframe-physics-system.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/aframe-aabb-collider-component@3.2.0/dist/aframe-aabb-collider-component.min.js"></script>
+    <script src="https://unpkg.com/aframe-event-set-component@3.0.3/dist/aframe-event-set-component.min.js"></script>
+    <script src="https://unpkg.com/aframe-maze-component@0.1.24/dist/aframe-maze-component.min.js"></script>
+    <script src="script.js"></script>
+
+    <script>
+      function changeLightColor() {
+        var light = document.querySelector("#dynamicLight");
+        var colors = [
+          "#FF0000",
+          "#00FF00",
+          "#0000FF",
+          "#FFFF00",
+          "#FF00FF",
+          "#00FFFF",
+        ];
+        setInterval(() => {
+          var randomColor = colors[Math.floor(Math.random() * colors.length)];
+          light.setAttribute("color", randomColor);
+        }, 2000);
+      }
+      document.addEventListener("DOMContentLoaded", () => {
+        let count = 0;
+        const counterText = document.querySelector("#counterText");
+        const clickableBoxes = document.querySelectorAll(".clickable");
+
+        clickableBoxes.forEach((box) => {
+          box.addEventListener("click", () => {
+            count++;
+            counterText.setAttribute("value", "Pontos: " + count);
+            box.setAttribute("visible", "false"); // Faz a caixa desaparecer
+          });
+        });
+      });
+      // Espera a cena carregar para começar a mudar as cores
+      document.addEventListener("DOMContentLoaded", () => {
+        changeLightColor();
+      });
+    </script>
+  </head>
+  <body>
+    <a-scene physics="debug: false">
+      <!-- Assets -->
+      <a-assets>
+        <img
+          id="texture-wall"
+          src="assets/forest_leaves_03_diff_1k.jpg"
+        />
+        <img
+          id="texture-floor"
+          src="assets/concrete_tiles_diff_1k.jpg"
+        />
+        <img
+          id="texture-sky"
+          src="assets/sechelt.jpg"
+        />
+        <img
+          id="texture-torre"
+          src="assets/brick_wall_003_diff_1k.jpg"
+        />
+        <img
+          id="disc-ball"
+          src="assets/brilhante.png"
+        />
+        <a-box
+          id="wall-one"
+          class="collide"
+          ammo-body="type: static"
+          material="src: #texture-wall"
+          depth="1"
+          width="4"
+          height="5"
+        ></a-box>
+
+        <a-cylinder
+          id="end-cap"
+          static-body
+          src="#texture-torre"
+          depth="1.1"
+          width="1.1"
+          height="7"
+          radius="0.5"
+          visible="true"
+        ></a-cylinder>
+        <audio
+          id="tenta"
+          src="assets/Musica-Aterrorizante-de-Filme-de-Terror.wav"
+        ></audio>
+      </a-assets>
+
+      <!-- Câmera do Jogador com controles de movimento e colisões -->
+      <a-entity id="player" position="-15 10.8 20"></a-entity>
+      <a-camera id="camera" wasd-controls="acceleration: 20" look-controls>
+        <!-- Mensagem Fixa -->
+        <a-cursor></a-cursor>
+        <a-text
+          id="counterText"
+          value="Pontos: 0"
+          scale="0.3 0.3 0"
+          position="-0.6 -0.8 -1"
+          color="#FFFFFF"
+          align="center"
+        ></a-text>
+      </a-camera>
+
+      <a-cylinder
+        position="5 0 -6"
+        radius="0.5"
+        height="1.5"
+        color="#FFC65D"
+        event-set__enter="_event: mouseenter; _target: #maze4; visible: false"
+        event-set__leave="_event: mouseleave; _target: #maze4; visible: true"
+        material=""
+        geometry=""
+      ></a-cylinder>
+      <a-cylinder
+        position="50 0 -6"
+        radius="0.5"
+        height="1.5"
+        color="#FFC65D"
+        event-set__enter="_event: mouseenter; _target: #maze4; visible: false"
+        event-set__leave="_event: mouseleave; _target: #maze4; visible: true"
+        material=""
+        geometry=""
+      ></a-cylinder>
+      <a-cylinder
+        position="-38 0 -6"
+        radius="0.5"
+        height="1.5"
+        color="#FFC65D"
+        event-set__enter="_event: mouseenter; _target: #maze4; visible: false"
+        event-set__leave="_event: mouseleave; _target: #maze4; visible: true"
+        material=""
+        geometry=""
+      ></a-cylinder>
+      <a-cylinder
+        position="-38 0 40"
+        radius="0.5"
+        height="1.5"
+        color="#FFC65D"
+        event-set__enter="_event: mouseenter; _target: #maze4; visible: false"
+        event-set__leave="_event: mouseleave; _target: #maze4; visible: true"
+        material=""
+        geometry=""
+      ></a-cylinder>
+      <a-cylinder
+        position="38 0 40"
+        radius="0.5"
+        height="1.5"
+        color="#FFC65D"
+        event-set__enter="_event: mouseenter; _target: #maze4; visible: false"
+        event-set__leave="_event: mouseleave; _target: #maze4; visible: true"
+        material=""
+        geometry=""
+      ></a-cylinder>
+      <a-cylinder
+        position="15 0 40"
+        radius="0.5"
+        height="1.5"
+        color="#FFC65D"
+        event-set__enter="_event: mouseenter; _target: #maze4; visible: false"
+        event-set__leave="_event: mouseleave; _target: #maze4; visible: true"
+        material=""
+        geometry=""
+      ></a-cylinder>
+      <a-cylinder
+        position="15 0 -6"
+        radius="0.5"
+        height="1.5"
+        color="#FFC65D"
+        event-set__enter="_event: mouseenter; _target: #maze4; visible: false"
+        event-set__leave="_event: mouseleave; _target: #maze4; visible: true"
+        material=""
+        geometry=""
+      ></a-cylinder>
+      <a-cylinder
+        position="25 0 -6"
+        radius="0.5"
+        height="1.5"
+        color="#FFC65D"
+        event-set__enter="_event: mouseenter; _target: #maze4; visible: false"
+        event-set__leave="_event: mouseleave; _target: #maze4; visible: true"
+        material=""
+        geometry=""
+      ></a-cylinder>
+      <a-cylinder
+        position="40 0 -13"
+        radius="0.5"
+        height="1.5"
+        color="#FFC65D"
+        event-set__enter="_event: mouseenter; _target: #maze4; visible: false"
+        event-set__leave="_event: mouseleave; _target: #maze4; visible: true"
+        material=""
+        geometry=""
+      ></a-cylinder>
+      <a-cylinder
+        position="40 0 50"
+        radius="0.5"
+        height="1.5"
+        color="#FFC65D"
+        event-set__enter="_event: mouseenter; _target: #maze4; visible: false"
+        event-set__leave="_event: mouseleave; _target: #maze4; visible: true"
+        material=""
+        geometry=""
+      ></a-cylinder>
+      <a-cylinder
+        position="30 0 -6"
+        radius="0.5"
+        height="1.5"
+        color="#FFC65D"
+        event-set__enter="_event: mouseenter; _target: #maze4; visible: false"
+        event-set__leave="_event: mouseleave; _target: #maze4; visible: true"
+        material=""
+        geometry=""
+      ></a-cylinder>
+      <a-cylinder
+        position="20 0 -6"
+        radius="0.5"
+        height="1.5"
+        color="#FFC65D"
+        event-set__enter="_event: mouseenter; _target: #maze4; visible: false"
+        event-set__leave="_event: mouseleave; _target: #maze4; visible: true"
+        material=""
+        geometry=""
+      ></a-cylinder>
+      <a-cylinder
+        position="35 0 -6"
+        radius="0.5"
+        height="1.5"
+        color="#FFC65D"
+        event-set__enter="_event: mouseenter; _target: #maze4; visible: false"
+        event-set__leave="_event: mouseleave; _target: #maze4; visible: true"
+        material=""
+        geometry=""
+      ></a-cylinder>
+      <a-cylinder
+        position="30 0 30"
+        radius="0.5"
+        height="1.5"
+        color="#FFC65D"
+        event-set__enter="_event: mouseenter; _target: #maze4; visible: false"
+        event-set__leave="_event: mouseleave; _target: #maze4; visible: true"
+        material=""
+        geometry=""
+      ></a-cylinder>
+
+      <a-entity
+        id="elmo"
+        cursor="rayOrigin: mouse"
+        geometry="primitive: box"
+        material="src: elmo.png"
+        sound="src: url(assets/Musica-Aterrorizante-de-Filme-de-Terror.wav); on: click"
+        position="2 15 -3"
+      ></a-entity>
+
+      <a-box
+        id="clickableBox1"
+        position="0 1.5 -25"
+        rotation="0 45 0"
+        width="0.2"
+        height="0.2"
+        depth="0.2"
+        color="#4CC3D9"
+        class="clickable"
+      ></a-box>
+      <a-box
+        id="clickableBox2"
+        position="23 1.5 -3"
+        rotation="0 45 0"
+        width="0.2"
+        height="0.2"
+        depth="0.2"
+        color="#FF6347"
+        class="clickable"
+      ></a-box>
+      <a-box
+        id="clickableBox3"
+        position="7 1.5 -10"
+        rotation="0 45 0"
+        width="0.2"
+        height="0.2"
+        depth="0.2"
+        color="#FFD700"
+        class="clickable"
+      ></a-box>
+      <a-box
+        id="clickableBox4"
+        position="6 1.5 -3"
+        rotation="0 45 0"
+        width="0.2"
+        height="0.2"
+        depth="0.2"
+        color="#8A2BE2"
+        class="clickable"
+      ></a-box>
+      <a-box
+        id="clickableBox5"
+        position="8 1.5 -9"
+        rotation="0 45 0"
+        width="0.2"
+        height="0.2"
+        depth="0.2"
+        color="#00FF7F"
+        class="clickable"
+      ></a-box>
+      <a-box
+        id="clickableBox6"
+        position="10 1.5 -12"
+        rotation="0 45 0"
+        width="0.2"
+        height="0.2"
+        depth="0.2"
+        color="#FF1493"
+        class="clickable"
+      ></a-box>
+      <a-box
+        id="clickableBox7"
+        position="12 1.5 -3"
+        rotation="0 45 0"
+        width="0.2"
+        height="0.2"
+        depth="0.2"
+        color="#1E90FF"
+        class="clickable"
+      ></a-box>
+      <a-box
+        id="clickableBox8"
+        position="14 1.5 -3"
+        rotation="0 45 0"
+        width="0.2"
+        height="0.2"
+        depth="0.2"
+        color="#FF4500"
+        class="clickable"
+      ></a-box>
+      <a-box
+        id="clickableBox9"
+        position="16 1.5 -3"
+        rotation="0 45 0"
+        width="0.2"
+        height="0.2"
+        depth="0.2"
+        color="#ADFF2F"
+        class="clickable"
+      ></a-box>
+      <a-box
+        id="clickableBox10"
+        position="18 1.5 -3"
+        rotation="0 45 0"
+        width="0.2"
+        height="0.2"
+        depth="0.2"
+        color="#DA70D6"
+        class="clickable"
+      ></a-box>
+      <a-box
+        id="clickableBox11"
+        position="0 1.5 -5"
+        rotation="0 45 0"
+        width="0.2"
+        height="0.2"
+        depth="0.2"
+        color="#4CC3D9"
+        class="clickable"
+      ></a-box>
+      <a-box
+        id="clickableBox12"
+        position="2 1.5 -7"
+        rotation="0 45 0"
+        width="0.2"
+        height="0.2"
+        depth="0.2"
+        color="#FF6347"
+        class="clickable"
+      ></a-box>
+      <a-box
+        id="clickableBox13"
+        position="4 1.5 -13"
+        rotation="0 45 0"
+        width="0.2"
+        height="0.2"
+        depth="0.2"
+        color="#FFD700"
+        class="clickable"
+      ></a-box>
+      <a-box
+        id="clickableBox14"
+        position="6 1.5 -20"
+        rotation="0 45 0"
+        width="0.2"
+        height="0.2"
+        depth="0.2"
+        color="#8A2BE2"
+        class="clickable"
+      ></a-box>
+      <a-box
+        id="clickableBox15"
+        position="8 1.5 5"
+        rotation="0 45 0"
+        width="0.2"
+        height="0.2"
+        depth="0.2"
+        color="#00FF7F"
+        class="clickable"
+      ></a-box>
+      <a-box
+        id="clickableBox16"
+        position="12 1.5 10"
+        rotation="0 45 0"
+        width="0.2"
+        height="0.2"
+        depth="0.2"
+        color="#FF1493"
+        class="clickable"
+      ></a-box>
+      <a-box
+        id="clickableBox17"
+        position="15 1.5 6"
+        rotation="0 45 0"
+        width="0.2"
+        height="0.2"
+        depth="0.2"
+        color="#1E90FF"
+        class="clickable"
+      ></a-box>
+      <a-box
+        id="clickableBox18"
+        position="17 1.5 8"
+        rotation="0 45 0"
+        width="0.2"
+        height="0.2"
+        depth="0.2"
+        color="#FF4500"
+        class="clickable"
+      ></a-box>
+
+      <!-- Luz -->
+      <a-light
+        id="dynamicLight"
+        type="point"
+        color="#FFFFFF"
+        intensity="2"
+        position="-10 5 25"
+      ></a-light>
+
+      <!-- Labirinto -->
+      <a-entity
+        id="maze4"
+        maze="size: 25 25; wall: #wall-one; cap: #end-cap;"
+        position="10 0.5 30"
+      ></a-entity>
+      <!-- Céu -->
+      <a-sky src="#texture-sky"></a-sky>
+
+      <!-- Chão -->
+      <a-plane
+        src="#texture-floor"
+        height="1000"
+        width="1000"
+        rotation="-90 0 0"
+      ></a-plane>
+    </a-scene>
+  </body>
+</html>

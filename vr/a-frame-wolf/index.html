@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <!-- Origem: backup do Glitch, projeto "a-frame-wolf" (cópia de 2025-12-24 19:54) -->
+    <title>Interactions - Cursor</title>
+    <script src="https://aframe.io/releases/1.5.0/aframe.min.js"></script>
+
+    <style>
+      .a-enter-vr-button {
+        display: none !important;
+      }
+    </style>
+  </head>
+  <body>
+    <a-scene background="color:lightblue" vr-mode-ui="enabled: false">
+      <a-assets>
+        <img
+          crossorigin="anonymous"
+          id="treebark"
+          src="assets/bark_brown_02_diff_1k.jpg"
+        />
+        <img
+          crossorigin="anonymous"
+          id="panorama"
+          src="assets/city.jpg"
+        />
+        <img
+          crossorigin="anonymous"
+          id="moon"
+          src="assets/moon_1024.jpg"
+        />
+        <a-asset-item
+          crossorigin="anonymous"
+          id="wolf"
+          src="https://raw.githubusercontent.com/jorgecardoso/aframe-usj-models/master/wolf_with_animations/scene.gltf"
+        >
+        </a-asset-item>
+        <a-mixin
+          crossorigin="anonymous"
+          id="box"
+          material="color: red"
+          width="0.5"
+          height="0.5"
+          depth="0.5"
+          color="red"
+          hoverable
+          grabbable
+          stretchable
+          draggable
+          droppable
+        ></a-mixin>
+      </a-assets>
+      <a-sound   src="assets/wolf.wav       
+" autoplay="true" loop="true"  volume="0.5"></a-sound>
+      <a-sphere src="#moon" position="-5 2 -3" radius="1"></a-sphere>
+
+      <a-cylinder
+        src="#treebark"
+        position="4 1 0"
+        height="3"
+        radius="0.5"
+      ></a-cylinder>
+
+      <a-gltf-model
+        position="0 0 -1"
+        scale="3 3 3"
+        src="#wolf"
+        animation-mixer="clip: 04_Idle"
+      ></a-gltf-model>
+      <!-- See the animation clips at https://sketchfab.com/models/f3769a474a714ebbbaca0d97f9b0a5a0# -->
+      <a-light type="ambient" intensity="4"></a-light>
+
+      <a-box mixin="box" position="0 1.6 0" color="blue"></a-box>
+      <a-box mixin="box" position="1 1.6 0" color="green"></a-box>
+      <a-box mixin="box" position="2 1.6 0" color="red"></a-box>
+      <a-box mixin="box" position="0 2.6 0" color="green"></a-box>
+      <a-box mixin="box" position="1 2.6 0" color="red"></a-box>
+      <a-box mixin="box" position="2 2.6 0" color="blue"></a-box>
+    </a-scene>
+  </body>
+</html>

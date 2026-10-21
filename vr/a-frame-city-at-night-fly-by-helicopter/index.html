@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <!-- Origem: backup do Glitch, projeto "a-frame-city-at-night-fly-by-helicopter" (cópia de 2025-12-24 19:51) -->
+    <script src="https://aframe.io/releases/0.8.2/aframe.min.js"></script>
+    <script src="play-all-model-animations.js"></script>
+    ´
+    <script src="https://cdn.jsdelivr.net/gh/c-frame/aframe-extras@7.0.0/dist/aframe-extras.min.js"></script>
+
+    <script src="https://cdn.jsdelivr.net/npm/aframe-curve-component@0.1.3/dist/aframe-curve-component.min.js"></script>
+    <script src="a-frame-animation-camera-alongpath.js"></script>
+
+    <script src="start-animation.js"></script>
+    <script src="autoplay.js"></script>
+    <link
+      href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap"
+      rel="stylesheet"
+    />
+
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <div id="start-screen">
+      <div id="play-btn"></div>
+      <div id="play-text">play eXperience</div>
+    </div>
+    <a-scene
+      id="myScene"
+      start-animation="targetSelector: #cameraRig; componentName: animation-alongpath; propertyName: delay; newValue: 1000"
+    >
+      <a-assets>
+        <a-asset-item
+          id="cityModel"
+          src="https://cdn.aframe.io/test-models/models/glTF-2.0/virtualcity/VC.gltf"
+        ></a-asset-item>
+      </a-assets>
+      <a-curve id="circlePath" curve="closed:false; typ:CubicBezier">
+        <a-curve-point position="11 1 80"></a-curve-point>
+        <a-curve-point position="7 1 50"></a-curve-point>
+        <a-curve-point position="1 2 5"></a-curve-point>
+        <a-curve-point position="12 2 1"></a-curve-point>
+        <a-curve-point position="18 2 -5"></a-curve-point>
+        <a-curve-point position="20 2 -10"></a-curve-point>
+        <a-curve-point position="19 2 -14"></a-curve-point>
+        <a-curve-point position="16 1.5 -18"></a-curve-point>
+        <a-curve-point position="12 1.5 -20"></a-curve-point>
+        <a-curve-point position="5 1.5 -20"></a-curve-point>
+        <a-curve-point position="-5 2 -15"></a-curve-point>
+        <a-curve-point position="-13 2 -14"></a-curve-point>
+        <a-curve-point position="-19 3 -12"></a-curve-point>
+        <a-curve-point position="-24 3 -8"></a-curve-point>
+        <a-curve-point position="-25 3 -5"></a-curve-point>
+        <a-curve-point position="-23 2 1"></a-curve-point>
+        <a-curve-point position="-18 2 6"></a-curve-point>
+        <a-curve-point position="-1 2 5"></a-curve-point>
+        <a-curve-point position="1 2 10"></a-curve-point>
+
+        <a-curve-point position="14 1 70"></a-curve-point>
+        <a-curve-point position="8 1 70"></a-curve-point>
+        <a-curve-point position="6 1 65"></a-curve-point>
+        <a-curve-point position="5 1 50"></a-curve-point>
+      </a-curve>
+
+      <a-entity
+        -clone-along-curve="curve: #circlePath; spacing: 0.02; rotation: 0 0 0;"
+        -geometry="primitive:box; color:red; height:0.1; width:0.1; depth:0.1"
+      ></a-entity>
+
+      <a-entity
+        id="cameraRig"
+        position="11 1 80"
+        -camera-log
+        animation-alongpath="curve: #circlePath;  dur:50000; delay:100000000; loop:false; rotate:true; rotateOffset: 0 -180 0"
+        amovement-controls="fly: true; speed: 0.2"
+      >
+        <a-camera
+          aawasd-controls
+          look-controls="pointerLockEnabled: true"
+          zoom="1"
+          rotation="0 -140 0"
+        >
+          <a-sound
+            sound="src: url(assets/helicopter.wav)"
+            autoplay="false"
+            loop="true"
+            volume="0.2"
+            position="0 0 0"
+            class="autoplay"
+          ></a-sound>
+        </a-camera>
+      </a-entity>
+
+      <a-entity
+        id="model3D"
+        gltf-model="#cityModel"
+        modify-materials
+      ></a-entity>
+      <a-sound
+        sound="src: url(assets/city-traffic.wav)"
+        position="0 0 0"
+        volume="10"
+        loop="true"
+        autoplay="false"
+        class="autoplay"
+      ></a-sound>
+    </a-scene>
+  </body>
+</html>

@@ -1,0 +1,40 @@
+
+body {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  margin: 0;
+  background-color: #F00; /* Optional: Background color for better visibility */
+}
+
+#start-screen {
+  position: relative;
+  width: 300px; /* Adjust as needed */
+  height: 200px; /* Adjust as needed */
+  border: 1px solid #ccc;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+#play-btn {
+  width: 0;
+  height: 0;
+  border-left: 40px solid white;
+  border-top: 20px solid transparent;
+  border-bottom: 20px solid transparent;
+  cursor: pointer;
+}
+
+#play-text {
+  margin-top: 20px;
+  font-family: "Press Start 2P", cursive;
+  color: white;
+  font-size: 14px;
+  text-align: center;
+}
+ #myScene {
+        display: none;
+      }
