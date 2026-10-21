@@ -68,12 +68,6 @@ But for this we must invert how we position sounds: instead of putting a sound i
 </a-sound>
 ```
 
-## Exercises
-
-
-Go to: <a href="https://acspt.github.io/A-FRAME/aframe-course-jorge-cardoso/sound.html" target="_blank">https://acspt.github.io/A-FRAME/aframe-course-jorge-cardoso/sound.html</a>
-
-
 ## References
 * Media (Image, Sound, Text, Video)
   * `<a-sound>`: https://aframe.io/docs/0.8.0/primitives/a-sound.html#sidebar

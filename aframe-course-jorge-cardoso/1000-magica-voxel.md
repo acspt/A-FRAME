@@ -25,9 +25,3 @@ This tutorial is from the Magica Voxel website:
 <iframe width="600" height="400" src="https://www.youtube.com/embed/d_WymsNdRBA" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>
   
   
-## Exercises
-
-
-Go to: <a href="https://acspt.github.io/A-FRAME/aframe-course-jorge-cardoso/magica-voxel.html" target="_blank">https://acspt.github.io/A-FRAME/aframe-course-jorge-cardoso/magica-voxel.html</a>
-
-  

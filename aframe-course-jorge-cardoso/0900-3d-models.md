@@ -127,11 +127,6 @@ The way to include the model in our scene, remains the same, we just need to add
 The example uses an animated wolf model that you can see (and test the various animations) at:
 https://sketchfab.com/models/f3769a474a714ebbbaca0d97f9b0a5a0#download 
 
-## Exercises
-
-
-Go to: <a href="https://acspt.github.io/A-FRAME/aframe-course-jorge-cardoso/3d-models.html" target="_blank">https://acspt.github.io/A-FRAME/aframe-course-jorge-cardoso/3d-models.html</a>
-
 ## References
 
 ### Sites

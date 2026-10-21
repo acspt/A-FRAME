@@ -140,11 +140,6 @@ We also add another entity to represent the left hand controller and specify tha
 <a-entity hand-controls="left"></a-entity>
 ```
 
-## Exercises
-
-Go to: <a href="https://acspt.github.io/A-FRAME/aframe-course-jorge-cardoso/interactions.html" target="_blank">https://acspt.github.io/A-FRAME/aframe-course-jorge-cardoso/interactions.html</a>
-
-
 ## References
 * `<a-camera>`: https://aframe.io/docs/0.8.0/primitives/a-camera.html
 * `<a-cursor>`: https://aframe.io/docs/0.8.0/primitives/a-cursor.html

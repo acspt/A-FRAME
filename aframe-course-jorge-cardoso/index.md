@@ -21,7 +21,7 @@ style: css/index1.css
 1. <a href="0700-360vr.html" >360º VR</a>
 
 ### Intermediate
-9. <a href="0750-aframe-inspector.html">A-Frame 3D Inspector</a>
+9. <a href="0700-360vr.html#a-frame-3d-inspector">A-Frame 3D Inspector</a>
 1. <a href="0800-lights.html">Lights</a>
 1. <a href="0900-3d-models.html">3D Models</a>
 1. <a href="1000-magica-voxel.html">Magica Voxel</a>
