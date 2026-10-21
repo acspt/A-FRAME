@@ -55,7 +55,9 @@
       <a href="#" onclick="teleportar(18, this); return false;">7.31.21 18:48</a>
     </div>
 
-    <a-scene>
+    <!-- cursor rayOrigin: mouse: mouse clicks and screen taps become click events on the entities -->
+    <!-- raycaster objects: .botao: only the navigation buttons can be clicked -->
+    <a-scene cursor="rayOrigin: mouse" raycaster="objects: .botao">
       <a-sky color="black"></a-sky>
 
       <!-- videos: the original videos were hosted on Glitch and are no longer available, -->
@@ -102,7 +104,30 @@
       <a-video id="ecra17" src="#video17" position="-3.75 1.5 -2.5" width="1.5" height="2" proximity-autoplay="distance: 2"></a-video>
       <a-video id="ecra18" src="#video18" position="3 1.5 -4" width="1.5" height="2" proximity-autoplay="distance: 2"></a-video>
 
-      <a-camera id="camera" position="0 1.6 0"></a-camera>
+      <a-camera id="camera" position="0 1.6 0">
+        <!-- navigation buttons inside the camera: they move with it and are always visible at the bottom -->
+        <!-- navegar (10-proximity-04-videos.js): passo -1 goes to the previous video, passo 1 to the next one -->
+        <a-entity
+          class="botao"
+          position="-0.32 -0.42 -1"
+          geometry="primitive: plane; width: 0.5; height: 0.12"
+          material="color: #333333; opacity: 0.8; shader: flat"
+          text="value: < Previous; align: center; color: #87ceeb; width: 1.6"
+          navegar="passo: -1"
+          animation__enter="property: material.color; type: color; to: #555555; dur: 150; startEvents: mouseenter"
+          animation__leave="property: material.color; type: color; to: #333333; dur: 150; startEvents: mouseleave"
+        ></a-entity>
+        <a-entity
+          class="botao"
+          position="0.32 -0.42 -1"
+          geometry="primitive: plane; width: 0.5; height: 0.12"
+          material="color: #333333; opacity: 0.8; shader: flat"
+          text="value: Next >; align: center; color: #87ceeb; width: 1.6"
+          navegar="passo: 1"
+          animation__enter="property: material.color; type: color; to: #555555; dur: 150; startEvents: mouseenter"
+          animation__leave="property: material.color; type: color; to: #333333; dur: 150; startEvents: mouseleave"
+        ></a-entity>
+      </a-camera>
     </a-scene>
   </body>
 </html>
