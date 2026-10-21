@@ -4,6 +4,8 @@ style: css/index1.css
 
 # A-Frame Course
 
+Course materials by Jorge Cardoso: [github.com/jorgecardoso/aframe-course](https://github.com/jorgecardoso/aframe-course)
+
 ## Table of Contents
 
 
