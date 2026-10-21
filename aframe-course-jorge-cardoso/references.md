@@ -5,7 +5,7 @@ title: Reference Material
 
 # Reference Material
 
-1. <a href="http://aframe.io" target="_blank">A-Frame</a>
+1. <a href="https://aframe.io" target="_blank">A-Frame</a>
 
 
 <!--

@@ -120,11 +120,6 @@ In the previous box, the animation starts when the box is clicked, paused and th
 
 Note the difference to the previous box, where the animation would *restart* when the mouse entered the box.
 
-## Exercises
-
-
-Go to: <a href="https://acspt.github.io/A-FRAME/aframe-course-jorge-cardoso/animations.html" target="_blank">https://acspt.github.io/A-FRAME/aframe-course-jorge-cardoso/animations.html</a>
-
 ## References
 
 * Animation component

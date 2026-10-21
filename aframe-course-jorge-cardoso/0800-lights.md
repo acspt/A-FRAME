@@ -46,11 +46,6 @@ After you adjusted the light, you can copy the values of the attributes back to 
 
 
   
-## Exercises
-
-
-Go to: <a href="https://acspt.github.io/A-FRAME/aframe-course-jorge-cardoso/basics-2.html" target="_blank">https://acspt.github.io/A-FRAME/aframe-course-jorge-cardoso/basics-2.html</a>
-
 ## References
 
 * Lights

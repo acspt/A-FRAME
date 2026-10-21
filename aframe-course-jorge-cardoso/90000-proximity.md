@@ -5,7 +5,10 @@ title: Proximity detection
 # Proximity Detection
 
 
-:::example 10-proximity-01
+<div class="example-container">
+  Example <code>10-proximity-01</code> (<a href="examples/10-proximity-01.html" target="_blank">open in new tab</a> | <a href="https://github.com/acspt/A-FRAME/blob/main/aframe-course-jorge-cardoso/examples/10-proximity-01.html" target="_blank">view source</a>)
+  <iframe src="examples/10-proximity-01.html" width="100%" height="400" loading="lazy" allow="autoplay; fullscreen; xr-spatial-tracking"></iframe>
+</div>
 
 
 The proximity trigger component, allows objects to be informed when another object is in proximity. By default, it tracks the proximity of the camera, i.e., the user, to an object. The `<script>` to include is:
@@ -31,7 +34,10 @@ In the following example, the proximity trigger is defined with a radius of 2 (`
 
 ## Doors
 
-:::example 10-proximity-03
+<div class="example-container">
+  Example <code>10-proximity-03</code> (<a href="examples/10-proximity-03.html" target="_blank">open in new tab</a> | <a href="https://github.com/acspt/A-FRAME/blob/main/aframe-course-jorge-cardoso/examples/10-proximity-03.html" target="_blank">view source</a>)
+  <iframe src="examples/10-proximity-03.html" width="100%" height="400" loading="lazy" allow="autoplay; fullscreen; xr-spatial-tracking"></iframe>
+</div>
 
 ## Videos that play when you get close
 
@@ -49,6 +55,9 @@ This example uses its own component, `proximity-autoplay`, defined in the file `
 
 Browsers only allow videos to play with sound after the user interacts with the page (for example, clicking one of the teleportation links).
 
-:::example 10-proximity-04-videos
+<div class="example-container">
+  Example <code>10-proximity-04-videos</code> (<a href="examples/10-proximity-04-videos.html" target="_blank">open in new tab</a> | <a href="https://github.com/acspt/A-FRAME/blob/main/aframe-course-jorge-cardoso/examples/10-proximity-04-videos.html" target="_blank">view source</a>)
+  <iframe src="examples/10-proximity-04-videos.html" width="100%" height="400" loading="lazy" allow="autoplay; fullscreen; xr-spatial-tracking"></iframe>
+</div>
 
 ## References
