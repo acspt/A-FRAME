@@ -33,4 +33,22 @@ In the following example, the proximity trigger is defined with a radius of 2 (`
 
 :::example 10-proximity-03
 
+## Videos that play when you get close
+
+Proximity can also be used to play media. In the following example there are several videos in the scene, and each one only plays (with sound) when the user is closer than 2 metres. The links in the top left corner teleport the user to the front of each video.
+
+This example uses its own component, `proximity-autoplay`, defined in the file `10-proximity-04-videos.js`:
+
+```html
+<a-assets>
+  <video id="video1" src="https://cdn.aframe.io/videos/bunny.mp4" crossorigin="anonymous" loop muted playsinline></video>
+</a-assets>
+
+<a-video src="#video1" position="0 1.5 -5" width="1.5" height="2" proximity-autoplay="distance: 2"></a-video>
+```
+
+Browsers only allow videos to play with sound after the user interacts with the page (for example, clicking one of the teleportation links).
+
+:::example 10-proximity-04-videos
+
 ## References

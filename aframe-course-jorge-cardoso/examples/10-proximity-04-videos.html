@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <title>Proximity - 04 - Videos and teleportation</title>
+    <script src="https://aframe.io/releases/1.6.0/aframe.min.js"></script>
+    <!-- proximity-autoplay component and teleportation functions -->
+    <script src="10-proximity-04-videos.js"></script>
+    <style>
+      /* teleportation links, on top of the scene */
+      #teleportLinks {
+        position: fixed;
+        top: 20px;
+        left: 20px;
+        font-family: Arial, sans-serif;
+        font-size: 12px;
+        color: lightgrey;
+        z-index: 10;
+      }
+      #teleportLinks a {
+        display: block;
+        margin: 5px 0;
+        text-decoration: none;
+        color: skyblue;
+      }
+      #teleportLinks a:hover {
+        color: white;
+      }
+      #teleportLinks a.active {
+        color: #ff5f15;
+      }
+    </style>
+  </head>
+  <body>
+    <!-- teleportation links: each one moves the camera in front of a video -->
+    <div id="teleportLinks">
+      <a href="#" onclick="teleportar(0, this); return false;">Home</a>
+      <a href="#" onclick="teleportar(1, this); return false;">2.23.21 17:23</a>
+      <a href="#" onclick="teleportar(2, this); return false;">2.17.21 16:30</a>
+      <a href="#" onclick="teleportar(3, this); return false;">2.17.21 17:37</a>
+      <a href="#" onclick="teleportar(4, this); return false;">2.23.21 17:24</a>
+      <a href="#" onclick="teleportar(5, this); return false;">3.24.21 10:01</a>
+      <a href="#" onclick="teleportar(6, this); return false;">3.26.21 19:50</a>
+      <a href="#" onclick="teleportar(7, this); return false;">3.24.21 17:48</a>
+      <a href="#" onclick="teleportar(8, this); return false;">3.25.21 17:35</a>
+      <a href="#" onclick="teleportar(9, this); return false;">5.23.21 06:03</a>
+      <a href="#" onclick="teleportar(10, this); return false;">7.21.21 23:35</a>
+      <a href="#" onclick="teleportar(11, this); return false;">7.22.21 20:12</a>
+      <a href="#" onclick="teleportar(12, this); return false;">7.22.21 20:56</a>
+      <a href="#" onclick="teleportar(13, this); return false;">7.22.21 20:57</a>
+      <a href="#" onclick="teleportar(14, this); return false;">7.31.21 18:47</a>
+      <a href="#" onclick="teleportar(15, this); return false;">7.28.21 16:27</a>
+      <a href="#" onclick="teleportar(16, this); return false;">7.28.21 16:28</a>
+      <a href="#" onclick="teleportar(17, this); return false;">7.29.21 15:10</a>
+      <a href="#" onclick="teleportar(18, this); return false;">7.31.21 18:48</a>
+    </div>
+
+    <a-scene>
+      <a-sky color="black"></a-sky>
+
+      <!-- videos: the original videos were hosted on Glitch and are no longer available, -->
+      <!-- so these are public sample videos (replace them with your own) -->
+      <!-- crossorigin="anonymous": needed to use videos from another website as textures -->
+      <a-assets>
+        <video id="video1" src="https://cdn.aframe.io/videos/bunny.mp4" crossorigin="anonymous" loop muted playsinline preload="metadata"></video>
+        <video id="video2" src="https://interactive-examples.mdn.mozilla.net/media/cc0-videos/flower.mp4" crossorigin="anonymous" loop muted playsinline preload="metadata"></video>
+        <video id="video3" src="https://interactive-examples.mdn.mozilla.net/media/cc0-videos/friday.mp4" crossorigin="anonymous" loop muted playsinline preload="metadata"></video>
+        <video id="video4" src="https://cdn.aframe.io/videos/bunny.mp4" crossorigin="anonymous" loop muted playsinline preload="metadata"></video>
+        <video id="video5" src="https://interactive-examples.mdn.mozilla.net/media/cc0-videos/flower.mp4" crossorigin="anonymous" loop muted playsinline preload="metadata"></video>
+        <video id="video6" src="https://interactive-examples.mdn.mozilla.net/media/cc0-videos/friday.mp4" crossorigin="anonymous" loop muted playsinline preload="metadata"></video>
+        <video id="video7" src="https://cdn.aframe.io/videos/bunny.mp4" crossorigin="anonymous" loop muted playsinline preload="metadata"></video>
+        <video id="video8" src="https://interactive-examples.mdn.mozilla.net/media/cc0-videos/flower.mp4" crossorigin="anonymous" loop muted playsinline preload="metadata"></video>
+        <video id="video9" src="https://interactive-examples.mdn.mozilla.net/media/cc0-videos/friday.mp4" crossorigin="anonymous" loop muted playsinline preload="metadata"></video>
+        <video id="video10" src="https://cdn.aframe.io/videos/bunny.mp4" crossorigin="anonymous" loop muted playsinline preload="metadata"></video>
+        <video id="video11" src="https://interactive-examples.mdn.mozilla.net/media/cc0-videos/flower.mp4" crossorigin="anonymous" loop muted playsinline preload="metadata"></video>
+        <video id="video12" src="https://interactive-examples.mdn.mozilla.net/media/cc0-videos/friday.mp4" crossorigin="anonymous" loop muted playsinline preload="metadata"></video>
+        <video id="video13" src="https://cdn.aframe.io/videos/bunny.mp4" crossorigin="anonymous" loop muted playsinline preload="metadata"></video>
+        <video id="video14" src="https://interactive-examples.mdn.mozilla.net/media/cc0-videos/flower.mp4" crossorigin="anonymous" loop muted playsinline preload="metadata"></video>
+        <video id="video15" src="https://interactive-examples.mdn.mozilla.net/media/cc0-videos/friday.mp4" crossorigin="anonymous" loop muted playsinline preload="metadata"></video>
+        <video id="video16" src="https://cdn.aframe.io/videos/bunny.mp4" crossorigin="anonymous" loop muted playsinline preload="metadata"></video>
+        <video id="video17" src="https://interactive-examples.mdn.mozilla.net/media/cc0-videos/flower.mp4" crossorigin="anonymous" loop muted playsinline preload="metadata"></video>
+        <video id="video18" src="https://interactive-examples.mdn.mozilla.net/media/cc0-videos/friday.mp4" crossorigin="anonymous" loop muted playsinline preload="metadata"></video>
+      </a-assets>
+
+      <!-- each video plays when the user is closer than 2 metres (proximity-autoplay) -->
+      <a-video id="ecra1" src="#video1" position="0 1.5 -5" width="1.5" height="2" proximity-autoplay="distance: 2"></a-video>
+      <a-video id="ecra2" src="#video2" position="3 1.5 -7" width="1.5" height="2" proximity-autoplay="distance: 2"></a-video>
+      <a-video id="ecra3" src="#video3" position="-3 1.5 -8" width="1.5" height="2" proximity-autoplay="distance: 2"></a-video>
+      <a-video id="ecra4" src="#video4" position="7.5 1.5 -20" width="1.5" height="2" proximity-autoplay="distance: 2"></a-video>
+      <a-video id="ecra5" src="#video5" position="-6 1.5 -12" width="1.5" height="2" proximity-autoplay="distance: 2"></a-video>
+      <a-video id="ecra6" src="#video6" position="6 1.5 -17" width="1.5" height="2" proximity-autoplay="distance: 2"></a-video>
+      <a-video id="ecra7" src="#video7" position="-4 1.5 -13" width="1.5" height="2" proximity-autoplay="distance: 2"></a-video>
+      <a-video id="ecra8" src="#video8" position="5 1.5 -14" width="1.5" height="2" proximity-autoplay="distance: 2"></a-video>
+      <a-video id="ecra9" src="#video9" position="7 1.5 -2" width="1.5" height="2" proximity-autoplay="distance: 2"></a-video>
+      <a-video id="ecra10" src="#video10" position="-7 1.5 -4" width="1.5" height="2" proximity-autoplay="distance: 2"></a-video>
+      <a-video id="ecra11" src="#video11" position="4.5 1.5 -10" width="1.5" height="2" proximity-autoplay="distance: 2"></a-video>
+      <a-video id="ecra12" src="#video12" position="-4.2 1.5 -25" width="1.5" height="2" proximity-autoplay="distance: 2"></a-video>
+      <a-video id="ecra13" src="#video13" position="13 1.5 -20" width="1.5" height="2" proximity-autoplay="distance: 2"></a-video>
+      <a-video id="ecra14" src="#video14" position="16 1.5 -3" width="1.5" height="2" proximity-autoplay="distance: 2"></a-video>
+      <a-video id="ecra15" src="#video15" position="12 1.5 -5" width="1.5" height="2" proximity-autoplay="distance: 2"></a-video>
+      <a-video id="ecra16" src="#video16" position="-12 1.5 -7" width="1.5" height="2" proximity-autoplay="distance: 2"></a-video>
+      <a-video id="ecra17" src="#video17" position="-3.75 1.5 -2.5" width="1.5" height="2" proximity-autoplay="distance: 2"></a-video>
+      <a-video id="ecra18" src="#video18" position="3 1.5 -4" width="1.5" height="2" proximity-autoplay="distance: 2"></a-video>
+
+      <a-camera id="camera" position="0 1.6 0"></a-camera>
+    </a-scene>
+  </body>
+</html>
