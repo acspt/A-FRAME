@@ -29,10 +29,11 @@ style: css/index1.css
 1. <a href="1200-animations.html" >Animations</a>
 1. <a href="1300-sound.html" >Sound</a>
 1. <a href="1400-multi-textures.html" >Multi texture component</a>
+1. <a href="90000-proximity.html" >Proximity Detection</a>
 
 
 
 ### References
-20. <a href="references.html" >Reference Material</a>
+18. <a href="references.html" >Reference Material</a>
 
 
