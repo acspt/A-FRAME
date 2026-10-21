@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <!-- Origem: backup do Glitch, projeto "a-frame-play-audio-of-video" (cópia de 2025-12-24 19:53) -->
+    <title>Web Audio API Example</title>
+</head>
+<body>
+    <h1>Web Audio API Example</h1>
+
+    <button id="playButton">Play Audio</button>
+
+    <script>
+        let audioContext;
+
+        document.getElementById('playButton').addEventListener('click', function() {
+            if (!audioContext) {
+                audioContext = new (window.AudioContext || window.webkitAudioContext)();
+            }
+
+            if (audioContext.state === 'suspended') {
+                audioContext.resume().then(() => {
+                    console.log('Playback resumed successfully');
+                    playAudio();
+                });
+            } else {
+                playAudio();
+            }
+        });
+
+        function playAudio() {
+            // Create an oscillator node
+            const oscillator = audioContext.createOscillator();
+            oscillator.type = 'sine';
+            oscillator.frequency.value = 440;
+
+            // Connect the oscillator to the audio context's output
+            oscillator.connect(audioContext.destination);
+
+            // Start the oscillator
+            oscillator.start();
+        }
+    </script>
+</body>
+</html>

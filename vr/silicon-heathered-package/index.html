@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <!-- Origem: backup do Glitch, projeto "silicon-heathered-package" (cópia de 2025-12-24 19:59) -->
+    <title>Minha Obra de Arte Interativa</title>
+    <script src="https://aframe.io/releases/1.2.0/aframe.min.js"></script>
+</head>
+<body>
+    <a-scene>
+        <!-- Primitivos e Componentes -->
+        <a-box position="-1 0.5 -3" rotation="0 45 0" color="#4CC3D9"></a-box>
+        
+        <!-- Texto -->
+        <a-text value="Braulio Wagner!" color="red" position="-1 1.5 -3"></a-text>
+        
+        <!-- Texturas -->
+        <a-sky src="sky.jpg"></a-sky>
+        
+        <!-- Ambientes e outros componentes -->
+        <a-entity environment="preset: forest"></a-entity>
+        
+        <!-- Portais -->
+        <a-link href="link-para-outro-mundo.html"></a-link>
+        
+        <!-- 360º VR -->
+        <a-camera></a-camera>
+        
+        <!-- A-Frame 3D Inspector -->
+        <a-scene inspector></a-scene>
+        
+        <!-- Luzes -->
+        <a-light type="point" color="#F00"></a-light>
+        
+        <!-- Modelos 3D -->
+        <a-entity gltf-model="modelo.gltf"></a-entity>
+        
+        <!-- Voxel Magic -->
+        <a-entity voxel-magic></a-entity>
+        
+        <!-- Interações -->
+        <a-entity cursor="fuse: true; fuseTimeout: 500"
+                  raycaster="objects: .clickable"
+                  event-set__1="_event: mouseenter; material.color: red"
+                  event-set__2="_event: mouseleave; material.color: black"
+                  event-set__3="_event: click; scale: 2 2 2"></a-entity>
+        
+        <!-- Animações -->
+        <a-entity animation="property: rotation; to: 0 360 0; loop: true; dur: 5000"></a-entity>
+        
+        <!-- Som -->
+        <a-sound src="som.mp3" autoplay="true"></a-sound>
+        
+        <!-- Proximidade -->
+        <a-entity proximity="target: #outroObjeto; radius: 5"></a-entity>
+    </a-scene>
+</body>
+</html>

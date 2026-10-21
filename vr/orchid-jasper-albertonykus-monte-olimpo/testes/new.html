@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Arrow Pointing in A-Frame</title>
+    <script src="https://aframe.io/releases/1.2.0/aframe.min.js"></script>
+  </head>
+  <body>
+    <a-scene>
+      <!-- Camera with cursor -->
+      <a-camera>
+        <a-cursor></a-cursor>
+      </a-camera>
+
+      <!-- Arrow (using a box to represent it) -->
+      <a-box id="arrow" position="0 1 -4" rotation="0 0 0" color="#FF0000" depth="1" height="0.1" width="0.1"></a-box>
+
+      <!-- Object to appear -->
+      <a-sphere id="appearing-object" radius="0.5" color="#FFC65D" visible="false"></a-sphere>
+    </a-scene>
+
+    <script>
+      document.addEventListener('DOMContentLoaded', function () {
+        const arrow = document.querySelector('#arrow');
+        const appearingObject = document.querySelector('#appearing-object');
+
+        // Predefined positions
+        const positions = [
+          { x: -1, y: 1.5, z: -3 },
+          { x: 0, y: 1.5, z: -3 },
+          { x: 1, y: 1.5, z: -3 }
+        ];
+
+        function getRandomPosition() {
+          const randomIndex = Math.floor(Math.random() * positions.length);
+          return positions[randomIndex];
+        }
+
+        function calculateFinalRotation(targetPosition) {
+          // Get arrow and target positions
+          const arrowPosition = new THREE.Vector3();
+          arrow.object3D.getWorldPosition(arrowPosition);
+
+          const targetVector = new THREE.Vector3(targetPosition.x, targetPosition.y, targetPosition.z);
+
+          // Calculate direction
+          const direction = new THREE.Vector3().subVectors(targetVector, arrowPosition).normalize();
+
+          // Calculate final rotation
+          const finalYRotation = Math.atan2(direction.x, direction.z) * (180 / Math.PI);
+
+          return finalYRotation;
+        }
+
+        function animateArrowToTarget(targetPosition) {
+          // Calculate the final rotation to point at the target
+          const finalYRotation = calculateFinalRotation(targetPosition);
+
+          // Perform the rotations and then set the final rotation
+          arrow.setAttribute('animation__spin', {
+            property: 'rotation',
+            to: `0 720 0`, // Two full rotations
+            dur: 2000,
+            easing: 'linear',
+            loop: false
+          });
+
+          // Delay setting the final rotation to match the end of the animation
+          setTimeout(() => {
+            arrow.setAttribute('rotation', `0 ${finalYRotation} 0`);
+          }, 2000); // Match the duration of the animation
+        }
+
+        // Add event listener to the arrow
+        arrow.addEventListener('click', function () {
+          const newPosition = getRandomPosition();
+          appearingObject.setAttribute('position', newPosition);
+          appearingObject.setAttribute('visible', true);
+
+          animateArrowToTarget(newPosition);
+        });
+      });
+    </script>
+  </body>
+</html>
+

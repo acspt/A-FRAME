@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <!-- Origem: backup do Glitch, projeto "a-frame-moving-based--current-position-and-rotation" (cópia de 2025-12-24 19:52) -->
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>A-Frame Increment Position Example</title>
+  <script src="https://aframe.io/releases/1.2.0/aframe.min.js"></script>
+</head>
+<body>
+  <a-scene>
+    <!-- Camera and light setup -->
+    <a-entity camera look-controls position="0 1.6 0"></a-entity>
+    <a-light type="ambient" color="#888"></a-light>
+    <a-light type="directional" color="#fff" intensity="0.5" position="-1 1 0"></a-light>
+
+    <!-- Box object to animate -->
+    <a-box id="myBox" position="0 1 -3" rotation="90 45 0" color="#4CC3D9"></a-box>
+
+    <!-- Ground plane -->
+    <a-plane rotation="-90 0 0" width="10" height="10" color="#7BC8A4"></a-plane>
+  </a-scene>
+
+  <!-- Button to trigger position increment -->
+  <button id="moveButton" style="position: absolute; top: 20px; left: 20px;">Move Box</button>
+
+  <script>
+    // Function to convert degrees to radians
+    function degToRad(degrees) {
+      return degrees * (Math.PI / 180);
+    }
+
+    // JavaScript to handle button click and increment position
+    document.getElementById('moveButton').addEventListener('click', function() {
+      const box = document.getElementById('myBox');
+      const position = box.getAttribute('position');
+      const rotation = box.getAttribute('rotation');
+
+      // Convert rotation to radians
+      const rotationRad = {
+        x: degToRad(rotation.x),
+        y: degToRad(rotation.y),
+        z: degToRad(rotation.z)
+      };
+
+      // Calculate new position based on rotation
+      const increment = 0.5; // Amount to move
+      const newPosition = {
+        x: position.x + increment * Math.sin(rotationRad.y),
+        y: position.y,
+        z: position.z + increment * Math.cos(rotationRad.y)
+      };
+
+      // Set the new position
+      box.setAttribute('position', newPosition);
+    });
+  </script>
+</body>
+</html>

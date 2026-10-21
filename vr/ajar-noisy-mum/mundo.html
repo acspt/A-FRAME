@@ -1,0 +1,64 @@
+<html>
+  <head>
+    <script src="https://aframe.io/releases/1.0.0/aframe.min.js"></script>
+    <script src="https://unpkg.com/aframe-animation-component@^4.1.2/dist/aframe-animation-component.min.js"></script>
+  </head>
+  <body>
+    <a-scene>
+      <a-camera>
+        <a-cursor></a-cursor>
+      </a-camera>
+      <a-box
+        id="redbox"
+        position="6 1.6 -5"
+        color="red"
+        event-set__mouseenter="_target:#greenbox; width: 2"
+        event-set__mouseleave="_target:#greenbox; width: 1"
+      ></a-box>
+
+      <a-box
+        id="greenbox"
+        position="6 2.6 -5"
+        color="green"
+        event-set__mouseenter="_target:#bluebox; width: 2"
+        event-set__mouseleave="_target:#bluebox; width: 1"
+      ></a-box>
+      <a-assets>
+        <img
+          id="customTexture"
+          src="assets/untitled.png"
+        />
+      </a-assets>
+
+      <a-text
+        position="0 1 -1"
+        value="Wow foste para outra parte"
+        align="center"
+        width="5"
+      ></a-text>
+      <a-asset-item
+        id="Finn-obj"
+        src="https://raw.githubusercontent.com/AntaniiCUNHA/galeriaaa/main/untitled.obj"
+      ></a-asset-item>
+      <a-asset-item
+        id="finn-mtl"
+        src="https://raw.githubusercontent.com/AntaniiCUNHA/galeriaaa/main/untitled.mtl"
+      ></a-asset-item>
+      <a-obj-model
+        src="#Finn-obj"
+        mtl="#finn-mtl"
+        material="src: #customTexture"
+        rotation="0 0 0"
+        position="0 0 -2"
+        color="#FFFFF"
+      ></a-obj-model>
+      <a-sky color="#2FF495"></a-sky>
+
+      <a-link
+        position="3 1.6 -5"
+        href="index.html"
+        title="Volta para o outro mundo"
+      ></a-link>
+    </a-scene>
+  </body>
+</html>

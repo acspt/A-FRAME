@@ -1,0 +1,341 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <!-- Origem: backup do Glitch, projeto "abiding-watery-quill" (cópia de 2025-12-24 19:54) -->
+    <title>Projeto</title>
+    <script src="https://aframe.io/releases/0.8.2/aframe.min.js"></script>
+    <script src="https://unpkg.com/aframe-environment-component/dist/aframe-environment-component.min.js"></script>
+    <script src="https://unpkg.com/aframe-particle-system-component/dist/aframe-particle-system-component.min.js"></script>
+    <script src="//cdn.rawgit.com/donmccurdy/aframe-extras/v4.0.2/dist/aframe-extras.min.js"></script>
+    <script src="https://unpkg.com/aframe-event-set-component@^4.0.0/dist/aframe-event-set-component.min.js"></script>
+    <script src="https://unpkg.com/aframe-animation-component/dist/aframe-animation-component.min.js"></script>
+  </head>
+  <body>
+    <a-scene> 
+      <a-assets>
+        
+        <img id="relva" crossorigin="anonymous"
+             src="assets/leafy_grass_diff_1k.jpg">
+        <img id="areia" crossorigin="anonymous"
+             src="assets/aerial_sand_diff_1k.jpg">
+        <img id="areia-c" crossorigin="anonymous"
+             src="assets/aerial_sand_diff_1k.jpg">
+        <img id="arvo" crossorigin="anonymous"
+             src="assets/arvo.png">
+        <img id="360" crossorigin="anonymous"
+             src="assets/sechelt.jpg">
+        
+        <audio id="som" src="assets/ondas_som.wav" ></audio>
+        
+      </a-assets>
+      
+      
+      <!-- skybox -->
+      
+      <a-sphere radius="150" rotation="0 110 0"   side="back" src="#360"></a-sphere>
+      <a-entity environment="preset: none; playArea: 20; fog: 0"></a-entity> 
+      <a-sphere position="-32 -2 -75" scale="15 15 15 " color="yellow" opacity="0.7"></a-sphere>
+      
+      <!-- skybox -->
+      
+      <a-light
+      type="directional"
+      color="#FFF"
+      intensity="0.6"
+      position="-0.5 1 1"
+      ></a-light>
+      
+
+      <a-sound autoplay="true" loop="true" src="#som"></a-sound>
+      
+      
+      
+      <a-text position="-4 2 -9" value="Fernandino Queiros" align="center" wrap-count="20" ></a-text>
+      
+      <!-- orden de eixos posicao X Y Z -->
+      
+      
+      <a-box position="12.9 -2.5 -25" 
+             rotation="0 0 0"  
+             scale="1 5 30"
+             color="#606060"></a-box>
+      
+      <a-box position="11 -2.5 -30" 
+             rotation="0 0 0"  
+             scale="5 5 5"
+             color="#606060"></a-box>
+      
+      <a-box position="7.4 -2.5 -9.46" 
+             rotation="0 90 0"  
+             scale="1 5 30"
+             color="#606060"></a-box>
+      
+      <!-- Assets_3D-->
+        
+      
+        <!-- paleta -->
+          <a-asset-item id="paleta-mtl"  src="https://raw.githubusercontent.com/FernandinoQ/Modelos-FQ/main/veda_2.mtl"></a-asset-item>
+        <!-- paleta -->
+      
+        <!-- Carro -->
+          <a-asset-item id="carro-obj"  src="https://raw.githubusercontent.com/FernandinoQ/Modelos-FQ/main/Carro_1.obj"></a-asset-item>
+          
+          <a-obj-model src="#carro-obj" mtl="#paleta-mtl" 
+                       scale="2 2 2" 
+                       rotation="0.630 -120 0" 
+                       position="-5 0 -5.6"></a-obj-model>
+        <!-- Carro -->
+      
+        <!-- Vedação -->
+          <a-asset-item id="vedacao-obj"  src="https://raw.githubusercontent.com/FernandinoQ/Modelos-FQ/main/veda_2.obj"></a-asset-item>
+  
+          <a-obj-model src="#vedacao-obj" mtl="#paleta-mtl" 
+                       scale="2 2 2" 
+                       rotation="0 -180 0" 
+                       position="-3.2 0 -5.7"></a-obj-model>
+      
+          <a-obj-model src="#vedacao-obj" mtl="#paleta-mtl" 
+                       scale="2 2 2" 
+                       rotation="0 -180 0" 
+                       position="4.6 0 -5.7"></a-obj-model>
+        <!-- Vedação -->
+        
+        <!-- Poste -->
+          <a-asset-item id="poste-obj"  src="https://raw.githubusercontent.com/FernandinoQ/Modelos-FQ/main/poste_3.obj"></a-asset-item>
+      
+          <a-obj-model src="#poste-obj" mtl="#paleta-mtl" 
+                       scale="1 1.5 1" 
+                       rotation="0 -90 0" 
+                       position="-7.2 0 -9.7"></a-obj-model>
+      
+          <a-obj-model src="#poste-obj" mtl="#paleta-mtl" 
+                       scale="0.5 1 0.5" 
+                       rotation="0 -90 0" 
+                       position="16 0.05 -21"></a-obj-model>
+      
+          <a-obj-model src="#poste-obj" mtl="#paleta-mtl" 
+                       scale="0.5 1 0.5" 
+                       rotation="0 -90 0" 
+                       position="16 0.05 -30"></a-obj-model>
+        <!-- Poste -->
+      
+        <!-- barco -->
+          <a-asset-item id="barco-obj"  src="https://raw.githubusercontent.com/FernandinoQ/Modelos-FQ/main/barco_4vox.obj"></a-asset-item>
+      
+          <a-obj-model src="#barco-obj" mtl="#paleta-mtl" 
+                       scale="2 2 2" 
+                       rotation="20 -90 0" 
+                       position="8 -2.65 -23.56"></a-obj-model>
+        <!-- barco -->
+      
+        <!-- barco1 -->
+          <a-asset-item id="barco1-obj"  src="https://raw.githubusercontent.com/FernandinoQ/Modelos-FQ/main/barco_4_1.obj"></a-asset-item>
+      
+          <a-obj-model src="#barco1-obj" mtl="#paleta-mtl" 
+                       scale="2 2 2" 
+                       rotation="20 -90 0" 
+                       position="8 -2.65 -20"></a-obj-model>
+        <!-- barco1 -->
+        
+        <!-- pedra -->
+          <a-asset-item id="pedra-obj"  src="https://raw.githubusercontent.com/FernandinoQ/Modelos-FQ/main/pedra_5.obj"></a-asset-item>
+      
+          <a-obj-model src="#pedra-obj" mtl="#paleta-mtl" 
+                       scale="2 2 2" 
+                       rotation="0 -90 0" 
+                       position="-0.93 -2.874 -25.4"></a-obj-model>
+      
+          <a-obj-model src="#pedra-obj" mtl="#paleta-mtl" 
+                       scale="2 2 2" 
+                       rotation="0 -90 0" 
+                       position="-4 -2.9 -29"></a-obj-model>
+      
+          <a-obj-model src="#pedra-obj" mtl="#paleta-mtl" 
+                       scale="5 5 5" 
+                       rotation="0 -90 0" 
+                       position="-3 -2.9 -35"></a-obj-model>
+      
+          <a-obj-model src="#pedra-obj" mtl="#paleta-mtl" 
+                       scale="8 12 8" 
+                       rotation="0 -90 0" 
+                       position="7.5 -2.5 -35"></a-obj-model>
+        <!-- pedra -->
+        
+        <!-- farrol -->
+          <a-asset-item id="farrol-obj"  src="https://raw.githubusercontent.com/FernandinoQ/Modelos-FQ/main/farrol_6.obj"></a-asset-item>
+      
+          <a-obj-model src="#farrol-obj" mtl="#paleta-mtl" 
+                       scale="2 2 2" 
+                       rotation="0 0 0" 
+                       position="5 -2.640 -30.3"></a-obj-model>
+        <!-- farrol -->
+        
+        <!-- casa -->
+          <a-asset-item id="casa-obj"  src="https://raw.githubusercontent.com/FernandinoQ/Modelos-FQ/main/casa_7.obj"></a-asset-item>
+      
+          <a-obj-model src="#casa-obj" mtl="#paleta-mtl" 
+                       scale="2 2 2" 
+                       rotation="0 -90 0" 
+                       position="17 0 -17.9"></a-obj-model>
+      
+          <a-obj-model src="#casa-obj" mtl="#paleta-mtl" 
+                       scale="2 2 2" 
+                       rotation="0 -90 0" 
+                       position="17 0 -27"></a-obj-model>
+        <!-- casa -->
+      
+        <!-- caixa -->
+          <a-asset-item id="caixa-obj"  src="https://raw.githubusercontent.com/FernandinoQ/Modelos-FQ/main/box_8.obj"></a-asset-item>
+      
+          <a-obj-model src="#caixa-obj" mtl="#paleta-mtl" 
+                       scale="1.5 1.5 1.5" 
+                       rotation="0 -90 0" 
+                       position="16 0.05 -16"></a-obj-model>
+      
+          <a-obj-model src="#caixa-obj" mtl="#paleta-mtl" 
+                       scale="3 3 3" 
+                       rotation="0 -75 0" 
+                       position="0.793 0.05 -8.7"></a-obj-model>
+          <a-obj-model src="#caixa-obj" mtl="#paleta-mtl" 
+                       scale="2.5 2.5 2.5" 
+                       rotation="0 -75 0" 
+                       position="0.9 0.05 -7"></a-obj-model>
+      
+          <a-obj-model src="#caixa-obj" mtl="#paleta-mtl" 
+                       scale="3 3 3" 
+                       rotation="0 -60 0" 
+                       position="0.793 1.55 -8.1"></a-obj-model>
+      
+          <a-obj-model src="#caixa-obj" mtl="#paleta-mtl" 
+                       scale="3 3 3" 
+                       rotation="0 0 0" 
+                       position="7.4 0.05 -29.46"></a-obj-model>
+        <!-- caixa -->
+        
+        
+      <!-- Assets_3D-->
+      
+      
+      
+      <!-- repeat [Horizontal, Vertical] -->
+      
+      
+      
+      <a-plane
+        src="#relva"  
+        position="7.5 0.05 -0.1"
+        rotation="-90 0 0"
+        scale="30 20 0.99"
+        repeat="40 20"      
+      ></a-plane>
+      
+      <a-plane
+        src="#relva"  
+        position="17.4 0.05 -25.1"
+        rotation="-90 90 0"
+        scale="30 10 0.99"
+        repeat="30 10"      
+      ></a-plane>
+      
+      <a-plane
+        src="#areia"  
+        position="10.24 -1.914 -23.21"
+        rotation="-75 -90 0"
+        scale="8 2.5 1"      
+        width="4"
+        height="4"
+        repeat="6 4"         
+      ></a-plane>
+      
+      <a-plane
+        src="#areia-c"  
+        position="-1.852 0.055 0.49"
+        rotation="-90 -90 0"
+        scale="1.8 1.2 1" 
+        width="10"
+        height="4"
+        transparent="true"
+        repeat="3 1" 
+      ></a-plane>
+      
+      <a-plane
+        src="#areia-c"  
+        position="15.5 0.055 -22"
+        rotation="-90 -90 0"
+        scale="1.8 1.2 1" 
+        width="10"
+        height="4"
+        transparent="true"
+        repeat="3 1" 
+      ></a-plane>
+      
+      <a-plane
+        src="#arvo"  
+        position="-7.260 1.9 0.5"
+        rotation="0 90 0"
+        scale="5 1 1"
+        width="4"
+        height="4"
+        transparent="true"
+        repeat="6 1"       
+      ></a-plane>
+      
+      <a-plane
+        src="#arvo"  
+        position="4 1.9 1"
+        rotation="0 -90 0"
+        scale="5 1 1"
+        width="4"
+        height="4"
+        transparent="true"
+        repeat="6 1"       
+      ></a-plane>
+      
+      <a-plane
+        src="#arvo"  
+        position="15.573 1.9 -38.7"
+        rotation="0 0 0"
+        scale="3 1 1"
+        width="4"
+        height="4"
+        transparent="true"
+        repeat="4 1"       
+      ></a-plane>
+      
+      <a-plane
+        src="#arvo"  
+        position="21.3 1.9 -20.2"
+        rotation="0 -90 0"
+        scale="10 1 1"
+        width="4"
+        height="4"
+        transparent="true"
+        repeat="10 1"       
+      ></a-plane>
+     
+      <a-entity
+        id="luz_R"
+        position="3.75 7.8 -29.7"
+        animation="property: rotation; from: 0 0 0; to: 0 360 0; dur: 8000; loop: true; easing: linear">
+        <a-sphere position="0 0 -1.5" color="yellow" opacity="0.5">
+          <a-sphere position="0 0 -2.5" scale="2 2 2 " color="yellow" opacity="0.5">
+            <a-sphere position="0 0 -2.5" scale="2 2 2 " color="yellow" opacity="0.5"></a-sphere>
+          </a-sphere>
+        </a-sphere>
+      </a-entity>
+      
+      
+      <a-ocean position="-21 -2.51 -38.8" 
+               scale="6 6 2"
+               width="10" depth="10" opacity="0.8"  ></a-ocean>
+      
+      <!--a-link position="0 1.6 -10" image="#foto" href="index.html" 
+        title="Voltar ao inicio"></a-link>--> 
+      
+      <a-camera>
+         <a-cursor></a-cursor>
+      </a-camera>
+      
+    </a-scene>
+  </body>
+</html>

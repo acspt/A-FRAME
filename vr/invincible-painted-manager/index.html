@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <!-- Origem: backup do Glitch, projeto "invincible-painted-manager" (cópia de 2025-12-24 19:57) -->
+    <script src="https://aframe.io/releases/1.4.0/aframe.min.js"></script>
+    <script>
+      AFRAME.registerComponent('change-color-on-collision', {
+        init: function() {
+          const box = this.el;
+
+          box.addEventListener('collisionstart', () => {
+            box.setAttribute('color', 'green');
+          });
+
+          box.addEventListener('collisionend', () => {
+            box.setAttribute('color', 'red');
+          });
+        }
+      });
+    </script>
+  </head>
+  <body>
+    <a-scene>
+      <a-box id="myBox" collision-filter="collisionForces: true" color="red" change-color-on-collision></a-box>
+      <a-sphere position="0 1 -2"></a-sphere>
+
+      <!-- Camera and lighting -->
+      <a-entity position="0 1.8 3">
+        <a-camera></a-camera>
+      </a-entity>
+      <a-light type="ambient" color="#445451"></a-light>
+      <a-light type="point" intensity="2" position="2 4 4"></a-light>
+    </a-scene>
+  </body>
+</html>

@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <!-- Origem: backup do Glitch, projeto "lovely-wax-sphere" (cópia de 2025-12-24 19:57) -->
+    <title>Obra de Arte Interativa - AntónioMV | a55201</title>
+    <script src="https://aframe.io/releases/1.0.4/aframe.min.js"></script>
+    <script src="https://unpkg.com/aframe-environment-component@1.1.0/dist/aframe-environment-component.min.js"></script>
+    <script src="https://unpkg.com/aframe-event-set-component@^4.0.0/dist/aframe-event-set-component.min.js"></script>
+  </head>
+  <body>
+    <a-scene>
+      <a-assets>
+        <a-asset-item
+          id="casa"
+          src="https://raw.githubusercontent.com/antoniommav/a-frame/main/Models/House/scene.gltf"
+        ></a-asset-item>
+        <img
+          id="cubo"
+          src="assets/lain.gif"
+        />
+      </a-assets>
+
+      <!-- Componente do Ambiente Virtual -->
+      <a-entity
+        environment="preset: goldmine; dressing: none; playArea: 1;"
+        shadow="receive: true"
+      ></a-entity>
+
+      <!-- Modelo 3D Casa -->
+      <a-gltf-model
+        src="#casa"
+        position="0 2.7 10"
+        rotation="0 90 0"
+        shadow="cast: true"
+      ></a-gltf-model>
+
+      <!-- Hit-Box -->
+      <a-box
+        id="hit"
+        position="0 0 7"
+        scale="5 7 .2"
+        opacity="0"
+        event-set__mouseenter="_target:#object; opacity: 1"
+        event-set__mouseleave="_target:#object; opacity: 0"
+      ></a-box>
+
+      <!--Objeto -->
+      <a-box
+        id="object"
+        src="#cubo"
+        position="1 10 15"
+        scale="6 6 6"
+        opacity="0"
+        animation="property: rotation; to: 0 360 360; loop: true; easing: linear; dur: 10000"
+      ></a-box>
+
+      <!-- Luz -->
+      <a-entity
+        id="luz"
+        light="type: point;
+                   castShadow: true;
+                   intensity: 10; color: red;"
+        position="2 1.77217 9"
+      ></a-entity>
+
+      <!-- Texto -->
+      <a-text
+        position="1 1 -2"
+        value="Olha... Atras de ti!"
+        align="center"
+      ></a-text>
+
+      <!-- Camâra e Cursor -->
+      <a-camera wasd-controls="enabled: false;" position="1 1 0">
+        <a-cursor></a-cursor>
+      </a-camera>
+    </a-scene>
+  </body>
+</html>

@@ -1,0 +1,24 @@
+ <head>
+    <!-- Origem: backup do Glitch, projeto "chivalrous-selective-variraptor" (cópia de 2025-12-24 19:55) -->
+    <script src="https://aframe.io/releases/0.8.2/aframe.min.js"></script>
+    <script src="https://cdn.rawgit.com/elbobo/aframe-multisrc-component/b6d23310/dist/0.3/aframe-multisrc-component.js"></script>
+  </head>
+  <body>
+    <a-scene>
+      <a-assets>
+        <img  crossorigin="anonymous"  id="right" src="assets/illustration.svg">
+        <img crossorigin="anonymous" id="left" src="assets/illustration.svg">
+        <img crossorigin="anonymous" id="top" src="https://valetua.pt/wp-content/uploads/2016/06/mirandela1.jpg">
+        <img crossorigin="anonymous" id="bottom" src="https://valetua.pt/wp-content/uploads/2016/06/mirandela1.jpg">
+        <img crossorigin="anonymous" id="front" src="https://valetua.pt/wp-content/uploads/2016/06/mirandela1.jpg">
+        <img crossorigin="anonymous" id="back" src="https://valetua.pt/wp-content/uploads/2016/06/mirandela1.jpg">
+      </a-assets>
+      <a-box 
+        position="0 1.5 -2" 
+        multisrc="src0:#right;src1#left;src2:#top;src3:#bottom;src4:#front;src5:#back"
+        color="blue"
+        opacity="0.5"
+        shadow>
+      </a-box>
+    </a-scene>
+  </body>

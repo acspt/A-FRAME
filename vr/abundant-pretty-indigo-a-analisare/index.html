@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <!-- Origem: backup do Glitch, projeto "abundant-pretty-indigo-a-analisare" (cópia de 2025-12-24 19:54) -->
+    <meta charset="utf-8" />
+    <title>A-Frame VR Project</title>
+    <meta name="description" content="A-Frame VR Project" />
+    <script src="https://aframe.io/releases/1.2.0/aframe.min.js"></script>
+  </head>
+  <body>
+    <a-scene>
+      <!-- Primitives and Components -->
+      <a-sphere position="0 1.25 -5" radius="1.25" color="#EF2D5E"></a-sphere>
+      <a-plane
+        position="0 0 -4"
+        rotation="-90 0 0"
+        width="4"
+        height="4"
+        color="#7BC8A4"
+      ></a-plane>
+
+      <!-- Text -->
+      <a-text value="a47628" position="-1 2 -3" color="#FFF"></a-text>
+
+      <!-- Textures -->
+      <a-box position="2 1 -5" material="src: url(.....jpg)"></a-box>
+
+      <!-- Environments and other components -->
+      <a-sky color="#0000FF"></a-sky>
+
+      <!-- Portals  -->
+      <a-link
+        href="https://example.com"
+        position="-4 1 2"
+        title="Portal"
+      ></a-link>
+
+      <!-- 360º VR -->
+      <a-sky src="Street View 360.jpg"></a-sky>
+
+      <!-- A-Frame  -->
+      <script>
+        AFRAME.registerComponent("log", {
+          schema: { type: "string" },
+          init: function () {
+            var stringToLog = this.data;
+            console.log(stringToLog);
+          },
+        });
+      </script>
+      <a-box position="1 1 -3" log="Hello, A-Frame Inspector!"></a-box>
+
+      <!-- Lights -->
+      <a-light type="ambient" color="#FFC0CB"></a-light>
+      <a-light type="point" intensity="2" position="2 4 -4"></a-light>
+
+      <!-- 3D Models -->
+      <a-asset-item
+        id="tree-model"
+        src="chairmans_chair__20mb.glb"
+      ></a-asset-item>
+      <a-entity gltf-model="#tree-model" position="0 0 -5"></a-entity>
+
+      <!-- Interactions -->
+      <a-box
+        position="-2 0.5 -3"
+        rotation="0 45 0"
+        color="#4CC3D9"
+        event-set__click="scale: 2 2 2"
+      ></a-box>
+
+      <!-- Animations -->
+      <a-box position="0 6 -5" color="#4CC3D9" animation__a1="property: rotation; to: 0 360 0; dur: 2000; loop: true">
+        
+      </a-box>
+
+      <!-- Sound -->
+      <a-sound
+        src="chinese-beat-190047.mp3"
+        autoplay="true"
+        position="0 2 -5"
+      ></a-sound>
+
+      <!-- Proximity -->
+      <a-entity
+        id="camera"
+        camera
+        position="0 1.6 0"
+        look-controls
+        wasd-controls
+      >
+        <a-entity cursor="rayOrigin: mouse"></a-entity>
+      </a-entity>
+      <a-sphere
+        id="proximity-sphere"
+        position="0 7 -3"
+        radius="1.25"
+        color="#EF2D5E"
+      ></a-sphere>
+      <script>
+        document
+          .querySelector("#camera")
+          .addEventListener("componentchanged", function (evt) {
+            if (evt.detail.name === "position") {
+              var cameraPos = evt.target.getAttribute("position");
+              var sphere = document.querySelector("#proximity-sphere");
+              var spherePos = sphere.getAttribute("position");
+              var distance = Math.sqrt(
+                Math.pow(spherePos.x - cameraPos.x, 2) +
+                  Math.pow(spherePos.y - cameraPos.y, 2) +
+                  Math.pow(spherePos.z - cameraPos.z, 2)
+              );
+              if (distance < 1.25) {
+                sphere.setAttribute("color", "#00FF00");
+              } else {
+                sphere.setAttribute("color", "#EF2D5E");
+              }
+            }
+          });
+      </script>
+    </a-scene>
+  </body>
+</html>

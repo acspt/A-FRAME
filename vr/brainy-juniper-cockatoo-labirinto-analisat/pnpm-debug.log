@@ -1,0 +1,306 @@
+---
+  0 debug pnpm:scope: 
+    selected: 1
+    workspacePrefix: null
+  1 info pnpm: 
+    message: "A store server is running. All store manipulations are delegated to it."
+    prefix: "/app"
+  2 debug pnpm:package-json: 
+    initial: 
+      name: "seu-projeto"
+      version: "1.0.0"
+      description: "Descrição do seu projeto"
+      permissions: 
+        sandbox: 
+          - "allow-pointer-lock"
+          - "allow-scripts"
+          - "allow-same-origin"
+      dependencies: 
+        aframe: "^1.3.0"
+      readme: "# Hello website!\n\nThis is a basic HTML starter project you can build on however you like. No need to save. While you develop your site, your changes will happen ✨ immediately in the preview window. On the left you'll see the files that make up your site, including HTML, JavaScript, and CSS. You can upload assets like images or audio in `assets`. The rest is up to you and your imagination. 🦄\n\n_Last updated: 28 Feb 2023_\n\n## What's in this project?\n\n← `README.md`: That's this file, where you can tell people what your cool website does and how you built it.\n\n← `index.html`: This is the main web page for your site. The HTML defines the structure and content of the page using _elements_. You'll see references in the HTML to the JS and CSS files. Try clicking the image in the center of the page!\n\n← `style.css`: CSS files add styling rules to your content. The CSS applies styles to the elements in your HTML page. The style rules also make the image move when you click it.\n\n← `script.js`: If you're feeling fancy you can add interactivity to your site with JavaScript. The code in the JavaScript file runs when the page loads, and when the visitor clicks the button you can add using the code in the TODO.\n\nOpen each file and check out the comments (in gray) for more info.\n\n## Try this next 🏗️\n\nTake a look in `TODO.md` for next steps you can try out in your new site!\n\n___Want a minimal version of this project to build your own website? Check out [Blank Website](https://glitch.com/edit/#!/remix/glitch-blank-website)!___\n\n## Ready to share your site?\n\nAdd these meta tags for SEO and social sharing between your page `<head></head>` tags, changing the values for your site:\n\n```\n<link rel=\"canonical\" href=\"https://glitch-hello-website.glitch.me/\" />\n<meta name=\"description\" content=\"A simple website, built with Glitch. Remix it to get your own.\"/>\n<meta name=\"robots\" content=\"index,follow\" />\n<meta property=\"og:title\" content=\"Hello World!\" />\n<meta property=\"og:type\" content=\"article\" />\n<meta property=\"og:url\" content=\"https://glitch-hello-website.glitch.me/\" />\n<meta property=\"og:description\" content=\"A simple website, built with Glitch. Remix it to get your own.\"/>\n<meta property=\"og:image\" content=\"https://cdn.glitch.com/605e2a51-d45f-4d87-a285-9410ad350515%2Fhello-website-social.png?v=1616712748147\"/>\n<meta name=\"twitter:card\" content=\"summary\" />\n```\n\n![Glitch](https://cdn.glitch.com/a9975ea6-8949-4bab-addb-8a95021dc2da%2FLogo_Color.svg?v=1602781328576)\n\n## You built this with Glitch!\n\n[Glitch](https://glitch.com) is a friendly community where millions of people come together to build web apps and websites.\n\n- Need more help? [Check out our Help Center](https://help.glitch.com/) for answers to any common questions.\n- Ready to make it official? [Become a paid Glitch member](https://glitch.com/pricing) to boost your app with private sharing, more storage and memory, domains and more.\n"
+      readmeFilename: "README.md"
+      gitHead: "1137003b123a69a142c10dbad70898569551262b"
+      _id: "seu-projeto@1.0.0"
+    prefix: "/app"
+  3 debug pnpm:stage: 
+    prefix: "/app"
+    stage: "resolution_started"
+  4 debug pnpm:progress: 
+    packageId: "registry.npmjs.org/aframe/1.6.0"
+    requester: "/app"
+    status: "resolved"
+  5 debug pnpm:progress: 
+    packageId: "registry.npmjs.org/debug/4.3.5"
+    requester: "/app"
+    status: "resolved"
+  6 debug pnpm:progress: 
+    packageId: "registry.npmjs.org/debug/4.3.5"
+    requester: "/app"
+    status: "found_in_store"
+  7 debug pnpm:progress: 
+    packageId: "registry.npmjs.org/deep-assign/2.0.0"
+    requester: "/app"
+    status: "resolved"
+  8 debug pnpm:progress: 
+    packageId: "registry.npmjs.org/ms/2.1.2"
+    requester: "/app"
+    status: "resolved"
+  9 debug pnpm:progress: 
+    packageId: "registry.npmjs.org/webvr-polyfill/0.10.12"
+    requester: "/app"
+    status: "resolved"
+  10 debug pnpm:progress: 
+    packageId: "registry.npmjs.org/buffer/6.0.3"
+    requester: "/app"
+    status: "resolved"
+  11 debug pnpm:progress: 
+    packageId: "registry.npmjs.org/load-bmfont/1.4.1"
+    requester: "/app"
+    status: "resolved"
+  12 debug pnpm:progress: 
+    packageId: "registry.npmjs.org/super-animejs/3.1.0"
+    requester: "/app"
+    status: "resolved"
+  13 debug pnpm:progress: 
+    packageId: "registry.npmjs.org/ms/2.1.2"
+    requester: "/app"
+    status: "found_in_store"
+  14 debug pnpm:progress: 
+    packageId: "registry.npmjs.org/deep-assign/2.0.0"
+    requester: "/app"
+    status: "fetched"
+  15 debug pnpm:progress: 
+    packageId: "registry.npmjs.org/is-obj/1.0.1"
+    requester: "/app"
+    status: "resolved"
+  16 debug pnpm:progress: 
+    packageId: "registry.npmjs.org/cardboard-vr-display/1.0.19"
+    requester: "/app"
+    status: "resolved"
+  17 debug pnpm:progress: 
+    packageId: "registry.npmjs.org/load-bmfont/1.4.1"
+    requester: "/app"
+    status: "found_in_store"
+  18 debug pnpm:progress: 
+    packageId: "registry.npmjs.org/is-obj/1.0.1"
+    requester: "/app"
+    status: "found_in_store"
+  19 debug pnpm:progress: 
+    packageId: "registry.npmjs.org/buffer-equal/0.0.1"
+    requester: "/app"
+    status: "resolved"
+  20 debug pnpm:progress: 
+    packageId: "registry.npmjs.org/super-animejs/3.1.0"
+    requester: "/app"
+    status: "fetched"
+  21 debug pnpm:progress: 
+    packageId: "registry.npmjs.org/buffer/6.0.3"
+    requester: "/app"
+    status: "fetched"
+  22 debug pnpm:progress: 
+    packageId: "registry.npmjs.org/ieee754/1.2.1"
+    requester: "/app"
+    status: "resolved"
+  23 debug pnpm:progress: 
+    packageId: "registry.npmjs.org/parse-bmfont-binary/1.0.6"
+    requester: "/app"
+    status: "resolved"
+  24 debug pnpm:progress: 
+    packageId: "registry.npmjs.org/buffer-equal/0.0.1"
+    requester: "/app"
+    status: "found_in_store"
+  25 debug pnpm:progress: 
+    packageId: "registry.npmjs.org/base64-js/1.5.1"
+    requester: "/app"
+    status: "resolved"
+  26 debug pnpm:progress: 
+    packageId: "registry.npmjs.org/ieee754/1.2.1"
+    requester: "/app"
+    status: "found_in_store"
+  27 debug pnpm:progress: 
+    packageId: "registry.npmjs.org/mime/1.6.0"
+    requester: "/app"
+    status: "resolved"
+  28 debug pnpm:progress: 
+    packageId: "registry.npmjs.org/parse-bmfont-binary/1.0.6"
+    requester: "/app"
+    status: "found_in_store"
+  29 debug pnpm:progress: 
+    packageId: "registry.npmjs.org/base64-js/1.5.1"
+    requester: "/app"
+    status: "found_in_store"
+  30 debug pnpm:progress: 
+    packageId: "registry.npmjs.org/mime/1.6.0"
+    requester: "/app"
+    status: "found_in_store"
+  31 debug pnpm:progress: 
+    packageId: "registry.npmjs.org/gl-preserve-state/1.0.0"
+    requester: "/app"
+    status: "resolved"
+  32 debug pnpm:progress: 
+    packageId: "registry.npmjs.org/parse-bmfont-xml/1.1.6"
+    requester: "/app"
+    status: "resolved"
+  33 debug pnpm:progress: 
+    packageId: "registry.npmjs.org/parse-bmfont-xml/1.1.6"
+    requester: "/app"
+    status: "found_in_store"
+  34 debug pnpm:progress: 
+    packageId: "registry.npmjs.org/webvr-polyfill/0.10.12"
+    requester: "/app"
+    status: "fetched"
+  35 debug pnpm:progress: 
+    packageId: "registry.npmjs.org/xml-parse-from-string/1.0.1"
+    requester: "/app"
+    status: "resolved"
+  36 debug pnpm:progress: 
+    packageId: "registry.npmjs.org/xtend/4.0.2"
+    requester: "/app"
+    status: "resolved"
+  37 debug pnpm:progress: 
+    packageId: "registry.npmjs.org/webvr-polyfill-dpdb/1.0.18"
+    requester: "/app"
+    status: "resolved"
+  38 debug pnpm:deprecation: 
+    deprecated: "Package no longer supported. Contact Support at https://www.npmjs.com/support for more info."
+    depth: 2
+    pkgId: "registry.npmjs.org/phin/2.9.3"
+    pkgName: "phin"
+    pkgVersion: "2.9.3"
+    prefix: "/app"
+  39 debug pnpm:progress: 
+    packageId: "registry.npmjs.org/phin/2.9.3"
+    requester: "/app"
+    status: "resolved"
+  40 debug pnpm:progress: 
+    packageId: "registry.npmjs.org/xhr/2.6.0"
+    requester: "/app"
+    status: "resolved"
+  41 debug pnpm:progress: 
+    packageId: "registry.npmjs.org/xml2js/0.5.0"
+    requester: "/app"
+    status: "resolved"
+  42 debug pnpm:progress: 
+    packageId: "registry.npmjs.org/super-three/0.164.0"
+    requester: "/app"
+    status: "resolved"
+  43 debug pnpm:progress: 
+    packageId: "registry.npmjs.org/xml-parse-from-string/1.0.1"
+    requester: "/app"
+    status: "found_in_store"
+  44 debug pnpm:progress: 
+    packageId: "registry.npmjs.org/xtend/4.0.2"
+    requester: "/app"
+    status: "found_in_store"
+  45 debug pnpm:progress: 
+    packageId: "registry.npmjs.org/phin/2.9.3"
+    requester: "/app"
+    status: "found_in_store"
+  46 debug pnpm:progress: 
+    packageId: "registry.npmjs.org/xml2js/0.5.0"
+    requester: "/app"
+    status: "found_in_store"
+  47 debug pnpm:progress: 
+    packageId: "registry.npmjs.org/xhr/2.6.0"
+    requester: "/app"
+    status: "found_in_store"
+  48 debug pnpm:progress: 
+    packageId: "registry.npmjs.org/xmlbuilder/11.0.1"
+    requester: "/app"
+    status: "resolved"
+  49 debug pnpm:progress: 
+    packageId: "registry.npmjs.org/global/4.4.0"
+    requester: "/app"
+    status: "resolved"
+  50 debug pnpm:progress: 
+    packageId: "registry.npmjs.org/is-function/1.0.2"
+    requester: "/app"
+    status: "resolved"
+  51 debug pnpm:progress: 
+    packageId: "registry.npmjs.org/sax/1.4.1"
+    requester: "/app"
+    status: "resolved"
+  52 debug pnpm:progress: 
+    packageId: "registry.npmjs.org/parse-headers/2.0.5"
+    requester: "/app"
+    status: "resolved"
+  53 debug pnpm:progress: 
+    packageId: "registry.npmjs.org/global/4.4.0"
+    requester: "/app"
+    status: "found_in_store"
+  54 debug pnpm:progress: 
+    packageId: "registry.npmjs.org/is-function/1.0.2"
+    requester: "/app"
+    status: "found_in_store"
+  55 debug pnpm:progress: 
+    packageId: "registry.npmjs.org/sax/1.4.1"
+    requester: "/app"
+    status: "found_in_store"
+  56 debug pnpm:progress: 
+    packageId: "registry.npmjs.org/xmlbuilder/11.0.1"
+    requester: "/app"
+    status: "found_in_store"
+  57 debug pnpm:progress: 
+    packageId: "registry.npmjs.org/parse-headers/2.0.5"
+    requester: "/app"
+    status: "found_in_store"
+  58 debug pnpm:progress: 
+    packageId: "registry.npmjs.org/webvr-polyfill-dpdb/1.0.18"
+    requester: "/app"
+    status: "fetched"
+  59 debug pnpm:progress: 
+    packageId: "registry.npmjs.org/process/0.11.10"
+    requester: "/app"
+    status: "resolved"
+  60 debug pnpm:progress: 
+    packageId: "registry.npmjs.org/min-document/2.19.0"
+    requester: "/app"
+    status: "resolved"
+  61 debug pnpm:progress: 
+    packageId: "registry.npmjs.org/parse-bmfont-ascii/1.0.6"
+    requester: "/app"
+    status: "resolved"
+  62 debug pnpm:progress: 
+    packageId: "registry.npmjs.org/nosleep.js/0.7.0"
+    requester: "/app"
+    status: "resolved"
+  63 debug pnpm:progress: 
+    packageId: "registry.npmjs.org/process/0.11.10"
+    requester: "/app"
+    status: "found_in_store"
+  64 debug pnpm:progress: 
+    packageId: "registry.npmjs.org/min-document/2.19.0"
+    requester: "/app"
+    status: "found_in_store"
+  65 debug pnpm:progress: 
+    packageId: "registry.npmjs.org/parse-bmfont-ascii/1.0.6"
+    requester: "/app"
+    status: "found_in_store"
+  66 debug pnpm:progress: 
+    packageId: "registry.npmjs.org/cardboard-vr-display/1.0.19"
+    requester: "/app"
+    status: "fetched"
+  67 debug pnpm:progress: 
+    packageId: "registry.npmjs.org/dom-walk/0.1.2"
+    requester: "/app"
+    status: "resolved"
+  68 debug pnpm:progress: 
+    packageId: "registry.npmjs.org/dom-walk/0.1.2"
+    requester: "/app"
+    status: "found_in_store"
+  69 debug pnpm:progress: 
+    packageId: "registry.npmjs.org/nosleep.js/0.7.0"
+    requester: "/app"
+    status: "fetched"
+  70 debug pnpm:progress: 
+    packageId: "registry.npmjs.org/gl-preserve-state/1.0.0"
+    requester: "/app"
+    status: "fetched"
+  71 debug pnpm:progress: 
+    packageId: "registry.npmjs.org/aframe/1.6.0"
+    requester: "/app"
+    status: "fetched"
+  72 debug pnpm:progress: 
+    packageId: "registry.npmjs.org/super-three/0.164.0"
+    requester: "/app"
+    status: "fetched"

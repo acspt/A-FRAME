@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <!-- Origem: backup do Glitch, projeto "regal-polar-hall" (cópia de 2025-12-24 19:58) -->
+    <meta charset="utf-8" />
+    <title>Extruded Text Component with Position and Rotation in A-Frame</title>
+    <script src="https://aframe.io/releases/1.2.0/aframe.min.js"></script>
+    <script src="https://threejs.org/examples/js/geometries/TextGeometry.js"></script>
+    <script src="https://threejs.org/examples/js/loaders/FontLoader.js"></script>
+    <script src="script.js"></script>
+  </head>
+  <body>
+    <a-scene shadow="type: pcfsoft">
+      <!-- Directional Light with Shadows -->
+      <a-light
+        type="directional"
+        position="-1 2 1"
+        intensity="5"
+        color="#000"
+        castShadow="true"
+        shadow-mapWidth="1024"
+        shadow-mapHeight="1024"
+      ></a-light>
+
+      <!-- Use the custom extruded-text component with position and rotation -->
+      <a-entity
+        position=" 1 1 -3"
+        scale="-1 1 1"
+        extruded-text="text: B; color: #FF0000; height: 0.1; rotation: 0 0 0; position: 0 0 0"
+      ></a-entity>
+      <a-entity
+        position="1.2 1 -3"
+        extruded-text="text: U; color: #00ff00; height: 0.1; rotation: 0 0; position: 0 0 0"
+      ></a-entity>
+      <a-entity
+        position="2.2 1 -3"
+        extruded-text="text: P; color: #00ff00; height: 0.1 rotation: 0 0 0; position: 0 0 0"
+      ></a-entity>
+      <a-sky color="#FFF"></a-sky>
+      <!-- Ambient Light -->
+    </a-scene>
+  </body>
+</html>

@@ -1,0 +1,422 @@
+<html>
+  <head>
+    <!-- Origem: backup do Glitch, projeto "orchid-jasper-albertonykus-monte-olimpo" (cópia de 2025-12-24 19:57) -->
+    <title>Monte Olimpo - TI-LAD</title>
+    <meta charset="UTF-8" />
+
+    <!-- A-Frame -->
+    <script src="https://aframe.io/releases/1.5.0/aframe.min.js"></script>
+
+    <!-- Componentes do A-Frame -->
+    <script src="https://unpkg.com/aframe-environment-component/dist/aframe-environment-component.min.js"></script>
+    <script src="https://unpkg.com/aframe-event-set-component@^4.0.0/dist/aframe-event-set-component.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/gh/c-frame/aframe-extras@7.4.0/dist/aframe-extras.min.js"></script>
+
+    <!-- Scripts de Interação -->
+    <script src="js/bussola.js"></script>
+    <script src="js/demeter.js"></script>
+    <script src="js/intro.js"></script>
+    <script src="js/zeus.js"></script>
+  </head>
+
+  <body>
+    <a-assets>
+      <a-image
+        id="olhar"
+        src="assets/Olhar-removebg-preview.png"
+      ></a-image>
+      <a-image
+        id="clicar"
+        src="assets/Clicar-removebg-preview.png"
+      ></a-image>
+      <a-image
+        id="andar"
+        src="assets/Andar-removebg-preview.png"
+      ></a-image>
+      <a-image
+        id="mais"
+        src="assets/Mais-removebg-preview.png"
+      ></a-image>
+      <a-image
+        id="continuar"
+        src="assets/Continuar.png"
+      ></a-image>
+
+      <a-asset-item
+        id="templo"
+        src="assets/scene.glb"
+      ></a-asset-item>
+
+      <a-asset-item
+        id="zeus-model"
+        src="https://raw.githubusercontent.com/antoniommav/zeus/main/scene.gltf"
+      ></a-asset-item>
+
+      <a-asset-item
+        id="demeter-model"
+        src="https://raw.githubusercontent.com/antoniommav/maenad/main/scene.gltf"
+      ></a-asset-item>
+
+      <a-asset-item
+        id="roboto-font"
+        src="assets/custom-msdf.json"
+      ></a-asset-item>
+
+      <audio
+        id="ambience"
+        src="assets/697217__dhallcomposer__looping-gentle-wi.wav"
+        preload="auto"
+      ></audio>
+      <audio
+        id="thunder"
+        src="assets/682352__pnmcarrierailfan__thunder-claps.wav"
+        preload="auto"
+      ></audio>
+      <audio
+        id="scrape"
+        src="assets/dirt-scrape.wav"
+        preload="auto"
+      ></audio>
+    </a-assets>
+
+    <a-scene>
+      <!-- Ambiente da Antiga Grécia-->
+      <a-entity
+        environment="dressing: trees; playArea: 1.55; groundTexture: none; groundColor: #3c2e28; fog: 0.6; lighting: none; ground: hills; groundYScale: 45;"
+        shadow="receive: true"
+        position="50 0 0"
+      >
+        <a-entity
+          class="environment"
+          position="0 50 0"
+          light="type: hemisphere; color: #CEE4F0; intensity: 0.2; groundColor: #9f0000"
+          visible=""
+        ></a-entity>
+
+        <a-entity
+          class="environment"
+          position="-0.11 1 0.33"
+          light="intensity: 0.2; shadowCameraLeft: -10; shadowCameraBottom: -10; shadowCameraRight: 10; shadowCameraTop: 10"
+        ></a-entity>
+
+        <a-sky
+          radius="200"
+          theta-length="110"
+          class="environment"
+          material="side: back; shader: gradientshader; npot: true; topColor: #f8c881; bottomColor: #96e1fa; offset: [object Object]; repeat: [object Object]"
+          visible=""
+          geometry="radius: 200; thetaLength: 110; primitive: sphere; segmentsWidth: 64; segmentsHeight: 32"
+        ></a-sky>
+      </a-entity>
+
+      <a-entity>
+        <a-entity id="posições">
+          <a-entity id="pos1" position="-25 .5 0"></a-entity>
+          <a-entity id="pos2" position="-25 .5 50"></a-entity>
+          <a-entity id="pos3" position="-25 .5 -50"></a-entity>
+        </a-entity>
+        <!-- Bússola -->
+        <a-light
+          id="bussola-light"
+          light="type: spot; angle: 10; castShadow: true"
+          position="41.5 15 0.150"
+          rotation="-90 0 0"
+          visible="false"
+        ></a-light>
+
+        <a-entity id="bussola" position="41.5 2 0">
+          <a-entity
+            id="pointer"
+            position="0 2 -1"
+            rotation="90 0 0"
+            shadow="cast:true; receive:true"
+          >
+            <a-cylinder
+              color="red"
+              scale=".15 2 .15"
+              position="0 1 0"
+            ></a-cylinder>
+            <a-cone color="red" scale=".5 1 .5" position="0 2 0"></a-cone>
+          </a-entity>
+        </a-entity>
+
+        <!-- Deméter e Colheita -->
+        <a-entity id="colheita" visible="false">
+          <a-light
+            id="colheita-light"
+            light="type: spot; angle: 20; castShadow: true"
+            position="0 10 0"
+            rotation="-90 0 0"
+          ></a-light>
+          <a-entity
+            id="demeter"
+            gltf-model="#demeter-model"
+            position="-4 0 0"
+            rotation="0 90 0"
+            scale="2 2 2"
+          ></a-entity>
+
+          <a-light
+            id="demeter-light"
+            visible="false"
+            light="type: spot; angle: 5; castShadow: true"
+            position="-4 18 0"
+            rotation="-90 0 0"
+          ></a-light>
+
+          <a-plane
+            id="demeter-text"
+            rotation="0 90 0"
+            scale="1 1 1"
+            position="-2 3 0"
+            material="opacity: 0; transparent: true; depthTest: false;"
+          >
+            <a-text
+              value="Demeter:
+                     
+                     - As colheitas... Destruidas..."
+              align="left"
+              anchor="center"
+              wrapcount="25"
+            ></a-text>
+          </a-plane>
+
+          <a-entity>
+            <a-box
+              class="colheita"
+              color="red"
+              position="2 .1 2"
+              scale="1.5 .15 1.5"
+              sound="src: #scrape; on: click"
+            ></a-box>
+            <a-box
+              class="colheita"
+              color="red"
+              position="2 .1 0"
+              scale="1.5 .15 1.5"
+              sound="src: #scrape; on: click"
+            ></a-box>
+            <a-box
+              class="colheita"
+              color="red"
+              position="2 .1 -2"
+              scale="1.5 .15 1.5"
+              sound="src: #scrape; on: click"
+            ></a-box>
+            <a-box
+              class="colheita"
+              color="red"
+              position="0 .1 2"
+              scale="1.5 .15 1.5"
+              sound="src: #scrape; on: click"
+            ></a-box>
+            <a-box
+              class="colheita"
+              color="red"
+              position="0 .1 0"
+              scale="1.5 .15 1.5"
+              sound="src: #scrape; on: click"
+            ></a-box>
+            <a-box
+              class="colheita"
+              color="red"
+              position="0 .1 -2"
+              scale="1.5 .15 1.5"
+              sound="src: #scrape; on: click"
+            ></a-box>
+            <a-box
+              class="colheita"
+              color="red"
+              position="-2 .1 2"
+              scale="1.5 .15 1.5"
+              sound="src: #scrape; on: click"
+            ></a-box>
+            <a-box
+              class="colheita"
+              color="red"
+              position="-2 .1 0"
+              scale="1.5 .15 1.5"
+              sound="src: #scrape; on: click"
+            ></a-box>
+            <a-box
+              class="colheita"
+              color="red"
+              position="-2 .1 -2"
+              scale="1.5 .15 1.5"
+              sound="src: #scrape; on: click"
+            ></a-box>
+          </a-entity>
+        </a-entity>
+
+        <!-- Templo -->
+        <a-entity id="temple">
+          <a-gltf-model
+            src="#templo"
+            position="50 12 0"
+            scale="0.01 0.01 0.01"
+            shadow="cast:false; receive:true"
+          ></a-gltf-model>
+
+          <a-gltf-model
+            id="zeus"
+            src="#zeus-model"
+            position="55 2 0.2"
+            scale="1 1 1"
+            rotation="0 90 0"
+            shadow="cast:true; receive:true"
+            sound="src: #thunder; on: click; volume: 1.5"
+          >
+          </a-gltf-model>
+
+          <a-plane
+            id="zeus-text"
+            visible="false"
+            rotation="0 90 0"
+            scale="1 1 1"
+            position="57 3 0"
+            material="opacity: 0; transparent: true; depthTest: false;"
+          >
+            <a-text
+              value="Zeus:
+                     
+                     - Ajuda-me a procurar os deuses. Usa a bussola magica atras de mim. Clica na seta e o caminho veras."
+              align="left"
+              anchor="center"
+              wrapcount="25"
+            ></a-text>
+          </a-plane>
+
+          <a-light
+            id="zeus-light"
+            light="type: spot; angle: 15; castShadow: true"
+            position="55 18 0"
+            rotation="-90 0 0"
+          ></a-light>
+        </a-entity>
+
+        <!-- Início e Fim -->
+        <a-entity id="text-bubble" visible="true">
+          <a-sphere
+            id="bubble"
+            radius="5"
+            material="side: back; color: black; opacity: 0.9"
+            position="95 0 0"
+          ></a-sphere>
+          <a-entity id="intro" intro>
+            <a-plane
+              id="object3"
+              visible="false"
+              rotation="0 90 0"
+              scale="1 1 1"
+              position="93 3 0"
+              material="opacity: 0; transparent: true; depthTest: false;"
+            >
+              <a-text
+                value="A Historia 
+                          
+                       Os deuses do Olimpo desapareceram. O mundo dos mortais esta em caos, por isso decides subir ao Monte do Olimpo na procura de uma resposta."
+                align="left"
+                anchor="center"
+                wrapcount="25"
+              ></a-text>
+            </a-plane>
+
+            <a-entity id="object1">
+              <a-image
+                src="#olhar"
+                rotation="0 120 0"
+                width="3"
+                height="3"
+                position="93 3 2"
+              >
+              </a-image>
+
+              <a-image
+                src="#mais"
+                rotation="0 90 0"
+                width=".5"
+                height=".5"
+                position="92 3 0"
+              >
+              </a-image>
+
+              <a-image
+                src="#clicar"
+                rotation="0 60 0"
+                width="3"
+                height="3"
+                position="93 3 -2"
+              >
+              </a-image>
+            </a-entity>
+
+            <a-image
+              id="object2"
+              visible="false"
+              src="#andar"
+              rotation="0 90 0"
+              width="3"
+              height="3"
+              position="92 3 0"
+            >
+            </a-image>
+
+            <a-image
+              id="initialObject"
+              src="#continuar"
+              rotation="-15 90 0"
+              width="3"
+              height="3"
+              position="93 1.5 0"
+            >
+            </a-image>
+          </a-entity>
+        </a-entity>
+
+        <a-entity id="ending" visible="false" position="95 0 0">
+          <a-sphere
+            id="end-bubble"
+            radius="5"
+            material="side: back; color: black; opacity: 0.9"
+          ></a-sphere>
+
+          <a-plane
+            id="texto-final"
+            rotation="0 90 0"
+            scale="1 1 1"
+            position="-2 3 0"
+            material="opacity: 0; transparent: true; depthTest: false;"
+          >
+            <a-text
+              value="Um simples gesto de simpatia, pode acalmar a mais violenta tempestade.
+                     Este e o merito dos mortais, mesmo perante uma grande calamidade, por forcas que jamais compreenderao, conseguem ter esperanca e continuar a viver resilientes.
+                   
+                     Isto nao e o fim..."
+              align="left"
+              anchor="center"
+              wrapcount="25"
+            ></a-text>
+          </a-plane>
+        </a-entity>
+
+        <!-- Câmara, Cursor e Controlos -->
+        <a-entity
+          sound="src: #ambience; autoplay: true; loop: true; volume: 0.5"
+          id="rig"
+          movement-controls="enabled: false;"
+          speed="0.1"
+          position="97 0 0"
+          rotation="0 90 0"
+        >
+          <a-entity
+            camera
+            position="0 3 0"
+            look-controls="pointerLockEnabled: true"
+          >
+            <a-cursor></a-cursor>
+          </a-entity>
+        </a-entity>
+      </a-entity>
+    </a-scene>
+  </body>
+</html>

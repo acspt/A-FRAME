@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Passeio na Zona Verde</title>
+    <script src="https://aframe.io/releases/1.6.0/aframe.min.js"></script>
+    <script src="https://unpkg.com/aframe-environment-component/dist/aframe-environment-component.min.js"></script>
+
+</head>
+<body>
+    <a-scene>
+      
+      <a-assets>
+        
+          <video id="walk" autoplay  src="../assets/flower.mp4"></video>
+      </a-assets>
+          <a-camera position=""  ><a-cursor></a-cursor></a-camera>
+       
+         <a-link position="0 1 0" scale="0.5 0.5 0.5" href="#" title=""></a-link>
+      
+     
+      <a-sky rotation="0 90 0" src="#walk"></a-sky>
+
+          
+
+    </a-scene>
+  
+  
+<script>
+        // Espera 1 minuto (60.000 milissegundos) e redireciona para a página desejada
+        setTimeout(() => {
+            window.location.href = '../index.html'; // Substitua pelo URL da página Home
+        }, 60000);
+    </script>
+</body>
+</html>

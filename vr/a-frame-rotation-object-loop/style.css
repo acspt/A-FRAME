@@ -1,0 +1,14 @@
+#flag {
+  width: 100px;
+  height: 100px;
+  background-color: red;
+  transition: all 1s linear;
+}
+
+.rotated { 
+    -webkit-transform: rotate(-90deg);
+    -moz-transform: rotate(-90deg);
+    -o-transform: rotate(-90deg);
+    -ms-transform: rotate(-90deg);
+    transform: rotate(-90deg);
+}

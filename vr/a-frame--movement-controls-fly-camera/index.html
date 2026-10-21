@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <!-- Origem: backup do Glitch, projeto "a-frame--movement-controls-fly-camera" (cópia de 2025-12-24 19:51) -->
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>A-Frame Y-Axis Camera Movement</title>
+  <script src="https://aframe.io/releases/1.3.0/aframe.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/gh/donmccurdy/aframe-extras@6.1.1/dist/aframe-extras.min.js"></script>
+</head>
+<body>
+  <a-scene>
+    <!-- Camera rig with movement controls -->
+    <a-entity id="rig" movement-controls="fly: true; speed: 0.03" position="0 0 0">
+      <a-entity camera position="0 1.6 0" look-controls="pointerLockEnabled: true"></a-entity>
+    </a-entity>
+
+    <!-- Some basic entities to give the scene context -->
+    <a-box position="0 0.5 -3" rotation="0 45 0" color="#4CC3D9"></a-box>
+    <a-sphere position="2 1.25 -5" radius="1.25" color="#EF2D5E"></a-sphere>
+    <a-cylinder position="-1 0.75 -3" radius="0.5" height="1.5" color="#FFC65D"></a-cylinder>
+    <a-plane position="0 0 -4" rotation="-90 0 0" width="10" height="10" color="#7BC8A4"></a-plane>
+    <a-sky color="#ECECEC"></a-sky>
+  </a-scene>
+</body>
+</html>

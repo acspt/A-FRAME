@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="pt">
+<head>
+    <!-- Origem: backup do Glitch, projeto "sharp-veil-stove-a-analisar" (cópia de 2025-12-24 19:58) -->
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cena A-Frame Completa</title>
+    <script src="https://aframe.io/releases/1.2.0/aframe.min.js"></script>
+    <style>
+        body { margin: 0; }
+        .fullscreen { width: 100vw; height: 100vh; }
+    </style>
+</head>
+<body>
+    <a-scene class="fullscreen" inspector="url: https://cdn.jsdelivr.net/gh/aframevr/aframe-inspector@master/dist/aframe-inspector.min.js">
+        <!-- Primitives and Components -->
+        <a-box position="0 1.5 -5" rotation="0 45 0" color="#4CC3D9" 
+               event-set__enter="_event: mouseenter; color: #24CAFF" 
+               event-set__leave="_event: mouseleave; color: #4CC3D9"
+               animation="property: rotation; to: 0 360 0; loop: true; dur: 4000"></a-box>
+        
+        <a-sphere position="2 1.25 -5" radius="1.25" color="#EF2D5E" 
+                  event-set__enter="_event: mouseenter; color: #FF6347" 
+                  event-set__leave="_event: mouseleave; color: #EF2D5E"
+                  animation="property: scale; to: 1.5 1.5 1.5; loop: true; dur: 2000"></a-sphere>
+        
+        <a-cylinder position="-2 0.75 -5" radius="0.5" height="1.5" color="#FFC65D" 
+                    event-set__enter="_event: mouseenter; color: #FFD700" 
+                    event-set__leave="_event: mouseleave; color: #FFC65D"
+                    animation="property: position; to: -2 1.5 -5; loop: true; dur: 3000"></a-cylinder>
+        
+        <a-plane position="0 0 -4" rotation="-90 0 0" width="4" height="4" color="#7BC8A4"></a-plane>
+        
+        <!-- Additional Primitives -->
+        <a-box position="1 1 -3" rotation="0 45 0" color="#FF6347"></a-box>
+        <a-sphere position="-1 1 -3" radius="1" color="#FFD700"></a-sphere>
+        <a-cylinder position="1 0.5 -2" radius="0.3" height="1" color="#4B0082"></a-cylinder>
+        <a-plane position="-1 0 -2" rotation="-90 0 0" width="2" height="2" color="#00FF00"></a-plane>
+        
+        <!-- Text -->
+        <a-text value="Bem-vindo ao meu A-Frame "Evanilson Gomes"!" position="0 2 -3" color="#FFF"></a-text>
+        
+        <!-- Textures -->
+        <a-box position="1 0.5 -3" src="assets/brown_planks_03_diff_1k.jpg"></a-box>
+        <a-assets>
+            <img id="texture" src="assets/city.jpg">
+        </a-assets>
+        
+        <!-- Environments and other components -->
+        <a-sky color="#ECECEC"></a-sky>
+        
+        <!-- Portals -->
+        <a-entity geometry="primitive: plane; height: 2; width: 2" material="color: blue" position="0 1 -2" portal></a-entity>
+        
+        <!-- 360º VR -->
+        <a-sky src="assets/city.jpg"></a-sky>
+        
+        <!-- A-Frame 3D Inspector -->
+        <!-- Already included in the scene tag -->
+        
+        <!-- Lights -->
+        <a-light type="ambient" color="#445451"></a-light>
+        <a-light type="point" intensity="2" position="2 4 -3"></a-light>
+        
+        <!-- 3D Models -->
+        <a-entity gltf-model="assets/forest_leaves_02_diff_1k.jpg" position="0 0 -5"></a-entity>
+        
+        <!-- Magica Voxel -->
+        <a-entity obj-model="obj: url(assets/model.obj); mtl: url(assets/model.mtl)" position="0 0 -5"></a-entity>
+        
+        <!-- Sound -->
+        <a-assets>
+            <audio id="background-sound" src="assets/Ad-pa-nha-niggas-d-six.wav"></audio>
+        </a-assets>
+        <a-sound src="#background-sound" autoplay="true" loop="true" position="0 1 -3"></a-sound>
+        
+        <!-- Proximity -->
+        <a-entity position="0 1 -3" proximity="radius: 5; onEnter: scale: 2 2 2; onLeave: scale: 1 1 1"></a-entity>
+    </a-scene>
+</body>
+</html>
