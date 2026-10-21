@@ -8,7 +8,6 @@ style: css/index1.css
 
 
 ### Before you start
-1. <a href="0010-intro-glitch.html">Intro to Glitch</a>
 1. <a href="0020-intro-html.html">Intro to HTML</a>
 
 ### Basics
