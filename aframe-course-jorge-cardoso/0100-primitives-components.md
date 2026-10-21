@@ -1,7 +1,7 @@
 ---
 title: Primitives and Components
-previous: 0-intro-glitch
-previoustitle: Intro
+previous: 0020-intro-html
+previoustitle: Intro to HTML
 next: 1-basics-2
 nexttitle: Basics 2 - Lights, Text
 ---
