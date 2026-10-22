@@ -11,10 +11,6 @@
     <!-- annyang: reconhecimento de voz (usa o webkitSpeechRecognition do Chrome) -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/annyang/2.6.1/annyang.min.js"></script>
     <script src="https://aframe.io/releases/1.6.0/aframe.min.js"></script>
-    <!-- componentes speech-command e annyang-speech-recognition -->
-    <script src="js/speech-command.js"></script>
-    <!-- set-image: troca a imagem 360 com um efeito de fade -->
-    <script src="js/set-image.js"></script>
     <style>
       /* caixa de controlo da voz, no canto superior esquerdo, à frente da cena */
       #voz {
@@ -133,5 +129,11 @@
                   raycaster="objects: .link"></a-cursor>
       </a-entity>
     </a-scene>
+
+    <!-- scripts do projeto, carregados no fim da página -->
+    <!-- componentes speech-command e annyang-speech-recognition -->
+    <script src="js/speech-command.js"></script>
+    <!-- set-image: troca a imagem 360 com um efeito de fade -->
+    <script src="js/set-image.js"></script>
   </body>
 </html>

@@ -62,16 +62,8 @@
         <button id="btn_quarter">1/4</button>
       </p>
     </div>
-    <script>
-      function setSize(scale) {
-        document
-          .getElementById("dino")
-          .setAttribute("scale", { x: scale, y: scale, z: scale });
-      }
-      document.getElementById("btn_full").onclick = setSize.bind(this, 1);
-      document.getElementById("btn_half").onclick = setSize.bind(this, 0.5);
-      document.getElementById("btn_quarter").onclick = setSize.bind(this, 0.25);
-    </script>
-  
-</body>
+
+    <!-- scripts do projeto, carregados no fim da página -->
+    <script src="scripts.js"></script>
+  </body>
 </html>
