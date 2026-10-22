@@ -17,9 +17,35 @@
     <script src="https://unpkg.com/aframe-layout-component@5.3.0/dist/aframe-layout-component.min.js"></script>
     <script src="js/set-image.js"></script>
     <script src="js/update-raycaster.js"></script>
+    <style>
+      /* caixa de controlo da voz, no canto superior esquerdo, à frente da cena */
+      #voz {
+        position: fixed; top: 10px; left: 10px; z-index: 10; max-width: 340px;
+        padding: 10px; border-radius: 8px; background: rgba(0, 0, 0, 0.6);
+        color: #fff; font: 14px Arial, sans-serif;
+      }
+      #voz button, #voz select { font-size: 14px; padding: 4px 8px; margin-bottom: 6px; }
+      #voz-estado { margin: 4px 0; font-weight: bold; }
+      #voz-estado.ok { color: #7CFC00; }
+      #voz-estado.aviso { color: #ffd54f; }
+      #voz-estado.erro { color: #ff8a80; }
+      #voz-ajuda { font-size: 12px; color: #ddd; }
+    </style>
   </head>
   <body>
-    <!-- Comandos de voz (em inglês): "show menu", "hide menu", "go to cubes", "go to city", "go to lake" -->
+    <!-- Caixa de controlo da voz, por cima da cena -->
+    <!-- o microfone só liga com o botão: o Chrome exige um clique do utilizador -->
+    <div id="voz">
+      <button id="voz-botao" type="button">🎤 Ativar voz</button>
+      <select id="voz-idioma" title="Língua do reconhecimento de voz">
+        <option value="pt-PT">Português</option>
+        <option value="en-US">English</option>
+      </select>
+      <div id="voz-estado">Carregue em "Ativar voz" e autorize o microfone.</div>
+      <div id="voz-ajuda">Diga, por exemplo: <b>mostrar menu</b>, <b>esconder menu</b>, <b>cidade</b>, <b>lago</b>, <b>cubos</b>
+        (ou em inglês: <b>show menu</b>, <b>hide menu</b>, <b>city</b>, <b>lake</b>, <b>cubes</b>)</div>
+    </div>
+
     <a-scene>
       <a-assets>
         <img id="city" crossorigin="anonymous" src="assets/city.jpg" />
@@ -31,15 +57,16 @@
         <audio id="click-sound" crossorigin="anonymous" src="assets/click.ogg"></audio>
       </a-assets>
 
-      <a-entity id="annyang" annyang-speech-recognition></a-entity>
+      <!-- lang: língua inicial do reconhecedor (pt-PT ou en-US) -->
+      <a-entity id="annyang" annyang-speech-recognition="lang: pt-PT"></a-entity>
 
       <!-- imagem 360 -->
       <a-sky id="image-360" radius="10" src="#city"></a-sky>
 
       <!-- menu com as miniaturas: aparece com "show menu" e desaparece com "hide menu" -->
       <a-entity id="links" layout="type: line; margin: 1.5" position="-1.5 -1 -4" visible="false"
-                speech-command__show="command: show menu; type: attribute; attribute: visible; value: true;"
-                speech-command__hide="command: hide menu; type: attribute; attribute: visible; value: false;">
+                speech-command__show="command: show menu; keywords: mostrar menu, mostra menu, abrir menu, abre menu, open menu, menu on; type: attribute; attribute: visible; value: true;"
+                speech-command__hide="command: hide menu; keywords: esconder menu, esconde menu, fechar menu, fecha menu, close menu, menu off; type: attribute; attribute: visible; value: false;">
         <a-plane class="link" height="1" width="1"
                  material="shader: flat; src: #cubes-thumb"
                  event-set__1="_event: mousedown; scale: 1 1 1"
@@ -48,7 +75,7 @@
                  event-set__4="_event: mouseleave; scale: 1 1 1"
                  set-image="on: click; target: #image-360; src: #cubes"
                  sound="on: click; src: #click-sound"
-                 speech-command="command: go to cubes; type: attribute; targetElement: #image-360; attribute: src; value: #cubes;"
+                 speech-command="command: go to cubes; keywords: cubes, cubos, cubo; type: attribute; targetElement: #image-360; attribute: src; value: #cubes;"
                  update-raycaster="#cursor"></a-plane>
         <a-plane class="link" height="1" width="1"
                  material="shader: flat; src: #city-thumb"
@@ -58,7 +85,7 @@
                  event-set__4="_event: mouseleave; scale: 1 1 1"
                  set-image="on: click; target: #image-360; src: #city"
                  sound="on: click; src: #click-sound"
-                 speech-command="command: go to city; type: attribute; targetElement: #image-360; attribute: src; value: #city;"
+                 speech-command="command: go to city; keywords: city, cidade; type: attribute; targetElement: #image-360; attribute: src; value: #city;"
                  update-raycaster="#cursor"></a-plane>
         <a-plane class="link" height="1" width="1"
                  material="shader: flat; src: #sechelt-thumb"
@@ -68,7 +95,7 @@
                  event-set__4="_event: mouseleave; scale: 1 1 1"
                  set-image="on: click; target: #image-360; src: #sechelt"
                  sound="on: click; src: #click-sound"
-                 speech-command="command: go to lake; type: attribute; targetElement: #image-360; attribute: src; value: #sechelt;"
+                 speech-command="command: go to lake; keywords: lake, lago, sechelt; type: attribute; targetElement: #image-360; attribute: src; value: #sechelt;"
                  update-raycaster="#cursor"></a-plane>
       </a-entity>
 
