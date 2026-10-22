@@ -53,7 +53,8 @@
       <strong>Voice commands</strong>
       <ul>
         <li>show menu</li>
-        <li>hide menu</li>
+        <li>hide menu <small>(or: close menu)</small></li>
+        <li>menu <small>(shows / hides)</small></li>
         <li>go to city</li>
         <li>go to lake</li>
         <li>go to cubes</li>
@@ -80,7 +81,8 @@
       <!-- menu com as miniaturas: aparece com "show menu" e desaparece com "hide menu" -->
       <a-entity id="links" layout="type: line; margin: 1.5" position="-1.5 -1 -4" visible="false"
                 voice-command__show="command: show menu; keywords: open menu, show the menu, open the menu; attribute: visible; value: true;"
-                voice-command__hide="command: hide menu; keywords: close menu, hide the menu, close the menu; attribute: visible; value: false;">
+                voice-command__hide="command: hide menu; keywords: close menu, hide the menu, close the menu; attribute: visible; value: false;"
+                voice-command__toggle="command: menu; type: toggle; attribute: visible">
         <a-plane class="link" height="1" width="1"
                  material="shader: flat; src: #cubes-thumb"
                  event-set__1="_event: mousedown; scale: 1 1 1"
