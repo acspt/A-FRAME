@@ -2,7 +2,7 @@
 
 // Comandos de voz em inglês com o Vosk (vosk-browser): reconhecimento de fala que corre
 // todo no browser (WebAssembly), sem internet depois de carregar o modelo, em qualquer browser moderno.
-// https://github.com/ccoreilly/vosk-browser
+// https://ccoreilly.github.io/vosk-browser/
 //
 // O reconhecedor usa uma gramática fechada: só "ouve" as frases dos comandos,
 // o que o torna muito mais preciso do que um reconhecedor de texto livre.
