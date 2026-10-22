@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>360&deg; Image Gallery com comandos de voz (Vosk)</title>
+    <meta name="description" content="Galeria de imagens 360 controlada por voz (A-Frame)" />
+    <!-- Exemplo "image-gallery" do aframe-speech-command-component (licença MIT, Leonardo Malave):
+         https://github.com/lmalave/aframe-speech-command-component -->
+
+    <!-- Vosk (vosk-browser): reconhecimento de fala que corre no browser (WebAssembly), em qualquer browser moderno -->
+    <!-- modelo de inglês em model/ (vosk-model-small-en-us-0.15, licença Apache 2.0, alphacephei.com/vosk) -->
+    <script src="https://cdn.jsdelivr.net/npm/vosk-browser@0.0.8/dist/vosk.js"></script>
+    <script src="https://aframe.io/releases/1.6.0/aframe.min.js"></script>
+    <!-- componentes voice-command e vosk-recognition -->
+    <script src="js/vosk-speech.js"></script>
+    <script src="https://unpkg.com/aframe-event-set-component@5.0.0/dist/aframe-event-set-component.min.js"></script>
+    <script src="https://unpkg.com/aframe-layout-component@5.3.0/dist/aframe-layout-component.min.js"></script>
+    <script src="js/set-image.js"></script>
+    <script src="js/update-raycaster.js"></script>
+    <style>
+      /* caixa de controlo da voz, no canto superior esquerdo, à frente da cena */
+      #voz {
+        position: fixed; top: 10px; left: 10px; z-index: 10; max-width: 340px;
+        padding: 10px; border-radius: 8px; background: rgba(0, 0, 0, 0.6);
+        color: #fff; font: 14px Arial, sans-serif;
+      }
+      #voz button { font-size: 14px; padding: 4px 8px; margin-bottom: 6px; }
+      #voz-estado { margin: 4px 0; font-weight: bold; }
+      #voz-estado.ok { color: #7CFC00; }
+      #voz-estado.aviso { color: #ffd54f; }
+      #voz-estado.erro { color: #ff8a80; }
+      /* lista dos comandos de voz, no canto superior direito */
+      #comandos {
+        position: fixed; top: 10px; right: 10px; z-index: 10;
+        padding: 10px 14px; border-radius: 8px; background: rgba(0, 0, 0, 0.6);
+        color: #fff; font: 14px Arial, sans-serif;
+      }
+      #comandos ul { margin: 6px 0 0; padding-left: 18px; }
+      #comandos li { margin: 2px 0; }
+    </style>
+  </head>
+  <body>
+    <!-- Caixa de controlo da voz, por cima da cena -->
+    <!-- o microfone só liga com o botão: o Chrome exige um clique do utilizador -->
+    <div id="voz">
+      <button id="voz-botao" type="button">🎤 Ativar voz</button>
+      <div id="voz-estado">Carregue em "Ativar voz" e autorize o microfone.</div>
+    </div>
+
+    <!-- Lista dos comandos de voz, no canto superior direito -->
+    <div id="comandos">
+      <strong>Voice commands</strong>
+      <ul>
+        <li>show menu</li>
+        <li>hide menu</li>
+        <li>go to city</li>
+        <li>go to lake</li>
+        <li>go to cubes</li>
+      </ul>
+    </div>
+
+    <a-scene>
+      <a-assets>
+        <img id="city" crossorigin="anonymous" src="assets/city.jpg" />
+        <img id="city-thumb" crossorigin="anonymous" src="assets/thumb-city.jpg" />
+        <img id="cubes-thumb" crossorigin="anonymous" src="assets/thumb-cubes.jpg" />
+        <img id="sechelt-thumb" crossorigin="anonymous" src="assets/thumb-sechelt.jpg" />
+        <img id="cubes" crossorigin="anonymous" src="assets/cubes.jpg" />
+        <img id="sechelt" crossorigin="anonymous" src="assets/sechelt.jpg" />
+        <audio id="click-sound" crossorigin="anonymous" src="assets/click.ogg"></audio>
+      </a-assets>
+
+      <!-- reconhecimento de fala com o Vosk (só as frases dos comandos, em inglês) -->
+      <a-entity id="vosk" vosk-recognition="modelo: model/vosk-model-small-en-us-0.15.tar.gz"></a-entity>
+
+      <!-- imagem 360 -->
+      <a-sky id="image-360" radius="10" src="#city"></a-sky>
+
+      <!-- menu com as miniaturas: aparece com "show menu" e desaparece com "hide menu" -->
+      <a-entity id="links" layout="type: line; margin: 1.5" position="-1.5 -1 -4" visible="false"
+                voice-command__show="command: show menu; keywords: open menu, show the menu, open the menu; attribute: visible; value: true;"
+                voice-command__hide="command: hide menu; keywords: close menu, hide the menu, close the menu; attribute: visible; value: false;">
+        <a-plane class="link" height="1" width="1"
+                 material="shader: flat; src: #cubes-thumb"
+                 event-set__1="_event: mousedown; scale: 1 1 1"
+                 event-set__2="_event: mouseup; scale: 1.2 1.2 1"
+                 event-set__3="_event: mouseenter; scale: 1.2 1.2 1"
+                 event-set__4="_event: mouseleave; scale: 1 1 1"
+                 set-image="on: click; target: #image-360; src: #cubes"
+                 sound="on: click; src: #click-sound"
+                 voice-command="command: go to cubes; keywords: cubes, go to the cubes; targetElement: #image-360; attribute: src; value: #cubes;"
+                 update-raycaster="#cursor"></a-plane>
+        <a-plane class="link" height="1" width="1"
+                 material="shader: flat; src: #city-thumb"
+                 event-set__1="_event: mousedown; scale: 1 1 1"
+                 event-set__2="_event: mouseup; scale: 1.2 1.2 1"
+                 event-set__3="_event: mouseenter; scale: 1.2 1.2 1"
+                 event-set__4="_event: mouseleave; scale: 1 1 1"
+                 set-image="on: click; target: #image-360; src: #city"
+                 sound="on: click; src: #click-sound"
+                 voice-command="command: go to city; keywords: city, go to the city; targetElement: #image-360; attribute: src; value: #city;"
+                 update-raycaster="#cursor"></a-plane>
+        <a-plane class="link" height="1" width="1"
+                 material="shader: flat; src: #sechelt-thumb"
+                 event-set__1="_event: mousedown; scale: 1 1 1"
+                 event-set__2="_event: mouseup; scale: 1.2 1.2 1"
+                 event-set__3="_event: mouseenter; scale: 1.2 1.2 1"
+                 event-set__4="_event: mouseleave; scale: 1 1 1"
+                 set-image="on: click; target: #image-360; src: #sechelt"
+                 sound="on: click; src: #click-sound"
+                 voice-command="command: go to lake; keywords: lake, go to the lake; targetElement: #image-360; attribute: src; value: #sechelt;"
+                 update-raycaster="#cursor"></a-plane>
+      </a-entity>
+
+      <!-- câmara + cursor -->
+      <a-entity camera look-controls>
+        <a-cursor id="cursor"
+                  animation__click="property: scale; startEvents: click; from: 0.1 0.1 0.1; to: 1 1 1; dur: 150"
+                  animation__fusing="property: scale; startEvents: fusing; from: 1 1 1; to: 0.1 0.1 0.1; dur: 1500"
+                  event-set__1="_event: mouseenter; material.color: springgreen"
+                  event-set__2="_event: mouseleave; material.color: black"
+                  raycaster="objects: .link"></a-cursor>
+      </a-entity>
+    </a-scene>
+  </body>
+</html>
