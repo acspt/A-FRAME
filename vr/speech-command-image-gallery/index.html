@@ -37,6 +37,14 @@
       }
       #comandos ul { margin: 6px 0 0; padding-left: 18px; }
       #comandos li { margin: 2px 0; }
+      /* explicação da biblioteca, no canto inferior esquerdo */
+      #biblioteca {
+        position: fixed; bottom: 10px; left: 10px; z-index: 10; max-width: 420px;
+        padding: 10px 12px; border-radius: 8px; background: rgba(0, 0, 0, 0.6);
+        color: #fff; font: 12px/1.4 Arial, sans-serif;
+      }
+      #biblioteca a { color: #87ceeb; }
+      #biblioteca p { margin: 4px 0; }
     </style>
   </head>
   <body>
@@ -57,6 +65,13 @@
         <li>go to lake</li>
         <li>go to cubes</li>
       </ul>
+    </div>
+
+    <!-- explicação da biblioteca de reconhecimento de fala -->
+    <div id="biblioteca">
+      <p><strong>Biblioteca: <a href="https://github.com/TalAter/annyang" target="_blank">annyang</a> (Web Speech API)</strong></p>
+      <p>O annyang usa o reconhecimento de fala do próprio browser (Web Speech API). No Chrome, o áudio é enviado para os servidores da Google, por isso precisa de internet. Só funciona bem no Chrome e no Edge.</p>
+      <p>Outras bibliotecas possíveis: <a href="https://github.com/ccoreilly/vosk-browser" target="_blank">Vosk</a> (corre no browser, sem servidores, em qualquer browser; ver a versão Vosk desta galeria), <a href="https://huggingface.co/docs/transformers.js" target="_blank">Whisper com transformers.js</a> (mais preciso em texto livre, mas pesado) e <a href="https://picovoice.ai/platform/rhino/" target="_blank">Picovoice Rhino</a> (comandos de voz, precisa de chave de acesso).</p>
     </div>
 
     <a-scene>
