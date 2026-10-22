@@ -1,7 +1,7 @@
 # Origem dos ficheiros em assets
 
-Os ficheiros deste projeto estavam alojados no Glitch e perderam-se. Foram substituídos por:
+Origem e licença dos ficheiros usados neste projeto:
 
-| Ficheiro original | Ficheiro novo | Origem |
+| Nome original | Ficheiro | Origem |
 |---|---|---|
-| lain.gif | lain.gif | substituto gerado automaticamente (sem direitos de autor); o original perdeu-se com o Glitch |
+| lain.gif | lain.gif | substituto gerado automaticamente (sem direitos de autor) |
