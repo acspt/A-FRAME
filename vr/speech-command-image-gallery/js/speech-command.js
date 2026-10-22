@@ -6,7 +6,7 @@
 // Adaptado para:
 //  - reconhecer palavras-chave dentro da frase (não é preciso dizer a frase exata);
 //  - comparar todas as alternativas que o reconhecedor propõe;
-//  - funcionar em português e em inglês;
+//  - permitir mudar a língua (opcional, com um <select>);
 //  - mostrar no ecrã o que foi ouvido e o comando executado.
 
 if (typeof AFRAME === 'undefined') {
@@ -117,13 +117,13 @@ AFRAME.registerComponent('speech-command', {
 });
 
 // Liga o reconhecimento de voz (annyang) aos comandos da cena.
-// lang:   língua inicial do reconhecedor ("pt-PT" ou "en-US")
+// lang:   língua do reconhecedor (por exemplo "en-US")
 // botao:  botão que liga/desliga o microfone (o Chrome exige um clique do utilizador)
-// idioma: <select> para mudar a língua
+// idioma: <select> opcional para mudar a língua
 // estado: elemento onde se escreve o que está a acontecer
 AFRAME.registerComponent('annyang-speech-recognition', {
   schema: {
-    lang: { type: 'string', default: 'pt-PT' },
+    lang: { type: 'string', default: 'en-US' },
     botao: { type: 'selector', default: '#voz-botao' },
     idioma: { type: 'selector', default: '#voz-idioma' },
     estado: { type: 'selector', default: '#voz-estado' }
@@ -143,8 +143,13 @@ AFRAME.registerComponent('annyang-speech-recognition', {
     annyang.setLanguage(this.data.lang);
     if (this.data.idioma) { this.data.idioma.value = this.data.lang; }
 
+    // no computador a escuta é contínua (uma só sessão recebe todas as frases);
+    // no telemóvel usa frases curtas, que funcionam melhor no Android
+    this.continua = !/Android|iPhone|iPad|iPod/i.test(navigator.userAgent);
+
     // result: recebe todas as alternativas que o reconhecedor propõe (a mais provável primeiro)
     annyang.addCallback('result', function (frases) {
+      console.log('[voz] ouvi:', frases);
       var r = self.el.sceneEl.systems['speech-command'].procura(frases);
       if (r) {
         r.comp.executeCommand();
@@ -155,7 +160,16 @@ AFRAME.registerComponent('annyang-speech-recognition', {
     });
 
     annyang.addCallback('start', function () {
-      self.mostra('🎤 A ouvir… (' + self.data.idioma.value + ')', 'ok');
+      console.log('[voz] a ouvir');
+      self.mostra('🎤 A ouvir… (' + (self.data.idioma ? self.data.idioma.value : self.data.lang) + ')', 'ok');
+    });
+    // a escuta parou: o annyang tenta reiniciar sozinho; se não conseguir, a mensagem fica visível
+    annyang.addCallback('end', function () {
+      console.log('[voz] parou');
+      if (self.aOuvir) { self.mostra('Parado — a reiniciar… (se não voltar, carregue em "Ativar voz")', 'aviso'); }
+    });
+    annyang.addCallback('error', function (e) {
+      console.log('[voz] erro:', e && e.error);
     });
     annyang.addCallback('errorPermissionDenied', function () {
       self.aOuvir = false; self.atualizaBotao();
@@ -178,8 +192,8 @@ AFRAME.registerComponent('annyang-speech-recognition', {
           self.mostra('Microfone desligado.', 'aviso');
         } else {
           // autoRestart: volta a ouvir sozinho quando o reconhecedor pára
-          // continuous: false funciona melhor no Android e dá respostas mais rápidas
-          annyang.start({ autoRestart: true, continuous: false });
+          // continuous: contínua no computador, frases curtas no telemóvel (ver this.continua)
+          annyang.start({ autoRestart: true, continuous: self.continua });
           self.aOuvir = true;
         }
         self.atualizaBotao();
@@ -193,7 +207,7 @@ AFRAME.registerComponent('annyang-speech-recognition', {
         if (self.aOuvir) {
           // reinicia para a nova língua ter efeito
           annyang.abort();
-          annyang.start({ autoRestart: true, continuous: false });
+          annyang.start({ autoRestart: true, continuous: self.continua });
         }
       });
     }
