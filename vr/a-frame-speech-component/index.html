@@ -1,39 +1,76 @@
 <!DOCTYPE html>
-<html lang="en" >
-<head>
-  <meta charset="UTF-8">
-  <title>A-Frame Speech Component</title>
-  <script src="//aframe.io/releases/0.8.2/aframe.min.js"></script>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>A-Frame Speech Component</title>
+    <script src="https://aframe.io/releases/1.6.0/aframe.min.js"></script>
+    <!-- Vosk (vosk-browser): reconhecimento de fala em inglês que corre no próprio browser -->
+    <script src="https://cdn.jsdelivr.net/npm/vosk-browser@0.0.8/dist/vosk.js"></script>
+    <!-- componentes voice-command e vosk-recognition -->
+    <script src="js/vosk-speech.js"></script>
+    <style>
+      /* caixa de controlo da voz, no canto superior esquerdo */
+      #voz {
+        position: fixed; top: 10px; left: 10px; z-index: 10; max-width: 340px;
+        padding: 10px; border-radius: 8px; background: rgba(0, 0, 0, 0.6);
+        color: #fff; font: 14px Arial, sans-serif;
+      }
+      #voz button { font-size: 14px; padding: 4px 8px; margin-bottom: 6px; }
+      #voz-estado { margin: 4px 0; font-weight: bold; }
+      #voz-estado.ok { color: #7CFC00; }
+      #voz-estado.aviso { color: #ffd54f; }
+      #voz-estado.erro { color: #ff8a80; }
+      /* lista dos comandos de voz, no canto superior direito */
+      #comandos {
+        position: fixed; top: 10px; right: 10px; z-index: 10;
+        padding: 10px 14px; border-radius: 8px; background: rgba(0, 0, 0, 0.6);
+        color: #fff; font: 14px Arial, sans-serif;
+      }
+      #comandos ul { margin: 6px 0 0; padding-left: 18px; }
+      /* explicação da biblioteca, no canto inferior esquerdo */
+      #biblioteca {
+        position: fixed; bottom: 10px; left: 10px; z-index: 10; max-width: 420px;
+        padding: 10px 12px; border-radius: 8px; background: rgba(0, 0, 0, 0.6);
+        color: #fff; font: 12px/1.4 Arial, sans-serif;
+      }
+      #biblioteca a { color: #87ceeb; }
+      #biblioteca p { margin: 4px 0; }
+    </style>
+  </head>
+  <body>
+    <!-- botão para ligar o microfone e linha de estado -->
+    <div id="voz">
+      <button id="voz-botao" type="button">🎤 Ativar voz</button>
+      <div id="voz-estado">Carregue em "Ativar voz" e autorize o microfone.</div>
+    </div>
 
-<script src="//cdnjs.cloudflare.com/ajax/libs/annyang/2.5.0/annyang.min.js"></script> 
+    <!-- comandos de voz -->
+    <div id="comandos">
+      <strong>Voice commands</strong>
+      <ul>
+        <li>open box</li>
+        <li>close box</li>
+        <li>box <small>(shows / hides)</small></li>
+      </ul>
+    </div>
 
-<script src="//rawgit.com/lmalave/aframe-speech-command-component/master/dist/aframe-speech-command-component.js"></script> 
+    <!-- explicação da biblioteca de reconhecimento de fala -->
+    <div id="biblioteca">
+      <p><strong>Biblioteca: <a href="https://github.com/ccoreilly/vosk-browser" target="_blank">Vosk</a> (vosk-browser)</strong></p>
+      <p>O reconhecimento de fala corre no próprio browser (motor Kaldi em WebAssembly), sem enviar o áudio para servidores, e funciona em qualquer browser moderno. Usa o modelo de inglês <code>vosk-model-small-en-us-0.15</code> (41 MB, descarregado só da primeira vez) e uma gramática com as frases dos comandos, o que o torna mais preciso.</p>
+      <p>Outras bibliotecas possíveis: <a href="https://github.com/TalAter/annyang" target="_blank">annyang</a> (Web Speech API: só Chrome e Edge, usa servidores), <a href="https://huggingface.co/docs/transformers.js" target="_blank">Whisper com transformers.js</a> (mais preciso em texto livre, mas pesado) e <a href="https://picovoice.ai/platform/rhino/" target="_blank">Picovoice Rhino</a> (comandos de voz, precisa de chave de acesso).</p>
+    </div>
 
-</head>
-<body>
-<!-- partial:index.partial.html -->
-<!-- See https://www.npmjs.com/package/aframe-speech-command-component for more info -->
+    <a-scene background="color: #ECECEC">
+      <!-- reconhecimento de fala com o Vosk; usa o modelo de inglês da galeria (41 MB, só é descarregado uma vez) -->
+      <a-entity id="vosk" vosk-recognition="modelo: ../vosk-speech-image-gallery/model/vosk-model-small-en-us-0.15.tar.gz"></a-entity>
 
-<a-scene>
-
-  <a-entity id="annyang" annyang-speech-recognition></a-entity>
-
-  <a-sphere position="0 1.25 -5" radius="1.25" color="#EF2D5E" shadow></a-sphere>
-
-  <a-box position="-1 0.5 -3" rotation="0 45 0" width="1" height="1" depth="1" color="#4CC3D9" shadow visible="false" speech-command__show="command: open box; type: attribute; attribute: visible; value: true;" speech-command__hide="command: close box; type: attribute; attribute: visible; value: false;"></a-box>
-
-  <a-cylinder position="1 0.75 -3" radius="0.5" height="1.5" color="#FFC65D" shadow></a-cylinder>
-
-  <a-plane position="0 0 -4" rotation="-90 0 0" width="4" height="4" color="#7BC8A4" shadow></a-plane>
-
-  <a-sky color="#ECECEC"></a-sky>
-
-  <a-text position="-1 0.5 -2" align="center" value="Say open/close box" color="black"></a-text>
-
-  </a-entity>
-
-</a-scene>
-<!-- partial -->
-  
-</body>
+      <!-- a caixa começa escondida: "open box" mostra-a, "close box" esconde-a, "box" alterna -->
+      <a-box position="0 1.5 -3" rotation="0 45 0" width="1" height="1" depth="1" color="#4CC3D9" visible="false"
+             voice-command__show="command: open box; keywords: show box, show the box, open the box; attribute: visible; value: true"
+             voice-command__hide="command: close box; keywords: hide box, hide the box, close the box; attribute: visible; value: false"
+             voice-command__toggle="command: box; type: toggle; attribute: visible"></a-box>
+    </a-scene>
+  </body>
 </html>
