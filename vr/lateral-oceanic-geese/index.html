@@ -1,10 +1,6 @@
 <html>
 
 <head>
-  <script>
-    // WebXR requires https: to work so ensure redirected if needed.
-    if (location.hostname !== 'localhost' && window.location.protocol === 'http:') window.location.protocol = 'https:';
-  </script>
 
   <!-- the AFrame library and 3rd party components -->
   <script src="https://cdn.jsdelivr.net/npm/aframe@1.5.0/dist/aframe-master.min.js"></script>
@@ -16,13 +12,7 @@
   <script src="https://cdn.jsdelivr.net/npm/handy-work@3.1.10/build/handy-controls.min.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/handy-work@3.1.10/build/magnet-helpers.min.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/aframe-htmlmesh@2.2.0/build/aframe-html.min.js"></script>
-  <script src="ar-shadow-helper.js"></script>
-  <script src="ar-cursor.js"></script>
-  <script src="simple-navmesh-constraint.js"></script>
-  <script src="model-utils.js"></script>
   
-  <!-- Our custom behaviour -->
-  <script src="main.js"></script>
   
   <title>AFrame Handy Demo</title>
   <meta property="og:title" content="AFrame Handy Work Demo" />
@@ -240,38 +230,20 @@
       </section>
       
       <!-- HTML form logic -->
-      <script>
-        let movementType = 'teleport';
-        function toggleThumbstick(detail) {
-          const rayPointers = ['[data-right="ray"]', '[data-left="ray"]'].map(s => document.querySelector(s));
-          const type = detail.value;
-          movementType = type;
-          if (type === 'move') {
-            cameraRig.setAttribute('movement-controls', 'enabled', true);
-            for (const p of rayPointers) p.removeAttribute('mixin');
-          }
-          if (type === 'teleport') {
-            cameraRig.setAttribute('movement-controls', 'enabled', false);
-            for (const p of rayPointers) p.setAttribute('mixin', 'blink');
-          }
-        }
-        // If the user is teleporting disable movement-controls in XR
-        const sceneEl = document.querySelector("a-scene");
-        sceneEl.addEventListener("enter-vr", function() {
-          if (movementType === 'teleport') {
-            cameraRig.setAttribute('movement-controls', 'enabled', false);
-          }
-        });
-        sceneEl.addEventListener("exit-vr", function() {
-          cameraRig.setAttribute('movement-controls', 'enabled', true);
-        });
-      </script>
       <div id="dom-overlay-message">Enter AR or VR to start.</div>
     </div>
   </div>
   
   <div class="glitchButton" style="position: absolute; top: 1em; right: 1em;"></div><script src="https://button.glitch.me/button.js"></script>
 
-</body>
+    <!-- scripts do projeto, carregados no fim da página -->
+    <script src="ar-shadow-helper.js"></script>
+    <script src="ar-cursor.js"></script>
+    <script src="simple-navmesh-constraint.js"></script>
+    <script src="model-utils.js"></script>
+    <!-- Our custom behaviour -->
+    <script src="main.js"></script>
+    <script src="scripts.js"></script>
+  </body>
 
 </html>

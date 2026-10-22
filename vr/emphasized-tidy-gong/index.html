@@ -15,28 +15,6 @@
     <script src="https://cdn.jsdelivr.net/gh/c-frame/aframe-physics-system@v4.2.2/dist/aframe-physics-system.js"></script>
     <script src="https://cdn.jsdelivr.net/gh/c-frame/aframe-extras@v7.4.0/dist/aframe-extras.min.js"></script>
 
-    <script>
-      AFRAME.registerComponent('collision-wire', {
-        schema: {
-          element: {type: 'string'}
-        },
-        init: function() {
-          let el = this.el;
-          let element = this.data.element;
-
-          el.addEventListener("collidestart", function (event) {
-            if ( event.detail.targetEl.id === element) {
-              el.setAttribute('material', {'wireframe': true});
-            };
-          });
-          el.addEventListener("collideend", function (event) {
-            if ( event.detail.targetEl.id === element) {
-              el.setAttribute('material', {'wireframe': false});
-            };
-          });
-        }
-      });
-    </script>
   </head>
   <body>
     <a-scene physics="driver: ammo; debug: true; debugDrawMode: 1;">
@@ -75,6 +53,8 @@
 
 
     </a-scene>
-  
-</body>
+
+    <!-- scripts do projeto, carregados no fim da página -->
+    <script src="scripts.js"></script>
+  </body>
 </html>
