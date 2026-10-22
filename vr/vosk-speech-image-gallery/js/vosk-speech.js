@@ -32,11 +32,24 @@ AFRAME.registerSystem('voice-command', {
   },
   // devolve o comando que tem esta frase
   procura: function (texto) {
-    var t = normalizar(texto);
-    for (var i = 0; i < this.entities.length; i++) {
+    var t = normalizar(texto.replace(/\[unk\]/g, ' '));
+    var i;
+    // 1) frase exatamente igual a uma das frases de um comando
+    for (i = 0; i < this.entities.length; i++) {
       if (this.entities[i].frases.indexOf(t) >= 0) { return this.entities[i]; }
     }
-    return null;
+    // 2) se não houver, um comando cujas palavras estejam todas no que foi ouvido
+    //    (por exemplo "[unk] menu", quando o verbo foi mal ouvido, ativa o comando "menu")
+    var palavras = t.split(' ');
+    var melhor = null, tamanho = 0;
+    for (i = 0; i < this.entities.length; i++) {
+      var comp = this.entities[i];
+      comp.frases.forEach(function (f) {
+        var todas = f.split(' ').every(function (p) { return palavras.indexOf(p) >= 0; });
+        if (todas && f.length > tamanho) { melhor = comp; tamanho = f.length; }
+      });
+    }
+    return melhor;
   }
 });
 
@@ -44,6 +57,7 @@ AFRAME.registerSystem('voice-command', {
 // command:  frase principal (em inglês)
 // keywords: outras frases que fazem o mesmo, separadas por vírgulas
 // type: "attribute" muda um atributo do targetElement para "value"
+//       "toggle" troca um atributo verdadeiro/falso (por exemplo visible)
 AFRAME.registerComponent('voice-command', {
   multiple: true,
   schema: {
@@ -72,8 +86,11 @@ AFRAME.registerComponent('voice-command', {
   },
 
   executeCommand: function () {
+    var alvo = this.data.targetElement;
     if (this.data.type === 'attribute') {
-      this.data.targetElement.setAttribute(this.data.attribute, this.data.value);
+      alvo.setAttribute(this.data.attribute, this.data.value);
+    } else if (this.data.type === 'toggle') {
+      alvo.setAttribute(this.data.attribute, !alvo.getAttribute(this.data.attribute));
     }
   }
 });
@@ -134,12 +151,14 @@ AFRAME.registerComponent('vosk-recognition', {
         var texto = mensagem.result.text;
         if (!texto) { return; }
         console.log('[voz] ouvi:', texto);
+        // [unk] = palavra que não faz parte dos comandos; no ecrã aparece como …
+        var legivel = texto.replace(/\[unk\]/g, '…');
         var comp = self.el.sceneEl.systems['voice-command'].procura(texto);
         if (comp) {
           comp.executeCommand();
-          self.mostra('Ouvi: "' + texto + '"  →  ' + comp.data.command, 'ok');
+          self.mostra('Ouvi: "' + legivel + '"  →  ' + comp.data.command, 'ok');
         } else {
-          self.mostra('Ouvi: "' + texto.replace('[unk]', '…') + '"  →  não é um comando', 'aviso');
+          self.mostra('Ouvi: "' + legivel + '"  →  não é um comando', 'aviso');
         }
       });
       // o que está a ser dito, enquanto se fala
