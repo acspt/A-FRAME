@@ -16,10 +16,10 @@
   <body>
     <a-scene>
       <a-assets timeout="30000">
-        <!-- modelo partilhado com os outros exemplos do spinosaurus -->
+        <!-- modelo do spinosaurus, na pasta assets deste exemplo -->
         <a-asset-item
           id="spinosaurus"
-          src="../../ar/image/detect-spinosaurus-arjs/assets/spinosaurus.glb"
+          src="assets/spinosaurus.glb"
         ></a-asset-item>
       </a-assets>
 
@@ -34,8 +34,9 @@
 
       <!-- O dinossauro; os botões mudam a escala desta entidade -->
       <a-entity id="dino" position="-1 0 -3" scale="0.5 0.5 0.5">
+        <!-- y = -2.25: o centro deste modelo está acima das patas; assim as patas ficam no chão -->
         <a-entity
-          position="0 2.186 0"
+          position="0 -2.25 0"
           rotation="0 55 0"
           gltf-model="#spinosaurus"
           animation-mixer
