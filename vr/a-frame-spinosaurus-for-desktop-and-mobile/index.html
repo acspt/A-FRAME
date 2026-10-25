@@ -1,69 +1,75 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="pt">
   <head>
-    <title>XR Spinosaurus</title>
+    <title>Spinosaurus: computador e telemóvel</title>
     <meta charset="utf-8" />
-    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-
-    <!-- import the webpage's stylesheet -->
     <link rel="stylesheet" href="style.css" />
-    <script src="https://aframe.io/releases/1.6.0/aframe.min.js"></script>
-    <script src="https://unpkg.com/aframe-environment-component@1.3.3/dist/aframe-environment-component.min.js"></script>
 
-   </head>
+    <script src="https://aframe.io/releases/1.6.0/aframe.min.js"></script>
+    <!-- aframe-environment-component: cria o ambiente (floresta) -->
+    <script src="https://unpkg.com/aframe-environment-component@1.3.3/dist/aframe-environment-component.min.js"></script>
+  </head>
   <body>
+    <!-- xr-mode-ui="enabled: false": esconde os botões de VR e AR (só computador e telemóvel) -->
     <a-scene xr-mode-ui="enabled: false">
       <a-assets timeout="30000">
-        <a-asset-item
-          crossorigin="anonymous"
-          id="spinosaurus"
-          src="../../ar/image/detect-spinosaurus-arjs/assets/spinosaurus.glb"
-        ></a-asset-item>
+        <!-- modelo do spinosaurus, na pasta assets deste exemplo -->
+        <a-asset-item id="spinosaurus" src="assets/spinosaurus.glb"></a-asset-item>
       </a-assets>
 
+      <!-- câmara à altura dos olhos de uma pessoa sentada; rodar arrastando o rato ou o dedo -->
+      <a-camera position="0 1.2 0"></a-camera>
 
-      <!-- Environment for 2D and VR viewing. It's auto-hidden in AR mode. -->
+      <!-- Ambiente (floresta) -->
       <a-entity
         environment="preset: forest; lighting: none; shadow: none; lightPosition: 0 2.15 0"
       ></a-entity>
 
+      <!-- O dinossauro; os botões mudam a escala desta entidade -->
       <a-entity id="dino" position="-1 0 -3" scale="0.5 0.5 0.5">
+        <!-- y = -2.25: o centro deste modelo está acima das patas; assim as patas ficam no chão -->
         <a-entity
-          position="0 2.186 0"
+          position="0 -2.25 0"
           rotation="0 55 0"
           gltf-model="#spinosaurus"
-          animation-mixer
           shadow="cast: true; receive: false"
         ></a-entity>
       </a-entity>
 
-      <a-entity light="type: ambient; intensity: 0.5;"></a-entity>
-      <a-light
-        type="directional"
-        light="castShadow: true;
-                      shadowMapHeight: 1024;
-                      shadowMapWidth: 1024;
-                      shadowCameraLeft: -7;
-                      shadowCameraRight: 5;
-                      shadowCameraBottom: -5;
-                      shadowCameraTop: 5;"
+      <!-- Luzes: a direcional aponta para o dinossauro -->
+      <a-entity light="type: ambient; intensity: 0.5"></a-entity>
+      <a-entity
         id="light"
-        target="dino"
         position="-5 3 1.5"
-      ></a-light>
+        light="type: directional;
+               target: #dino;
+               castShadow: true;
+               shadowMapHeight: 1024;
+               shadowMapWidth: 1024;
+               shadowCameraLeft: -7;
+               shadowCameraRight: 5;
+               shadowCameraBottom: -5;
+               shadowCameraTop: 5"
+      ></a-entity>
     </a-scene>
 
     <div id="text">
-      <h1>A-Frame Spinosaurus for DESKTOP/MOBILE</h1>
+      <h1>A-Frame Spinosaurus para computador e telemóvel</h1>
       <p>
-        Size: <button id="btn_full">Full</button>
+        Tamanho:
+        <button id="btn_full">Inteiro</button>
         <button id="btn_half">1/2</button>
         <button id="btn_quarter">1/4</button>
       </p>
+      <p class="creditos">
+        Modelo:
+        <a href="https://sketchfab.com/3d-models/spinosaurus-2135501583704537907645bf723685e7" target="_blank">Spinosaurus</a>,
+        de <a href="https://sketchfab.com/VapTor" target="_blank">Vaptor-Studio</a>.
+      </p>
     </div>
 
-    <!-- scripts do projeto, carregados no fim da página -->
+    <!-- código do projeto (botões de tamanho), no fim da página -->
     <script src="scripts.js"></script>
   </body>
 </html>
