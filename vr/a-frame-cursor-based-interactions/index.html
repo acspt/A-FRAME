@@ -1,16 +1,17 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>Gaze-Based Interactions in A-Frame</title>
-    <script src="https://aframe.io/releases/1.3.0/aframe.min.js"></script>
-    <script src="script.js"></script>
-    
+    <meta charset="utf-8" />
+    <title>Rodar objetos com o olhar (cursor)</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <script src="https://aframe.io/releases/1.6.0/aframe.min.js"></script>
   </head>
   <body>
- 
     <a-scene>
-      <!-- Camera -->
-      <a-entity id="camera" camera look-controls>
+      <!-- Câmara com um cursor no centro do ecrã.
+           O cursor só deteta os objetos com a classe "clickable".
+           fuse: olhar fixamente 1,5 segundos para um objeto conta como um clique. -->
+      <a-entity id="camera" camera look-controls position="0 1.6 0">
         <a-cursor
           color="red"
           fuse="true"
@@ -19,7 +20,7 @@
         ></a-cursor>
       </a-entity>
 
-      <!-- Clickable Objects -->
+      <!-- Objetos que rodam enquanto o cursor está em cima deles (componente rotate-on-gaze) -->
       <a-box id="box"
         class="clickable"
         rotate-on-gaze
@@ -37,9 +38,10 @@
         radius="1.25"
         color="#EF2D5E"
       ></a-sphere>
+      <!-- speed: velocidade de rotação em radianos por segundo (por omissão 1.5) -->
       <a-cylinder id="cylinder"
         class="clickable"
-        rotate-on-gaze
+        rotate-on-gaze="speed: 3"
         position="1 0.75 -3"
         rotation="90 0 0"
         radius="0.5"
@@ -47,12 +49,12 @@
         color="#FFC65D"
       ></a-cylinder>
 
-      <!-- Lighting -->
+      <!-- Luzes -->
       <a-light type="ambient" color="#445451"></a-light>
       <a-light type="point" position="2 4 4" intensity="0.4"></a-light>
 
-      <!-- Ground -->
-      <a-plane 
+      <!-- Chão -->
+      <a-plane
         position="0 0 -4"
         rotation="-90 0 0"
         width="4"
@@ -60,6 +62,8 @@
         color="#7BC8A4"
       ></a-plane>
     </a-scene>
-   
-</body>
+
+    <!-- código do projeto (componente rotate-on-gaze), no fim da página -->
+    <script src="scripts.js"></script>
+  </body>
 </html>
