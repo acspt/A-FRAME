@@ -2,20 +2,23 @@ AFRAME.registerComponent('continuous-rotation', {
   tick: tick
 });
 
-var clickableObjects = document.querySelectorAll('.clickable');
-clickableObjects.forEach(function (object) {
-   object.addEventListener('click', function () {
-    console.log('click on:', this.id);
-    this.flagRotation = 1;
-  });
+document.addEventListener('DOMContentLoaded', function () {
+  var clickableObjects = document.querySelectorAll('.clickable');
+  clickableObjects.forEach(function (object) {
+    object.addEventListener('click', function () {
+      console.log('click on:', this.id);
+      this.flagRotation = 1;
+    });
 
-  object.addEventListener('mouseenter', function () {
-    console.log('enter on:', this.id);
-    this.flagRotation = 1; 
-  });
+    object.addEventListener('mouseenter', function () {
+      console.log('enter on:', this.id);
+      this.flagRotation = 1;
+    });
+
     object.addEventListener('mouseleave', function () {
-    console.log('leave on:', this.id);
-    this.flagRotation = 0; 
+      console.log('leave on:', this.id);
+      this.flagRotation = 0;
+    });
   });
 });
 
@@ -26,9 +29,8 @@ function tick(time, timeDelta) {
 
   var clickableObjects = document.querySelectorAll('.clickable');
   clickableObjects.forEach(function (obj) {
-    if(obj.flagRotation == 1)
+    if (obj.flagRotation === 1) {
       obj.object3D.rotation.y += rotationSpeed;
-
+    }
   });
 }
-
