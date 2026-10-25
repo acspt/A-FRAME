@@ -1,36 +1,32 @@
-AFRAME.registerComponent('continuous-rotation', {
-  tick: tick
-});
+AFRAME.registerComponent('rotate-on-gaze', {
+  schema: {
+    speed: { type: 'number', default: 1.5 }
+  },
 
-document.addEventListener('DOMContentLoaded', function () {
-  var clickableObjects = document.querySelectorAll('.clickable');
-  clickableObjects.forEach(function (object) {
-    object.addEventListener('click', function () {
-      console.log('click on:', this.id);
-      this.flagRotation = 1;
-    });
+  init: function () {
+    this.isActive = false;
+    this.onEnter = this.onEnter.bind(this);
+    this.onLeave = this.onLeave.bind(this);
+    this.el.addEventListener('mouseenter', this.onEnter);
+    this.el.addEventListener('mouseleave', this.onLeave);
+  },
 
-    object.addEventListener('mouseenter', function () {
-      console.log('enter on:', this.id);
-      this.flagRotation = 1;
-    });
+  remove: function () {
+    this.el.removeEventListener('mouseenter', this.onEnter);
+    this.el.removeEventListener('mouseleave', this.onLeave);
+  },
 
-    object.addEventListener('mouseleave', function () {
-      console.log('leave on:', this.id);
-      this.flagRotation = 0;
-    });
-  });
-});
+  onEnter: function () {
+    this.isActive = true;
+  },
 
-var rotationSpeed = 0.1; // Adjust this value to change the rotation speed
+  onLeave: function () {
+    this.isActive = false;
+  },
 
-// Continuously rotate the object while fusing
-function tick(time, timeDelta) {
-
-  var clickableObjects = document.querySelectorAll('.clickable');
-  clickableObjects.forEach(function (obj) {
-    if (obj.flagRotation === 1) {
-      obj.object3D.rotation.y += rotationSpeed;
+  tick: function (time, timeDelta) {
+    if (this.isActive) {
+      this.el.object3D.rotation.y += this.data.speed * timeDelta / 1000;
     }
-  });
-}
+  }
+});
