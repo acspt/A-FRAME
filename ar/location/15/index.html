@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="pt">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Caixas GPS que se mexem ao acaso</title>
+    <!-- A-Frame e AR.js (versão com localização) em versões fixas -->
+    <script src="https://aframe.io/releases/1.6.0/aframe.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@ar-js-org/ar.js@3.4.8/aframe/build/aframe-ar.js"></script>
+  </head>
+  <body style="margin: 0; overflow: hidden;">
+    <!-- videoTexture: false: o vídeo da câmara aparece por trás da cena sem ficar deformado -->
+    <a-scene
+      vr-mode-ui="enabled: false"
+      arjs="sourceType: webcam; videoTexture: false; debugUIEnabled: false;"
+    >
+      <!-- simulateLatitude/simulateLongitude: o utilizador fica sempre nesta posição, junto à EsACT.
+           Para usar o GPS real, apagar os dois "simulate". -->
+      <a-camera gps-new-camera="simulateLatitude: 41.477986; simulateLongitude: -7.178176; gpsMinDistance: 1"></a-camera>
+
+      <!-- 5 caixas vermelhas à volta do utilizador.
+           mexer-ao-acaso (scripts.js): a cada segundo, cada caixa salta para um ponto ao acaso, até cerca de 20 m de onde começou. -->
+      <a-box color="red" scale="2 2 2" gps-new-entity-place="latitude: 41.47816; longitude: -7.178176" mexer-ao-acaso></a-box>
+      <a-box color="red" scale="2 2 2" gps-new-entity-place="latitude: 41.47781; longitude: -7.178176" mexer-ao-acaso></a-box>
+      <a-box color="red" scale="2 2 2" gps-new-entity-place="latitude: 41.477986; longitude: -7.17794" mexer-ao-acaso></a-box>
+      <a-box color="red" scale="2 2 2" gps-new-entity-place="latitude: 41.477986; longitude: -7.17841" mexer-ao-acaso></a-box>
+      <a-box color="red" scale="2 2 2" gps-new-entity-place="latitude: 41.47812; longitude: -7.17800" mexer-ao-acaso></a-box>
+    </a-scene>
+
+    <!-- código do projeto (componente mexer-ao-acaso), no fim da página -->
+    <script src="scripts.js"></script>
+  </body>
+</html>

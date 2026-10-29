@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="pt">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Terra GPS perto da escola, com distância</title>
+    <!-- A-Frame e AR.js (versão com localização) em versões fixas -->
+    <script src="https://aframe.io/releases/1.6.0/aframe.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@ar-js-org/ar.js@3.4.8/aframe/build/aframe-ar.js"></script>
+  </head>
+  <body style="margin: 0; overflow: hidden;">
+    <!-- videoTexture: false: o vídeo da câmara aparece por trás da cena sem ficar deformado -->
+    <a-scene
+      vr-mode-ui="enabled: false"
+      arjs="sourceType: webcam; videoTexture: false; debugUIEnabled: false;"
+    >
+      <a-assets>
+        <!-- textura da Terra (exemplos do three.js, licença MIT) -->
+        <img id="terra" crossorigin="anonymous"
+             src="https://cdn.jsdelivr.net/gh/mrdoob/three.js@r160/examples/textures/planets/earth_atmos_2048.jpg" />
+      </a-assets>
+
+      <!-- simulateLatitude/simulateLongitude: o utilizador fica sempre nesta posição, a cerca de 130 m da escola.
+           Para usar o GPS real, apagar os dois "simulate". -->
+      <a-camera gps-camera="simulateLatitude: 41.477; simulateLongitude: -7.177" rotation-reader>
+        <!-- textos presos à câmara: ficam sempre à frente do utilizador -->
+        <!-- mostrar-distancia (scripts.js): atualiza o texto com a distância até à Terra -->
+        <a-text id="txt-distancia" value="Distancia: ..." align="center" position="0 0.3 -2"
+                color="red" width="3" mostrar-distancia="alvo: #terra-gps"></a-text>
+        <a-text value="Encontra a Terra perto da escola" align="center" position="0 -0.3 -2"
+                color="black" width="2"></a-text>
+      </a-camera>
+
+      <!-- A Terra, numa latitude/longitude junto à EsACT (Mirandela).
+           gps-entity-place calcula a distância ao utilizador e guarda-a no atributo "distance". -->
+      <a-sphere id="terra-gps" radius="10" material="src: #terra"
+                gps-entity-place="latitude: 41.47787; longitude: -7.17851;"
+                animation="property: rotation; to: 0 360 0; loop: true; dur: 20000; easing: linear"></a-sphere>
+    </a-scene>
+
+    <!-- código do projeto (componente mostrar-distancia), no fim da página -->
+    <script src="scripts.js"></script>
+  </body>
+</html>

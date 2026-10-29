@@ -1,0 +1,23 @@
+/* caixa de texto no canto superior esquerdo, por cima da cena */
+body {
+  font-family: helvetica, arial, sans-serif;
+}
+
+h1 {
+  font-size: 1.35em;
+  margin: 0 0 0.4em;
+}
+
+div#text {
+  position: absolute;
+  z-index: 10;
+  left: 6px;
+  top: 6px;
+  padding: 6px 10px;
+  max-width: 350px;
+  background-color: rgba(255, 255, 255, 0.7);
+}
+
+.creditos {
+  font-size: 0.8em;
+}
