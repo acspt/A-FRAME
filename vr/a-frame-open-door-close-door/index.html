@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="pt">
+  <head>
+    <title>A-Frame: abrir e fechar uma porta</title>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <script src="https://aframe.io/releases/1.6.0/aframe.min.js"></script>
+  </head>
+  <body>
+    <a-scene>
+      <!-- Câmara com cursor: clicar (ou olhar fixamente, no telemóvel) para abrir/fechar a porta.
+           O cursor só testa os objetos com a classe "clickable". -->
+      <a-camera position="0 1.6 0">
+        <a-cursor raycaster="objects: .clickable"></a-cursor>
+      </a-camera>
+
+      <!-- Comandos VR: o raio laser também abre a porta -->
+      <a-entity laser-controls="hand: right" raycaster="objects: .clickable"></a-entity>
+
+      <!-- Chão e céu -->
+      <a-plane color="#5AA046" width="20" height="20" rotation="-90 0 0"></a-plane>
+      <a-sky color="#AADDF0"></a-sky>
+
+      <!-- Parede com o aro da porta (a porta tem 2 m de largura) -->
+      <a-box position="-2.6 1.5 -5" width="3" height="3" depth="0.2" color="#CCCCCC"></a-box>
+      <a-box position="2.7 1.5 -5" width="3" height="3" depth="0.2" color="#CCCCCC"></a-box>
+      <a-box position="0.05 2.75 -5" width="2.3" height="0.5" depth="0.2" color="#CCCCCC"></a-box>
+
+      <!-- Dobradiça: esta entidade roda e leva a porta com ela.
+           O componente toggle-door (em scripts.js) troca entre aberta e fechada a cada clique. -->
+      <a-entity id="hinge" position="-1 1.25 -5" toggle-door>
+        <!-- Poste preto da dobradiça -->
+        <a-box width="0.2" height="2.5" depth="0.2" color="#000000"></a-box>
+        <!-- A porta: desviada 1.1 m para a direita, para rodar pela ponta e não pelo centro -->
+        <a-box
+          class="clickable"
+          position="1.1 0 0"
+          width="2"
+          height="2.5"
+          depth="0.1"
+          color="#654321"
+        ></a-box>
+      </a-entity>
+
+      <a-text
+        value="Clica na porta para a abrir e fechar"
+        position="0.05 3.3 -5"
+        align="center"
+        color="#333333"
+      ></a-text>
+    </a-scene>
+
+    <!-- código do projeto (componente toggle-door), no fim da página -->
+    <script src="scripts.js"></script>
+  </body>
+</html>
