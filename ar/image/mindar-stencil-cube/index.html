@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="pt">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Cubo mágico em AR (MindAR)</title>
+    <!-- A-Frame e MindAR (deteção de imagem) em versões fixas -->
+    <script src="https://aframe.io/releases/1.4.1/aframe.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/mind-ar@1.2.1/dist/mindar-image-aframe.prod.js"></script>
+    <!-- componente stencil-cube: cada face do cubo é uma "janela" para um modelo 3D lá dentro.
+         Com A-Frame abaixo de 1.5, o componente tem de ser carregado antes da cena. -->
+    <script src="stencil-cube-component.js"></script>
+  </head>
+  <body style="margin: 0; overflow: hidden;">
+    <!-- imageTargetSrc: imagem-alvo do exemplo do MindAR (o cartão card.png, já compilado em card.mind) -->
+    <!-- uiScanning: yes: o MindAR mostra uma animação enquanto procura a imagem -->
+    <a-scene
+      mindar-image="imageTargetSrc: https://cdn.jsdelivr.net/gh/hiukim/mind-ar-js@1.1.4/examples/image-tracking/assets/card-example/card.mind; uiScanning: yes"
+      vr-mode-ui="enabled: false"
+      device-orientation-permission-ui="enabled: false"
+    >
+      <a-camera position="0 0 0" look-controls="enabled: false"></a-camera>
+
+      <!-- Quando o cartão é detetado, aparece um cubo por cima dele.
+           gltfUrls: um modelo para cada uma das 6 faces (aqui o mesmo modelo, do exemplo do MindAR). -->
+      <a-entity mindar-image-target="targetIndex: 0">
+        <a-entity
+          stencil-cube="gltfUrls:
+            https://cdn.jsdelivr.net/gh/hiukim/mind-ar-js@1.1.4/examples/image-tracking/assets/card-example/softmind/scene.gltf,
+            https://cdn.jsdelivr.net/gh/hiukim/mind-ar-js@1.1.4/examples/image-tracking/assets/card-example/softmind/scene.gltf,
+            https://cdn.jsdelivr.net/gh/hiukim/mind-ar-js@1.1.4/examples/image-tracking/assets/card-example/softmind/scene.gltf,
+            https://cdn.jsdelivr.net/gh/hiukim/mind-ar-js@1.1.4/examples/image-tracking/assets/card-example/softmind/scene.gltf,
+            https://cdn.jsdelivr.net/gh/hiukim/mind-ar-js@1.1.4/examples/image-tracking/assets/card-example/softmind/scene.gltf,
+            https://cdn.jsdelivr.net/gh/hiukim/mind-ar-js@1.1.4/examples/image-tracking/assets/card-example/softmind/scene.gltf;
+            gltfScale: 0.02; gltfPosition: 0 -0.3 -0.5; gltfRotation: 0 0 0;
+            stencilTransparent: true; stencilOpacity: 1.0"
+          position="0 0 0"
+          scale="0.5 0.5 0.5"
+        ></a-entity>
+      </a-entity>
+    </a-scene>
+  </body>
+</html>

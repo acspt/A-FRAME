@@ -32,6 +32,26 @@
         <span>Carregar no botão AR para ver a phoenix na câmara (Android/Chrome).</span>
       </a>
 
+      <a class="card" href="ar/camera/spinosaurus/index.html">
+        <strong>Spinosaurus em AR (AR.js, sem marcador)</strong>
+        <span>O dinossauro aparece por cima da imagem da câmara; no telemóvel, rodar para olhar à volta.</span>
+      </a>
+
+      <a class="card" href="ar/camera/move-box/index.html">
+        <strong>Tocar e mover uma caixa</strong>
+        <span>Toca na caixa para a agarrar: ela segue o telemóvel. Toca outra vez para a largar (componente <code>agarrar</code>).</span>
+      </a>
+
+      <a class="card" href="ar/camera/videos/index.html">
+        <strong>Vídeos em AR</strong>
+        <span>Dois ecrãs de vídeo por cima da câmara; toca num para o reproduzir ou pausar (componente <code>tocar-video</code>).</span>
+      </a>
+
+      <a class="card" href="ar/webxr/model-viewer/index.html">
+        <strong>Model Viewer AR/VR (WebXR)</strong>
+        <span>Triceratops para rodar e ampliar; no Android/Chrome, o botão AR põe-no no chão real (hit-test).</span>
+      </a>
+
       <h2>AR com marcador</h2>
 
       <a class="card" href="ar/makers/hiro/index.html">
@@ -61,6 +81,11 @@
         <span>O spinosaurus aparece quando a câmara deteta a imagem-alvo (descritores em <code>assets/nft/target</code>). No telemóvel, usar na horizontal: na vertical o AR.js corta muito a imagem da câmara.</span>
       </a>
 
+      <a class="card" href="ar/image/mindar-stencil-cube/index.html">
+        <strong>Cubo mágico (MindAR + stencil)</strong>
+        <span>Ao detetar o cartão do MindAR aparece um cubo; cada face é uma janela para um modelo 3D lá dentro.</span>
+      </a>
+
       <h2>AR com localização (GPS)</h2>
 
       <a class="card" href="ar/location/0/index.html">
@@ -81,6 +106,16 @@
       <a class="card" href="ar/location/3/index.html">
         <strong>Esfera numa localização 3 (AR.js + física)</strong>
         <span>Igual à versão 2, mas com uma esfera em vez do texto e sem o evento <code>click</code>: com o evento <code>collide</code>, a esfera afasta-se 1 m na direção do vetor entre a câmara e a esfera.</span>
+      </a>
+
+      <a class="card" href="ar/location/14/index.html">
+        <strong>Terra perto da escola 14 (AR.js)</strong>
+        <span>Uma Terra a rodar junto à EsACT; o texto mostra a distância até ela (atributo <code>distance</code> do AR.js, lido no componente <code>mostrar-distancia</code>).</span>
+      </a>
+
+      <a class="card" href="ar/location/15/index.html">
+        <strong>Caixas que se mexem ao acaso 15 (AR.js)</strong>
+        <span>5 caixas à volta do utilizador; a cada segundo, cada uma salta para um ponto ao acaso até 20 m (componente <code>mexer-ao-acaso</code>).</span>
       </a>
 
       <h2>Marcadores para imprimir</h2>
@@ -110,6 +145,11 @@
       <a class="card target" href="ar/image/detect-spinosaurus-arjs/assets/arjs3-image-tracking.jpg">
         <strong>Imagem-alvo Spinosaurus (AR.js NFT)</strong>
         <span>Para o Spinosaurus: deteção de imagem (AR.js NFT).</span>
+      </a>
+
+      <a class="card target" href="https://cdn.jsdelivr.net/gh/hiukim/mind-ar-js@1.1.4/examples/image-tracking/assets/card-example/card.png">
+        <strong>Imagem-alvo cartão MindAR</strong>
+        <span>Para o Cubo mágico (MindAR + stencil).</span>
       </a>
 
       <p class="note">Abrir os marcadores noutro ecrã ou imprimi-los para apontar a câmara. A câmara só funciona em <code>https</code> ou <code>localhost</code> (por exemplo, com o Live Server).</p>
