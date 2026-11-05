@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="pt">
+  <head>
+    <meta charset="utf-8">
+    <title>Controller Cursor: A-Frame Registry</title>
+    <!--
+      Componente "Controller Cursor" do A-Frame Registry (https://aframe.io/aframe-registry/)
+      Cursor (raio) que sai de um comando VR com tracking, para apontar e clicar.
+      Com um comando Vive, aponta para a esfera e carrega no gatilho. No computador não há comando.
+    -->
+    <script src="https://aframe.io/releases/0.5.0/aframe.min.js"></script>
+    <script src="https://unpkg.com/aframe-controller-cursor-component@0.2.7/dist/aframe-controller-cursor-component.min.js"></script>
+  </head>
+  <body>
+    <a-scene>
+      <a-entity vive-controls="hand: left"></a-entity>
+      <!-- O cursor fica no comando da mao direita -->
+      <a-entity vive-controls="hand: right" controller-cursor></a-entity>
+
+      <a-sphere position="0 2.25 -5" radius="1.25" color="#EF2D5E"></a-sphere>
+      <a-plane rotation="-90 0 0" width="4" height="4" color="#7BC8A4"></a-plane>
+      <a-sky color="#ECECEC"></a-sky>
+    </a-scene>
+  </body>
+</html>

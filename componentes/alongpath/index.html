@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="pt">
+  <head>
+    <meta charset="utf-8">
+    <title>Alongpath: A-Frame Registry</title>
+    <!--
+      Componente "Alongpath" do A-Frame Registry (https://aframe.io/aframe-registry/)
+      Uma entidade segue um caminho (curva) definido por pontos.
+      A caixa vermelha percorre a curva azul em ciclo.
+    -->
+    <script src="https://aframe.io/releases/1.8.0/aframe.min.js"></script>
+    <script src="https://unpkg.com/aframe-curve-component@0.1.3/dist/aframe-curve-component.min.js"></script>
+    <script src="https://unpkg.com/aframe-alongpath-component@1.0.5/dist/aframe-alongpath-component.min.js"></script>
+  </head>
+  <body>
+    <a-scene>
+      <!-- Curva definida por 4 pontos (cada ponto tem uma pequena esfera para se ver) -->
+      <a-curve id="caminho">
+        <a-curve-point position="-2 1 -4"><a-sphere radius="0.05" color="#FFF"></a-sphere></a-curve-point>
+        <a-curve-point position="0 2.5 -5"><a-sphere radius="0.05" color="#FFF"></a-sphere></a-curve-point>
+        <a-curve-point position="2 1 -4"><a-sphere radius="0.05" color="#FFF"></a-sphere></a-curve-point>
+        <a-curve-point position="0 0.5 -3"><a-sphere radius="0.05" color="#FFF"></a-sphere></a-curve-point>
+      </a-curve>
+
+      <!-- Desenha a curva para se ver o caminho -->
+      <a-draw-curve curveref="#caminho" material="shader: line; color: #4CC3D9"></a-draw-curve>
+
+      <!-- A caixa segue o caminho: dur em milissegundos, loop para repetir, rotate para virar na direcao da curva -->
+      <a-box color="#EF2D5E" width="0.3" height="0.3" depth="0.3"
+             alongpath="curve: #caminho; dur: 5000; loop: true; rotate: true"></a-box>
+
+      <a-sky color="#222"></a-sky>
+    </a-scene>
+  </body>
+</html>

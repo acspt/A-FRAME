@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="pt">
+  <head>
+    <meta charset="utf-8">
+    <title>Crawling Cursor: A-Frame Registry</title>
+    <!--
+      Componente "Crawling Cursor" do A-Frame Registry (https://aframe.io/aframe-registry/)
+      O cursor desliza pela superfície dos objetos em vez de ficar a uma distância fixa.
+      Arrasta o rato para olhar: o anel azul cola-se à superfície dos objetos.
+    -->
+    <script src="https://aframe.io/releases/0.7.0/aframe.min.js"></script>
+    <script src="https://unpkg.com/aframe-crawling-cursor@1.0.9/dist/aframe-crawling-cursor.min.js"></script>
+  </head>
+  <body>
+    <a-scene>
+      <a-box position="-1.5 0.5 -3" rotation="0 30 0" color="#EF2D5E"></a-box>
+      <a-sphere position="0 1.25 -4" radius="1" color="#4CC3D9"></a-sphere>
+      <a-cylinder position="1.5 0.75 -3" radius="0.5" height="1.5" color="#FFC65D"></a-cylinder>
+      <a-plane rotation="-90 0 0" width="10" height="10" color="#7BC8A4"></a-plane>
+      <a-sky color="#ECECEC"></a-sky>
+
+      <!-- O raycaster da camara procura objetos; o crawling-cursor coloca o cursor sobre eles -->
+      <a-camera raycaster="interval: 10" crawling-cursor></a-camera>
+      <a-cursor geometry="primitive: ring; radiusOuter: 0.2; radiusInner: 0.06" material="color: lightblue; opacity: 0.7"></a-cursor>
+    </a-scene>
+  </body>
+</html>

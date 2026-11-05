@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="pt">
+  <head>
+    <meta charset="utf-8">
+    <title>Leap Hands: A-Frame Registry</title>
+    <!--
+      Componente "Leap Hands" do A-Frame Registry (https://aframe.io/aframe-registry/)
+      Mãos virtuais com o sensor Leap Motion.
+      Precisa de um sensor Leap Motion ligado ao computador (com o software Leap). Sem sensor vê-se só a cena.
+    -->
+    <script src="https://aframe.io/releases/0.8.2/aframe.min.js"></script>
+    <script src="https://unpkg.com/aframe-leap-hands@0.8.0/dist/aframe-leap-hands.umd.js"></script>
+  </head>
+  <body>
+    <a-scene>
+      <!-- As maos ficam presas a camara -->
+      <a-entity camera="near: 0.01" look-controls position="0 1.5 0">
+        <a-entity leap-hand="hand: left"></a-entity>
+        <a-entity leap-hand="hand: right"></a-entity>
+      </a-entity>
+
+      <a-box position="0 1.2 -1" width="0.2" height="0.2" depth="0.2" color="#EF2D5E" holdable></a-box>
+      <a-plane rotation="-90 0 0" width="6" height="6" color="#7BC8A4"></a-plane>
+      <a-sky color="#ECECEC"></a-sky>
+    </a-scene>
+  </body>
+</html>

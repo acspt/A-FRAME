@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="pt">
+  <head>
+    <meta charset="utf-8">
+    <title>Motion Capture: A-Frame Registry</title>
+    <!--
+      Componente "Motion Capture" do A-Frame Registry (https://aframe.io/aframe-registry/)
+      Grava e reproduz movimentos da cabeça e dos comandos VR.
+      Reproduz uma gravação de movimentos de comandos VR (as mãos movem-se sozinhas). Carrega em espaço para gravar com comandos VR ligados.
+    -->
+    <script src="https://aframe.io/releases/0.7.0/aframe.min.js"></script>
+    <script src="https://unpkg.com/aframe-motion-capture-components@0.2.7/dist/aframe-motion-capture-components.min.js"></script>
+  </head>
+  <body>
+    <a-scene avatar-replayer="src: assets/tracked-recording.json; spectatorMode: true; loop: true">
+      <!-- As maos sao animadas pela gravacao -->
+      <a-entity id="left" hand-controls="left"></a-entity>
+      <a-entity id="right" hand-controls="right"></a-entity>
+
+      <a-entity position="0 0 -0.5">
+        <a-box position="0.3 1.65 0" width="0.3" height="0.3" depth="0.3" color="#EF2D5E"></a-box>
+        <a-box position="-0.3 1.65 0" width="0.3" height="0.3" depth="0.3" color="#EF2D5E"></a-box>
+        <a-box position="0 1.95 0" width="0.3" height="0.3" depth="0.3" color="#EF2D5E"></a-box>
+      </a-entity>
+
+      <a-plane rotation="-90 0 0" width="10" height="10" color="#7BC8A4"></a-plane>
+      <a-sky color="#353449"></a-sky>
+    </a-scene>
+  </body>
+</html>

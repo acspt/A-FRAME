@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="pt">
+  <head>
+    <meta charset="utf-8">
+    <title>Audioanalyser: A-Frame Registry</title>
+    <!--
+      Componente "Audioanalyser" do A-Frame Registry (https://aframe.io/aframe-registry/)
+      Analisa o som (Web Audio) e deteta batidas, volume e frequências.
+      Clica na esfera para tocar a música: a esfera pulsa a cada batida detetada.
+    -->
+    <script src="https://aframe.io/releases/1.8.0/aframe.min.js"></script>
+    <script src="https://unpkg.com/aframe-audioanalyser-component@6.1.0/dist/aframe-audioanalyser-component.min.js"></script>
+  </head>
+  <body>
+    <a-scene cursor="rayOrigin: mouse" raycaster="objects: .clicavel">
+      <a-assets>
+        <audio id="musica" src="assets/musica.wav" loop crossorigin="anonymous"></audio>
+      </a-assets>
+
+      <!-- audioanalyser analisa o som; quando deteta uma batida emite o evento audioanalyserbeat,
+           que arranca a animacao "batida" (a esfera cresce e volta ao tamanho normal) -->
+      <a-sphere class="clicavel" position="0 1.6 -3" radius="0.6" color="#EF2D5E"
+                audioanalyser="src: #musica; beatDetectionMinVolume: 5"
+                tocar-ao-clicar
+                animation__batida="property: scale; from: 1.4 1.4 1.4; to: 1 1 1; dur: 250; startEvents: audioanalyserbeat"></a-sphere>
+
+      <a-text value="Clica na esfera para tocar" align="center" position="0 0.6 -3" color="#FFF"></a-text>
+      <a-sky color="#111"></a-sky>
+    </a-scene>
+    <!-- Codigo do projeto: componentes em scripts.js -->
+    <script src="scripts.js"></script>
+  </body>
+</html>

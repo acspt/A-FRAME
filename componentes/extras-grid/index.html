@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="pt">
+  <head>
+    <meta charset="utf-8">
+    <title>Extras: Grid: A-Frame Registry</title>
+    <!--
+      Componente "Extras: Grid" do A-Frame Registry (https://aframe.io/aframe-registry/)
+      Chão em grelha quadriculada, útil para testar cenas.
+      Uma grelha no chão com alguns objetos por cima.
+    -->
+    <script src="https://aframe.io/releases/1.8.0/aframe.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/aframe-extras@7.7.0/dist/aframe-extras.min.js"></script>
+  </head>
+  <body>
+    <a-scene>
+      <!-- a-grid: chao quadriculado -->
+      <a-grid></a-grid>
+
+      <a-box position="-1 0.5 -3" color="#4CC3D9"></a-box>
+      <a-sphere position="1 0.5 -3" radius="0.5" color="#EF2D5E"></a-sphere>
+      <a-sky color="#222"></a-sky>
+    </a-scene>
+  </body>
+</html>

@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="pt">
+  <head>
+    <meta charset="utf-8">
+    <title>Slice9: A-Frame Registry</title>
+    <!--
+      Componente "Slice9" do A-Frame Registry (https://aframe.io/aframe-registry/)
+      Imagem "9-slice": os cantos mantêm o tamanho e o centro estica (ótimo para painéis e balões).
+      Um balão de texto feito com uma imagem pequena esticada sem deformar os cantos.
+    -->
+    <script src="https://aframe.io/releases/1.8.0/aframe.min.js"></script>
+    <script src="https://unpkg.com/aframe-slice9-component@1.0.0/dist/aframe-slice9-component.min.js"></script>
+  </head>
+  <body>
+    <a-scene>
+      <!-- left, right, top, bottom: pixeis da imagem que marcam os cantos que nao esticam -->
+      <a-entity slice9="width: 2; height: 1; left: 20; right: 43; top: 20; bottom: 43; src: assets/tooltip.png"
+                position="0 2 -3">
+        <a-text value="Ola! Sou um painel slice9" align="center" color="#000" position="0 0.05 0.01"></a-text>
+      </a-entity>
+
+      <a-sphere position="0 1 -4" radius="0.6" color="#EF2D5E"></a-sphere>
+      <a-plane rotation="-90 0 0" width="6" height="6" color="#7BC8A4"></a-plane>
+      <a-sky color="#ECECEC"></a-sky>
+    </a-scene>
+  </body>
+</html>

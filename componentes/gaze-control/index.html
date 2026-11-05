@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="pt">
+  <head>
+    <meta charset="utf-8">
+    <title>Gaze Control: A-Frame Registry</title>
+    <!--
+      Componente "Gaze Control" do A-Frame Registry (https://aframe.io/aframe-registry/)
+      Controla o olhar da câmara com os olhos (eye tracking pela webcam, com WebGazer).
+      Dá permissão à webcam e olha para os lados do ecrã: a câmara roda para onde olhas. Funciona melhor depois de clicar em vários pontos do ecrã a olhar para o rato (calibração).
+    -->
+    <script src="https://aframe.io/releases/1.8.0/aframe.min.js"></script>
+    <script src="https://unpkg.com/aframe-gaze-control-component@1.0.0/dist/aframe-gaze-control-component.min.js"></script>
+    <script src="https://webgazer.cs.brown.edu/webgazer.js"></script>
+  </head>
+  <body>
+    <a-scene>
+      <a-assets>
+        <img id="chao" src="https://cdn.aframe.io/a-painter/images/floor.jpg" crossorigin="anonymous">
+        <img id="ceu" src="https://cdn.aframe.io/a-painter/images/sky.jpg" crossorigin="anonymous">
+      </a-assets>
+      <a-plane src="#chao" rotation="-90 0 0" width="100" height="100"></a-plane>
+      <a-sky src="#ceu" radius="30" theta-length="90"></a-sky>
+      <a-box position="0 1 -4" color="#EF2D5E"></a-box>
+      <a-box position="4 1 0" color="#4CC3D9"></a-box>
+      <a-box position="-4 1 0" color="#FFC65D"></a-box>
+
+      <!-- gaze-control roda a camara com os eventos gazemove (enviados pelo scripts.js) -->
+      <a-entity camera position="0 1.6 0" gaze-control webgazer-olhar></a-entity>
+    </a-scene>
+    <!-- Codigo do projeto: componentes em scripts.js -->
+    <script src="scripts.js"></script>
+  </body>
+</html>

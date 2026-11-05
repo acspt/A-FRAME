@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="pt">
+  <head>
+    <meta charset="utf-8">
+    <title>Extras: Object Model: A-Frame Registry</title>
+    <!--
+      Componente "Extras: Object Model" do A-Frame Registry (https://aframe.io/aframe-registry/)
+      Carrega cenas no formato JSON do three.js (THREE.ObjectLoader).
+      Uma cena exportada com object.toJSON() do three.js (um nó e uma caixa).
+    -->
+    <script src="https://aframe.io/releases/1.8.0/aframe.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/aframe-extras@7.7.0/dist/aframe-extras.min.js"></script>
+  </head>
+  <body>
+    <a-scene>
+      <a-assets>
+        <a-asset-item id="objeto" src="assets/objeto.json"></a-asset-item>
+      </a-assets>
+
+      <a-entity object-model="src: #objeto" position="0 1.5 -4"
+                animation="property: rotation; to: 0 360 0; dur: 8000; easing: linear; loop: true"></a-entity>
+
+      <a-light type="ambient" color="#888"></a-light>
+      <a-light type="directional" position="1 2 1"></a-light>
+      <a-sky color="#ECECEC"></a-sky>
+    </a-scene>
+  </body>
+</html>

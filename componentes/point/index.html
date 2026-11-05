@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="pt">
+  <head>
+    <meta charset="utf-8">
+    <title>Point: A-Frame Registry</title>
+    <!--
+      Componente "Point" do A-Frame Registry (https://aframe.io/aframe-registry/)
+      Desenha pontos (com tamanho fixo no ecrã ou com perspetiva).
+      Pontos coloridos a várias distâncias.
+    -->
+    <script src="https://aframe.io/releases/1.8.0/aframe.min.js"></script>
+    <script src="https://unpkg.com/aframe-point-component@1.1.1/dist/aframe-point-component.min.js"></script>
+  </head>
+  <body>
+    <a-scene>
+      <a-entity point="size: 5; color: orange" position="0 1.6 -3"></a-entity>
+      <a-point size="5" color="white" position="-1 1.6 -20"></a-point>
+      <a-point size="5" color="blue" position="1 1.6 -50"></a-point>
+      <!-- perspective: true faz o ponto ficar mais pequeno ao longe -->
+      <a-point size="0.3" color="lime" perspective="true" position="1 1.6 -3"></a-point>
+      <a-point size="0.3" color="red" perspective="true" position="-1 1.6 -3"></a-point>
+      <a-sky color="#111"></a-sky>
+    </a-scene>
+  </body>
+</html>

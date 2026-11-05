@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="pt">
+  <head>
+    <meta charset="utf-8">
+    <title>UI Widgets: A-Frame Registry</title>
+    <!--
+      Componente "UI Widgets" do A-Frame Registry (https://aframe.io/aframe-registry/)
+      Botões, interruptores, botões rotativos e sliders para usar com os comandos VR.
+      Os widgets ficam sobre uma mesa. Em VR, toca-lhes com as mãos (hand-controls) para os usar.
+    -->
+    <script src="https://aframe.io/releases/0.5.0/aframe.min.js"></script>
+    <script src="https://unpkg.com/aframe-ui-widgets@1.0.2/dist/aframe-ui-widgets.min.js"></script>
+  </head>
+  <body>
+    <a-scene>
+      <a-entity hand-controls="left"></a-entity>
+      <a-entity hand-controls="right"></a-entity>
+
+      <a-entity position="0 1 -0.5" rotation="30 0 0">
+        <a-entity ui-button position="-0.45 0 0"></a-entity>
+        <a-entity ui-rotary position="-0.15 0 0"></a-entity>
+        <a-entity ui-toggle="value: 0" position="0.15 0 0"></a-entity>
+        <a-entity ui-slider="min: 1; max: 10; value: 5" position="0.45 0 0" rotation="0 90 0"></a-entity>
+      </a-entity>
+
+      <a-camera position="0 1.6 0.3"></a-camera>
+      <a-sky color="#333"></a-sky>
+    </a-scene>
+  </body>
+</html>

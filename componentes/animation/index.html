@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="pt">
+  <head>
+    <meta charset="utf-8">
+    <title>Animation: A-Frame Registry</title>
+    <!--
+      Componente "Animation" do A-Frame Registry (https://aframe.io/aframe-registry/)
+      Animações com anime.js (componente original, que depois passou a fazer parte do A-Frame).
+      O cilindro sobe e desce, a caixa muda de cor e as esferas giram à volta.
+    -->
+    <script src="https://aframe.io/releases/0.8.2/aframe.min.js"></script>
+    <script src="https://unpkg.com/aframe-animation-component@5.1.2/dist/aframe-animation-component.min.js"></script>
+  </head>
+  <body>
+    <a-scene>
+      <a-entity position="0 0 -4">
+        <!-- Subir e descer: dir alternate faz ir e voltar -->
+        <a-cylinder color="#F55" radius="0.2" height="1" position="0 0.5 0"
+                    animation__subir="property: position; to: 0 2 0; dir: alternate; dur: 1000; easing: easeInOutSine; loop: true"></a-cylinder>
+
+        <!-- Mudar a cor -->
+        <a-box position="-1.5 0.5 0" color="#4CC3D9"
+               animation__cor="property: material.color; to: #FFC65D; dir: alternate; dur: 1500; loop: true"></a-box>
+
+        <!-- Rodar um grupo: a esfera filha gira a volta do centro -->
+        <a-entity position="0 1 0"
+                  animation__rodar="property: rotation; to: 0 360 0; dur: 3000; easing: linear; loop: true">
+          <a-sphere radius="0.15" color="#7BC8A4" position="1.5 0 0"></a-sphere>
+          <a-sphere radius="0.15" color="#7BC8A4" position="-1.5 0 0"></a-sphere>
+        </a-entity>
+      </a-entity>
+      <a-sky color="#DDD"></a-sky>
+    </a-scene>
+  </body>
+</html>

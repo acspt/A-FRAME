@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="pt">
+  <head>
+    <meta charset="utf-8">
+    <title>Room: A-Frame Registry</title>
+    <!--
+      Componente "Room" do A-Frame Registry (https://aframe.io/aframe-registry/)
+      Cria salas com paredes, chão, teto e portas, e liga as salas com corredores.
+      Duas salas ligadas por um corredor. Usa WASD e o rato para entrar.
+    -->
+    <script src="https://aframe.io/releases/1.2.0/aframe.min.js"></script>
+    <script src="https://unpkg.com/aframe-room-component@0.4.0/dist/aframe-room-component.min.js"></script>
+  </head>
+  <body>
+    <a-scene>
+      <a-light type="ambient" intensity="0.6"></a-light>
+      <a-light type="directional" intensity="0.8" position="1 2 1"></a-light>
+
+      <!-- Sala 1: 4 paredes (rw-wall), uma delas com uma porta (rw-doorhole) -->
+      <rw-room position="-2.5 0 -2.5" width="5" length="5" height="3">
+        <rw-wall material="color: #F88"><rw-doorhole id="portaA"></rw-doorhole></rw-wall>
+        <rw-wall material="color: #F88"></rw-wall>
+        <rw-wall material="color: #F88"></rw-wall>
+        <rw-wall material="color: #F88"></rw-wall>
+        <rw-floor material="color: #BBB"></rw-floor>
+        <rw-ceiling material="color: #AAA"></rw-ceiling>
+      </rw-room>
+
+      <!-- Sala 2 -->
+      <rw-room position="-2.5 0 -12" width="5" length="5" height="3">
+        <rw-wall material="color: #88F"></rw-wall>
+        <rw-wall material="color: #88F"></rw-wall>
+        <rw-wall material="color: #88F"><rw-doorhole id="portaB"></rw-doorhole></rw-wall>
+        <rw-wall material="color: #88F"></rw-wall>
+        <rw-floor material="color: #BBB"></rw-floor>
+        <rw-ceiling material="color: #AAA"></rw-ceiling>
+      </rw-room>
+
+      <!-- Corredor entre as duas portas -->
+      <rw-doorlink from="#portaA" to="#portaB" width="1.5" height="2.2">
+        <rw-floor material="color: #999"></rw-floor>
+        <rw-ceiling material="color: #BB6"></rw-ceiling>
+        <rw-sides material="color: #BB6"></rw-sides>
+      </rw-doorlink>
+
+      <a-camera position="0 1.6 0"></a-camera>
+      <a-sky color="#ECECEC"></a-sky>
+    </a-scene>
+  </body>
+</html>

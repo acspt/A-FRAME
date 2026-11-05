@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="pt">
+  <head>
+    <meta charset="utf-8">
+    <title>Extras: Json Model: A-Frame Registry</title>
+    <!--
+      Componente "Extras: Json Model" do A-Frame Registry (https://aframe.io/aframe-registry/)
+      Carrega modelos no formato JSON antigo do three.js (THREE.JSONLoader).
+      Um flamingo em formato JSON do three.js a rodar. Formato antigo: só funciona com A-Frame até 0.8.
+    -->
+    <script src="https://aframe.io/releases/0.8.2/aframe.min.js"></script>
+    <script src="https://unpkg.com/aframe-extras.json-model@4.2.0/dist/aframe-extras.json-model.min.js"></script>
+  </head>
+  <body>
+    <a-scene>
+      <a-assets>
+        <a-asset-item id="flamingo" src="assets/flamingo.js"></a-asset-item>
+      </a-assets>
+
+      <a-entity position="0 1.6 -4"
+                animation="property: rotation; to: 0 360 0; dur: 8000; easing: linear; loop: true">
+        <a-entity json-model="src: #flamingo" scale="0.02 0.02 0.02"></a-entity>
+      </a-entity>
+
+      <a-light type="ambient" color="#888"></a-light>
+      <a-light type="directional" position="1 2 1"></a-light>
+      <a-sky color="#9AD"></a-sky>
+    </a-scene>
+  </body>
+</html>

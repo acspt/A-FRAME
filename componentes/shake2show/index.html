@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="pt">
+  <head>
+    <meta charset="utf-8">
+    <title>Shake2show: A-Frame Registry</title>
+    <!--
+      Componente "Shake2show" do A-Frame Registry (https://aframe.io/aframe-registry/)
+      Abanar o telemóvel mostra ou esconde um objeto (por exemplo um menu).
+      No telemóvel, abana-o para mostrar ou esconder o smile amarelo à frente da câmara.
+    -->
+    <script src="https://aframe.io/releases/0.7.0/aframe.min.js"></script>
+    <script src="https://unpkg.com/aframe-shake2show-component@1.0.3/dist/aframe-shake2show-component.min.js"></script>
+  </head>
+  <body>
+    <a-scene>
+      <!-- Smile escondido (visible false): aparece/desaparece quando se abana o telemovel -->
+      <a-entity shake2show visible="false" geometry="primitive: cylinder; height: 0.025; radius: 0.1"
+                material="shader: flat; color: yellow" rotation="90 0 0">
+        <a-entity geometry="primitive: cylinder; height: 0.025; radius: 0.025" material="shader: flat; color: black" position="-0.035 0.01 -0.02"></a-entity>
+        <a-entity geometry="primitive: cylinder; height: 0.025; radius: 0.025" material="shader: flat; color: black" position="0.035 0.01 -0.02"></a-entity>
+        <a-entity geometry="primitive: cylinder; height: 0.025; radius: 0.05; thetaStart: -90; thetaLength: 180" material="shader: flat; color: black" position="0 0.015 0.02"></a-entity>
+      </a-entity>
+
+      <a-plane rotation="-90 0 0" width="25" height="25" color="#7BC8A4"></a-plane>
+      <a-sky color="#BCC6CD"></a-sky>
+      <a-entity camera="userHeight: 1.6" look-controls wasd-controls>
+        <a-cursor></a-cursor>
+      </a-entity>
+    </a-scene>
+  </body>
+</html>

@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="pt">
+  <head>
+    <meta charset="utf-8">
+    <title>Teleport Controls: A-Frame Registry</title>
+    <!--
+      Componente "Teleport Controls" do A-Frame Registry (https://aframe.io/aframe-registry/)
+      Teletransporte em VR: aponta com o comando para o chão e salta para lá.
+      Com comandos Vive/Oculus: carrega no touchpad/joystick, aponta para o chão e larga para te teletransportares.
+    -->
+    <script src="https://aframe.io/releases/0.8.2/aframe.min.js"></script>
+    <script src="https://unpkg.com/aframe-teleport-controls@0.3.1/dist/aframe-teleport-controls.min.js"></script>
+  </head>
+  <body>
+    <a-scene>
+      <a-entity id="jogador">
+        <a-camera></a-camera>
+        <!-- type: parabolic (curva) ou line (linha reta) -->
+        <a-entity teleport-controls="cameraRig: #jogador; type: parabolic" vive-controls="hand: left" oculus-touch-controls="hand: left"></a-entity>
+        <a-entity teleport-controls="cameraRig: #jogador; type: line" vive-controls="hand: right" oculus-touch-controls="hand: right"></a-entity>
+      </a-entity>
+
+      <a-plane rotation="-90 0 0" width="100" height="100" material="src: assets/floor.jpg; repeat: 80 80"></a-plane>
+      <a-box position="0 0.5 -5" color="#EF2D5E"></a-box>
+      <a-sky color="#AAA"></a-sky>
+    </a-scene>
+  </body>
+</html>
