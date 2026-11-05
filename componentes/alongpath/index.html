@@ -15,19 +15,23 @@
   <body>
     <a-scene>
       <!-- Curva definida por 4 pontos (cada ponto tem uma pequena esfera para se ver).
-           closed: true liga o ultimo ponto ao primeiro, para o movimento ser continuo -->
+           closed: true liga o ultimo ponto ao primeiro, para o movimento ser continuo.
+           Os pontos estao quase a mesma altura (como uma pista): se a curva descer quase
+           na vertical, o rotate do alongpath vira a caixa ao contrario. -->
       <a-curve id="caminho" curve="closed: true">
         <a-curve-point position="-2 1 -4"><a-sphere radius="0.05" color="#FFF"></a-sphere></a-curve-point>
-        <a-curve-point position="0 2.5 -5"><a-sphere radius="0.05" color="#FFF"></a-sphere></a-curve-point>
+        <a-curve-point position="0 1.4 -6"><a-sphere radius="0.05" color="#FFF"></a-sphere></a-curve-point>
         <a-curve-point position="2 1 -4"><a-sphere radius="0.05" color="#FFF"></a-sphere></a-curve-point>
-        <a-curve-point position="0 0.5 -3"><a-sphere radius="0.05" color="#FFF"></a-sphere></a-curve-point>
+        <a-curve-point position="0 0.7 -2.5"><a-sphere radius="0.05" color="#FFF"></a-sphere></a-curve-point>
       </a-curve>
 
       <!-- Desenha a curva para se ver o caminho -->
       <a-draw-curve curveref="#caminho" material="shader: line; color: #4CC3D9"></a-draw-curve>
 
-      <!-- A caixa segue o caminho: dur em milissegundos, loop para repetir, rotate para virar na direcao da curva -->
-      <a-box color="#EF2D5E" width="0.3" height="0.3" depth="0.3"
+      <!-- A caixa segue o caminho: dur em milissegundos, loop para repetir, rotate para virar na direcao da curva.
+           O rotate aponta o eixo Y (altura) da caixa na direcao do movimento,
+           por isso a caixa e comprida na altura (height) para se ver para onde vai. -->
+      <a-box color="#EF2D5E" width="0.2" height="0.5" depth="0.2"
              alongpath="curve: #caminho; dur: 5000; loop: true; rotate: true"></a-box>
 
       <a-sky color="#222"></a-sky>
