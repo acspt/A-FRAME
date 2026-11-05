@@ -14,8 +14,9 @@
   </head>
   <body>
     <a-scene>
-      <!-- Curva definida por 4 pontos (cada ponto tem uma pequena esfera para se ver) -->
-      <a-curve id="caminho">
+      <!-- Curva definida por 4 pontos (cada ponto tem uma pequena esfera para se ver).
+           closed: true liga o ultimo ponto ao primeiro, para o movimento ser continuo -->
+      <a-curve id="caminho" curve="closed: true">
         <a-curve-point position="-2 1 -4"><a-sphere radius="0.05" color="#FFF"></a-sphere></a-curve-point>
         <a-curve-point position="0 2.5 -5"><a-sphere radius="0.05" color="#FFF"></a-sphere></a-curve-point>
         <a-curve-point position="2 1 -4"><a-sphere radius="0.05" color="#FFF"></a-sphere></a-curve-point>
