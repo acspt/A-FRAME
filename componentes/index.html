@@ -1,0 +1,19 @@
+<head>
+  <title>My A-Frame Scene</title>
+  <!-- O alongpath e o curve sao componentes antigos: funcionam com o A-Frame 1.0.4 (nao com o 1.6 ou 1.8) -->
+  <script src="https://aframe.io/releases/1.0.4/aframe.min.js"></script>
+  <script src="https://unpkg.com/aframe-curve-component@0.1.3/dist/aframe-curve-component.min.js"></script>
+  <script src="https://unpkg.com/aframe-alongpath-component@1.0.5/dist/aframe-alongpath-component.min.js"></script>
+</head>
+
+<body>
+  <a-scene>
+    <a-curve id="track1">
+      <a-curve-point position="-2 2 -3"></a-curve-point>
+      <a-curve-point position="0 1 -3"></a-curve-point>
+      <a-curve-point position="2 2 -3"></a-curve-point>
+    </a-curve>
+
+    <a-box alongpath="curve: #track1"></a-box>
+  </a-scene>
+</body>
