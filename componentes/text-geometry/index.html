@@ -13,8 +13,13 @@
   </head>
   <body>
     <a-scene>
+      <a-assets>
+        <!-- Fonte no formato typeface.json do three.js -->
+        <a-asset-item id="fonte" src="assets/helvetiker_regular.typeface.json"></a-asset-item>
+      </a-assets>
+
       <a-entity position="-2 1.5 -4"
-                text-geometry="value: Ola, A-Frame!; size: 0.5; height: 0.15; bevelEnabled: true; bevelSize: 0.01; bevelThickness: 0.02"
+                text-geometry="value: Ola, A-Frame!; font: #fonte; size: 0.5; height: 0.15; bevelEnabled: true; bevelSize: 0.01; bevelThickness: 0.02"
                 material="color: #66E1B4"></a-entity>
 
       <a-light type="ambient" color="#888"></a-light>
