@@ -1,22 +1,196 @@
-<head>
-  <title>My A-Frame Scene</title>
-    <script src="https://aframe.io/releases/1.6.0/aframe.min.js"></script>
+<!DOCTYPE html>
+<html lang="pt">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Componentes do A-Frame Registry</title>
+    <link rel="stylesheet" href="../style.css" />
+  </head>
+  <body>
+    <main>
+      <h1>Componentes do A-Frame Registry</h1>
+      <p class="sub">Um exemplo a funcionar para cada um dos 42 componentes listados em
+        <a href="https://aframe.io/aframe-registry/">aframe.io/aframe-registry</a>.
+        <a href="../index.html">Voltar aos exemplos</a></p>
 
-<script src="https://unpkg.com/aframe-curves@1.0.0/build/curve.min.js"></script>
+      <p class="note">Muitos destes componentes são antigos: cada exemplo usa a versão do A-Frame
+        com que o componente funciona (indicada em cada cartão). Abrir através de um servidor
+        (por exemplo Live Server), não diretamente do disco.</p>
 
+      <h2>Funcionam no computador</h2>
 
-    <script src="https://cdn.jsdelivr.net/npm/aframe-alongpath-component@1.0.5/dist/aframe-alongpath-component.min.js"></script>
+      <a class="card" href="alongpath/index.html">
+        <strong>Alongpath</strong>
+        <span>Uma entidade segue um caminho (curva) definido por pontos. A caixa vermelha percorre a curva azul em ciclo. <code>A-Frame 1.0.4</code></span>
+      </a>
+      <a class="card" href="animation/index.html">
+        <strong>Animation</strong>
+        <span>Animações com anime.js (componente original, que depois passou a fazer parte do A-Frame). O cilindro sobe e desce, a caixa muda de cor e as esferas giram à volta. <code>A-Frame 0.8.2</code></span>
+      </a>
+      <a class="card" href="audioanalyser/index.html">
+        <strong>Audioanalyser</strong>
+        <span>Analisa o som (Web Audio) e deteta batidas, volume e frequências. Clica na esfera para tocar a música: a esfera pulsa a cada batida detetada. <code>A-Frame 1.8.0</code></span>
+      </a>
+      <a class="card" href="crawling-cursor/index.html">
+        <strong>Crawling Cursor</strong>
+        <span>O cursor desliza pela superfície dos objetos em vez de ficar a uma distância fixa. Arrasta o rato para olhar: o anel azul cola-se à superfície dos objetos. <code>A-Frame 0.7.0</code></span>
+      </a>
+      <a class="card" href="environment/index.html">
+        <strong>Environment</strong>
+        <span>Cria ambientes completos (céu, chão, árvores, luz) com uma só linha. Floresta pronta a usar. Muda o preset (forest, egypt, tron, japan, dream...) para outro ambiente. <code>A-Frame 1.8.0</code></span>
+      </a>
+      <a class="card" href="event-set/index.html">
+        <strong>Event Set</strong>
+        <span>Muda propriedades de uma entidade quando acontece um evento (clique, rato por cima...). Passa o rato por cima da caixa (muda de cor) e clica (aparecem os olhos). <code>A-Frame 1.8.0</code></span>
+      </a>
+      <a class="card" href="extras-animation-mixer/index.html">
+        <strong>Extras: Animation Mixer</strong>
+        <span>Toca as animações que vêm dentro de modelos glTF. O CesiumMan caminha usando a animação guardada no ficheiro .glb. <code>A-Frame 1.8.0</code></span>
+      </a>
+      <a class="card" href="extras-grid/index.html">
+        <strong>Extras: Grid</strong>
+        <span>Chão em grelha quadriculada, útil para testar cenas. Uma grelha no chão com alguns objetos por cima. <code>A-Frame 1.8.0</code></span>
+      </a>
+      <a class="card" href="extras-json-model/index.html">
+        <strong>Extras: Json Model</strong>
+        <span>Carrega modelos no formato JSON antigo do three.js (THREE.JSONLoader). Um flamingo em formato JSON do three.js a rodar. Formato antigo: só funciona com A-Frame até 0.8. <code>A-Frame 0.8.2</code></span>
+      </a>
+      <a class="card" href="extras-object-model/index.html">
+        <strong>Extras: Object Model</strong>
+        <span>Carrega cenas no formato JSON do three.js (THREE.ObjectLoader). Uma cena exportada com object.toJSON() do three.js (um nó e uma caixa). <code>A-Frame 1.8.0</code></span>
+      </a>
+      <a class="card" href="extras-ocean/index.html">
+        <strong>Extras: Ocean</strong>
+        <span>Oceano animado com ondas, em estilo low poly. Um mar azul com ondas a mexer. <code>A-Frame 1.8.0</code></span>
+      </a>
+      <a class="card" href="extras-tube/index.html">
+        <strong>Extras: Tube</strong>
+        <span>Tubo que segue um caminho definido por pontos. Um tubo laranja em forma de curva. <code>A-Frame 1.8.0</code></span>
+      </a>
+      <a class="card" href="forcegraph/index.html">
+        <strong>Forcegraph</strong>
+        <span>Grafo 3D de nós e ligações, a partir de um ficheiro JSON. Rede de personagens de "Os Miseráveis". Usa WASD para voar e passa o rato pelos nós para ver o nome. <code>A-Frame 1.8.0</code></span>
+      </a>
+      <a class="card" href="layout/index.html">
+        <strong>Layout</strong>
+        <span>Organiza as entidades filhas em linha, círculo, grelha, cubo, pirâmide... Oito caixas em círculo a rodar e uma fila de esferas em linha. <code>A-Frame 1.8.0</code></span>
+      </a>
+      <a class="card" href="lerp/index.html">
+        <strong>Lerp</strong>
+        <span>Suaviza as mudanças de posição, rotação e escala (interpolação linear). As duas caixas saltam de posição a cada segundo: a de cima muda de repente, a de baixo (com lerp) desliza. <code>A-Frame 0.6.0</code></span>
+      </a>
+      <a class="card" href="line/index.html">
+        <strong>Line</strong>
+        <span>Desenha linhas entre dois pontos. Três linhas coloridas. (Mais tarde o componente line passou a fazer parte do A-Frame.) <code>A-Frame 0.5.0</code></span>
+      </a>
+      <a class="card" href="log/index.html">
+        <strong>Log</strong>
+        <span>Mostra mensagens de consola (console.log) dentro da cena VR. O painel mostra as mensagens enviadas com o evento log ao clicar nas caixas. <code>A-Frame 1.8.0</code></span>
+      </a>
+      <a class="card" href="metronome/index.html">
+        <strong>Metronome</strong>
+        <span>Emite eventos ao ritmo de uma música (batidas por minuto), para cenas musicais. A esfera pulsa a cada batida (beat) do metrónomo, a 100 batidas por minuto. <code>A-Frame 1.8.0</code></span>
+      </a>
+      <a class="card" href="mountain/index.html">
+        <strong>Mountain</strong>
+        <span>Montanha gerada aleatoriamente a partir de um mapa de alturas. Uma montanha diferente cada vez que se abre a página. <code>A-Frame 0.3.0</code></span>
+      </a>
+      <a class="card" href="outline/index.html">
+        <strong>Outline</strong>
+        <span>Efeito de contorno (linha à volta) em todos os objetos da cena. Os objetos aparecem com contorno preto, estilo desenho animado. <code>A-Frame 0.7.1</code></span>
+      </a>
+      <a class="card" href="particle-system/index.html">
+        <strong>Particle System</strong>
+        <span>Sistemas de partículas: neve, chuva, pó, estrelas. Neve a cair sobre a cena. Muda o preset para rain, dust ou default. <code>A-Frame 1.0.4</code></span>
+      </a>
+      <a class="card" href="physics-system/index.html">
+        <strong>Physics System</strong>
+        <span>Física (gravidade e colisões) com o motor Cannon.js. As caixas caem com a gravidade e chocam com o chão. <code>A-Frame 1.0.4</code></span>
+      </a>
+      <a class="card" href="point/index.html">
+        <strong>Point</strong>
+        <span>Desenha pontos (com tamanho fixo no ecrã ou com perspetiva). Pontos coloridos a várias distâncias. <code>A-Frame 1.0.4</code></span>
+      </a>
+      <a class="card" href="rain/index.html">
+        <strong>Rain</strong>
+        <span>Chuva a cair à volta da câmara. Chuva sobre uma cena simples. <code>A-Frame 0.7.1</code></span>
+      </a>
+      <a class="card" href="raytrace/index.html">
+        <strong>Raytrace</strong>
+        <span>Superfícies desenhadas com raytracing num shader GLSL. A caixa mostra uma bolha 3D calculada no shader (como uma janela para outro mundo). <code>A-Frame 1.8.0</code></span>
+      </a>
+      <a class="card" href="room/index.html">
+        <strong>Room</strong>
+        <span>Cria salas com paredes, chão, teto e portas, e liga as salas com corredores. Duas salas ligadas por um corredor. Usa WASD e o rato para entrar. <code>A-Frame 1.2.0</code></span>
+      </a>
+      <a class="card" href="slice9/index.html">
+        <strong>Slice9</strong>
+        <span>Imagem "9-slice": os cantos mantêm o tamanho e o centro estica (ótimo para painéis e balões). Um balão de texto feito com uma imagem pequena esticada sem deformar os cantos. <code>A-Frame 1.3.0</code></span>
+      </a>
+      <a class="card" href="spritesheet/index.html">
+        <strong>Spritesheet</strong>
+        <span>Anima uma imagem spritesheet (várias imagens numa só grelha). O porco caminha: a animação muda o progress de 0 a 1 e o componente mostra cada imagem da grelha. <code>A-Frame 1.8.0</code></span>
+      </a>
+      <a class="card" href="stats-in-vr/index.html">
+        <strong>Stats In VR</strong>
+        <span>Mostra as estatísticas de desempenho (FPS) dentro da cena, também em modo VR. O painel de estatísticas aparece à frente da câmara, mesmo em VR. <code>A-Frame 0.5.0</code></span>
+      </a>
+      <a class="card" href="super-hands/index.html">
+        <strong>Super Hands</strong>
+        <span>Interação natural com as mãos/comandos: agarrar, esticar, arrastar e largar. Com o rato: carrega numa caixa e arrasta para a mover. Em VR, agarra com o gatilho dos comandos. <code>A-Frame 1.4.2</code></span>
+      </a>
+      <a class="card" href="text-geometry/index.html">
+        <strong>Text Geometry</strong>
+        <span>Texto 3D com volume (geometria), em vez de texto plano. O texto "Ola, A-Frame!" em 3D a rodar. <code>A-Frame 1.4.1</code></span>
+      </a>
 
-</head>
- 
-<body>
-  <a-scene>
-    <a-curve id="track1">
-      <a-curve-point position="-2 2 -3"></a-curve-point>
-      <a-curve-point position="0 1 -3"></a-curve-point>
-      <a-curve-point position="2 2 -3"></a-curve-point>
-    </a-curve>
-    
-    <a-box alongpath="curve: #track1"></a-box>
-  </a-scene>
-</body>
+      <h2>Precisam de hardware próprio</h2>
+      <p class="sub">Abrem no computador, mas só se vê o efeito com o equipamento indicado.</p>
+
+      <a class="card" href="auto-detect-controllers/index.html">
+        <strong>Auto Detect Controllers</strong>
+        <span>Deteta automaticamente o tipo de comando VR ligado (Vive, Oculus, Daydream, GearVR). Abre num óculos VR com comandos: os comandos aparecem nas mãos. No computador vê-se só a cena. Precisa de: comandos VR. <code>A-Frame 0.5.0</code></span>
+      </a>
+      <a class="card" href="controller-cursor/index.html">
+        <strong>Controller Cursor</strong>
+        <span>Cursor (raio) que sai de um comando VR com tracking, para apontar e clicar. Com um comando Vive, aponta para a esfera e carrega no gatilho. No computador não há comando. Precisa de: comando Vive. <code>A-Frame 0.5.0</code></span>
+      </a>
+      <a class="card" href="gaze-control/index.html">
+        <strong>Gaze Control</strong>
+        <span>Controla o olhar da câmara com os olhos (eye tracking pela webcam, com WebGazer). Dá permissão à webcam e olha para os lados do ecrã: a câmara roda para onde olhas. Funciona melhor depois de clicar em vários pontos do ecrã a olhar para o rato (calibração). Precisa de: webcam. <code>A-Frame 1.0.4</code></span>
+      </a>
+      <a class="card" href="gearvr-controls/index.html">
+        <strong>GearVR Controls</strong>
+        <span>Suporte para o comando do Samsung GearVR. Só funciona no GearVR (Samsung + óculos). No computador vê-se a cena sem comando. Precisa de: GearVR. <code>A-Frame 0.5.0</code></span>
+      </a>
+      <a class="card" href="leap-hands/index.html">
+        <strong>Leap Hands</strong>
+        <span>Mãos virtuais com o sensor Leap Motion. Precisa de um sensor Leap Motion ligado ao computador (com o software Leap). Sem sensor vê-se só a cena. Precisa de: Leap Motion. <code>A-Frame 0.8.2</code></span>
+      </a>
+      <a class="card" href="motion-capture/index.html">
+        <strong>Motion Capture</strong>
+        <span>Grava e reproduz movimentos da cabeça e dos comandos VR. Reproduz uma gravação de movimentos de comandos VR (as mãos movem-se sozinhas). Carrega em espaço para gravar com comandos VR ligados. Precisa de: comandos VR (para gravar). <code>A-Frame 0.7.0</code></span>
+      </a>
+      <a class="card" href="shake2show/index.html">
+        <strong>Shake2show</strong>
+        <span>Abanar o telemóvel mostra ou esconde um objeto (por exemplo um menu). No telemóvel, abana-o para mostrar ou esconder o smile amarelo à frente da câmara. Precisa de: telemóvel. <code>A-Frame 0.7.0</code></span>
+      </a>
+      <a class="card" href="speech-command/index.html">
+        <strong>Speech Command</strong>
+        <span>Comandos de voz (Chrome) para mudar atributos de entidades. Diz "vermelho", "azul" ou "esconder"/"mostrar" (em inglês funciona melhor). Sem microfone, usa as teclas R, B, H e S. Precisa de: microfone (Chrome). <code>A-Frame 0.4.0</code></span>
+      </a>
+      <a class="card" href="stereo/index.html">
+        <strong>Stereo</strong>
+        <span>Mostra entidades só num dos olhos em VR (para imagens e vídeos 3D estereoscópicos). Em VR, a caixa vermelha só aparece no olho esquerdo e a azul só no direito. No computador vê-se como o olho esquerdo. Precisa de: óculos VR. <code>A-Frame 1.4.2</code></span>
+      </a>
+      <a class="card" href="teleport-controls/index.html">
+        <strong>Teleport Controls</strong>
+        <span>Teletransporte em VR: aponta com o comando para o chão e salta para lá. Com comandos Vive/Oculus: carrega no touchpad/joystick, aponta para o chão e larga para te teletransportares. Precisa de: comandos VR. <code>A-Frame 0.8.2</code></span>
+      </a>
+      <a class="card" href="ui-widgets/index.html">
+        <strong>UI Widgets</strong>
+        <span>Botões, interruptores, botões rotativos e sliders para usar com os comandos VR. Os widgets ficam sobre uma mesa. Em VR, toca-lhes com as mãos (hand-controls) para os usar. Precisa de: comandos VR. <code>A-Frame 0.5.0 (incluído no componente)</code></span>
+      </a>
+    </main>
+  </body>
+</html>
