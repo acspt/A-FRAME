@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="pt">
+  <head>
+    <meta charset="utf-8">
+    <title>Log: A-Frame Registry</title>
+    <!--
+      Componente "Log" do A-Frame Registry (https://aframe.io/aframe-registry/)
+      Mostra mensagens de consola (console.log) dentro da cena VR.
+      O painel mostra as mensagens enviadas com o evento log ao clicar nas caixas.
+    -->
+    <script src="https://aframe.io/releases/1.8.0/aframe.min.js"></script>
+    <script src="https://unpkg.com/aframe-log-component@1.0.7/dist/aframe-log-component.min.js"></script>
+    <script src="https://unpkg.com/aframe-event-set-component@5.1.0/dist/aframe-event-set-component.min.js"></script>
+  </head>
+  <body>
+    <a-scene cursor="rayOrigin: mouse">
+      <!-- a-log: painel onde aparecem as mensagens -->
+      <a-log position="0 1.6 -3"></a-log>
+
+      <!-- Ao clicar, as caixas emitem o evento "log" com uma mensagem (via event-set no sistema log nao e preciso JS):
+           o componente log tambem apanha o AFRAME.log("texto") e o evento "log" com detail.message -->
+      <a-box position="-1.5 0.5 -3" color="#4CC3D9" scale="0.5 0.5 0.5" log-ao-clicar="mensagem: Clicaste na caixa azul"></a-box>
+      <a-box position="1.5 0.5 -3" color="#EF2D5E" scale="0.5 0.5 0.5" log-ao-clicar="mensagem: Clicaste na caixa vermelha"></a-box>
+
+      <a-sky color="#ECECEC"></a-sky>
+    </a-scene>
+    <!-- Codigo do projeto: componentes em scripts.js -->
+    <script src="scripts.js"></script>
+  </body>
+</html>

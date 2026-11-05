@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="pt">
+  <head>
+    <meta charset="utf-8">
+    <title>Outline: A-Frame Registry</title>
+    <!--
+      Componente "Outline" do A-Frame Registry (https://aframe.io/aframe-registry/)
+      Efeito de contorno (linha à volta) em todos os objetos da cena.
+      Os objetos aparecem com contorno preto, estilo desenho animado.
+    -->
+    <script src="https://aframe.io/releases/0.7.1/aframe.min.js"></script>
+    <script src="https://unpkg.com/aframe-outline@1.1.1/build/aframe-outline.min.js"></script>
+  </head>
+  <body>
+    <a-scene outline="thickness: 0.006; color: #000">
+      <a-box position="-1 0.5 -3" rotation="0 45 0" color="#4CC3D9"></a-box>
+      <a-sphere position="0 1.25 -5" radius="1.25" color="#EF2D5E"></a-sphere>
+      <a-cylinder position="1 0.75 -3" radius="0.5" height="1.5" color="#FFC65D"></a-cylinder>
+      <a-plane position="0 0 -4" rotation="-90 0 0" width="4" height="4" color="#7BC8A4"></a-plane>
+      <a-sky color="#ECECEC"></a-sky>
+    </a-scene>
+  </body>
+</html>

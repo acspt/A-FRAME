@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="pt">
+  <head>
+    <meta charset="utf-8">
+    <title>Forcegraph: A-Frame Registry</title>
+    <!--
+      Componente "Forcegraph" do A-Frame Registry (https://aframe.io/aframe-registry/)
+      Grafo 3D de nós e ligações, a partir de um ficheiro JSON.
+      Rede de personagens de "Os Miseráveis". Usa WASD para voar e passa o rato pelos nós para ver o nome.
+    -->
+    <script src="https://aframe.io/releases/1.8.0/aframe.min.js"></script>
+    <script src="https://unpkg.com/aframe-forcegraph-component@3.3.0/dist/aframe-forcegraph-component.min.js"></script>
+  </head>
+  <body>
+    <a-scene background="color: #002">
+      <a-entity cursor="rayOrigin: mouse" raycaster="objects: [forcegraph]"></a-entity>
+
+      <a-camera position="0 0 300" look-controls="pointerLockEnabled: false" wasd-controls="fly: true; acceleration: 600">
+        <!-- Texto onde aparece o nome do no por baixo do rato -->
+        <a-text id="nome" position="0 -0.25 -1" width="2" align="center" color="lavender"></a-text>
+      </a-camera>
+
+      <!-- O grafo le os nos e as ligacoes do ficheiro JSON e pinta cada grupo de uma cor -->
+      <a-entity forcegraph="jsonUrl: assets/miserables.json; nodeAutoColorBy: group;
+                            onNodeHover: node => document.querySelector('#nome').setAttribute('value', node ? node.id : '')"></a-entity>
+    </a-scene>
+  </body>
+</html>

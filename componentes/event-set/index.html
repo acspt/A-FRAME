@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="pt">
+  <head>
+    <meta charset="utf-8">
+    <title>Event Set: A-Frame Registry</title>
+    <!--
+      Componente "Event Set" do A-Frame Registry (https://aframe.io/aframe-registry/)
+      Muda propriedades de uma entidade quando acontece um evento (clique, rato por cima...).
+      Passa o rato por cima da caixa (muda de cor) e clica (aparecem os olhos).
+    -->
+    <script src="https://aframe.io/releases/1.8.0/aframe.min.js"></script>
+    <script src="https://unpkg.com/aframe-event-set-component@5.1.0/dist/aframe-event-set-component.min.js"></script>
+  </head>
+  <body>
+    <a-scene cursor="rayOrigin: mouse">
+      <a-box position="0 1.5 -3" color="#FCB241"
+             event-set__entrar="_event: mouseenter; material.color: #5A67A6"
+             event-set__sair="_event: mouseleave; material.color: #FCB241"
+             event-set__clique="_event: click; _target: #olhos; visible: true">
+        <!-- Olhos escondidos ate se clicar -->
+        <a-entity id="olhos" visible="false">
+          <a-sphere radius="0.08" position="-0.2 0.2 0.5" color="#FFF"></a-sphere>
+          <a-sphere radius="0.08" position="0.2 0.2 0.5" color="#FFF"></a-sphere>
+        </a-entity>
+      </a-box>
+      <a-sky color="#D68D08"></a-sky>
+    </a-scene>
+  </body>
+</html>

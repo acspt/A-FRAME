@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="pt">
+  <head>
+    <meta charset="utf-8">
+    <title>Stereo: A-Frame Registry</title>
+    <!--
+      Componente "Stereo" do A-Frame Registry (https://aframe.io/aframe-registry/)
+      Mostra entidades só num dos olhos em VR (para imagens e vídeos 3D estereoscópicos).
+      Em VR, a caixa vermelha só aparece no olho esquerdo e a azul só no direito. No computador vê-se como o olho esquerdo.
+    -->
+    <script src="https://aframe.io/releases/1.4.2/aframe.min.js"></script>
+    <script src="https://unpkg.com/aframe-stereo-component@1.4.0/dist/aframe-stereo-component.min.js"></script>
+  </head>
+  <body>
+    <a-scene>
+      <!-- stereocam diz que olho a camara mostra fora do modo VR -->
+      <a-camera stereocam="eye: left"></a-camera>
+
+      <a-entity geometry="primitive: box" material="color: #C03546" position="-1 1.6 -4" stereo="eye: left"></a-entity>
+      <a-entity geometry="primitive: box" material="color: #3546C0" position="1 1.6 -4" stereo="eye: right"></a-entity>
+
+      <a-light type="ambient" color="#888"></a-light>
+      <a-light type="point" position="3 3 4"></a-light>
+      <a-sky color="#FFF"></a-sky>
+    </a-scene>
+  </body>
+</html>

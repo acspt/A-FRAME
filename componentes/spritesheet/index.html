@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="pt">
+  <head>
+    <meta charset="utf-8">
+    <title>Spritesheet: A-Frame Registry</title>
+    <!--
+      Componente "Spritesheet" do A-Frame Registry (https://aframe.io/aframe-registry/)
+      Anima uma imagem spritesheet (várias imagens numa só grelha).
+      O porco caminha: a animação muda o progress de 0 a 1 e o componente mostra cada imagem da grelha.
+    -->
+    <script src="https://aframe.io/releases/1.8.0/aframe.min.js"></script>
+    <script src="https://unpkg.com/@ekolabs/aframe-spritesheet-component@1.2.0/dist/aframe-spritesheet-component.min.js"></script>
+  </head>
+  <body>
+    <a-scene>
+      <!-- A imagem tem 8 colunas e 3 linhas de desenhos; progress (0 a 1) escolhe o desenho -->
+      <a-image src="assets/porco.png" position="0 1.5 -3"
+               sprite-sheet="cols: 8; rows: 3; progress: 0"
+               animation="property: sprite-sheet.progress; from: 0; to: 1; dur: 1000; easing: linear; loop: true"></a-image>
+      <a-sky color="#ECECEC"></a-sky>
+    </a-scene>
+  </body>
+</html>

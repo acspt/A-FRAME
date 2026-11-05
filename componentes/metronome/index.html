@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="pt">
+  <head>
+    <meta charset="utf-8">
+    <title>Metronome: A-Frame Registry</title>
+    <!--
+      Componente "Metronome" do A-Frame Registry (https://aframe.io/aframe-registry/)
+      Emite eventos ao ritmo de uma música (batidas por minuto), para cenas musicais.
+      A esfera pulsa a cada batida (beat) do metrónomo, a 100 batidas por minuto.
+    -->
+    <script src="https://aframe.io/releases/1.8.0/aframe.min.js"></script>
+    <script src="https://unpkg.com/aframe-metronome-component@1.2.3/aframe-metronome-component.js"></script>
+  </head>
+  <body>
+    <a-scene>
+      <!-- O metronome emite o evento "beat" em cada batida; a animacao comeca com esse evento -->
+      <a-sphere position="0 1.6 -3" radius="0.5" color="#EF2D5E"
+                metronome="bpm: 100; beatsPerBar: 4; barsPerLoop: 4"
+                animation__beat="property: scale; from: 1.5 1.5 1.5; to: 1 1 1; dur: 300; startEvents: beat"></a-sphere>
+
+      <a-sky color="#222"></a-sky>
+    </a-scene>
+  </body>
+</html>

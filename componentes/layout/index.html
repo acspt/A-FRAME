@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="pt">
+  <head>
+    <meta charset="utf-8">
+    <title>Layout: A-Frame Registry</title>
+    <!--
+      Componente "Layout" do A-Frame Registry (https://aframe.io/aframe-registry/)
+      Organiza as entidades filhas em linha, círculo, grelha, cubo, pirâmide...
+      Oito caixas em círculo a rodar e uma fila de esferas em linha.
+    -->
+    <script src="https://aframe.io/releases/1.8.0/aframe.min.js"></script>
+    <script src="https://unpkg.com/aframe-layout-component@5.3.0/dist/aframe-layout-component.min.js"></script>
+  </head>
+  <body>
+    <a-scene>
+      <a-assets>
+        <a-mixin id="cubo" geometry="primitive: box; width: 0.5; height: 0.5; depth: 0.5" material="color: #FFB400"></a-mixin>
+      </a-assets>
+
+      <!-- type: circle coloca os filhos num circulo com o raio indicado -->
+      <a-entity layout="type: circle; radius: 2" position="0 1.6 -5"
+                animation="property: rotation; to: 0 0 360; dur: 8000; easing: linear; loop: true">
+        <a-entity mixin="cubo"></a-entity>
+        <a-entity mixin="cubo"></a-entity>
+        <a-entity mixin="cubo"></a-entity>
+        <a-entity mixin="cubo"></a-entity>
+        <a-entity mixin="cubo"></a-entity>
+        <a-entity mixin="cubo"></a-entity>
+        <a-entity mixin="cubo"></a-entity>
+        <a-entity mixin="cubo"></a-entity>
+      </a-entity>
+
+      <!-- type: line coloca os filhos em fila, com margin de distancia -->
+      <a-entity layout="type: line; margin: 0.8" position="-1.6 0.3 -3">
+        <a-sphere radius="0.25" color="#EF2D5E"></a-sphere>
+        <a-sphere radius="0.25" color="#EF2D5E"></a-sphere>
+        <a-sphere radius="0.25" color="#EF2D5E"></a-sphere>
+        <a-sphere radius="0.25" color="#EF2D5E"></a-sphere>
+        <a-sphere radius="0.25" color="#EF2D5E"></a-sphere>
+      </a-entity>
+
+      <a-sky color="#2994B2"></a-sky>
+    </a-scene>
+  </body>
+</html>

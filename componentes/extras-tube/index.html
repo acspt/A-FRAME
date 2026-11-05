@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="pt">
+  <head>
+    <meta charset="utf-8">
+    <title>Extras: Tube: A-Frame Registry</title>
+    <!--
+      Componente "Extras: Tube" do A-Frame Registry (https://aframe.io/aframe-registry/)
+      Tubo que segue um caminho definido por pontos.
+      Um tubo laranja em forma de curva.
+    -->
+    <script src="https://aframe.io/releases/1.8.0/aframe.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/aframe-extras@7.7.0/dist/aframe-extras.min.js"></script>
+  </head>
+  <body>
+    <a-scene>
+      <!-- path: lista de pontos x y z separados por virgulas -->
+      <a-tube path="-2 0.5 -4, -1 2 -5, 1 1 -5, 2 2.5 -4" radius="0.15" material="color: #F80"></a-tube>
+
+      <a-plane rotation="-90 0 0" width="8" height="8" color="#7BC8A4"></a-plane>
+      <a-sky color="#ECECEC"></a-sky>
+    </a-scene>
+  </body>
+</html>

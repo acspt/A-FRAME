@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="pt">
+  <head>
+    <meta charset="utf-8">
+    <title>Extras: Ocean: A-Frame Registry</title>
+    <!--
+      Componente "Extras: Ocean" do A-Frame Registry (https://aframe.io/aframe-registry/)
+      Oceano animado com ondas, em estilo low poly.
+      Um mar azul com ondas a mexer.
+    -->
+    <script src="https://aframe.io/releases/1.8.0/aframe.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/aframe-extras@7.7.0/dist/aframe-extras.min.js"></script>
+  </head>
+  <body>
+    <a-scene>
+      <!-- a-ocean: largura, profundidade, altura das ondas (amplitude) e velocidade -->
+      <a-ocean width="50" depth="50" density="40" amplitude="0.3" speed="1" color="#4D7DB8"></a-ocean>
+
+      <a-light type="ambient" color="#666"></a-light>
+      <a-light type="directional" position="1 2 1"></a-light>
+      <a-sky color="#B5D2F0"></a-sky>
+    </a-scene>
+  </body>
+</html>

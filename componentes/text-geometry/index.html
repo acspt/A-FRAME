@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="pt">
+  <head>
+    <meta charset="utf-8">
+    <title>Text Geometry: A-Frame Registry</title>
+    <!--
+      Componente "Text Geometry" do A-Frame Registry (https://aframe.io/aframe-registry/)
+      Texto 3D com volume (geometria), em vez de texto plano.
+      O texto "Ola, A-Frame!" em 3D a rodar.
+    -->
+    <script src="https://aframe.io/releases/1.4.1/aframe.min.js"></script>
+    <script src="https://unpkg.com/aframe-text-geometry-component@0.5.2/dist/aframe-text-geometry-component.min.js"></script>
+  </head>
+  <body>
+    <a-scene>
+      <a-entity position="-2 1.5 -4"
+                text-geometry="value: Ola, A-Frame!; size: 0.5; height: 0.15; bevelEnabled: true; bevelSize: 0.01; bevelThickness: 0.02"
+                material="color: #66E1B4"></a-entity>
+
+      <a-light type="ambient" color="#888"></a-light>
+      <a-light type="directional" position="1 2 1"></a-light>
+      <a-sky color="#5F818A"></a-sky>
+    </a-scene>
+  </body>
+</html>

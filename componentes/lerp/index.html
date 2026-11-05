@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="pt">
+  <head>
+    <meta charset="utf-8">
+    <title>Lerp: A-Frame Registry</title>
+    <!--
+      Componente "Lerp" do A-Frame Registry (https://aframe.io/aframe-registry/)
+      Suaviza as mudanças de posição, rotação e escala (interpolação linear).
+      As duas caixas saltam de posição a cada segundo: a de cima muda de repente, a de baixo (com lerp) desliza.
+    -->
+    <script src="https://aframe.io/releases/0.6.0/aframe.min.js"></script>
+    <script src="https://unpkg.com/aframe-lerp-component@1.1.0/dist/aframe-lerp-component.min.js"></script>
+  </head>
+  <body>
+    <a-scene>
+      <!-- Sem lerp: muda de posicao de repente -->
+      <a-box position="-2 2.5 -5" color="#555">
+        <a-animation attribute="position" to="2 2.5 -5" dur="1" delay="1000" direction="alternate" repeat="indefinite"></a-animation>
+      </a-box>
+
+      <!-- Com lerp: a mesma mudanca, mas suave -->
+      <a-box lerp position="-2 1 -5" color="#EF2D5E">
+        <a-animation attribute="position" to="2 1 -5" dur="1" delay="1000" direction="alternate" repeat="indefinite"></a-animation>
+      </a-box>
+
+      <a-text value="sem lerp" position="-3.5 2.5 -5" color="#000"></a-text>
+      <a-text value="com lerp" position="-3.5 1 -5" color="#000"></a-text>
+      <a-sky color="#ECECEC"></a-sky>
+    </a-scene>
+  </body>
+</html>
