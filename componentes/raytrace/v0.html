@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="pt">
+  <head>
+    <meta charset="utf-8">
+    <title>Raytrace (v0): A-Frame Registry</title>
+    <!--
+      Versão v0 do componente "Raytrace" (https://aframe.io/aframe-registry/)
+      O conteúdo do BODY é o exemplo do README do componente (aframe-raytrace-component@1.1.2).
+      Ajustes: nenhum. O shader do README só pinta a caixa de magenta.
+    -->
+    <script src="https://aframe.io/releases/1.8.0/aframe.min.js"></script>
+    <script src="https://unpkg.com/aframe-raytrace-component@1.1.2/dist/aframe-raytrace-component.min.js"></script>
+  </head>
+<body>
+
+  <script id="foo-fs" type="x-shader/x-fragment">
+    uniform float time;
+    uniform vec3 localCameraPos;
+    varying vec3 localSurfacePos;
+
+    void main(){
+      vec3 localCameraDirection = normalize(localSurfacePos - localCameraPos);
+      gl_FragColor = vec4(1.0,0.0,1.0,1.0);
+    }
+  </script>
+
+  <a-scene>
+    <a-box position="0 1.6 -2" raytrace="shader:#foo-fs"></a-box>
+  </a-scene>
+
+</body>
+</html>

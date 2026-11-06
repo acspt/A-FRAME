@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="pt">
+  <head>
+    <meta charset="utf-8">
+    <title>Rain (v0): A-Frame Registry</title>
+    <!--
+      Versão v0 do componente "Rain" (https://aframe.io/aframe-registry/)
+      O conteúdo do BODY é o exemplo do README do componente (aframe-rain@1.0.2).
+      Ajustes: nenhum.
+    -->
+    <script src="https://aframe.io/releases/0.7.1/aframe.min.js"></script>
+    <script src="https://unpkg.com/aframe-rain@1.0.2/build/aframe-rain.min.js"></script>
+  </head>
+<body>
+  <a-scene rain>
+    <a-entity position="0 0 10">
+      <a-camera></a-camera>
+    </a-entity>
+
+    <a-entity geometry="primitive:sphere"></a-entity>
+
+    <a-sky color="#222"></a-sky>
+
+    <a-entity light="type:directional;color:#666" position="-10 -10 -10"></a-entity>
+  </a-scene>
+</body>
+</html>

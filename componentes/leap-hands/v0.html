@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="pt">
+  <head>
+    <meta charset="utf-8">
+    <title>Leap Hands (v0): A-Frame Registry</title>
+    <!--
+      Versão v0 do componente "Leap Hands" (https://aframe.io/aframe-registry/)
+      O conteúdo do BODY é o exemplo do README do componente (aframe-leap-hands@0.8.0).
+      Ajustes: o README só mostra as entidades; foram colocadas dentro de a-scene. Precisa de um sensor Leap Motion.
+    -->
+    <script src="https://aframe.io/releases/0.8.2/aframe.min.js"></script>
+    <script src="https://unpkg.com/aframe-leap-hands@0.8.0/dist/aframe-leap-hands.umd.js"></script>
+  </head>
+<body>
+  <a-scene>
+    <a-entity camera="near: 0.01" look-controls position="0 1.5 0">
+      <a-entity leap-hand="hand: left"></a-entity>
+      <a-entity leap-hand="hand: right"></a-entity>
+    </a-entity>
+  </a-scene>
+</body>
+</html>

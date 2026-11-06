@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="pt">
+  <head>
+    <meta charset="utf-8">
+    <title>Alongpath (v0): A-Frame Registry</title>
+    <!--
+      Versão v0 do componente "Alongpath" (https://aframe.io/aframe-registry/)
+      O conteúdo do BODY é o exemplo do README do componente (aframe-alongpath-component@1.0.5).
+      Ajustes: nenhum.
+    -->
+    <script src="https://aframe.io/releases/1.0.4/aframe.min.js"></script>
+    <script src="https://unpkg.com/aframe-curve-component@0.1.3/dist/aframe-curve-component.min.js"></script>
+    <script src="https://unpkg.com/aframe-alongpath-component@1.0.5/dist/aframe-alongpath-component.min.js"></script>
+  </head>
+<body>
+  <a-scene>
+    <a-curve id="track1">
+      <a-curve-point position="-2 2 -3"></a-curve-point>
+      <a-curve-point position="0 1 -3"></a-curve-point>
+      <a-curve-point position="2 2 -3"></a-curve-point>
+    </a-curve>
+
+    <a-box alongpath="curve: #track1"></a-box>
+  </a-scene>
+</body>
+</html>

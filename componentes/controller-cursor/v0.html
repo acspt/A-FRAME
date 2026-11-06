@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="pt">
+  <head>
+    <meta charset="utf-8">
+    <title>Controller Cursor (v0): A-Frame Registry</title>
+    <!--
+      Versão v0 do componente "Controller Cursor" (https://aframe.io/aframe-registry/)
+      O conteúdo do BODY é o exemplo do README do componente (aframe-controller-cursor-component@0.2.7).
+      Ajustes: nenhum. Precisa de comandos Vive (no computador a cena fica vazia).
+    -->
+    <script src="https://aframe.io/releases/0.5.0/aframe.min.js"></script>
+    <script src="https://unpkg.com/aframe-controller-cursor-component@0.2.7/dist/aframe-controller-cursor-component.min.js"></script>
+  </head>
+<body>
+  <a-scene>
+    <a-entity vive-controls="hand: left"></a-entity>
+    <a-entity vive-controls="hand: right" controller-cursor></a-entity>
+  </a-scene>
+</body>
+</html>

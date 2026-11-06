@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="pt">
+  <head>
+    <meta charset="utf-8">
+    <title>Event Set (v0): A-Frame Registry</title>
+    <!--
+      Versão v0 do componente "Event Set" (https://aframe.io/aframe-registry/)
+      O conteúdo do BODY é o exemplo do README do componente (aframe-event-set-component@5.1.0).
+      Ajustes: position na caixa (no README fica na origem, aos pés da câmara, e o cursor não lhe chega).
+    -->
+    <script src="https://aframe.io/releases/1.8.0/aframe.min.js"></script>
+    <script src="https://unpkg.com/aframe-event-set-component@5.1.0/dist/aframe-event-set-component.min.js"></script>
+  </head>
+<body>
+  <a-scene>
+    <a-box color="green" position="0 1.6 -3"
+           event-set__click="material.color: red; scale: 2 2 2"
+           event-set__mouseenter="material.color: blue"></a-box>
+    <a-camera><a-cursor></a-cursor></a-camera>
+  </a-scene>
+</body>
+</html>

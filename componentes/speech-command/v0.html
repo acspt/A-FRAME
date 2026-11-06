@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="pt">
+  <head>
+    <meta charset="utf-8">
+    <title>Speech Command (v0): A-Frame Registry</title>
+    <!--
+      Versão v0 do componente "Speech Command" (https://aframe.io/aframe-registry/)
+      O conteúdo do BODY é o exemplo do README do componente (aframe-speech-command-component@0.4.2).
+      Ajustes: o README só mostra as entidades; foram juntas dentro de a-scene e o ... do menu foi trocado por uma caixa (a-box) para se ver. Diz "hide menu" ou "show menu" (Chrome, com microfone).
+    -->
+    <script src="https://aframe.io/releases/0.4.0/aframe.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/annyang/2.6.1/annyang.min.js"></script>
+    <script src="https://unpkg.com/aframe-speech-command-component@0.4.2/dist/aframe-speech-command-component.min.js"></script>
+  </head>
+<body>
+  <a-scene>
+    <a-entity id="annyang" annyang-speech-recognition></a-entity>
+
+    <a-entity id="menu"
+              speech-command__show="command: show menu; type: attribute; attribute: visible; value: true;"
+              speech-command__hide="command: hide menu; type: attribute; attribute: visible; value: false;">
+              <a-box position="0 1.6 -3"></a-box>
+    </a-entity>
+  </a-scene>
+</body>
+</html>

@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="pt">
+  <head>
+    <meta charset="utf-8">
+    <title>Log (v0): A-Frame Registry</title>
+    <!--
+      Versão v0 do componente "Log" (https://aframe.io/aframe-registry/)
+      O conteúdo do BODY é o exemplo do README do componente (aframe-log-component@1.0.7).
+      Ajustes: nenhum. O painel aparece vazio até alguém chamar AFRAME.log('mensagem') (por exemplo na consola do browser).
+    -->
+    <script src="https://aframe.io/releases/1.8.0/aframe.min.js"></script>
+    <script src="https://unpkg.com/aframe-log-component@1.0.7/dist/aframe-log-component.min.js"></script>
+  </head>
+<body>
+  <a-scene>
+    <!-- Or <a-log position="0 0 -4"></a-log>. -->
+    <a-entity log geometry="primitive: plane" material="color: #111" text="color: lightgreen" position="0 0 -4"></a-entity>
+  </a-scene>
+</body>
+</html>

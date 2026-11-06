@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="pt">
+  <head>
+    <meta charset="utf-8">
+    <title>Forcegraph (v0): A-Frame Registry</title>
+    <!--
+      Versão v0 do componente "Forcegraph" (https://aframe.io/aframe-registry/)
+      O conteúdo do BODY é o exemplo do README do componente (aframe-forcegraph-component@3.3.0).
+      Ajustes: myGraphData.json passa a assets/miserables.json. A câmara fica dentro do grafo.
+    -->
+    <script src="https://aframe.io/releases/1.8.0/aframe.min.js"></script>
+    <script src="https://unpkg.com/aframe-forcegraph-component@3.3.0/dist/aframe-forcegraph-component.min.js"></script>
+  </head>
+<body>
+  <a-scene>
+    <a-entity forcegraph="json-url: assets/miserables.json"></a-entity>
+  </a-scene>
+</body>
+</html>
