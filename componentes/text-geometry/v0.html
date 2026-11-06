@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="pt">
+  <head>
+    <meta charset="utf-8">
+    <title>Text Geometry (v0): A-Frame Registry</title>
+    <!--
+      Versão v0 do componente "Text Geometry" (https://aframe.io/aframe-registry/)
+      O conteúdo do BODY é o exemplo do README do componente (aframe-text-geometry-component@0.5.2).
+      Ajustes: os endereços rawgit.com das fontes já não funcionam: a fonte optimer_bold passa a vir do jsdelivr e o primeiro texto usa a fonte assets/helvetiker_regular.typeface.json (a fonte por omissão do componente também está no rawgit); position nos textos (no README ficam na origem, aos pés da câmara).
+    -->
+    <script src="https://aframe.io/releases/1.4.1/aframe.min.js"></script>
+    <script src="https://unpkg.com/aframe-text-geometry-component@0.5.2/dist/aframe-text-geometry-component.min.js"></script>
+  </head>
+<body>
+  <a-scene>
+    <a-assets>
+      <a-asset-item id="optimerBoldFont" src="https://cdn.jsdelivr.net/npm/three@0.150.0/examples/fonts/optimer_bold.typeface.json"></a-asset-item>
+    </a-assets>
+
+    <a-entity text-geometry="value: What's up; font: assets/helvetiker_regular.typeface.json" position="-2.5 1.6 -5"></a-entity>
+    <a-entity text-geometry="value: Dog?; font: #optimerBoldFont" position="-1 0.2 -5"></a-entity>
+  </a-scene>
+</body>
+</html>

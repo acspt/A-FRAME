@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="pt">
+  <head>
+    <meta charset="utf-8">
+    <title>Spritesheet (v0): A-Frame Registry</title>
+    <!--
+      Versão v0 do componente "Spritesheet" (https://aframe.io/aframe-registry/)
+      O conteúdo do BODY é o exemplo do README do componente (@ekolabs/aframe-spritesheet-component@1.2.0).
+      Ajustes: spritesheet.png passa a assets/porco.png (8 colunas e 3 linhas, como no README); retirada a segunda imagem (formato JSON), porque não há ficheiro spritesheet.json; position para ficar à frente da câmara.
+    -->
+    <script src="https://aframe.io/releases/1.8.0/aframe.min.js"></script>
+    <script src="https://unpkg.com/@ekolabs/aframe-spritesheet-component@1.2.0/dist/aframe-spritesheet-component.min.js"></script>
+  </head>
+<body>
+  <a-scene>
+    <!-- rows/cols format-->
+    <a-image src="assets/porco.png" sprite-sheet="cols:8; rows: 3; progress: 0;" position="0 1.6 -3"></a-image>
+  </a-scene>
+</body>
+</html>

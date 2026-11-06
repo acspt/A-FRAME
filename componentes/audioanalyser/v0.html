@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="pt">
+  <head>
+    <meta charset="utf-8">
+    <title>Audioanalyser (v0): A-Frame Registry</title>
+    <!--
+      Versão v0 do componente "Audioanalyser" (https://aframe.io/aframe-registry/)
+      O conteúdo do BODY é o exemplo do README do componente (aframe-audioanalyser-component@6.1.0).
+      Ajustes: src do áudio aponta para assets/musica.wav (o README usa rickroll.mp3, que não existe). Não se vê nada: o componente só analisa o som; component-that-does-stuff-with-audio-analyser-data é um nome de exemplo (não existe). O browser pode bloquear o autoplay.
+    -->
+    <script src="https://aframe.io/releases/1.8.0/aframe.min.js"></script>
+    <script src="https://unpkg.com/aframe-audioanalyser-component@6.1.0/dist/aframe-audioanalyser-component.min.js"></script>
+  </head>
+<body>
+  <a-scene>
+    <a-assets>
+      <audio id="song" src="assets/musica.wav" autoplay loop></audio>
+    </a-assets>
+    <a-entity
+      audioanalyser="src: #song"
+      component-that-does-stuff-with-audio-analyser-data
+    ></a-entity>
+  </a-scene>
+</body>
+</html>

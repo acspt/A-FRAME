@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="pt">
+  <head>
+    <meta charset="utf-8">
+    <title>Point (v0): A-Frame Registry</title>
+    <!--
+      Versão v0 do componente "Point" (https://aframe.io/aframe-registry/)
+      O conteúdo do BODY é o exemplo do README do componente (aframe-point-component@1.1.1).
+      Ajustes: retirado o texto OR que estava entre as duas entidades (aparecia na página); position nos pontos (no README ficam na origem, aos pés da câmara).
+    -->
+    <script src="https://aframe.io/releases/1.0.4/aframe.min.js"></script>
+    <script src="https://unpkg.com/aframe-point-component@1.1.1/dist/aframe-point-component.min.js"></script>
+  </head>
+<body>
+  <a-scene>
+    <a-entity point="size: 2" position="-1 1.6 -3"></a-entity>
+    <a-point size="2" position="1 1.6 -3"></a-point>
+  </a-scene>
+</body>
+</html>

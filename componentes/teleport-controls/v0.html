@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="pt">
+  <head>
+    <meta charset="utf-8">
+    <title>Teleport Controls (v0): A-Frame Registry</title>
+    <!--
+      Versão v0 do componente "Teleport Controls" (https://aframe.io/aframe-registry/)
+      O conteúdo do BODY é o exemplo do README do componente (aframe-teleport-controls@0.3.1).
+      Ajustes: nenhum. Precisa de comandos VR; a cena não tem chão visível.
+    -->
+    <script src="https://aframe.io/releases/0.8.2/aframe.min.js"></script>
+    <script src="https://unpkg.com/aframe-teleport-controls@0.3.1/dist/aframe-teleport-controls.min.js"></script>
+  </head>
+<body>
+  <a-scene>
+    <a-entity id="cameraRig">
+      <!-- camera -->
+      <a-entity id="head" camera wasd-controls look-controls></a-entity>
+      <!-- hand controls -->
+      <a-entity id="left-hand" teleport-controls="cameraRig: #cameraRig; teleportOrigin: #head;"></a-entity>
+      <a-entity id="right-hand" teleport-controls="cameraRig: #cameraRig; teleportOrigin: #head;"></a-entity>
+    </a-entity>
+  </a-scene>
+</body>
+</html>

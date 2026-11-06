@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="pt">
+  <head>
+    <meta charset="utf-8">
+    <title>Auto Detect Controllers (v0): A-Frame Registry</title>
+    <!--
+      Versão v0 do componente "Auto Detect Controllers" (https://aframe.io/aframe-registry/)
+      O conteúdo do BODY é o exemplo do README do componente (aframe-auto-detect-controllers-component@0.1.4).
+      Ajustes: nenhum. Precisa de comandos VR (no computador a cena fica vazia).
+    -->
+    <script src="https://aframe.io/releases/0.5.0/aframe.min.js"></script>
+    <script src="https://unpkg.com/aframe-auto-detect-controllers-component@0.1.4/dist/aframe-auto-detect-controllers-component.min.js"></script>
+  </head>
+<body>
+  <a-scene>
+    <!-- If detected, will use built-in controller model (e.g. Oculus Touch or Vive) -->
+    <a-entity id="lefthand" auto-detect-controllers="hand:left"></a-entity>
+    <a-entity id="righthand" auto-detect-controllers="hand:right"></a-entity>
+  </a-scene>
+</body>
+</html>

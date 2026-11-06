@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="pt">
+  <head>
+    <meta charset="utf-8">
+    <title>Extras: Object Model (v0): A-Frame Registry</title>
+    <!--
+      Versão v0 do componente "Extras: Object Model" (https://aframe.io/aframe-registry/)
+      O conteúdo do BODY é o exemplo do README do componente (aframe-extras@7.7.0, src/loaders).
+      Ajustes: o README usa my-model.json: aponta para assets/objeto.json; position para ficar à frente da câmara.
+    -->
+    <script src="https://aframe.io/releases/1.8.0/aframe.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/aframe-extras@7.7.0/dist/aframe-extras.min.js"></script>
+  </head>
+<body>
+  <a-scene>
+    <a-entity scale="0.5 0.5 0.5" object-model="src: url(assets/objeto.json);" position="0 1.6 -3">
+    </a-entity>
+  </a-scene>
+</body>
+</html>
