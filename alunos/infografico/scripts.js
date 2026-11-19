@@ -3,6 +3,9 @@
 // passa a true: a caixa aparece e são criadas várias esferas na a-scene, em posições aleatórias.
 // Quando o perde, visible passa a false, mas a caixa e as esferas continuam visíveis.
 
+// Mostra na consola qual a versão do ficheiro que o browser carregou
+console.log('scripts.js versão 4: as esferas ficam visíveis depois de perder o marcador');
+
 // Variável global: diz se o marcador está a ser visto neste momento
 var visible = false;
 
