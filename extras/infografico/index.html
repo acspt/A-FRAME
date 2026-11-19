@@ -22,9 +22,14 @@
       <!-- câmara própria para AR.
            look-controls: usa o giroscópio do telemóvel para rodar a câmara. Assim, ao rodar
            o telemóvel, as esferas (que estão na cena) ficam paradas no espaço em vez de
-           acompanharem o ecrã. No computador, roda-se arrastando com o rato.
-           corrigir-cliques (scripts.js): faz os cliques acertarem nas esferas. -->
-      <a-entity camera look-controls corrigir-cliques>
+           acompanharem o ecrã.
+           mouseEnabled: false; touchEnabled: false: arrastar com o rato ou o dedo já não roda
+           a câmara (e a "mão" de arrastar deixa de aparecer), para os cliques chegarem às esferas.
+           Só o giroscópio roda a câmara. -->
+      <a-entity
+        camera
+        look-controls="mouseEnabled: false; touchEnabled: false"
+      >
         <!-- a-marker preset: hiro: procura o marcador Hiro.
              Está DENTRO da câmara porque o AR.js calcula a posição do marcador em relação
              à câmara; assim continua certo mesmo quando a câmara roda.
@@ -54,6 +59,6 @@
     <!-- código do projeto (componente detetar-marcador), no fim da página -->
     <!-- ?v=4: muda este número sempre que alteras o scripts.js, para o browser
          não usar uma cópia antiga guardada em cache -->
-    <script src="script.js?v=10"></script>
+    <script src="script.js?v=12"></script>
   </body>
 </html>
