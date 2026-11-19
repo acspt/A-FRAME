@@ -25,10 +25,13 @@
            acompanharem o ecrã.
            mouseEnabled: false; touchEnabled: false: arrastar com o rato ou o dedo já não roda
            a câmara (e a "mão" de arrastar deixa de aparecer), para os cliques chegarem às esferas.
-           Só o giroscópio roda a câmara. -->
+           Só o giroscópio roda a câmara.
+           corrigir-cliques (script.js): faz o rato e os toques acertarem nas esferas
+           (mão de clicar por cima delas e clique que as elimina). -->
       <a-entity
         camera
         look-controls="mouseEnabled: false; touchEnabled: false"
+        corrigir-cliques
       >
         <!-- a-marker preset: hiro: procura o marcador Hiro.
              Está DENTRO da câmara porque o AR.js calcula a posição do marcador em relação
@@ -59,6 +62,6 @@
     <!-- código do projeto (componente detetar-marcador), no fim da página -->
     <!-- ?v=4: muda este número sempre que alteras o scripts.js, para o browser
          não usar uma cópia antiga guardada em cache -->
-    <script src="script.js?v=12"></script>
+    <script src="script.js?v=13"></script>
   </body>
 </html>
