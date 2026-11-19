@@ -14,183 +14,519 @@
         <a href="../index.html">Voltar aos exemplos</a></p>
 
       <p class="note">Muitos destes componentes são antigos: cada exemplo usa a versão do A-Frame
-        com que o componente funciona (indicada em cada cartão). Abrir através de um servidor
+        com que o componente funciona (indicada em cada cartão). Cada componente tem duas versões: a primeira (v0) é o exemplo do README do componente (com os ajustes mínimos para funcionar) e a segunda (v1) é um exemplo mais completo, pensado para se ver o efeito. Abrir através de um servidor
         (por exemplo Live Server), não diretamente do disco.</p>
 
       <h2>Funcionam no computador</h2>
 
-      <a class="card" href="alongpath/index.html">
+      <div class="card">
         <strong>Alongpath</strong>
-        <span>Uma entidade segue um caminho (curva) definido por pontos. A caixa vermelha percorre a curva azul em ciclo. <code>A-Frame 1.0.4</code></span>
-      </a>
-      <a class="card" href="animation/index.html">
+        <span>Uma entidade segue um caminho (curva) definido por pontos. <code>A-Frame 1.0.4</code></span>
+        <div class="versao">
+          <p>Exemplo do README tal como está: uma caixa branca percorre uma curva de três pontos.</p>
+          <a href="alongpath/v0.html">https://acspt.github.io/A-FRAME/componentes/alongpath/v0.html</a>
+        </div>
+        <div class="versao">
+          <p>A caixa vermelha percorre a curva azul em ciclo.</p>
+          <a href="alongpath/v1.html">https://acspt.github.io/A-FRAME/componentes/alongpath/v1.html</a>
+        </div>
+      </div>
+      <div class="card">
         <strong>Animation</strong>
-        <span>Animações com anime.js (componente original, que depois passou a fazer parte do A-Frame). O cilindro sobe e desce, a caixa muda de cor e as esferas giram à volta. <code>A-Frame 0.8.2</code></span>
-      </a>
-      <a class="card" href="audioanalyser/index.html">
+        <span>Animações com anime.js (componente original, que depois passou a fazer parte do A-Frame). <code>A-Frame 0.8.2</code></span>
+        <div class="versao">
+          <p>Exemplo do README: caixa preta a mudar de cor, caixa laranja com fade (só por eventos) e cilindro a mudar de cor, escala e altura. Corrigidos erros de sintaxe do README e acrescentadas posições.</p>
+          <a href="animation/v0.html">https://acspt.github.io/A-FRAME/componentes/animation/v0.html</a>
+        </div>
+        <div class="versao">
+          <p>O cilindro sobe e desce, a caixa muda de cor e as esferas giram à volta.</p>
+          <a href="animation/v1.html">https://acspt.github.io/A-FRAME/componentes/animation/v1.html</a>
+        </div>
+      </div>
+      <div class="card">
         <strong>Audioanalyser</strong>
-        <span>Analisa o som (Web Audio) e deteta batidas, volume e frequências. Clica na esfera para tocar a música: a esfera pulsa a cada batida detetada. <code>A-Frame 1.8.0</code></span>
-      </a>
-      <a class="card" href="crawling-cursor/index.html">
+        <span>Analisa o som (Web Audio) e deteta batidas, volume e frequências. <code>A-Frame 1.8.0</code></span>
+        <div class="versao">
+          <p>Exemplo do README: analisa a música, mas não se vê nada (o componente que usaria os dados é só um nome de exemplo). O browser pode bloquear o autoplay.</p>
+          <a href="audioanalyser/v0.html">https://acspt.github.io/A-FRAME/componentes/audioanalyser/v0.html</a>
+        </div>
+        <div class="versao">
+          <p>Clica na esfera para tocar a música: a esfera pulsa a cada batida detetada.</p>
+          <a href="audioanalyser/v1.html">https://acspt.github.io/A-FRAME/componentes/audioanalyser/v1.html</a>
+        </div>
+      </div>
+      <div class="card">
         <strong>Crawling Cursor</strong>
-        <span>O cursor desliza pela superfície dos objetos em vez de ficar a uma distância fixa. Arrasta o rato para olhar: o anel azul cola-se à superfície dos objetos. <code>A-Frame 0.7.0</code></span>
-      </a>
-      <a class="card" href="environment/index.html">
+        <span>O cursor desliza pela superfície dos objetos em vez de ficar a uma distância fixa. <code>A-Frame 0.7.0</code></span>
+        <div class="versao">
+          <p>Exemplo do README: câmara com cursor, mas sem objetos, por isso o cursor não tem onde deslizar.</p>
+          <a href="crawling-cursor/v0.html">https://acspt.github.io/A-FRAME/componentes/crawling-cursor/v0.html</a>
+        </div>
+        <div class="versao">
+          <p>Arrasta o rato para olhar: o anel azul cola-se à superfície dos objetos.</p>
+          <a href="crawling-cursor/v1.html">https://acspt.github.io/A-FRAME/componentes/crawling-cursor/v1.html</a>
+        </div>
+      </div>
+      <div class="card">
         <strong>Environment</strong>
-        <span>Cria ambientes completos (céu, chão, árvores, luz) com uma só linha. Floresta pronta a usar. Muda o preset (forest, egypt, tron, japan, dream...) para outro ambiente. <code>A-Frame 1.8.0</code></span>
-      </a>
-      <a class="card" href="event-set/index.html">
+        <span>Cria ambientes completos (céu, chão, árvores, luz) com uma só linha. <code>A-Frame 1.8.0</code></span>
+        <div class="versao">
+          <p>Exemplo do README: uma só entidade com environment cria o ambiente por omissão.</p>
+          <a href="environment/v0.html">https://acspt.github.io/A-FRAME/componentes/environment/v0.html</a>
+        </div>
+        <div class="versao">
+          <p>Floresta pronta a usar. Muda o preset (forest, egypt, tron, japan, dream...) para outro ambiente.</p>
+          <a href="environment/v1.html">https://acspt.github.io/A-FRAME/componentes/environment/v1.html</a>
+        </div>
+      </div>
+      <div class="card">
         <strong>Event Set</strong>
-        <span>Muda propriedades de uma entidade quando acontece um evento (clique, rato por cima...). Passa o rato por cima da caixa (muda de cor) e clica (aparecem os olhos). <code>A-Frame 1.8.0</code></span>
-      </a>
-      <a class="card" href="extras-animation-mixer/index.html">
+        <span>Muda propriedades de uma entidade quando acontece um evento (clique, rato por cima...). <code>A-Frame 1.8.0</code></span>
+        <div class="versao">
+          <p>Exemplo do README: caixa verde que fica azul com o rato por cima e vermelha e maior ao clicar.</p>
+          <a href="event-set/v0.html">https://acspt.github.io/A-FRAME/componentes/event-set/v0.html</a>
+        </div>
+        <div class="versao">
+          <p>Passa o rato por cima da caixa (muda de cor) e clica (aparecem os olhos).</p>
+          <a href="event-set/v1.html">https://acspt.github.io/A-FRAME/componentes/event-set/v1.html</a>
+        </div>
+      </div>
+      <div class="card">
         <strong>Extras: Animation Mixer</strong>
-        <span>Toca as animações que vêm dentro de modelos glTF. O CesiumMan caminha usando a animação guardada no ficheiro .glb. <code>A-Frame 1.8.0</code></span>
-      </a>
-      <a class="card" href="extras-grid/index.html">
+        <span>Toca as animações que vêm dentro de modelos glTF. <code>A-Frame 1.8.0</code></span>
+        <div class="versao">
+          <p>Exemplo mínimo: o CesiumMan (glTF) com animation-mixer a tocar a animação do ficheiro.</p>
+          <a href="extras-animation-mixer/v0.html">https://acspt.github.io/A-FRAME/componentes/extras-animation-mixer/v0.html</a>
+        </div>
+        <div class="versao">
+          <p>O CesiumMan caminha usando a animação guardada no ficheiro .glb.</p>
+          <a href="extras-animation-mixer/v1.html">https://acspt.github.io/A-FRAME/componentes/extras-animation-mixer/v1.html</a>
+        </div>
+      </div>
+      <div class="card">
         <strong>Extras: Grid</strong>
-        <span>Chão em grelha quadriculada, útil para testar cenas. Uma grelha no chão com alguns objetos por cima. <code>A-Frame 1.8.0</code></span>
-      </a>
-      <a class="card" href="extras-json-model/index.html">
+        <span>Chão em grelha quadriculada, útil para testar cenas. <code>A-Frame 1.8.0</code></span>
+        <div class="versao">
+          <p>Exemplo do README: só a primitiva a-grid dentro da cena.</p>
+          <a href="extras-grid/v0.html">https://acspt.github.io/A-FRAME/componentes/extras-grid/v0.html</a>
+        </div>
+        <div class="versao">
+          <p>Uma grelha no chão com alguns objetos por cima.</p>
+          <a href="extras-grid/v1.html">https://acspt.github.io/A-FRAME/componentes/extras-grid/v1.html</a>
+        </div>
+      </div>
+      <div class="card">
         <strong>Extras: Json Model</strong>
-        <span>Carrega modelos no formato JSON antigo do three.js (THREE.JSONLoader). Um flamingo em formato JSON do three.js a rodar. Formato antigo: só funciona com A-Frame até 0.8. <code>A-Frame 0.8.2</code></span>
-      </a>
-      <a class="card" href="extras-object-model/index.html">
+        <span>Carrega modelos no formato JSON antigo do three.js (THREE.JSONLoader). <code>A-Frame 0.8.2</code></span>
+        <div class="versao">
+          <p>Exemplo do README: carrega o flamingo em formato JSON antigo do three.js (reduzido e à frente da câmara).</p>
+          <a href="extras-json-model/v0.html">https://acspt.github.io/A-FRAME/componentes/extras-json-model/v0.html</a>
+        </div>
+        <div class="versao">
+          <p>Um flamingo em formato JSON do three.js a rodar. Formato antigo: só funciona com A-Frame até 0.8.</p>
+          <a href="extras-json-model/v1.html">https://acspt.github.io/A-FRAME/componentes/extras-json-model/v1.html</a>
+        </div>
+      </div>
+      <div class="card">
         <strong>Extras: Object Model</strong>
-        <span>Carrega cenas no formato JSON do three.js (THREE.ObjectLoader). Uma cena exportada com object.toJSON() do three.js (um nó e uma caixa). <code>A-Frame 1.8.0</code></span>
-      </a>
-      <a class="card" href="extras-ocean/index.html">
+        <span>Carrega cenas no formato JSON do three.js (THREE.ObjectLoader). <code>A-Frame 1.8.0</code></span>
+        <div class="versao">
+          <p>Exemplo do README: carrega uma cena JSON do three.js (assets/objeto.json).</p>
+          <a href="extras-object-model/v0.html">https://acspt.github.io/A-FRAME/componentes/extras-object-model/v0.html</a>
+        </div>
+        <div class="versao">
+          <p>Uma cena exportada com object.toJSON() do three.js (um nó e uma caixa).</p>
+          <a href="extras-object-model/v1.html">https://acspt.github.io/A-FRAME/componentes/extras-object-model/v1.html</a>
+        </div>
+      </div>
+      <div class="card">
         <strong>Extras: Ocean</strong>
-        <span>Oceano animado com ondas, em estilo low poly. Um mar azul com ondas a mexer. <code>A-Frame 1.8.0</code></span>
-      </a>
-      <a class="card" href="extras-tube/index.html">
+        <span>Oceano animado com ondas, em estilo low poly. <code>A-Frame 1.8.0</code></span>
+        <div class="versao">
+          <p>Exemplo do README: só a primitiva a-ocean com cor, tamanho e velocidade.</p>
+          <a href="extras-ocean/v0.html">https://acspt.github.io/A-FRAME/componentes/extras-ocean/v0.html</a>
+        </div>
+        <div class="versao">
+          <p>Um mar azul com ondas a mexer.</p>
+          <a href="extras-ocean/v1.html">https://acspt.github.io/A-FRAME/componentes/extras-ocean/v1.html</a>
+        </div>
+      </div>
+      <div class="card">
         <strong>Extras: Tube</strong>
-        <span>Tubo que segue um caminho definido por pontos. Um tubo laranja em forma de curva. <code>A-Frame 1.8.0</code></span>
-      </a>
-      <a class="card" href="forcegraph/index.html">
+        <span>Tubo que segue um caminho definido por pontos. <code>A-Frame 1.8.0</code></span>
+        <div class="versao">
+          <p>Exemplo do README: um tubo vermelho que segue três pontos.</p>
+          <a href="extras-tube/v0.html">https://acspt.github.io/A-FRAME/componentes/extras-tube/v0.html</a>
+        </div>
+        <div class="versao">
+          <p>Um tubo laranja em forma de curva.</p>
+          <a href="extras-tube/v1.html">https://acspt.github.io/A-FRAME/componentes/extras-tube/v1.html</a>
+        </div>
+      </div>
+      <div class="card">
         <strong>Forcegraph</strong>
-        <span>Grafo 3D de nós e ligações, a partir de um ficheiro JSON. Rede de personagens de "Os Miseráveis". Usa WASD para voar e passa o rato pelos nós para ver o nome. <code>A-Frame 1.8.0</code></span>
-      </a>
-      <a class="card" href="layout/index.html">
+        <span>Grafo 3D de nós e ligações, a partir de um ficheiro JSON. <code>A-Frame 1.8.0</code></span>
+        <div class="versao">
+          <p>Exemplo do README: o grafo de "Os Miseráveis" a partir do JSON. A câmara fica dentro do grafo.</p>
+          <a href="forcegraph/v0.html">https://acspt.github.io/A-FRAME/componentes/forcegraph/v0.html</a>
+        </div>
+        <div class="versao">
+          <p>Rede de personagens de "Os Miseráveis". Usa WASD para voar e passa o rato pelos nós para ver o nome.</p>
+          <a href="forcegraph/v1.html">https://acspt.github.io/A-FRAME/componentes/forcegraph/v1.html</a>
+        </div>
+      </div>
+      <div class="card">
         <strong>Layout</strong>
-        <span>Organiza as entidades filhas em linha, círculo, grelha, cubo, pirâmide... Oito caixas em círculo a rodar e uma fila de esferas em linha. <code>A-Frame 1.8.0</code></span>
-      </a>
-      <a class="card" href="lerp/index.html">
+        <span>Organiza as entidades filhas em linha, círculo, grelha, cubo, pirâmide... <code>A-Frame 1.8.0</code></span>
+        <div class="versao">
+          <p>Exemplo do README: oito caixas brancas dispostas em círculo.</p>
+          <a href="layout/v0.html">https://acspt.github.io/A-FRAME/componentes/layout/v0.html</a>
+        </div>
+        <div class="versao">
+          <p>Oito caixas em círculo a rodar e uma fila de esferas em linha.</p>
+          <a href="layout/v1.html">https://acspt.github.io/A-FRAME/componentes/layout/v1.html</a>
+        </div>
+      </div>
+      <div class="card">
         <strong>Lerp</strong>
-        <span>Suaviza as mudanças de posição, rotação e escala (interpolação linear). As duas caixas saltam de posição a cada segundo: a de cima muda de repente, a de baixo (com lerp) desliza. <code>A-Frame 0.6.0</code></span>
-      </a>
-      <a class="card" href="line/index.html">
+        <span>Suaviza as mudanças de posição, rotação e escala (interpolação linear). <code>A-Frame 0.6.0</code></span>
+        <div class="versao">
+          <p>Exemplo do README: uma entidade com lerp, sem geometria nem movimento, por isso não se vê nada.</p>
+          <a href="lerp/v0.html">https://acspt.github.io/A-FRAME/componentes/lerp/v0.html</a>
+        </div>
+        <div class="versao">
+          <p>As duas caixas saltam de posição a cada segundo: a de cima muda de repente, a de baixo (com lerp) desliza.</p>
+          <a href="lerp/v1.html">https://acspt.github.io/A-FRAME/componentes/lerp/v1.html</a>
+        </div>
+      </div>
+      <div class="card">
         <strong>Line</strong>
-        <span>Desenha linhas entre dois pontos. Três linhas coloridas. (Mais tarde o componente line passou a fazer parte do A-Frame.) <code>A-Frame 0.5.0</code></span>
-      </a>
-      <a class="card" href="log/index.html">
+        <span>Desenha linhas entre dois pontos. <code>A-Frame 0.5.0</code></span>
+        <div class="versao">
+          <p>Exemplo do README (com as propriedades reais start e end): uma linha entre dois pontos.</p>
+          <a href="line/v0.html">https://acspt.github.io/A-FRAME/componentes/line/v0.html</a>
+        </div>
+        <div class="versao">
+          <p>Três linhas coloridas. (Mais tarde o componente line passou a fazer parte do A-Frame.)</p>
+          <a href="line/v1.html">https://acspt.github.io/A-FRAME/componentes/line/v1.html</a>
+        </div>
+      </div>
+      <div class="card">
         <strong>Log</strong>
-        <span>Mostra mensagens de consola (console.log) dentro da cena VR. O painel mostra as mensagens enviadas com o evento log ao clicar nas caixas. <code>A-Frame 1.8.0</code></span>
-      </a>
-      <a class="card" href="metronome/index.html">
+        <span>Mostra mensagens de consola (console.log) dentro da cena VR. <code>A-Frame 1.8.0</code></span>
+        <div class="versao">
+          <p>Exemplo do README: painel de log vazio, até alguém chamar AFRAME.log('mensagem') na consola.</p>
+          <a href="log/v0.html">https://acspt.github.io/A-FRAME/componentes/log/v0.html</a>
+        </div>
+        <div class="versao">
+          <p>O painel mostra as mensagens enviadas com o evento log ao clicar nas caixas.</p>
+          <a href="log/v1.html">https://acspt.github.io/A-FRAME/componentes/log/v1.html</a>
+        </div>
+      </div>
+      <div class="card">
         <strong>Metronome</strong>
-        <span>Emite eventos ao ritmo de uma música (batidas por minuto), para cenas musicais. A esfera pulsa a cada batida (beat) do metrónomo, a 100 batidas por minuto. <code>A-Frame 1.8.0</code></span>
-      </a>
-      <a class="card" href="mountain/index.html">
+        <span>Emite eventos ao ritmo de uma música (batidas por minuto), para cenas musicais. <code>A-Frame 1.8.0</code></span>
+        <div class="versao">
+          <p>Exemplo do README: metrónomo a 136 batidas por minuto. Não se vê nada, só emite eventos.</p>
+          <a href="metronome/v0.html">https://acspt.github.io/A-FRAME/componentes/metronome/v0.html</a>
+        </div>
+        <div class="versao">
+          <p>A esfera pulsa a cada batida (beat) do metrónomo, a 100 batidas por minuto.</p>
+          <a href="metronome/v1.html">https://acspt.github.io/A-FRAME/componentes/metronome/v1.html</a>
+        </div>
+      </div>
+      <div class="card">
         <strong>Mountain</strong>
-        <span>Montanha gerada aleatoriamente a partir de um mapa de alturas. Uma montanha diferente cada vez que se abre a página. <code>A-Frame 0.3.0</code></span>
-      </a>
-      <a class="card" href="outline/index.html">
+        <span>Montanha gerada aleatoriamente a partir de um mapa de alturas. <code>A-Frame 0.3.0</code></span>
+        <div class="versao">
+          <p>Exemplo do README tal como está: uma montanha vermelha gerada aleatoriamente.</p>
+          <a href="mountain/v0.html">https://acspt.github.io/A-FRAME/componentes/mountain/v0.html</a>
+        </div>
+        <div class="versao">
+          <p>Uma montanha diferente cada vez que se abre a página.</p>
+          <a href="mountain/v1.html">https://acspt.github.io/A-FRAME/componentes/mountain/v1.html</a>
+        </div>
+      </div>
+      <div class="card">
         <strong>Outline</strong>
-        <span>Efeito de contorno (linha à volta) em todos os objetos da cena. Os objetos aparecem com contorno preto, estilo desenho animado. <code>A-Frame 0.7.1</code></span>
-      </a>
-      <a class="card" href="particle-system/index.html">
+        <span>Efeito de contorno (linha à volta) em todos os objetos da cena. <code>A-Frame 0.7.1</code></span>
+        <div class="versao">
+          <p>Exemplo do README tal como está: uma esfera com contorno, vista de longe.</p>
+          <a href="outline/v0.html">https://acspt.github.io/A-FRAME/componentes/outline/v0.html</a>
+        </div>
+        <div class="versao">
+          <p>Os objetos aparecem com contorno preto, estilo desenho animado.</p>
+          <a href="outline/v1.html">https://acspt.github.io/A-FRAME/componentes/outline/v1.html</a>
+        </div>
+      </div>
+      <div class="card">
         <strong>Particle System</strong>
-        <span>Sistemas de partículas: neve, chuva, pó, estrelas. Neve a cair sobre a cena. Muda o preset para rain, dust ou default. <code>A-Frame 1.0.4</code></span>
-      </a>
-      <a class="card" href="physics-system/index.html">
+        <span>Sistemas de partículas: neve, chuva, pó, estrelas. <code>A-Frame 1.0.4</code></span>
+        <div class="versao">
+          <p>Exemplo do README tal como está: partículas vermelhas e verdes (preset default) sobre uma cena simples.</p>
+          <a href="particle-system/v0.html">https://acspt.github.io/A-FRAME/componentes/particle-system/v0.html</a>
+        </div>
+        <div class="versao">
+          <p>Neve a cair sobre a cena. Muda o preset para rain, dust ou default.</p>
+          <a href="particle-system/v1.html">https://acspt.github.io/A-FRAME/componentes/particle-system/v1.html</a>
+        </div>
+      </div>
+      <div class="card">
         <strong>Physics System</strong>
-        <span>Física (gravidade e colisões) com o motor Cannon.js. As caixas caem com a gravidade e chocam com o chão. <code>A-Frame 1.0.4</code></span>
-      </a>
-      <a class="card" href="point/index.html">
+        <span>Física (gravidade e colisões) com o motor Cannon.js. <code>A-Frame 1.0.4</code></span>
+        <div class="versao">
+          <p>Exemplo do README: chão e caixa fixos e uma caixa dinâmica, com os contornos de física visíveis (debug).</p>
+          <a href="physics-system/v0.html">https://acspt.github.io/A-FRAME/componentes/physics-system/v0.html</a>
+        </div>
+        <div class="versao">
+          <p>As caixas caem com a gravidade e chocam com o chão.</p>
+          <a href="physics-system/v1.html">https://acspt.github.io/A-FRAME/componentes/physics-system/v1.html</a>
+        </div>
+      </div>
+      <div class="card">
         <strong>Point</strong>
-        <span>Desenha pontos (com tamanho fixo no ecrã ou com perspetiva). Pontos coloridos a várias distâncias. <code>A-Frame 1.0.4</code></span>
-      </a>
-      <a class="card" href="rain/index.html">
+        <span>Desenha pontos (com tamanho fixo no ecrã ou com perspetiva). <code>A-Frame 1.0.4</code></span>
+        <div class="versao">
+          <p>Exemplo do README: dois pontos brancos lado a lado.</p>
+          <a href="point/v0.html">https://acspt.github.io/A-FRAME/componentes/point/v0.html</a>
+        </div>
+        <div class="versao">
+          <p>Pontos coloridos a várias distâncias.</p>
+          <a href="point/v1.html">https://acspt.github.io/A-FRAME/componentes/point/v1.html</a>
+        </div>
+      </div>
+      <div class="card">
         <strong>Rain</strong>
-        <span>Chuva a cair à volta da câmara. Chuva sobre uma cena simples. <code>A-Frame 0.7.1</code></span>
-      </a>
-      <a class="card" href="raytrace/index.html">
+        <span>Chuva a cair à volta da câmara. <code>A-Frame 0.7.1</code></span>
+        <div class="versao">
+          <p>Exemplo do README tal como está: chuva à volta de uma esfera.</p>
+          <a href="rain/v0.html">https://acspt.github.io/A-FRAME/componentes/rain/v0.html</a>
+        </div>
+        <div class="versao">
+          <p>Chuva sobre uma cena simples.</p>
+          <a href="rain/v1.html">https://acspt.github.io/A-FRAME/componentes/rain/v1.html</a>
+        </div>
+      </div>
+      <div class="card">
         <strong>Raytrace</strong>
-        <span>Superfícies desenhadas com raytracing num shader GLSL. A caixa mostra uma bolha 3D calculada no shader (como uma janela para outro mundo). <code>A-Frame 1.8.0</code></span>
-      </a>
-      <a class="card" href="room/index.html">
+        <span>Superfícies desenhadas com raytracing num shader GLSL. <code>A-Frame 1.8.0</code></span>
+        <div class="versao">
+          <p>Exemplo do README: o shader só pinta a caixa de magenta.</p>
+          <a href="raytrace/v0.html">https://acspt.github.io/A-FRAME/componentes/raytrace/v0.html</a>
+        </div>
+        <div class="versao">
+          <p>A caixa mostra uma bolha 3D calculada no shader (como uma janela para outro mundo).</p>
+          <a href="raytrace/v1.html">https://acspt.github.io/A-FRAME/componentes/raytrace/v1.html</a>
+        </div>
+      </div>
+      <div class="card">
         <strong>Room</strong>
-        <span>Cria salas com paredes, chão, teto e portas, e liga as salas com corredores. Duas salas ligadas por um corredor. Usa WASD e o rato para entrar. <code>A-Frame 1.2.0</code></span>
-      </a>
-      <a class="card" href="slice9/index.html">
+        <span>Cria salas com paredes, chão, teto e portas, e liga as salas com corredores. <code>A-Frame 1.2.0</code></span>
+        <div class="versao">
+          <p>Exemplo do README tal como está: duas salas ligadas por uma porta.</p>
+          <a href="room/v0.html">https://acspt.github.io/A-FRAME/componentes/room/v0.html</a>
+        </div>
+        <div class="versao">
+          <p>Duas salas ligadas por um corredor. Usa WASD e o rato para entrar.</p>
+          <a href="room/v1.html">https://acspt.github.io/A-FRAME/componentes/room/v1.html</a>
+        </div>
+      </div>
+      <div class="card">
         <strong>Slice9</strong>
-        <span>Imagem "9-slice": os cantos mantêm o tamanho e o centro estica (ótimo para painéis e balões). Um balão de texto feito com uma imagem pequena esticada sem deformar os cantos. <code>A-Frame 1.3.0</code></span>
-      </a>
-      <a class="card" href="spritesheet/index.html">
+        <span>Imagem "9-slice": os cantos mantêm o tamanho e o centro estica (ótimo para painéis e balões). <code>A-Frame 1.3.0</code></span>
+        <div class="versao">
+          <p>Exemplo do README (com as propriedades reais): um balão de texto 9-slice com a imagem tooltip.png.</p>
+          <a href="slice9/v0.html">https://acspt.github.io/A-FRAME/componentes/slice9/v0.html</a>
+        </div>
+        <div class="versao">
+          <p>Um balão de texto feito com uma imagem pequena esticada sem deformar os cantos.</p>
+          <a href="slice9/v1.html">https://acspt.github.io/A-FRAME/componentes/slice9/v1.html</a>
+        </div>
+      </div>
+      <div class="card">
         <strong>Spritesheet</strong>
-        <span>Anima uma imagem spritesheet (várias imagens numa só grelha). O porco caminha: a animação muda o progress de 0 a 1 e o componente mostra cada imagem da grelha. <code>A-Frame 1.8.0</code></span>
-      </a>
-      <a class="card" href="stats-in-vr/index.html">
+        <span>Anima uma imagem spritesheet (várias imagens numa só grelha). <code>A-Frame 1.8.0</code></span>
+        <div class="versao">
+          <p>Exemplo do README: a imagem do porco (8 colunas e 3 linhas) parada no primeiro quadro.</p>
+          <a href="spritesheet/v0.html">https://acspt.github.io/A-FRAME/componentes/spritesheet/v0.html</a>
+        </div>
+        <div class="versao">
+          <p>O porco caminha: a animação muda o progress de 0 a 1 e o componente mostra cada imagem da grelha.</p>
+          <a href="spritesheet/v1.html">https://acspt.github.io/A-FRAME/componentes/spritesheet/v1.html</a>
+        </div>
+      </div>
+      <div class="card">
         <strong>Stats In VR</strong>
-        <span>Mostra as estatísticas de desempenho (FPS) dentro da cena, também em modo VR. O painel de estatísticas aparece à frente da câmara, mesmo em VR. <code>A-Frame 0.5.0</code></span>
-      </a>
-      <a class="card" href="super-hands/index.html">
+        <span>Mostra as estatísticas de desempenho (FPS) dentro da cena, também em modo VR. <code>A-Frame 0.5.0</code></span>
+        <div class="versao">
+          <p>Exemplo do README: uma cena vazia só com o painel de estatísticas.</p>
+          <a href="stats-in-vr/v0.html">https://acspt.github.io/A-FRAME/componentes/stats-in-vr/v0.html</a>
+        </div>
+        <div class="versao">
+          <p>O painel de estatísticas aparece à frente da câmara, mesmo em VR.</p>
+          <a href="stats-in-vr/v1.html">https://acspt.github.io/A-FRAME/componentes/stats-in-vr/v1.html</a>
+        </div>
+      </div>
+      <div class="card">
         <strong>Super Hands</strong>
-        <span>Interação natural com as mãos/comandos: agarrar, esticar, arrastar e largar. Com o rato: carrega numa caixa e arrasta para a mover. Em VR, agarra com o gatilho dos comandos. <code>A-Frame 1.4.2</code></span>
-      </a>
-      <a class="card" href="text-geometry/index.html">
+        <span>Interação natural com as mãos/comandos: agarrar, esticar, arrastar e largar. <code>A-Frame 1.4.2</code></span>
+        <div class="versao">
+          <p>Exemplo do README: caixa azul para agarrar com os comandos VR. Com o rato não se agarra.</p>
+          <a href="super-hands/v0.html">https://acspt.github.io/A-FRAME/componentes/super-hands/v0.html</a>
+        </div>
+        <div class="versao">
+          <p>Com o rato: carrega numa caixa e arrasta para a mover. Em VR, agarra com o gatilho dos comandos.</p>
+          <a href="super-hands/v1.html">https://acspt.github.io/A-FRAME/componentes/super-hands/v1.html</a>
+        </div>
+      </div>
+      <div class="card">
         <strong>Text Geometry</strong>
-        <span>Texto 3D com volume (geometria), em vez de texto plano. O texto "Ola, A-Frame!" em 3D, com relevo e luz. <code>A-Frame 1.4.1</code></span>
-      </a>
+        <span>Texto 3D com volume (geometria), em vez de texto plano. <code>A-Frame 1.4.1</code></span>
+        <div class="versao">
+          <p>Exemplo do README: os textos 3D "What's up" e "Dog?" com duas fontes diferentes.</p>
+          <a href="text-geometry/v0.html">https://acspt.github.io/A-FRAME/componentes/text-geometry/v0.html</a>
+        </div>
+        <div class="versao">
+          <p>O texto "Ola, A-Frame!" em 3D, com relevo e luz.</p>
+          <a href="text-geometry/v1.html">https://acspt.github.io/A-FRAME/componentes/text-geometry/v1.html</a>
+        </div>
+      </div>
 
       <h2>Precisam de hardware próprio</h2>
       <p class="sub">Abrem no computador, mas só se vê o efeito com o equipamento indicado.</p>
 
-      <a class="card" href="auto-detect-controllers/index.html">
+      <div class="card">
         <strong>Auto Detect Controllers</strong>
-        <span>Deteta automaticamente o tipo de comando VR ligado (Vive, Oculus, Daydream, GearVR). Abre num óculos VR com comandos: os comandos aparecem nas mãos. No computador vê-se só a cena. Precisa de: comandos VR. <code>A-Frame 0.5.0</code></span>
-      </a>
-      <a class="card" href="controller-cursor/index.html">
+        <span>Deteta automaticamente o tipo de comando VR ligado (Vive, Oculus, Daydream, GearVR). <code>A-Frame 0.5.0</code></span>
+        <div class="versao">
+          <p>Exemplo do README: duas entidades para as mãos. Sem comandos VR a cena fica vazia.</p>
+          <a href="auto-detect-controllers/v0.html">https://acspt.github.io/A-FRAME/componentes/auto-detect-controllers/v0.html</a>
+        </div>
+        <div class="versao">
+          <p>Abre num óculos VR com comandos: os comandos aparecem nas mãos. No computador vê-se só a cena. Precisa de: comandos VR.</p>
+          <a href="auto-detect-controllers/v1.html">https://acspt.github.io/A-FRAME/componentes/auto-detect-controllers/v1.html</a>
+        </div>
+      </div>
+      <div class="card">
         <strong>Controller Cursor</strong>
-        <span>Cursor (raio) que sai de um comando VR com tracking, para apontar e clicar. Com um comando Vive, aponta para a esfera e carrega no gatilho. No computador não há comando. Precisa de: comando Vive. <code>A-Frame 0.5.0</code></span>
-      </a>
-      <a class="card" href="gaze-control/index.html">
+        <span>Cursor (raio) que sai de um comando VR com tracking, para apontar e clicar. <code>A-Frame 0.5.0</code></span>
+        <div class="versao">
+          <p>Exemplo do README: dois comandos Vive, um deles com cursor. Sem comandos a cena fica vazia.</p>
+          <a href="controller-cursor/v0.html">https://acspt.github.io/A-FRAME/componentes/controller-cursor/v0.html</a>
+        </div>
+        <div class="versao">
+          <p>Com um comando Vive, aponta para a esfera e carrega no gatilho. No computador não há comando. Precisa de: comando Vive.</p>
+          <a href="controller-cursor/v1.html">https://acspt.github.io/A-FRAME/componentes/controller-cursor/v1.html</a>
+        </div>
+      </div>
+      <div class="card">
         <strong>Gaze Control</strong>
-        <span>Controla o olhar da câmara com os olhos (eye tracking pela webcam, com WebGazer). Dá permissão à webcam e olha para os lados do ecrã: a câmara roda para onde olhas. Funciona melhor depois de clicar em vários pontos do ecrã a olhar para o rato (calibração). Precisa de: webcam. <code>A-Frame 1.0.4</code></span>
-      </a>
-      <a class="card" href="gearvr-controls/index.html">
+        <span>Controla o olhar da câmara com os olhos (eye tracking pela webcam, com WebGazer). <code>A-Frame 1.0.4</code></span>
+        <div class="versao">
+          <p>Exemplo do README: só a entidade com gaze-control. Sem o WebGazer não recebe o olhar e a cena fica vazia.</p>
+          <a href="gaze-control/v0.html">https://acspt.github.io/A-FRAME/componentes/gaze-control/v0.html</a>
+        </div>
+        <div class="versao">
+          <p>Dá permissão à webcam e olha para os lados do ecrã: a câmara roda para onde olhas. Funciona melhor depois de clicar em vários pontos do ecrã a olhar para o rato (calibração). Precisa de: webcam.</p>
+          <a href="gaze-control/v1.html">https://acspt.github.io/A-FRAME/componentes/gaze-control/v1.html</a>
+        </div>
+      </div>
+      <div class="card">
         <strong>GearVR Controls</strong>
-        <span>Suporte para o comando do Samsung GearVR. Só funciona no GearVR (Samsung + óculos). No computador vê-se a cena sem comando. Precisa de: GearVR. <code>A-Frame 0.5.0</code></span>
-      </a>
-      <a class="card" href="leap-hands/index.html">
+        <span>Suporte para o comando do Samsung GearVR. <code>A-Frame 0.5.0</code></span>
+        <div class="versao">
+          <p>Exemplo do README: uma entidade com gearvr-controls. Só funciona no GearVR.</p>
+          <a href="gearvr-controls/v0.html">https://acspt.github.io/A-FRAME/componentes/gearvr-controls/v0.html</a>
+        </div>
+        <div class="versao">
+          <p>Só funciona no GearVR (Samsung + óculos). No computador vê-se a cena sem comando. Precisa de: GearVR.</p>
+          <a href="gearvr-controls/v1.html">https://acspt.github.io/A-FRAME/componentes/gearvr-controls/v1.html</a>
+        </div>
+      </div>
+      <div class="card">
         <strong>Leap Hands</strong>
-        <span>Mãos virtuais com o sensor Leap Motion. Precisa de um sensor Leap Motion ligado ao computador (com o software Leap). Sem sensor vê-se só a cena. Precisa de: Leap Motion. <code>A-Frame 0.8.2</code></span>
-      </a>
-      <a class="card" href="motion-capture/index.html">
+        <span>Mãos virtuais com o sensor Leap Motion. <code>A-Frame 0.8.2</code></span>
+        <div class="versao">
+          <p>Exemplo do README: câmara com as duas mãos Leap Motion. Sem sensor não se vê nada.</p>
+          <a href="leap-hands/v0.html">https://acspt.github.io/A-FRAME/componentes/leap-hands/v0.html</a>
+        </div>
+        <div class="versao">
+          <p>Precisa de um sensor Leap Motion ligado ao computador (com o software Leap). Sem sensor vê-se só a cena. Precisa de: Leap Motion.</p>
+          <a href="leap-hands/v1.html">https://acspt.github.io/A-FRAME/componentes/leap-hands/v1.html</a>
+        </div>
+      </div>
+      <div class="card">
         <strong>Motion Capture</strong>
-        <span>Grava e reproduz movimentos da cabeça e dos comandos VR. Reproduz uma gravação de movimentos de comandos VR (as mãos movem-se sozinhas). Carrega em espaço para gravar com comandos VR ligados. Precisa de: comandos VR (para gravar). <code>A-Frame 0.7.0</code></span>
-      </a>
-      <a class="card" href="shake2show/index.html">
+        <span>Grava e reproduz movimentos da cabeça e dos comandos VR. <code>A-Frame 0.7.0</code></span>
+        <div class="versao">
+          <p>Exemplo do README: cena com gravador e reprodutor e duas mãos. Precisa de comandos VR para gravar (tecla espaço).</p>
+          <a href="motion-capture/v0.html">https://acspt.github.io/A-FRAME/componentes/motion-capture/v0.html</a>
+        </div>
+        <div class="versao">
+          <p>Reproduz uma gravação de movimentos de comandos VR (as mãos movem-se sozinhas). Carrega em espaço para gravar com comandos VR ligados. Precisa de: comandos VR (para gravar).</p>
+          <a href="motion-capture/v1.html">https://acspt.github.io/A-FRAME/componentes/motion-capture/v1.html</a>
+        </div>
+      </div>
+      <div class="card">
         <strong>Shake2show</strong>
-        <span>Abanar o telemóvel mostra ou esconde um objeto (por exemplo um menu). No telemóvel, abana-o para mostrar ou esconder o smile amarelo à frente da câmara. Precisa de: telemóvel. <code>A-Frame 0.7.0</code></span>
-      </a>
-      <a class="card" href="speech-command/index.html">
+        <span>Abanar o telemóvel mostra ou esconde um objeto (por exemplo um menu). <code>A-Frame 0.7.0</code></span>
+        <div class="versao">
+          <p>Exemplo do README: a entidade escondida não tem geometria, por isso abanar o telemóvel não mostra nada.</p>
+          <a href="shake2show/v0.html">https://acspt.github.io/A-FRAME/componentes/shake2show/v0.html</a>
+        </div>
+        <div class="versao">
+          <p>No telemóvel, abana-o para mostrar ou esconder o smile amarelo à frente da câmara. Precisa de: telemóvel.</p>
+          <a href="shake2show/v1.html">https://acspt.github.io/A-FRAME/componentes/shake2show/v1.html</a>
+        </div>
+      </div>
+      <div class="card">
         <strong>Speech Command</strong>
-        <span>Comandos de voz (Chrome) para mudar atributos de entidades. Diz "vermelho", "azul" ou "esconder"/"mostrar" (em inglês funciona melhor). Sem microfone, usa as teclas R, B, H e S. Precisa de: microfone (Chrome). <code>A-Frame 0.4.0</code></span>
-      </a>
-      <a class="card" href="stereo/index.html">
+        <span>Comandos de voz (Chrome) para mudar atributos de entidades. <code>A-Frame 0.4.0</code></span>
+        <div class="versao">
+          <p>Exemplo do README: dizer "show menu" ou "hide menu" mostra ou esconde uma caixa (Chrome, com microfone).</p>
+          <a href="speech-command/v0.html">https://acspt.github.io/A-FRAME/componentes/speech-command/v0.html</a>
+        </div>
+        <div class="versao">
+          <p>Diz "vermelho", "azul" ou "esconder"/"mostrar" (em inglês funciona melhor). Sem microfone, usa as teclas R, B, H e S. Precisa de: microfone (Chrome).</p>
+          <a href="speech-command/v1.html">https://acspt.github.io/A-FRAME/componentes/speech-command/v1.html</a>
+        </div>
+      </div>
+      <div class="card">
         <strong>Stereo</strong>
-        <span>Mostra entidades só num dos olhos em VR (para imagens e vídeos 3D estereoscópicos). Em VR, a caixa vermelha só aparece no olho esquerdo e a azul só no direito. No computador vê-se como o olho esquerdo. Precisa de: óculos VR. <code>A-Frame 1.4.2</code></span>
-      </a>
-      <a class="card" href="teleport-controls/index.html">
+        <span>Mostra entidades só num dos olhos em VR (para imagens e vídeos 3D estereoscópicos). <code>A-Frame 1.4.2</code></span>
+        <div class="versao">
+          <p>Exemplo do README: caixa vermelha só no olho esquerdo e caixa azul só no direito (em VR).</p>
+          <a href="stereo/v0.html">https://acspt.github.io/A-FRAME/componentes/stereo/v0.html</a>
+        </div>
+        <div class="versao">
+          <p>Em VR, a caixa vermelha só aparece no olho esquerdo e a azul só no direito. No computador vê-se como o olho esquerdo. Precisa de: óculos VR.</p>
+          <a href="stereo/v1.html">https://acspt.github.io/A-FRAME/componentes/stereo/v1.html</a>
+        </div>
+      </div>
+      <div class="card">
         <strong>Teleport Controls</strong>
-        <span>Teletransporte em VR: aponta com o comando para o chão e salta para lá. Com comandos Vive/Oculus: carrega no touchpad/joystick, aponta para o chão e larga para te teletransportares. Precisa de: comandos VR. <code>A-Frame 0.8.2</code></span>
-      </a>
-      <a class="card" href="ui-widgets/index.html">
+        <span>Teletransporte em VR: aponta com o comando para o chão e salta para lá. <code>A-Frame 0.8.2</code></span>
+        <div class="versao">
+          <p>Exemplo do README: câmara e duas mãos com teletransporte. Precisa de comandos VR e não há chão visível.</p>
+          <a href="teleport-controls/v0.html">https://acspt.github.io/A-FRAME/componentes/teleport-controls/v0.html</a>
+        </div>
+        <div class="versao">
+          <p>Com comandos Vive/Oculus: carrega no touchpad/joystick, aponta para o chão e larga para te teletransportares. Precisa de: comandos VR.</p>
+          <a href="teleport-controls/v1.html">https://acspt.github.io/A-FRAME/componentes/teleport-controls/v1.html</a>
+        </div>
+      </div>
+      <div class="card">
         <strong>UI Widgets</strong>
-        <span>Botões, interruptores, botões rotativos e sliders para usar com os comandos VR. Os widgets ficam sobre uma mesa. Em VR, toca-lhes com as mãos (hand-controls) para os usar. Precisa de: comandos VR. <code>A-Frame 0.5.0 (incluído no componente)</code></span>
-      </a>
+        <span>Botões, interruptores, botões rotativos e sliders para usar com os comandos VR. <code>A-Frame 0.5.0 (incluído no componente)</code></span>
+        <div class="versao">
+          <p>Exemplo do README: um botão (ui-button) para carregar com os comandos VR.</p>
+          <a href="ui-widgets/v0.html">https://acspt.github.io/A-FRAME/componentes/ui-widgets/v0.html</a>
+        </div>
+        <div class="versao">
+          <p>Os widgets ficam sobre uma mesa. Em VR, toca-lhes com as mãos (hand-controls) para os usar. Precisa de: comandos VR.</p>
+          <a href="ui-widgets/v1.html">https://acspt.github.io/A-FRAME/componentes/ui-widgets/v1.html</a>
+        </div>
+      </div>
     </main>
   </body>
 </html>
