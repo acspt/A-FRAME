@@ -45,19 +45,6 @@ AFRAME.registerComponent('detetar-marcador', {
   }
 });
 
-// Componente "corrigir-cliques"
-// Coloca-se na câmara. O AR.js muda a projeção da câmara (para coincidir com a
-// câmara do telemóvel), mas não atualiza a versão "invertida" dessa projeção,
-// que é a que o A-Frame usa para saber em que objeto clicámos.
-// Sem esta correção, os cliques não acertam nas esferas.
-AFRAME.registerComponent('corrigir-cliques', {
-  tick: function () {
-    var camara = this.el.getObject3D('camera');
-    if (camara) {
-      camara.projectionMatrixInverse.copy(camara.projectionMatrix).invert();
-    }
-  }
-});
 
 // Cria várias esferas na cena (a-scene), cada uma numa posição e cor aleatórias
 function criarEsferas(cena) {
