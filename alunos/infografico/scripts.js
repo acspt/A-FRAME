@@ -29,26 +29,18 @@ AFRAME.registerComponent('detetar-marcador', {
 
     // O AR.js dispara "markerFound" quando deteta o marcador
     marcador.addEventListener('markerFound', function () {
+    
       visible = true;
       console.log('Marcador detetado, visible =', visible);
+      criarEsferas(cena);   // cria várias esferas na cena
 
-      if (visible == true) {
-        // mostra a caixa (fica visível para sempre)
-        caixa.setAttribute('visible', true);
-
-        // cria as esferas só na primeira deteção
-        if (esferasCriadas == false) {
-          criarEsferas(cena);
-          esferasCriadas = true;
-        }
-      }
     });
 
     // O AR.js dispara "markerLost" quando deixa de ver o marcador.
     // Só atualizamos a variável: a caixa e as esferas ficam onde estão.
     marcador.addEventListener('markerLost', function () {
-      visible = false;
-      console.log('Marcador perdido, visible =', visible);
+     // visible = false;
+    //console.log('Marcador perdido, visible =', visible);
     });
   }
 });
