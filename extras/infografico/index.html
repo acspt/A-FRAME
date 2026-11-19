@@ -4,6 +4,12 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <title>Infográfico em AR: marcador Hiro</title>
+    <style>
+      /* Por cima de uma esfera, mostra a mão de clicar (pointer) em vez da mão de arrastar */
+      .a-canvas.a-mouse-cursor-hover:hover {
+        cursor: pointer !important;
+      }
+    </style>
     <!-- A-Frame e AR.js em versões fixas -->
     <script src="https://aframe.io/releases/1.6.0/aframe.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/@ar-js-org/ar.js@3.4.8/aframe/build/aframe-ar.js"></script>
@@ -23,14 +29,14 @@
            look-controls: usa o giroscópio do telemóvel para rodar a câmara. Assim, ao rodar
            o telemóvel, as esferas (que estão na cena) ficam paradas no espaço em vez de
            acompanharem o ecrã.
-           mouseEnabled: false; touchEnabled: false: arrastar com o rato ou o dedo já não roda
-           a câmara (e a "mão" de arrastar deixa de aparecer), para os cliques chegarem às esferas.
-           Só o giroscópio roda a câmara.
+           No PC: arrastar com o rato roda a câmara (mouseEnabled fica ligado).
+           touchEnabled: false: no telemóvel, arrastar o dedo não roda a câmara (roda o giroscópio),
+           para os toques chegarem às esferas.
            corrigir-cliques (script.js): faz o rato e os toques acertarem nas esferas
            (mão de clicar por cima delas e clique que as elimina). -->
       <a-entity
         camera
-        look-controls="mouseEnabled: false; touchEnabled: false"
+        look-controls="touchEnabled: false"
         corrigir-cliques
       >
         <!-- a-marker preset: hiro: procura o marcador Hiro.
