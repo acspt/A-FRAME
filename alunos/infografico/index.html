@@ -20,10 +20,11 @@
       raycaster="objects: .esfera"
     >
       <!-- a-marker preset: hiro: procura o marcador Hiro.
-           detetar-marcador (scripts.js): põe visible = true quando o deteta e mostra a caixa. -->
+           detetar-marcador (scripts.js): põe visible = true quando o deteta e cria as esferas na cena.
+           O marcador é invisível: nada aparece em cima dele. -->
       <a-marker preset="hiro" detetar-marcador>
-        <!-- A caixa começa escondida (visible="false"); o componente mostra-a.
-             Fica pousada em cima do marcador (y = 0.5 para não ficar meio enterrada). -->
+        <!-- A caixa fica sempre escondida (visible="false"), para o marcador não mostrar nada.
+             Para voltar a vê-la, muda para visible="true". -->
         <a-box
           id="caixa"
           visible="false"

@@ -1,7 +1,8 @@
 // Componente "detetar-marcador"
 // Coloca-se no <a-marker>. Quando a câmara vê o marcador, a variável visible
-// passa a true: a caixa aparece e são criadas várias esferas em posições aleatórias.
-// Quando o perde, visible passa a false: a caixa esconde-se e as esferas são apagadas.
+// passa a true e são criadas várias esferas na a-scene, em posições aleatórias.
+// O marcador em si é invisível (não mostra nada por cima dele).
+// Quando o perde, visible passa a false e as esferas são apagadas.
 
 // Variável global: diz se o marcador está a ser visto neste momento
 var visible = false;
@@ -17,23 +18,21 @@ function aleatorio(min, max) {
 AFRAME.registerComponent('detetar-marcador', {
   init: function () {
     var marcador = this.el;                          // o <a-marker>
-    var caixa = document.querySelector('#caixa');    // a caixa a mostrar
+    var cena = this.el.sceneEl;                      // a <a-scene>, onde vamos pôr as esferas
 
     // O AR.js dispara "markerFound" quando deteta o marcador
     marcador.addEventListener('markerFound', function () {
       visible = true;
-      caixa.setAttribute('visible', visible);
       console.log('Marcador detetado, visible =', visible);
 
       if (visible == true) {
-        criarEsferas(marcador);
+        criarEsferas(cena);
       }
     });
 
     // O AR.js dispara "markerLost" quando deixa de ver o marcador
     marcador.addEventListener('markerLost', function () {
       visible = false;
-      caixa.setAttribute('visible', visible);
       console.log('Marcador perdido, visible =', visible);
 
       apagarEsferas();
@@ -41,15 +40,16 @@ AFRAME.registerComponent('detetar-marcador', {
   }
 });
 
-// Cria várias esferas dentro do marcador, cada uma numa posição e cor aleatórias
-function criarEsferas(marcador) {
+// Cria várias esferas na cena (a-scene), cada uma numa posição e cor aleatórias
+function criarEsferas(cena) {
   for (var i = 0; i < NUMERO_ESFERAS; i++) {
     var esfera = document.createElement('a-sphere');
 
-    // x e z: à volta do marcador; y: acima dele (para não ficarem enterradas)
+    // Na cena, a câmara está no ponto 0 0 0 a olhar para -z (para a frente).
+    // x: esquerda/direita; y: baixo/cima; z negativo: à frente da câmara
     var x = aleatorio(-2, 2);
-    var y = aleatorio(0.5, 3);
-    var z = aleatorio(-2, 2);
+    var y = aleatorio(-1, 1.5);
+    var z = aleatorio(-6, -2);
     esfera.setAttribute('position', x + ' ' + y + ' ' + z);
 
     esfera.setAttribute('radius', aleatorio(0.1, 0.3));
@@ -67,7 +67,7 @@ function criarEsferas(marcador) {
       console.log('Esfera eliminada');
     });
 
-    marcador.appendChild(esfera);
+    cena.appendChild(esfera);
   }
 }
 
