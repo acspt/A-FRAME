@@ -23,12 +23,8 @@
            detetar-marcador (scripts.js): quando o deteta, põe visible = true, mostra a caixa
            e cria as esferas na cena. Fica vazio: o AR.js esconde tudo o que está dentro
            do marcador quando o deixa de ver. -->
-      <a-marker preset="hiro" detetar-marcador></a-marker>
-
-      <!-- A caixa está fora do marcador (diretamente na a-scene), para continuar visível
-           depois de o marcador deixar de ser detetado.
-           Começa escondida (visible="false"); o componente mostra-a. -->
-      <a-box
+      <a-marker preset="hiro" detetar-marcador>
+<a-box
         id="caixa"
         visible="true"
         position="0 0 -3"
@@ -38,13 +34,21 @@
         color="tomato"
       ></a-box>
 
-      <!-- câmara própria para AR (substitui a câmara normal do A-Frame) -->
-      <a-entity camera></a-entity>
+      </a-marker>
+
+      <!-- A caixa está fora do marcador (diretamente na a-scene), para continuar visível
+           depois de o marcador deixar de ser detetado.
+           Começa escondida (visible="false"); o componente mostra-a. -->
+      
+
+      <!-- câmara própria para AR (substitui a câmara normal do A-Frame).
+           corrigir-cliques (scripts.js): faz os cliques acertarem nas esferas. -->
+      <a-entity camera corrigir-cliques></a-entity>
     </a-scene>
 
     <!-- código do projeto (componente detetar-marcador), no fim da página -->
     <!-- ?v=4: muda este número sempre que alteras o scripts.js, para o browser
          não usar uma cópia antiga guardada em cache -->
-    <script src="scripts.js?v=4"></script>
+    <script src="scripts.js?v=5"></script>
   </body>
 </html>
