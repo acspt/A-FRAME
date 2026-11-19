@@ -25,36 +25,34 @@
       cursor="rayOrigin: mouse"
       raycaster="objects: .esfera"
     >
-      <!-- câmara própria para AR.
-           look-controls: usa o giroscópio do telemóvel para rodar a câmara. Assim, ao rodar
-           o telemóvel, as esferas (que estão na cena) ficam paradas no espaço em vez de
-           acompanharem o ecrã.
-           No PC: arrastar com o rato roda a câmara (mouseEnabled fica ligado).
-           touchEnabled: false: no telemóvel, arrastar o dedo não roda a câmara (roda o giroscópio),
+      <!-- a-marker preset: hiro: procura o marcador Hiro.
+           detetar-marcador (script.js): quando o deteta, põe visible = true e cria as esferas. -->
+      <a-marker preset="hiro" detetar-marcador>
+        <!-- caixa pousada em cima do marcador; o AR.js esconde-a quando perde o marcador -->
+        <a-box
+          id="caixa-maker"
+          position="0 0.5 0"
+          width="1"
+          height="1"
+          depth="1"
+          color="tomato"
+        ></a-box>
+      </a-marker>
+
+      <!-- câmara (sem entidades dentro).
+           position 0 0 0: no AR.js a câmara tem de ficar na origem.
+           wasd-controls-enabled: false: as teclas W A S D não mexem a câmara.
+           look-controls: roda a câmara com o rato (PC) ou com o giroscópio (telemóvel);
+           assim as esferas ficam paradas no espaço em vez de acompanharem o ecrã.
+           touchEnabled: false: no telemóvel, arrastar o dedo não roda a câmara,
            para os toques chegarem às esferas.
-           corrigir-cliques (script.js): faz o rato e os toques acertarem nas esferas
-           (mão de clicar por cima delas e clique que as elimina). -->
-      <a-entity
-        camera
+           corrigir-cliques (script.js): faz o rato e os toques acertarem nas esferas. -->
+      <a-camera
+        position="0 0 0"
+        wasd-controls-enabled="false"
         look-controls="touchEnabled: false"
         corrigir-cliques
-      >
-        <!-- a-marker preset: hiro: procura o marcador Hiro.
-             Está DENTRO da câmara porque o AR.js calcula a posição do marcador em relação
-             à câmara; assim continua certo mesmo quando a câmara roda.
-             detetar-marcador (scripts.js): quando o deteta, põe visible = true e cria as esferas. -->
-        <a-marker preset="hiro" detetar-marcador>
-          <!-- caixa pousada em cima do marcador; o AR.js esconde-a quando perde o marcador -->
-          <a-box
-            id="caixa"
-            position="0 0.5 0"
-            width="1"
-            height="1"
-            depth="1"
-            color="tomato"
-          ></a-box>
-        </a-marker>
-      </a-entity>
+      ></a-camera>
           <a-box
             id="caixa"
             position="1 0.5 -10"
@@ -68,6 +66,6 @@
     <!-- código do projeto (componente detetar-marcador), no fim da página -->
     <!-- ?v=4: muda este número sempre que alteras o scripts.js, para o browser
          não usar uma cópia antiga guardada em cache -->
-    <script src="script.js?v=13"></script>
+    <script src="script.js?v=14"></script>
   </body>
 </html>
