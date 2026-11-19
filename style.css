@@ -57,6 +57,44 @@ a.card.target {
   background: #fffbe6;
 }
 
+/* Cartões com duas versões (componentes/lista.html): v0 e v1 */
+div.card {
+  margin: 12px 0;
+  padding: 16px;
+  border-radius: 8px;
+  background: #fff;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.15);
+}
+
+div.card strong {
+  display: block;
+  font-size: 1.1em;
+  margin-bottom: 4px;
+}
+
+div.card span {
+  color: #555;
+}
+
+/* Cada versão: o resumo do exemplo e, por baixo, o link visível */
+div.versao {
+  margin-top: 8px;
+  padding: 8px 10px;
+  border-radius: 6px;
+  background: #f4f4f4;
+}
+
+div.versao p {
+  margin: 0 0 4px;
+  color: #333;
+}
+
+div.versao a {
+  color: #1a5fd0;
+  font-size: 0.9em;
+  overflow-wrap: anywhere; /* os links compridos partem em vez de sair do cartão */
+}
+
 .note {
   margin-top: 24px;
   font-size: 0.9em;
