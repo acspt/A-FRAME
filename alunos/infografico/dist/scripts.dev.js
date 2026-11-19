@@ -5,7 +5,7 @@
 // passa a true: a caixa aparece e são criadas várias esferas na a-scene, em posições aleatórias.
 // Quando o perde, visible passa a false, mas a caixa e as esferas continuam visíveis.
 // Mostra na consola qual a versão do ficheiro que o browser carregou
-console.log('scripts.js versão 4: as esferas ficam visíveis depois de perder o marcador'); // Variável global: diz se o marcador está a ser visto neste momento
+console.log('scripts.js versão 6: câmara roda com o giroscópio'); // Variável global: diz se o marcador está a ser visto neste momento
 
 var visible = false; // Variável global: diz se as esferas já foram criadas (para não as criar de novo
 // cada vez que o marcador volta a ser detetado)
@@ -59,7 +59,9 @@ function criarEsferas(cena) {
       this.parentNode.removeChild(this); // "this" é a esfera clicada
 
       console.log('Esfera eliminada');
-    });
-    cena.appendChild(esfera);
+    }); // adiciona a esfera dentro da <a-scene>, no topo (como primeiro filho, antes da câmara).
+    // Não fica dentro da câmara, por isso não roda com ela: fica parada no espaço.
+
+    cena.prepend(esfera);
   }
 }
