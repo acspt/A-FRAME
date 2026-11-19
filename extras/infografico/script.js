@@ -55,7 +55,7 @@ AFRAME.registerComponent('corrigir-cliques', {
   tick: function () {
     var camara = this.el.getObject3D('camera');
     if (camara) {
-      camara.projectionMatrixInverse.copy(camara.projectionMatrix).invert();
+     // camara.projectionMatrixInverse.copy(camara.projectionMatrix).invert();
     }
   }
 });
