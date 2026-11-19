@@ -49,7 +49,8 @@ AFRAME.registerComponent('corrigir-cliques', {
   tick: function tick() {
     var camara = this.el.getObject3D('camera');
 
-    if (camara) {// camara.projectionMatrixInverse.copy(camara.projectionMatrix).invert();
+    if (camara) {
+      camara.projectionMatrixInverse.copy(camara.projectionMatrix).invert();
     }
   }
 }); // Cria várias esferas na cena (a-scene), cada uma numa posição e cor aleatórias
