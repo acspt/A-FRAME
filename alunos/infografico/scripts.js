@@ -1,11 +1,14 @@
 // Componente "detetar-marcador"
 // Coloca-se no <a-marker>. Quando a câmara vê o marcador, a variável visible
-// passa a true e são criadas várias esferas na a-scene, em posições aleatórias.
-// O marcador em si é invisível (não mostra nada por cima dele).
-// Quando o perde, visible passa a false e as esferas são apagadas.
+// passa a true: a caixa aparece e são criadas várias esferas na a-scene, em posições aleatórias.
+// Quando o perde, visible passa a false, mas a caixa e as esferas continuam visíveis.
 
 // Variável global: diz se o marcador está a ser visto neste momento
 var visible = false;
+
+// Variável global: diz se as esferas já foram criadas (para não as criar de novo
+// cada vez que o marcador volta a ser detetado)
+var esferasCriadas = false;
 
 // Quantas esferas criar de cada vez
 var NUMERO_ESFERAS = 10;
@@ -19,6 +22,7 @@ AFRAME.registerComponent('detetar-marcador', {
   init: function () {
     var marcador = this.el;                          // o <a-marker>
     var cena = this.el.sceneEl;                      // a <a-scene>, onde vamos pôr as esferas
+    var caixa = document.querySelector('#caixa');    // a caixa a mostrar
 
     // O AR.js dispara "markerFound" quando deteta o marcador
     marcador.addEventListener('markerFound', function () {
@@ -26,16 +30,22 @@ AFRAME.registerComponent('detetar-marcador', {
       console.log('Marcador detetado, visible =', visible);
 
       if (visible == true) {
-        criarEsferas(cena);
+        // mostra a caixa (fica visível para sempre)
+        caixa.setAttribute('visible', true);
+
+        // cria as esferas só na primeira deteção
+        if (esferasCriadas == false) {
+          criarEsferas(cena);
+          esferasCriadas = true;
+        }
       }
     });
 
-    // O AR.js dispara "markerLost" quando deixa de ver o marcador
+    // O AR.js dispara "markerLost" quando deixa de ver o marcador.
+    // Só atualizamos a variável: a caixa e as esferas ficam onde estão.
     marcador.addEventListener('markerLost', function () {
       visible = false;
       console.log('Marcador perdido, visible =', visible);
-
-      apagarEsferas();
     });
   }
 });
@@ -57,8 +67,7 @@ function criarEsferas(cena) {
     // cor aleatória, no formato hsl(tom, saturação, luminosidade)
     esfera.setAttribute('color', 'hsl(' + Math.floor(aleatorio(0, 360)) + ', 80%, 60%)');
 
-    // classe para as podermos encontrar e apagar depois
-    // (é também a classe que o raycaster usa para saber o que se pode clicar)
+    // classe que o raycaster usa para saber o que se pode clicar
     esfera.classList.add('esfera');
 
     // ao clicar (ou tocar) na esfera, ela é eliminada
@@ -69,12 +78,4 @@ function criarEsferas(cena) {
 
     cena.appendChild(esfera);
   }
-}
-
-// Apaga todas as esferas criadas
-function apagarEsferas() {
-  var esferas = document.querySelectorAll('.esfera');
-  esferas.forEach(function (esfera) {
-    esfera.parentNode.removeChild(esfera);
-  });
 }

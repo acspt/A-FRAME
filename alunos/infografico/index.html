@@ -20,21 +20,23 @@
       raycaster="objects: .esfera"
     >
       <!-- a-marker preset: hiro: procura o marcador Hiro.
-           detetar-marcador (scripts.js): põe visible = true quando o deteta e cria as esferas na cena.
-           O marcador é invisível: nada aparece em cima dele. -->
-      <a-marker preset="hiro" detetar-marcador>
-        <!-- A caixa fica sempre escondida (visible="false"), para o marcador não mostrar nada.
-             Para voltar a vê-la, muda para visible="true". -->
-        <a-box
-          id="caixa"
-          visible="false"
-          position="0 0.5 0"
-          width="1"
-          height="1"
-          depth="1"
-          color="tomato"
-        ></a-box>
-      </a-marker>
+           detetar-marcador (scripts.js): quando o deteta, põe visible = true, mostra a caixa
+           e cria as esferas na cena. Fica vazio: o AR.js esconde tudo o que está dentro
+           do marcador quando o deixa de ver. -->
+      <a-marker preset="hiro" detetar-marcador></a-marker>
+
+      <!-- A caixa está fora do marcador (diretamente na a-scene), para continuar visível
+           depois de o marcador deixar de ser detetado.
+           Começa escondida (visible="false"); o componente mostra-a. -->
+      <a-box
+        id="caixa"
+        visible="false"
+        position="0 0 -3"
+        width="1"
+        height="1"
+        depth="1"
+        color="tomato"
+      ></a-box>
 
       <!-- câmara própria para AR (substitui a câmara normal do A-Frame) -->
       <a-entity camera></a-entity>
