@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="pt">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Infográfico em AR v2: mira</title>
+    <style>
+      /* Mira: um "+" fixo no centro do ecrã.
+         pointer-events: none: a mira não apanha os cliques, deixa-os passar para a cena. */
+      #mira {
+        position: fixed;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        font: bold 40px sans-serif;
+        color: white;
+        text-shadow: 0 0 4px black;
+        pointer-events: none;
+        z-index: 10;
+      }
+    </style>
+    <!-- A-Frame e AR.js em versões fixas -->
+    <script src="https://aframe.io/releases/1.6.0/aframe.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@ar-js-org/ar.js@3.4.8/aframe/build/aframe-ar.js"></script>
+  </head>
+  <body style="margin: 0; overflow: hidden;">
+    <!-- arjs sourceType: webcam: usa a câmara do dispositivo para procurar marcadores.
+         Aqui a a-scene NÃO tem cursor nem raycaster: estão na câmara (ver abaixo). -->
+    <a-scene
+      embedded
+      vr-mode-ui="enabled: false"
+      arjs="sourceType: webcam; debugUIEnabled: false;"
+    >
+      <!-- a-marker preset: hiro: procura o marcador Hiro.
+           detetar-marcador (script.js): quando o deteta, põe visible = true e cria as esferas. -->
+      <a-marker preset="hiro" detetar-marcador>
+        <!-- caixa pousada em cima do marcador; o AR.js esconde-a quando perde o marcador -->
+        <a-box
+          position="0 0.5 0"
+          width="1"
+          height="1"
+          depth="1"
+          color="tomato"
+        ></a-box>
+      </a-marker>
+
+      <!-- câmara (sem entidades dentro).
+           position 0 0 0: no AR.js a câmara tem de ficar na origem.
+           wasd-controls-enabled: false: as teclas W A S D não mexem a câmara.
+           look-controls: roda a câmara com o rato (PC) ou com o giroscópio (telemóvel).
+           touchEnabled: false: no telemóvel, arrastar o dedo não roda a câmara.
+           cursor + raycaster na câmara: o raio sai do CENTRO do ecrã (onde está a mira),
+           e não do ponto onde está o rato. Para eliminar uma esfera: aponta a mira para
+           ela e clica ou toca em qualquer sítio do ecrã.
+           Assim não é preciso o componente corrigir-cliques. -->
+      <a-camera
+        position="0 0 0"
+        wasd-controls-enabled="false"
+        look-controls="touchEnabled: false"
+        cursor
+        raycaster="objects: .esfera"
+      ></a-camera>
+    </a-scene>
+
+    <!-- a mira, por cima da cena -->
+    <div id="mira">+</div>
+
+    <!-- código do projeto (componente detetar-marcador), no fim da página.
+         ?v=1: muda este número sempre que alteras o script.js, para o browser
+         não usar uma cópia antiga guardada em cache -->
+    <script src="script.js?v=1"></script>
+  </body>
+</html>

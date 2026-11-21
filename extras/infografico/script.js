@@ -4,7 +4,7 @@
 // Quando o perde, visible passa a false, mas a caixa e as esferas continuam visíveis.
 
 // Mostra na consola qual a versão do ficheiro que o browser carregou
-console.log('script.js versão 13: corrigir-cliques reposto');
+console.log('script.js versão 21: componente corrigir-cliques');
 
 // Variável global: diz se o marcador está a ser visto neste momento
 var visible = false;
@@ -49,6 +49,8 @@ AFRAME.registerComponent('detetar-marcador', {
 // Coloca-se na câmara. O AR.js muda a projeção da câmara (para coincidir com a
 // câmara do telemóvel), mas não atualiza a versão "invertida" dessa projeção,
 // que é a que o A-Frame usa para saber em que objeto está o rato ou o dedo.
+// Tem de ser feito em todos os frames (tick), porque o AR.js volta a mudar a
+// projeção muitas vezes por segundo.
 // Sem esta correção, o raio do clique passa ao lado das esferas: não aparece
 // a mão de clicar por cima delas e o clique não as elimina.
 AFRAME.registerComponent('corrigir-cliques', {
